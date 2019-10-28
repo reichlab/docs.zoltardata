@@ -28,19 +28,22 @@ pipenv install mkdocs
 pipenv install mkdocs-material
 ```
 
-## Running
-To run a local development server:
+
+## Workflow
+- Edit content located in the `docs/` directory. Note: Only edit on the `master` branch, **not** the `gh-pages` one. 
+  The latter is overwritten by the `mkdocs gh-deploy` command when deploying (see below).
+- Preview the documentation locally. To run a local development server:
 ```bash
 $ cd <readme.md's dir>
 $ pipenv shell
 $ mkdocs serve
 ```
-
-To build the static site:
+- Deploy to [GitHub Pages](https://pages.github.com/):
+To deploy the site to Github pages:
 ```bash
 $ cd <readme.md's dir>
 $ pipenv shell
-$ mkdocs build
+$ mkdocs gh-deploy
 ```
 
 
