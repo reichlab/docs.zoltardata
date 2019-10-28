@@ -38,6 +38,7 @@ $ cd <readme.md's dir>
 $ pipenv shell
 $ mkdocs serve
 ```
+- Commit and push your changes.
 - Deploy to [GitHub Pages](https://pages.github.com/):
 To deploy the site to Github pages:
 ```bash
