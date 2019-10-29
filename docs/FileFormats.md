@@ -1,10 +1,14 @@
-# Project creation configuration (JSON)
+# File Formats
+Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.
+
+
+## Project creation configuration (JSON)
 As an alternative to manually creating a project via the web interface, projects can be created from a JSON
 configuration file. You can find an example at
 [cdc-project.json](https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json).
 
 
-# Score download format (CSV)
+## Score download format (CSV)
 There is one column per ScoreValue BUT: all Scores are on one line. Thus, the row `key` is the (fixed) first five 
 columns:
 
@@ -34,7 +38,7 @@ columns:
     - we use groupby to group row `keys` so that all score values are together
 
 
-# Truth data format (CSV)
+## Truth data format (CSV)
 - CSV format
 - A header must be included
 - One csv file/project, which includes timezeros across all seasons
@@ -49,7 +53,7 @@ columns:
     - Ditto for every target.
 
 
-# Forecast data format (JSON)
+## Forecast data format (JSON)
 For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a"JSON IO dict"
 in code documentation. See predictions-example.json for an example. Functions that accept a `json_io_dict` include:
 - `load_predictions_from_json_io_dict()`.

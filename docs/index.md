@@ -1,7 +1,7 @@
 # Zoltar - The Forecast Archive
 
 Welcome to the documentation site for [Zoltar](https://www.zoltardata.com/), a system developed by
-[the Reich Lab](reichlab.io) in the [Department of Biostatistics and
+[the Reich Lab](http://reichlab.io/) in the [Department of Biostatistics and
 Epidemiology](http://www.umass.edu/sphhs/biostatistics) at the [University of Massachusetts Amherst](https://www.umass.edu/)
 to store timeseries forecasts along with tools to browse, analyze, visualize, and score them.
 

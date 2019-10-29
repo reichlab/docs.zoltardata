@@ -3,16 +3,20 @@ site_name: Zoltar Documentation
 nav:
   - Home: 'index.md'
   - User Guide:
+      - 'Introduction': 'UserIntro.md'
       - 'Concepts': 'Concepts.md'
       - 'Data model': 'DataModel.md'
       - 'Zoltar Home page': 'HomePage.md'
       - 'Model detail page': 'ModelDetailPage.md'
       - 'Project detail page': 'ProjectDetailPage.md'
   - Researcher Guide:
+      - 'Introduction': 'ResearcherIntro.md'
       - 'Zoltr R library': 'Zoltr.md'
       - 'Zoltpy Python library': 'Zoltpy.md'
       - 'Data analysis': 'DataAnalysis.md'
   - Developer Guide:
+      - 'Introduction': 'DeveloperIntro.md'
+      - 'File Formats': 'FileFormats.md'
       - 'RESTful API': 'Api.md'
       - 'Zoltr R library': 'Zoltr.md'
       - 'Zoltpy Python library': 'Zoltpy.md'
