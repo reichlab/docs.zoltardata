@@ -409,9 +409,12 @@
                 
                 
                 <h1 id="project-creation-configuration-json">Project creation configuration (JSON)</h1>
-<p>As an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. You can find an example at <a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json">cdc-project.json</a>.</p>
+<p>As an alternative to manually creating a project via the web interface, projects can be created from a JSON
+configuration file. You can find an example at
+<a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json">cdc-project.json</a>.</p>
 <h1 id="score-download-format-csv">Score download format (CSV)</h1>
-<p>There is one column per ScoreValue BUT: all Scores are on one line. Thus, the row 'key' is the (fixed) first five columns:</p>
+<p>There is one column per ScoreValue BUT: all Scores are on one line. Thus, the row <code>key</code> is the (fixed) first five 
+columns:</p>
 <pre><code>    `ForecastModel.abbreviation | ForecastModel.name , TimeZero.timezero_date, season, Location.name, Target.name`
 
 Followed on the same line by a variable number of ScoreValue.value columns, one for each Score. Score names are in
@@ -431,11 +434,11 @@ the header. An example header and first few rows:
     gam_lag1_tops3,  20170423,  2017-2018  TH02,      5_biweek_ahead,  &lt;blank&gt;          62
 
 Notes:
-- `season` is each TimeZero's containing season_name, similar to Project.timezeros_in_season().
--  for the model column we use the model's abbreviation if it's not empty, otherwise we use its name
+- `season` is each TimeZero`s containing season_name, similar to Project.timezeros_in_season().
+-  for the model column we use the model`s abbreviation if it`s not empty, otherwise we use its name
 - NB: we were using get_valid_filename() to ensure values are CSV-compliant, i.e., no commas, returns, tabs, etc.
   (a function that was as good as any), but we removed it to help performance in the loop
-- we use groupby to group row 'keys' so that all score values are together
+- we use groupby to group row `keys` so that all score values are together
 </code></pre>
 <h1 id="truth-data-format-csv">Truth data format (CSV)</h1>
 <ul>
@@ -444,37 +447,46 @@ Notes:
 <li>One csv file/project, which includes timezeros across all seasons</li>
 <li>columns: <code>timezero</code>, <code>location</code>, <code>target</code>, <code>value</code></li>
 <li>timezeros are formatted <code>yyyymmdd</code></li>
-<li>For date-based onset or peak targets, values must be dates in the same format as timezeros, rather than project-specific time intervals such as an epidemic week.</li>
+<li>For date-based onset or peak targets, values must be dates in the same format as timezeros, rather than
+  project-specific time intervals such as an epidemic week.</li>
 <li>Validation:<ul>
-<li>Every timezero in the csv file must have a matching one in the project. Note that the inverse is not necessarily true, such as in the case above of missing timezeros.</li>
+<li>Every timezero in the csv file must have a matching one in the project. Note that the inverse is not necessarily
+  true, such as in the case above of missing timezeros.</li>
 <li>Every location in the csv file must a matching one in the Project.</li>
 <li>Ditto for every target.</li>
 </ul>
 </li>
 </ul>
 <h1 id="forecast-data-format-json">Forecast data format (JSON)</h1>
-<p>For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a"JSON IO dict" in code documentation. See predictions-example.json for an example. Functions that accept a <code>json_io_dict</code> include:
+<p>For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a"JSON IO dict"
+in code documentation. See predictions-example.json for an example. Functions that accept a <code>json_io_dict</code> include:
 - <code>load_predictions_from_json_io_dict()</code>.</p>
 <p>Functions that return a <code>json_io_dict</code> include:
 - <code>json_io_dict_from_forecast()</code> and
 - <code>json_io_dict_from_cdc_csv_file()</code>.</p>
 <p>This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md .</p>
 <p>Briefly, the dict has four top level keys:
-- <code>forecast</code>: a metadata dict about the file's forecast. has these keys: <code>id</code>, <code>forecast_model_id</code>, <code>source</code>,  <code>created_at</code>, and <code>time_zero</code>. Some or all of these keys might be ignored by functions that accept a JSON IO dict.
-- <code>locations</code>: a list of "location dicts", each of which has just a <code>name</code> key whose value is the name of a location  in the below <code>predictions</code> section.
-- <code>targets</code>: a list of "target dicts", each of which has the following fields. The fields are: <code>name</code>, <code>description</code>,  <code>unit</code>, <code>is_date</code>, <code>is_step_ahead</code>, and <code>step_ahead_increment</code>.
-- <code>predictions</code>: a list of "prediction dicts" that contains the prediction data. Each dict has these fields:
-  = <code>location</code>: name of the Location
-  = <code>target</code>: "" the Target
-  = <code>class</code>: the type of prediction this is. it is an abbreviation of the corresponding Prediction subclass - see <code>PREDICTION_CLASS_TO_JSON_IO_DICT_CLASS</code> for the names
-  = <code>prediction</code>: a class-specific dict containing the prediction data itself. the format varies according to class.  See https://github.com/cdcepi/predx/blob/master/predx_classes.md for details. Here is a summary:
-    + <code>BinCat</code>: Binned distribution with a category for each bin. is a two-column table represented by two keys, one per column: <code>cat</code> and <code>prob</code>. They are paired, i.e., have the same number of rows
-    + <code>BinLwr</code>: Binned distribution defined by inclusive lower bounds for each bin. Similar to <code>BinCat</code>, but has these two keys: <code>lwr</code> and <code>prob</code>.
-    + <code>Binary</code>: Binary distribution with a single <code>prob</code> key.
-    + <code>Named</code>: A named distribution with four fields: <code>family</code> and <code>param1</code> through <code>param3</code>. family must be listed in <code>FAMILY_CHOICE_TO_ABBREVIATION</code>.
-    + <code>Point</code>: A numeric point prediction with a single <code>value</code> key.
-    + <code>Sample</code>: Numeric samples represented as a table with one column that is found in the <code>sample</code> key.
-    + <code>SampleCat</code>: Character string samples from categories. Similar to <code>BinCat</code>, but has these two keys: <code>cat</code> and <code>sample</code>.</p>
+- <code>forecast</code>: a metadata dict about the file<code>s forecast. has these keys:</code>id<code>,</code>forecast_model_id<code>,</code>source<code>,</code>created_at<code>, and</code>time_zero<code>. Some or all of these keys might be ignored by functions that accept a JSON IO dict.
+-</code>locations<code>: a list of "location dicts", each of which has just a</code>name<code>key whose value is the name of a location in
+  the below</code>predictions<code>section.
+-</code>targets<code>: a list of "target dicts", each of which has the following fields. The fields are:</code>name<code>,</code>description<code>,</code>unit<code>,</code>is_date<code>,</code>is_step_ahead<code>, and</code>step_ahead_increment<code>.
+-</code>predictions<code>: a list of "prediction dicts" that contains the prediction data. Each dict has these fields:
+  =</code>location<code>: name of the Location
+  =</code>target<code>: "" the Target
+  =</code>class<code>: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names
+    are from</code>PREDICTION_CLASS_TO_JSON_IO_DICT_CLASS<code>:</code>BinCat<code>,</code>BinLwr<code>,</code>Binary<code>,</code>Named<code>,</code>Point<code>,</code>Sample<code>, and</code>SampleCat<code>.
+  =</code>prediction<code>: a class-specific dict containing the prediction data itself. the format varies according to class. See
+    https://github.com/cdcepi/predx/blob/master/predx_classes.md for details. Here is a summary:
+    +</code>BinCat<code>: Binned distribution with a category for each bin. is a two-column table represented by two keys, one per
+      column:</code>cat<code>and</code>prob<code>. They are paired, i.e., have the same number of rows
+    +</code>BinLwr<code>: Binned distribution defined by inclusive lower bounds for each bin. Similar to</code>BinCat<code>, but has these
+      two keys:</code>lwr<code>and</code>prob<code>.
+    +</code>Binary<code>: Binary distribution with a single</code>prob<code>key.
+    +</code>Named<code>: A named distribution with four fields:</code>family<code>and</code>param1<code>through</code>param3<code>.</code>family<code>names must be
+      one of those in</code>FAMILY_CHOICE_TO_ABBREVIATION<code>:</code>norm<code>,</code>lnorm<code>,</code>gamma<code>,</code>beta<code>,</code>bern<code>,</code>binom<code>,</code>pois<code>,</code>nbinom<code>, and</code>nbinom2<code>.
+    +</code>Point<code>: A numeric point prediction with a single</code>value<code>key.
+    +</code>Sample<code>: Numeric samples represented as a table with one column that is found in the</code>sample<code>key.
+    +</code>SampleCat<code>: Character string samples from categories. Similar to</code>BinCat<code>, but has these two keys:</code>cat<code>and</code>sample`.</p>
                 
                   
                 
