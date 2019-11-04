@@ -567,25 +567,31 @@ The file contains eight metadata keys, plus three keys that are lists of objects
 <li><code>visualization_y_label</code>: Used by the D3 component to label the Y axis.</li>
 </ul>
 <p>The list objects contain these keys:</p>
-<p><strong>"locations"</strong>:
-- <code>name</code>: The name of the location.</p>
-<p><strong>"targets"</strong>:
-- <code>name</code>: Target name.
-- <code>description</code>: "" description.
-- <code>unit</code>: "" unit.
-- <code>is_date</code>: <code>true</code> if this is a date-based target (e.g., "Season onset"), and <code>false</code> otherwise.
-- <code>is_step_ahead</code>: <code>true</code> if this is a step ahead target (e.g., "1 wk ahead"), and <code>false</code> otherwise.
-- <code>step_ahead_increment</code>: Applicable when <code>is_step_ahead</code> is <code>true</code>, is an integer specifying how many time steps ahead
-  the Target is. Can be negative, zero, or positive.
-- <code>point_value_type</code>: Used when importing forecasts into the database, indicates the data type of point values, and is
-  either <code>INTEGER</code>, <code>FLOAT</code>, or <code>TEXT</code>.
-- <code>prediction_types</code>: A list of strings that indicate type type of Predictions that apply to this target. The choices
-  are: <code>BinCat</code>, <code>BinLwr</code>, <code>Binary</code>, <code>Named</code>, <code>Point</code>, <code>Sample</code>, and <code>SampleCat</code>.</p>
-<p><strong>"timezeros"</strong>:
-- <code>timezero_date</code>: The timezero's date in <code>yyyymmdd</code> format.
-- <code>data_version_date</code> : Optional data version date in the same format. Pass <code>null</code> if the timezero does not have one. 
-- <code>is_season_start</code>: <code>true</code> if this starts a season, and <code>false</code> otherwise.
-- <code>season_name</code>: Applicable when <code>is_season_start</code> is <code>true</code>, names the season, e.g., "2010-2011".</p>
+<p><strong>"locations"</strong>:</p>
+<ul>
+<li><code>name</code>: The name of the location.</li>
+</ul>
+<p><strong>"targets"</strong>:</p>
+<ul>
+<li><code>name</code>: Target name.</li>
+<li><code>description</code>: "" description.</li>
+<li><code>unit</code>: "" unit.</li>
+<li><code>is_date</code>: <code>true</code> if this is a date-based target (e.g., "Season onset"), and <code>false</code> otherwise.</li>
+<li><code>is_step_ahead</code>: <code>true</code> if this is a step ahead target (e.g., "1 wk ahead"), and <code>false</code> otherwise.</li>
+<li><code>step_ahead_increment</code>: Applicable when <code>is_step_ahead</code> is <code>true</code>, is an integer specifying how many time steps ahead
+  the Target is. Can be negative, zero, or positive.</li>
+<li><code>point_value_type</code>: Used when importing forecasts into the database, indicates the data type of point values, and is
+  either <code>INTEGER</code>, <code>FLOAT</code>, or <code>TEXT</code>.</li>
+<li><code>prediction_types</code>: A list of strings that indicate type type of Predictions that apply to this target. The choices
+  are: <code>BinCat</code>, <code>BinLwr</code>, <code>Binary</code>, <code>Named</code>, <code>Point</code>, <code>Sample</code>, and <code>SampleCat</code>.</li>
+</ul>
+<p><strong>"timezeros"</strong>:</p>
+<ul>
+<li><code>timezero_date</code>: The timezero's date in <code>yyyymmdd</code> format.</li>
+<li><code>data_version_date</code> : Optional data version date in the same format. Pass <code>null</code> if the timezero does not have one. </li>
+<li><code>is_season_start</code>: <code>true</code> if this starts a season, and <code>false</code> otherwise.</li>
+<li><code>season_name</code>: Applicable when <code>is_season_start</code> is <code>true</code>, names the season, e.g., "2010-2011".</li>
+</ul>
 <h2 id="score-download-format-csv">Score download format (CSV)</h2>
 <p>There is one column per ScoreValue BUT: all Scores are on one line. Thus, the row <code>key</code> is the (fixed) first five 
 columns:</p>
