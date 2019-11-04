@@ -6,6 +6,35 @@ Zoltar uses a number of formats for representing truth data, forecasts, configur
 As an alternative to manually creating a project via the web interface, projects can be created from a JSON
 configuration file. You can find an example at
 [cdc-project.json](https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json).
+The file contains eight metadata keys, plus three keys that are lists of objects (`locations`, `targets`, and 
+`timezeros`). The metadata values are self-evident except for these two:
+
+- `time_interval_type`: Either `Week`, `Biweek`, or `Month`.
+- `visualization_y_label`: Used by the D3 component to label the Y axis.
+
+The list objects contain these keys:
+
+__"locations"__:
+- `name`: The name of the location.
+
+__"targets"__:
+- `name`: Target name.
+- `description`: "" description.
+- `unit`: "" unit.
+- `is_date`: `true` if this is a date-based target (e.g., "Season onset"), and `false` otherwise.
+- `is_step_ahead`: `true` if this is a step ahead target (e.g., "1 wk ahead"), and `false` otherwise.
+- `step_ahead_increment`: Applicable when `is_step_ahead` is `true`, is an integer specifying how many time steps ahead
+  the Target is. Can be negative, zero, or positive.
+- `point_value_type`: Used when importing forecasts into the database, indicates the data type of point values, and is
+  either `INTEGER`, `FLOAT`, or `TEXT`.
+- `prediction_types`: A list of strings that indicate type type of Predictions that apply to this target. The choices
+  are: `BinCat`, `BinLwr`, `Binary`, `Named`, `Point`, `Sample`, and `SampleCat`.
+
+__"timezeros"__:
+- `timezero_date`: The timezero's date in `yyyymmdd` format.
+- `data_version_date` : Optional data version date in the same format. Pass `null` if the timezero does not have one. 
+- `is_season_start`: `true` if this starts a season, and `false` otherwise.
+- `season_name`: Applicable when `is_season_start` is `true`, names the season, e.g., "2010-2011".
 
 
 ## Score download format (CSV)
