@@ -15,9 +15,12 @@ The file contains eight metadata keys, plus three keys that are lists of objects
 The list objects contain these keys:
 
 __"locations"__:
+
 - `name`: The name of the location.
 
+
 __"targets"__:
+
 - `name`: Target name.
 - `description`: "" description.
 - `unit`: "" unit.
@@ -30,7 +33,9 @@ __"targets"__:
 - `prediction_types`: A list of strings that indicate type type of Predictions that apply to this target. The choices
   are: `BinCat`, `BinLwr`, `Binary`, `Named`, `Point`, `Sample`, and `SampleCat`.
 
+
 __"timezeros"__:
+
 - `timezero_date`: The timezero's date in `yyyymmdd` format.
 - `data_version_date` : Optional data version date in the same format. Pass `null` if the timezero does not have one. 
 - `is_season_start`: `true` if this starts a season, and `false` otherwise.
