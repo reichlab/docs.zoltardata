@@ -559,7 +559,33 @@
 <h2 id="project-creation-configuration-json">Project creation configuration (JSON)</h2>
 <p>As an alternative to manually creating a project via the web interface, projects can be created from a JSON
 configuration file. You can find an example at
-<a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json">cdc-project.json</a>.</p>
+<a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json">cdc-project.json</a>.
+The file contains eight metadata keys, plus three keys that are lists of objects (<code>locations</code>, <code>targets</code>, and 
+<code>timezeros</code>). The metadata values are self-evident except for these two:</p>
+<ul>
+<li><code>time_interval_type</code>: Either <code>Week</code>, <code>Biweek</code>, or <code>Month</code>.</li>
+<li><code>visualization_y_label</code>: Used by the D3 component to label the Y axis.</li>
+</ul>
+<p>The list objects contain these keys:</p>
+<p><strong>"locations"</strong>:
+- <code>name</code>: The name of the location.</p>
+<p><strong>"targets"</strong>:
+- <code>name</code>: Target name.
+- <code>description</code>: "" description.
+- <code>unit</code>: "" unit.
+- <code>is_date</code>: <code>true</code> if this is a date-based target (e.g., "Season onset"), and <code>false</code> otherwise.
+- <code>is_step_ahead</code>: <code>true</code> if this is a step ahead target (e.g., "1 wk ahead"), and <code>false</code> otherwise.
+- <code>step_ahead_increment</code>: Applicable when <code>is_step_ahead</code> is <code>true</code>, is an integer specifying how many time steps ahead
+  the Target is. Can be negative, zero, or positive.
+- <code>point_value_type</code>: Used when importing forecasts into the database, indicates the data type of point values, and is
+  either <code>INTEGER</code>, <code>FLOAT</code>, or <code>TEXT</code>.
+- <code>prediction_types</code>: A list of strings that indicate type type of Predictions that apply to this target. The choices
+  are: <code>BinCat</code>, <code>BinLwr</code>, <code>Binary</code>, <code>Named</code>, <code>Point</code>, <code>Sample</code>, and <code>SampleCat</code>.</p>
+<p><strong>"timezeros"</strong>:
+- <code>timezero_date</code>: The timezero's date in <code>yyyymmdd</code> format.
+- <code>data_version_date</code> : Optional data version date in the same format. Pass <code>null</code> if the timezero does not have one. 
+- <code>is_season_start</code>: <code>true</code> if this starts a season, and <code>false</code> otherwise.
+- <code>season_name</code>: Applicable when <code>is_season_start</code> is <code>true</code>, names the season, e.g., "2010-2011".</p>
 <h2 id="score-download-format-csv">Score download format (CSV)</h2>
 <p>There is one column per ScoreValue BUT: all Scores are on one line. Thus, the row <code>key</code> is the (fixed) first five 
 columns:</p>
