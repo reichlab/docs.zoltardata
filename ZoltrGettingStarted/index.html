@@ -36,7 +36,7 @@
     
     
       
-        <title>Data analysis - Zoltar Documentation</title>
+        <title>Getting Started - Zoltar Documentation</title>
       
     
     
@@ -75,10 +75,6 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#data-analysis" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -101,7 +97,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Data analysis
+                Getting Started
               
             </span>
           
@@ -324,12 +320,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Researcher Guide
@@ -357,56 +351,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Data analysis
-      </label>
-    
-    <a href="./" title="Data analysis" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../DataAnalysis/" title="Data analysis" class="md-nav__link">
       Data analysis
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#visualizations" class="md-nav__link">
-    Visualizations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scores" class="md-nav__link">
-    Scores
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -479,10 +428,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       zoltr Package
@@ -510,11 +461,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../ZoltrGettingStarted/" title="Getting Started" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Getting Started" class="md-nav__link md-nav__link--active">
       Getting Started
     </a>
+    
   </li>
 
         
@@ -578,64 +536,15 @@
               </div>
             
             
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#visualizations" class="md-nav__link">
-    Visualizations
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#scores" class="md-nav__link">
-    Scores
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                <h1 id="data-analysis">Data analysis</h1>
-<p>Zoltar provides two fledgling project analysis tools: visualizations and scores. You will find links to them on project detail pages on the Analysis line in the project details section at the top of the page.</p>
-<h2 id="visualizations">Visualizations</h2>
-<p>This page uses the <a href="https://github.com/reichlab/d3-foresight">D3 Foresight component</a>'s TimeChart to display the project's models' forecasts for each step ahead target. Currently we only use the basic plot feature along with the <strong>actual</strong> component. We plan to add baseline, history, and other features. To use the chart:</p>
-<ul>
-<li>Select a location and season from the drop downs. (Note that selecting a season will reload the page, which can take a long time for large projects.)</li>
-<li>Click the plot area to move the current time zero, indicated by the vertical division between gray on the left and white on the right. The plot shows the step ahead target predictions for each model.</li>
-<li>Hover over the plot to see details.</li>
-<li>The legend shows model names, and allows showing or hiding them. Hover over a model name for details, and click the link button to show model details in a separate Zoltar page.</li>
-<li>Click the left and right arrows to the right of the legend to move the current time zero.</li>
-<li>Click the 'hamburger' icon to toggle the legend.</li>
-</ul>
-<h2 id="scores">Scores</h2>
-<p>This page shows the mean absolute error values for all models in the project. (This can take a long time to load for large projects.) The location and season drop downs work like those on the visualization page. The smallest errors are shown in inverse text.</p>
+                  <h1>Getting Started</h1>
+                
+                
                 
                   
                 
@@ -656,7 +565,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../ResearcherIntro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ZoltrOverview/" title="Overview" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -665,19 +574,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Introduction
+                Overview
               </span>
             </div>
           </a>
         
         
-          <a href="../DeveloperIntro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ZoltrProjectOwners/" title="ProjectOwners" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Introduction
+                ProjectOwners
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
