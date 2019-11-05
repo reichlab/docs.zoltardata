@@ -2,10 +2,12 @@ site_name: Zoltar Documentation
 
 nav:
   - Home: 'index.md'
-  - Web Tour: 'tour.md'
+  - Web Tour:
+      - 'Introduction': 'WebTourIntro.md'
       - 'Zoltar Home page': 'HomePage.md'
-      - 'Model detail page': 'ModelDetailPage.md'
       - 'Project detail page': 'ProjectDetailPage.md'
+      - 'Model detail page': 'ModelDetailPage.md'
+      - 'Forecast detail page': 'ForecastDetailPage.md'
   - User Guide:
       - 'Introduction': 'UserIntro.md'
       - 'Concepts': 'Concepts.md'

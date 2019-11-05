@@ -28,7 +28,6 @@ pipenv install mkdocs
 pipenv install mkdocs-material
 ```
 
-
 ## Workflow
 - Edit content located in the `docs/` directory. Note: Only edit on the `master` branch, **not** the `gh-pages` one. 
   The latter is overwritten by the `mkdocs gh-deploy` command when deploying (see below).
@@ -60,22 +59,4 @@ Here are the moving parts that implement the documentation site:
   namespace server that points to the Netlify location. The dnsimple records are 
   [here](https://dnsimple.com/a/91354/domains/zoltardata.com/records) and the Netlify domain configuration is
   [here](https://app.netlify.com/sites/docs-zoltardata-staging/settings/domain).
-
-
-# todo
-## work out the overall documentation structure (current is alpha)
-
-## ProjectDetailPage.md
-- bring up to date, esp. configuration
-
-## FileFormats.md
-- Forecast data format: when done, remove from: utils/forecast.py
-- Truth data format: when done, remove from: `load_truth_data()` in models/project.py
-- Score download format: when done, remove from: `_write_csv_score_data_for_project()` in api_views.py
-- rethink naming of `json_io_dict`
-- Project creation configuration (JSON)
-- Score download format (CSV)
-
-## Api.md
-- update endpoints
 

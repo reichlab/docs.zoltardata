@@ -1,0 +1,3 @@
+This file takes you through a tour of Zoltar's web interface, located at [zoltardata.com](https://www.zoltardata.com/).
+Start the tour by following the links in the navigation menu on the left, ideally in order. You can also use the `<`
+and `>` buttons on this page.
