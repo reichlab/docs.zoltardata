@@ -100,12 +100,12 @@ Legend:
 
 ## Available scores by target
 
-target type | error     | abs error | log score | CRPS      | brier score 
------------ | --------- | --------- | --------- | --------- | --------- 
-continuous  |    x      |    x      |    x      |    x      |    -?      
-discrete    |    x      |    x      |    x      |    x      |    -?      
-nominal     |    -      |    -      |    x      |    -?     |    x      
-binary      |    x      |    x      |    x      |    -?     |    x      
-date        |    x      |    x      |    x      |    x      |    -?      
+target type | error     | abs error | log score | CRPS      | brier score | PIT 
+----------- | --------- | --------- | --------- | --------- | ----------- | ---------  
+continuous  |    x      |    x      |    x      |    x      |    -?       |    x      
+discrete    |    x      |    x      |    x      |    x      |    -?       |    x      
+nominal     |    -      |    -      |    x      |    -?     |    x        |    -      
+binary      |    x      |    x      |    x      |    -?     |    x        |    -      
+date        |    x      |    x      |    x      |    x      |    -?       |    x      
 
 
