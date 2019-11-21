@@ -1,0 +1,71 @@
+{
+  "name" : "My project",
+  "is_public" : true,
+  "description" : "A full description of my project is here. You could include narrative details about what seasons are included, what group has provided data, whether the project focuses on real-time or retrospective forecasts.",
+  "home_url" : "https://reichlab.io",
+  "logo_url" : "http://reichlab.io/assets/images/logo/nav-logo.png",
+  "core_data" : "",
+  "time_interval_type" : "Week",
+  "visualization_y_label" : "the scale for your variable of interest",
+  "locations" : [
+    {
+      "name" : "location1"
+    },
+    {
+      "name" : "location2"
+    }
+  ],
+  "targets" : [
+    {
+      "name" : "Season peak week",
+      "description" : "The week in which the peak y value is observed.",
+      "target_type" : "date",
+      "unit" : "week",
+      "is_step_ahead" : false,
+      "bin_format" : "%Y-%U",
+      "bin_range" :  [["2011-10-02", "2012-09-30"], ["2012-05-13", "2013-05-12"]]
+    },
+    {
+      "name" : "1 week ahead",
+      "description" : "The forecasted y value for the next week",
+      "target_type" : "continuous",
+      "unit" : "incidence per 100,000",
+      "is_date" : false,
+      "is_step_ahead" : true,
+      "step_ahead_increment" : 1,
+      "range": [0, 100000],
+      "lwr" : [0, 1, 10, 50, 100, 1000, 10000, 100000]
+    },
+    {
+      "name" : "season severity",
+      "description" : "The forecasted severity for a given season.",
+      "target_type" : "nominal",
+      "unit" : "severity",
+      "is_step_ahead" : false,
+      "cat": ["mild", "moderate", "high", "severe"]
+    },
+    {
+      "name" : "above baseline",
+      "description" : "Whether or not a region-specific threshold will be exceeded in a given season.",
+      "target_type" : "binary",
+      "unit" : "severity",
+      "is_step_ahead" : false
+    }
+  ],
+  "timezeros" : [
+    {
+      "timezero_date" : "2011-10-02",
+      "data_version_date" : null,
+      "is_season_start" : true,
+      "season_name" : "2011-2012"
+    },
+    {
+      "timezero_date" : "2011-10-09",
+      "data_version_date" : null
+    },
+    {
+      "timezero_date" : "2011-10-16",
+      "data_version_date" : null
+    }
+  ]
+}
