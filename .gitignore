@@ -1,3 +1,4 @@
 /site/
 .Rproj.user
 *.Rproj
+*.Rhistory
