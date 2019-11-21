@@ -11,6 +11,7 @@ nav:
   - User Guide:
       - 'Introduction': 'UserIntro.md'
       - 'Concepts': 'Concepts.md'
+      - 'Targets': 'Targets.md'
       - 'Data model': 'DataModel.md'
   - Researcher Guide:
       - 'Introduction': 'ResearcherIntro.md'
