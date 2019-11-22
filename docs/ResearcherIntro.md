@@ -1,3 +1,0 @@
-# Researcher Introduction
-
-todo

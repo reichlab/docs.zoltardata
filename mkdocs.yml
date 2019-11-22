@@ -13,11 +13,9 @@ nav:
       - 'Concepts': 'Concepts.md'
       - 'Targets': 'Targets.md'
       - 'Data model': 'DataModel.md'
-  - Researcher Guide:
-      - 'Introduction': 'ResearcherIntro.md'
-      - 'Data analysis': 'DataAnalysis.md'
-  - Developer Guide:
-      - 'Introduction': 'DeveloperIntro.md'
+      - 'Scoring': 'Scoring.md'
+      - 'Visualizations': 'Visualizations.md'
+      - 'Validation': 'Validation.md'
       - 'File Formats': 'FileFormats.md'
       - 'RESTful API': 'Api.md'
   - zoltr Package:
