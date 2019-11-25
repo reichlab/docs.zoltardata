@@ -46,7 +46,7 @@ When defined, all targets have a set of parameters that must be defined. Each ty
 - *Range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is not specified than range is assumed to be (-infty, infty).
 - *BinLwrs*: (Optional, but uploaded `BinLwr` prediction types will be rejected unless these are specified) a set of inclusive lower-bounds for the bins of binned distributions. <!-- NGR: is upper bound always specified as infinity?-->
 
-If both Range and BinLwrs are specified, then the min(BinLwrs) must equal lower bound and 
+If both Range and BinLwrs are specified, then the min(BinLwrs) must equal the lower bound.
 
 ### Parameter for discrete targets
 
@@ -83,7 +83,7 @@ would result in valid series of week bins where the first in each series would b
  2014-40 | 2015-20
 
 
-## Valid prediction types by target
+## Valid prediction types by target type
 
 target type | point     | binary    | named     | binlwr    | sample    | bincat    | samplecat 
 ----------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- 
@@ -98,7 +98,7 @@ Legend:
 ** = valid named distributions are `pois`, `nbinom`, `nbinom2`
 *** = valid named distributions are `bernoulli`
 
-## Available scores by target
+## Available scores by target type
 
 target type | error     | abs error | log score | CRPS      | brier score | PIT 
 ----------- | --------- | --------- | --------- | --------- | ----------- | ---------  
