@@ -35,9 +35,8 @@ additional, sometimes, optional parameters. These are all defined below.
 - *Description*: A verbose description of what the target is. (limit XX characters?)
 - *Target Type*: One of the five target types named above.
 - *Unit*: E.g., "percent" or "week". The unit label has a superficial purpose used when previewing data and when
-  downloading it. For auto-created targets, ensure that you've entered a unit. Otherwise it will be blank in previews
-  and downloads. However, for date targets, the unit is required and must be one of the following: "month", "biweek",
-  "week", or "day". (See below for more details on how the unit is incorporated into scoring and validation.)
+  downloading it. For date targets, the unit is required and must be one of the following: "month", "biweek", "week",
+  or "day". (See below for more details on how the unit is incorporated into scoring and validation.)
   <!-- NR: [not sure what "previewing data" means] -->
 - *Point Value Type*: todo <!-- NGR: [not sure what this is] -->
 - *Step Ahead?*: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the
