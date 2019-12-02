@@ -2,13 +2,6 @@
 
 Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead incidence and a prediction of when incidence will reach its maximum in a given period of time. When a project is created, the project owner specifies which targets should be part of any submitted forecast. As we will see below, targets have specific properties, and there are several different types of targets that determine which properties and features pertain to a particular target.
 
-<!-- NGR: what is an auto-created target?--> 
-
-(A note regarding auto-created targets. Auto-created targets require further, careful editing to be complete. In
-particular, users must fill in the `description` and `unit` fields, identify the date-related ones by checking `Is
-date`, and check `Is step ahead` and fill in the `Step ahead increment` integer value. _Importantly_: You will get
-unwanted results if `Is date` or `Is step ahead` is incorrect.)
-
 ## Target types
 
 *Continuous*: A quantitative target whose range encapsulates a section of the real number line. 

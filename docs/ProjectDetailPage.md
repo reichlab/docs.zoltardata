@@ -71,11 +71,6 @@ are described next:
 This section lists information about project forecast targets. Like locations, these were either created explicitly by
 the project owner, or automatically when the template was loaded. The information includes the following fields.
 
-(A note regarding auto-created targets. Auto-created targets require further, careful editing to be complete. In
-particular, users must fill in the `description` and `unit` fields, identify the date-related ones by checking `Is
-date`, and check `Is step ahead` and fill in the `Step ahead increment` integer value. _Importantly_: You will get
-unwanted results if `Is date` or `Is step ahead` is incorrect.)
-
 - *Name*: Self-explanatory.
 - *Description*: "". For auto-created targets, this field must be filled in.
 - *Unit*: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. For auto-created
