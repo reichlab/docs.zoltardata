@@ -31,8 +31,8 @@ additional, sometimes, optional parameters. These are all defined below.
 
 ### Required parameters for all targets
 
-- *Name*: A brief name for the target (limit XX characters?).
-- *Description*: A verbose description of what the target is. (limit XX characters?)
+- *Name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful).
+- *Description*: A verbose description of what the target is. (The number of characters is not limited.)
 - *Target Type*: One of the five target types named above.
 - *Unit*: E.g., "percent" or "week". The unit label has a superficial purpose used when previewing data and when
   downloading it. For date targets, the unit is required and must be one of the following: "month", "biweek", "week",
