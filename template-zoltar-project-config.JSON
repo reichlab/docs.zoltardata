@@ -31,6 +31,7 @@
       "target_type" : "discrete",
       "unit" : "cases",
       "is_step_ahead" : true,
+      "step_ahead_increment" : 2,
       "range" : [0, 10000]
     },
     {
