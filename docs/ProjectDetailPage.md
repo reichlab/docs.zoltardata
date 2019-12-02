@@ -71,19 +71,12 @@ are described next:
 This section lists information about project forecast targets. Like locations, these were either created explicitly by
 the project owner, or automatically when the template was loaded. The information includes the following fields.
 
-(A note regarding auto-created targets. Auto-created targets require further, careful editing to be complete. In
-particular, users must fill in the `description` and `unit` fields, identify the date-related ones by checking `Is
-date`, and check `Is step ahead` and fill in the `Step ahead increment` integer value. _Importantly_: You will get
-unwanted results if `Is date` or `Is step ahead` is incorrect.)
-
 - *Name*: Self-explanatory.
-- *Description*: "". For auto-created targets, this field must be filled in.
-- *Unit*: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. For auto-created
-  targets, ensure that you've entered a unit. Otherwise it will be blank in previews and downloads.
+- *Description*: "".
+- *Unit*: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it.
 - *Point Value Type*: todo
 - *Date?*: This identifies whether the target is date-related or not. Examples of date-related targets might include
-  "Season onset" or "Season peak week". For auto-created targets, the consequences of not checking off this field include
-  forecasts being rejected as invalid if they have no point value.
+  "Season onset" or "Season peak week".
 - *Step Ahead?*: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the
   "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis
   tools.)
