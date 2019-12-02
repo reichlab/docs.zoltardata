@@ -26,6 +26,14 @@
       "bin_range" :  [["2011-10-02", "2012-09-30"], ["2012-05-13", "2013-05-12"]]
     },
     {
+      "name" : "2 week ahead",
+      "description" : "A forecasted integer number of cases for a future week.",
+      "target_type" : "discrete",
+      "unit" : "cases",
+      "is_step_ahead" : true,
+      "range" : [0, 10000]
+    },
+    {
       "name" : "1 week ahead",
       "description" : "The forecasted y value for the next week",
       "target_type" : "continuous",
