@@ -107,13 +107,13 @@ last in each series would be from the `ub` column below:
 
 ## Valid prediction types by target type
 
-target type | point     | binary    | named     | binlwr    | sample    | bincat    | samplecat 
------------ | --------- | --------- | --------- | --------- | --------- | --------- | --------- 
-continuous  |    x      |    -      |    *      |    x      |    x      |    -      |    -      
-discrete    |    x      |    -      |    **     |    -      |    -      |    x      |    x      
-nominal     |    x      |    -      |    -      |    -      |    -      |    x      |    x      
-binary      |    x      |    x      |    ***    |    -      |    -      |    x      |    x      
-date        |    x      |    -      |    -      |    -      |    -      |    x      |    x      
+target type | point     | named     | binlwr    | sample    | bincat    | samplecat 
+----------- | --------- | --------- | --------- | --------- | --------- | --------- 
+continuous  |    x      |    *      |    x      |    x      |    -      |    -      
+discrete    |    x      |    **     |    -      |    x      |    x      |    -      
+nominal     |    x      |    -      |    -      |    -      |    x      |    x      
+binary      |    x      |    ***    |    -      |    x      |    x      |    -      
+date        |    x      |    -      |    -      |    -      |    x      |    x      
 
 Legend:
 * = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
