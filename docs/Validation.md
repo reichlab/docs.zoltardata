@@ -31,9 +31,9 @@ These tests are performed when a forecast is created or updated.
 
  - If a BinCat Prediction Element exists, it should have >=1 Database Rows.
  - |cat| = |prob|. The number of elements in the cat and prob vectors are identical.
- - cat (t): Entries in the database rows in the cat column cannot be `“”`, `“NA”` or `NULL`. No duplicate category names
+ - `cat` (t): Entries in the database rows in the cat column cannot be `“”`, `“NA”` or `NULL`. No duplicate category names
    are allowed. Entries in cat must be a subset of `Target.cats` from the target definition.
- - prob (f): Entries in the database rows must be numbers in [0, 1]. For one prediction element, the values within prob
+ - `prob` (f): Entries in the database rows must be numbers in [0, 1]. For one prediction element, the values within prob
    must sum to 1.0 (values in [0.99, 1.01] are acceptable). 
 
 NB: Bins where prob == 0 are not stored in the database.
@@ -43,7 +43,7 @@ NB: Bins where prob == 0 are not stored in the database.
  - If a BinLwr Prediction Element exists, it should have >=1 Database Rows.
  - `|lwr| = |prob|`. The number of elements in the `lwr` and `prob` vectors are identical.
  - `lwr` (f): Entries in the database rows in the `lwr` column cannot be `“”`, `“NA”` or `NULL`. Ascending order.
-   Entries in `lwr` must be a subset of `Target.lwrs` from the target definition.
+   Entries in `lwr` must be a subset of `Target.lwr` from the target definition.
  - `prob` (f): [0, 1]. Entries in the database rows must be numbers in [0, 1]. For one prediction element, the values
    within prob must sum to 1.0 (values in [0.99, 1.01] are acceptable). 
  - NB: Bins where prob == 0 are not stored in the database.
@@ -87,8 +87,9 @@ Neg.Binom2  |    mean   |  disp     |    -
 ### `SampleCat` Prediction Elements
  - If a SampleCat Prediction Element exists, it should have >=1 Database Rows.
  - `|cat| = |sample|`. The number of elements in the `cat` and `sample` vectors are identical.
- - `cat` (t): Not `NA`. No duplications.
- - `sample` (t): Not `NA`.
+ - `cat` (t): Entries in the database rows in the cat column cannot be `“”`, `“NA”` or `NULL`. No duplicate category
+   names are allowed. Entries in cat must be a subset of `Target.cats` from the target definition.
+ - `sample` (t): Entries in the database rows in the cat column cannot be `“”`, `“NA”` or `NULL`.
  - All values in `sample` must be included in `cat` as in the target definition (but each `cat` does not necessarily
    need to be included in `sample`),
 
@@ -104,7 +105,7 @@ These tests are performed when a forecast is created or updated. For all target 
  - if `range` is specified, any values in Point or Sample Prediction Elements should be contained within `range`
  - if `range` is specified, any Named Prediction Element should have negligible probability density outside of the range
    (< specified tolerance)
- - for BinLwr Prediction Elements, the submitted set of `lwrs` must be a subset of the `lwrs` defined by the target
+ - for BinLwr Prediction Elements, the submitted set of `lwr` values must be a subset of the `lwr` defined by the target
  - for Named Prediction Elements, the distribution must be one of `norm`, `lnorm`, `gamma`, `beta`
 
 ### "discrete"
@@ -147,10 +148,9 @@ These tests are performed when a target is created or updated.
 
 ### "continuous"
 
- - if both `range` and `lwrs` are specified, then the `min(BinLwrs)` must equal the lower bound.
+ - if both `range` and `lwr` are specified, then the `min(lwr)` must equal the lower bound.
  - `range` lower bound must be numeric and smaller than upper bound. 
- - if `range` is specified, it must include both two numbers and an accompanying two-element boolean vector indicating
-   whether each bound is inclusive (TRUE) or not (FALSE).
+ - if `range` is specified, is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b).
 
 ### "discrete"
 

@@ -9,19 +9,19 @@ features pertain to a particular target.
 
 ## Target types
 
-*Continuous*: A quantitative target whose range encapsulates a section of the real number line. 
+*continuous*: A quantitative target whose range encapsulates a section of the real number line. 
 > Examples: percentage of all doctors' office visits due to influenza like-illness, or disease incidence per 100,000 population.
 
-*Discrete*: A quantitative target whose range is a set of integer values. 
+*discrete*: A quantitative target whose range is a set of integer values. 
 > Example: the number of incident cases in a time period.
 
-*Nominal*: A nominal, unordered categorical target. 
+*nominal*: A nominal, unordered categorical target. 
 > Example: severity level in categories of "low", "moderate", and "high".
 
-*Binary*: A binary target, with a defined outcome that can be seen as a 0/1 or TRUE/FALSE. 
+*binary*: A binary target, with a defined outcome that can be seen as a 0/1 or TRUE/FALSE. 
 > Example: does the maximum value of a variable exceed some threshold C in a given period of time.
 
-*Date*: A special case of a discrete target, where the possible outcomes are distinct units of time. 
+*date*: A special case of a discrete target, where the possible outcomes are distinct units of time. 
 > Example: the week in which the peak incidence occurs.
 
 ## Target parameters
@@ -31,45 +31,54 @@ additional, sometimes, optional parameters. These are all defined below.
 
 ### Required parameters for all targets
 
-- *Name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful).
-- *Description*: A verbose description of what the target is. (The number of characters is not limited.)
-- *Target Type*: One of the five target types named above.
-- *Unit*: E.g., "percent" or "week". The unit label has a superficial purpose used when previewing data and when
-  downloading it. For date targets, the unit is required and must be one of the following: "month", "biweek", "week",
-  or "day". (See below for more details on how the unit is incorporated into scoring and validation.)
-  <!-- NR: [not sure what "previewing data" means] -->
-- *Point Value Type*: todo <!-- NGR: [not sure what this is] -->
-- *Step Ahead?*: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the
-  "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis
-  tools.)
+- *name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful).
+- *description*: A verbose description of what the target is. (The number of characters is not limited.)
+- *target_type*: One of the five target types named above, e.g., `continuous`.
+- *point_value_type*: todo
+  <!-- NGR: [not sure what this is.
+       MC: it's used to decide which PointPrediction.value field to use when loading data. recall that there are three
+       types (two of which are null for any row): value_i, value_f, value_t. we discussed whether we can infer this from
+       target_type:
+         - continuous: float
+         - discrete: int
+         - nominal: text
+         - binary: float
+         - date: text, but maybe an int or other post-processed info (depends on how dates shake out)
+  ] -->
+- *is_step_ahead*: `true` if the target is a step ahead one. (Step ahead targets are used to predict values in the
+  future, and are used by some analysis tools.
+- *step_ahead_increment*: An integer that's required if `is_step_ahead` is true. <!-- MC: clarify how used --> 
 
-### Parameter for continuous targets
+### Parameters for continuous targets
 
-- *Range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous
+- *unit*: (Required) E.g., "percent" or "week".
+- *range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is
   not specified than range is assumed to be (-infty, infty).
-- *BinLwrs*: (Optional, but uploaded `BinLwr` prediction types will be rejected unless these are specified) a set of
+- *lwr*: (Optional, but uploaded `BinLwr` prediction types will be rejected unless these are specified) a set of
   inclusive lower-bounds for the bins of binned distributions. <!-- NGR: is upper bound always specified as infinity?-->
 
 If both Range and BinLwrs are specified, then the min(BinLwrs) must equal the lower bound.
 
-### Parameter for discrete targets
+### Parameters for discrete targets
 
-- *Range*: (Optional) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous
+- *unit*: (Required) E.g., "percent" or "week".
+- *range*: (Optional) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not
   specified than range is assumed to be (-infty, infty).
 
-### Parameter for nominal targets
+### Parameters for nominal targets
 
-- *Categories*: (Required) a character vector containing the names of the categories for this target. 
+- *unit*: (Required) E.g., "percent" or "week".
+- *cat*: (Required) a list of strings that name the categories for this target. 
 
-### Parameter for binary targets
+### Parameters for binary targets
 
 None needed.
 
 ### Parameters for date targets
 
-- *Unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and
+- *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and
   use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the
   units of the date target and how certain calculations are performed for dates. All inputs for date targets are
   required to be in an unambiguous `%Y-%m-%d` or `%Y%m%d` date format that can be read by a call to `strptime`. This
@@ -79,12 +88,12 @@ None needed.
   biweeks, the actual day of the month/week/biweek specified in the forecast does not matter, as this level of
   granularity will be ignored by Zoltar. Note: to map dates to biweeks, we use the definitions as presented in Reich et
   al (2017).
-- *Bin format*: (Required) a character string defining a `strptime` format for dates used as the labels for categories
+- *bin_format*: (Required) a character string defining a `strptime` format for dates used as the labels for categories
   for bincat and samplecat prediction types. E.g., "%Y-%W" for representing, say "2019-12-03" as "2019-48".
-- *Bin range*: (Required) a matrix <!--NGR: or some other representation--> with two columns and at least 1 row, where
+- *bin_range*: (Required) a matrix <!--NGR: or some other representation--> with two columns and at least 1 row, where
   every cell has an unambiguous date. The first column represents the lower bounds of the series of dates that are
   valid. The second column represents the upper bounds of the series of dates that are valid. As an example, for a
-  weekly target with *Bin format* of "%Y-%W", the following matrix passed as a Bin range
+  weekly target with *bin_format* of "%Y-%W", the following matrix passed as a *bin_range*.
 
  lb         | ub     
 ----------- | --------- 
@@ -103,7 +112,6 @@ last in each series would be from the `ub` column below:
  2013-40 | 2014-20
  2014-40 | 2015-20
 
-
 ## Valid prediction types by target type
 
 target type | point     | binary    | named     | binlwr    | sample    | bincat    | samplecat 
@@ -111,7 +119,7 @@ target type | point     | binary    | named     | binlwr    | sample    | bincat
 continuous  |    x      |    -      |    *      |    x      |    x      |    -      |    -      
 discrete    |    x      |    -      |    **     |    -      |    -      |    x      |    x      
 nominal     |    x      |    -      |    -      |    -      |    -      |    x      |    x      
-binary      |    x      |    x      |    ***    |    -      |    -      |    x      |    x      
+binary      |    x      |    -      |    ***    |    -      |    -      |    x      |    x      
 date        |    x      |    -      |    -      |    -      |    -      |    x      |    x      
 
 Legend:
@@ -128,5 +136,4 @@ discrete    |    x      |    x      |    x      |    x      |    -?       |    x
 nominal     |    -      |    -      |    x      |    -?     |    x        |    -      
 binary      |    x      |    x      |    x      |    -?     |    x        |    -      
 date        |    x      |    x      |    x      |    x      |    -?       |    x      
-
 
