@@ -17,24 +17,6 @@
   ],
   "targets" : [
     {
-      "name" : "Season peak week",
-      "description" : "The week in which the peak y value is observed.",
-      "target_type" : "date",
-      "unit" : "week",
-      "is_step_ahead" : false,
-      "bin_format" : "%Y-%U",
-      "bin_range" :  [["2011-10-02", "2012-09-30"], ["2012-05-13", "2013-05-12"]]
-    },
-    {
-      "name" : "2 week ahead",
-      "description" : "A forecasted integer number of cases for a future week.",
-      "target_type" : "discrete",
-      "unit" : "cases",
-      "is_step_ahead" : true,
-      "step_ahead_increment" : 2,
-      "range" : [0, 10000]
-    },
-    {
       "name" : "1 week ahead",
       "description" : "The forecasted y value for the next week",
       "target_type" : "continuous",
@@ -44,6 +26,15 @@
       "step_ahead_increment" : 1,
       "range": [0, 100000],
       "lwr" : [0, 1, 10, 50, 100, 1000, 10000, 100000]
+    },
+    {
+      "name" : "2 week ahead",
+      "description" : "A forecasted integer number of cases for a future week.",
+      "target_type" : "discrete",
+      "unit" : "cases",
+      "is_step_ahead" : true,
+      "step_ahead_increment" : 2,
+      "range" : [0, 10000]
     },
     {
       "name" : "season severity",
@@ -57,8 +48,16 @@
       "name" : "above baseline",
       "description" : "Whether or not a region-specific threshold will be exceeded in a given season.",
       "target_type" : "binary",
-      "unit" : "severity",
       "is_step_ahead" : false
+    },
+    {
+      "name" : "Season peak week",
+      "description" : "The week in which the peak y value is observed.",
+      "target_type" : "date",
+      "unit" : "week",
+      "is_step_ahead" : false,
+      "bin_format" : "%Y-%U",
+      "bin_range" :  [["2011-10-02", "2012-09-30"], ["2012-05-13", "2013-05-12"]]
     }
   ],
   "timezeros" : [
