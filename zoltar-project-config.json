@@ -13,28 +13,32 @@
     },
     {
       "name" : "location2"
+    },
+    {
+      "name" : "location3"
     }
+
   ],
   "targets" : [
     {
-      "name" : "1 week ahead",
-      "description" : "The forecasted y value for the next week",
+      "name" : "pct next week",
+      "description" : "The forecasted percentage of positive tests for the next week",
       "target_type" : "continuous",
-      "unit" : "incidence per 100,000",
+      "unit" : "percent",
       "is_date" : false,
       "is_step_ahead" : true,
       "step_ahead_increment" : 1,
-      "range": [0, 100000],
-      "lwr" : [0, 1, 10, 50, 100, 1000, 10000, 100000]
+      "range": [0, 100],
+      "lwr" : [0, 1, 2, 5, 10, 50, 100]
     },
     {
-      "name" : "2 week ahead",
+      "name" : "cases next week",
       "description" : "A forecasted integer number of cases for a future week.",
       "target_type" : "discrete",
       "unit" : "cases",
       "is_step_ahead" : true,
-      "step_ahead_increment" : 2,
-      "range" : [0, 10000]
+      "step_ahead_increment" : 1,
+      "range" : [0, 100000]
     },
     {
       "name" : "season severity",

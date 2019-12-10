@@ -119,7 +119,7 @@ target type | point     | named     | binlwr    | sample    | bincat    | sample
 continuous  |    x      |    *      |    x      |    x      |    -      |    -      
 discrete    |    x      |    **     |    -      |    x      |    x      |    -      
 nominal     |    x      |    -      |    -      |    -      |    x      |    x      
-binary      |    x      |    ***    |    -      |    x      |    x      |    -      
+binary      |    x      |    ***    |    -      |    x      |    -      |    -      
 date        |    x      |    -      |    -      |    -      |    x      |    x      
 
 Legend:

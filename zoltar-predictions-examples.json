@@ -2,71 +2,99 @@
   "meta": {},
   "predictions": [
 
+
     {"location": "location1",
-      "target": "1 wk ahead",
+      "target": "pct next week",
       "class": "Point",
       "prediction": {
         "value": "2.1"
       }
     },
     {"location": "location1",
-      "target": "1 wk ahead",
+      "target": "pct next week",
       "class": "Named",
       "prediction": {
         "family": "norm",
         "param1": 1.1,
-        "param2": 2.2,
-        "param3": 3.3
-      }
-    },
-    {"location": "location1",
-      "target": "1 wk ahead",
-      "class": "BinLwr",
-      "prediction": {
-        "lwr": [1.1, 2.2, 3.3],
-        "prob": [0.0, 0.1, 0.9]
-      }
-    },
-    {"location": "location1",
-      "target": "1 wk ahead",
-      "class": "Sample",
-      "prediction": {
-        "sample": [0.1, 2.1, 5.1]
+        "param2": 2.2
       }
     },
 
     {"location": "location2",
-      "target": "2 week ahead",
+      "target": "pct next week",
       "class": "Point",
       "prediction": {
-        "value": "1"
+        "value": "2.0"
       }
     },
     {"location": "location2",
-      "target": "2 week ahead",
+      "target": "pct next week",
+      "class": "BinLwr",
+      "prediction": {
+        "lwr": [1.1, 2.2,3.3],
+        "prob": [0.3, 0.2, 0.5]
+      }
+    },
+
+    {"location": "location3",
+      "target": "pct next week",
+      "class": "Point",
+      "prediction": {
+        "value": "3.567"
+      }
+    },
+    {"location": "location3",
+      "target": "pct next week",
+      "class": "Sample",
+      "prediction": {
+        "sample": [2.3, 6.5, 10.0234, 0.0001]
+      }
+    },
+
+
+
+## note intentionally removed a point prediction here, just because it should not necessarily be required.
+    {"location": "location1",
+      "target": "cases next week",
       "class": "Named",
       "prediction": {
         "family": "pois",
-        "param1": 1.1,
-        "param2": 2.2,
-        "param3": 3.3
+        "param1": 1.1
+      }
+    },
+
+    {"location": "location2",
+      "target": "cases next week",
+      "class": "Point",
+      "prediction": {
+        "value": 5
       }
     },
     {"location": "location2",
-      "target": "2 week ahead",
+      "target": "cases next week",
       "class": "Sample",
       "prediction": {
         "sample": [0, 2, 5]
       }
     },
-    {"location": "location2",
-      "target": "2 week ahead",
-      "class": "BinCat",
+
+    {"location": "location3",
+      "target": "cases next week",
+      "class": "Point",
       "prediction": {
-        "cat": ["0", "2", "5"],
+        "value": 10
+      }
+    },
+    {"location": "location3",
+      "target": "cases next week",
+      "class": "BinXXX",  ## not sure what we should call this at the moment...
+      "prediction": {
+        "cat": [0, 1, 2],
         "prob": [0.0, 0.1, 0.9]
       }
     },
+
+
 
     {"location": "location1",
       "target": "season severity",
@@ -83,47 +111,58 @@
         "prob": [0.0, 0.1, 0.9]
       }
     },
-    {"location": "location1",
+
+    {"location": "location2",
+      "target": "season severity",
+      "class": "Point",
+      "prediction": {
+        "value": "moderate"
+      }
+    },
+    {"location": "location2",
       "target": "season severity",
       "class": "SampleCat",
       "prediction": {
-        "cat": ["mild", "high"],
-        "sample": ["moderate", "severe"]
+        "sample": ["moderate", "severe", "high", "moderate", "high", "high", "severe", "mild", "moderate", "mild", "mild", "mild"]
+      }
+    },
+
+
+
+    {"location": "location1",
+      "target": "above baseline",
+      "class": "Point",
+      "prediction": {
+        "value": 0.9
       }
     },
 
     {"location": "location2",
       "target": "above baseline",
-      "class": "Point",
-      "prediction": {
-        "value": "0.9"
-      }
-    },
-    {"location": "location2",
-      "target": "above baseline",
       "class": "Named",
       "prediction": {
         "family": "bernoulli",
-        "param1": 1.1,
-        "param2": 2.2,
-        "param3": 3.3
+        "param1": 0.4
       }
     },
     {"location": "location2",
       "target": "above baseline",
       "class": "Sample",
       "prediction": {
-        "sample": [0, 1, 1, 0]
+        "sample": [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1]
       }
     },
-    {"location": "location2",
+
+    
+    {"location": "location3",
       "target": "above baseline",
-      "class": "BinCat",
+      "class": "Sample",
       "prediction": {
-        "cat": ["0", "1", "1"],
-        "prob": [0.0, 0.1, 0.9]
+        "sample": [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1]
       }
     },
+
+
 
     {"location": "location1",
       "target": "Season peak week",
