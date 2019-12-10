@@ -77,6 +77,7 @@ Neg.Binom2  |    mean   |  disp     |    -
 
 ### `Point` Prediction Elements
  - If a Point Prediction Element exists, it should have exactly 1 Database Row.
+ <!-- NGR: This won't be true for compositional targets. -->
  - `value` (i, f, t): Entries in the database rows in the cat column cannot be `“”`, `“NA”` or `NULL`. 
  - The data format of `value` should correspond or be translatable to the `target_type` as in the target definition.
  
@@ -135,7 +136,7 @@ These tests are performed when a forecast is created or updated. For all target 
    target range
  - for `Named` Prediction Elements, the distribution must be one of `pois`, `nbinom`, `nbinom2`.
 
-### "nominal"
+### "nominal" 
 
  - any values in `Point` or `SampleCat` Prediction Elements should be contained within the valid set of `cats` defined 
    by the variable
@@ -153,11 +154,16 @@ These tests are performed when a forecast is created or updated. For all target 
 ### "date"
 
  - any values in `Point` or `SampleCat` Prediction Elements should be string that can be interpreted as a date in
-   `%Y-%m-%d` or `%Y%m%d` format, and these values should be contained within the set of valid reponses defined by
-   `bin_range`.
+   `YYYY-MM-DD` format, and these values should be contained within the set of valid reponses defined by
+   `dates`.
  - for `BinCat` Prediction Elements, the submitted set of `cats` must be a subset of the valid outcomes defined by the
    target range.
- 
+
+### "compositional" 
+
+ - for `BinCat` Prediction Elements, the submitted set of `cats` in the prediction must be a subset of the `cats` 
+   defined by the target
+
 
 ## Tests for target definitions by Target Type
 
@@ -173,7 +179,7 @@ These tests are performed when a target is created or updated.
 
  - if `range` is specified, it must include two numbers.
 
-### "nominal"
+### "nominal" and "compositional"
 
  - `categories` must be a character vector containing a set of unique labels of the categories for this target. The
    labels must not include `""`, `NA` or `null`.
@@ -185,8 +191,5 @@ These tests are performed when a target is created or updated.
 ### "date"
 
  - the `unit` parameter is required to be one of `month`, `week`, `biweek`, or `day`
- - the `bin_format` parameter is required to be interpretable as a valid `strptime` format.
- - the `bin_range` parameter must contain two sets of strings that can be interpreted using `bin_format` as dates. Each
-   pairwise `ub` must be greater than the accompanying `lb`. And the `lb` from one pair must be greater than the `ub`
-   from the pair before it.
+ - the `dates` parameter must contain a list of text elements in `YYYY-MM-DD` format that can be interpreted as dates.
 

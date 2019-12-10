@@ -21,8 +21,12 @@ features pertain to a particular target.
 *binary*: A binary target, with a defined outcome that can be seen as a 0/1 or TRUE/FALSE. 
 > Example: does the maximum value of a variable exceed some threshold C in a given period of time.
 
-*date*: A special case of a discrete target, where the possible outcomes are distinct units of time. 
-> Example: the week in which the peak incidence occurs.
+*date*: A target with a discrete set of calendar dates as possible outcomes. 
+> Example: the calendar week in which peak incidence occurs (represented by the Sunday of that week.
+
+*composite*: A nominal, unordered categorical target where observations are percentages that add up to 1. 
+> Example: the proportions of all sequenced flu strains within different clades.
+
 
 ## Target parameters
 
@@ -34,8 +38,9 @@ additional, sometimes, optional parameters. These are all defined below.
 - *name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful).
 - *description*: A verbose description of what the target is. (The number of characters is not limited.)
 - *target_type*: One of the five target types named above, e.g., `continuous`.
+<!-- 
 - *point_value_type*: todo
-  <!-- NGR: [not sure what this is.
+    NGR: [not sure what this is.
        MC: it's used to decide which PointPrediction.value field to use when loading data. recall that there are three
        types (two of which are null for any row): value_i, value_f, value_t. we discussed whether we can infer this from
        target_type:
@@ -44,10 +49,16 @@ additional, sometimes, optional parameters. These are all defined below.
          - nominal: text
          - binary: float
          - date: text, but maybe an int or other post-processed info (depends on how dates shake out)
-  ] -->
+    NGR: I think we don't need this now that we have target_types
+  ] 
+-->
 - *is_step_ahead*: `true` if the target is a step ahead one. (Step ahead targets are used to predict values in the
   future, and are used by some analysis tools.
-- *step_ahead_increment*: An integer that's required if `is_step_ahead` is true. <!-- MC: clarify how used --> 
+- *step_ahead_increment*: An integer that's required if `is_step_ahead` is true. 
+<!-- 
+MC: clarify how used 
+  NGR: I assume this is used for visualization, e.g. if you have multiple step-aheads then this makes it the ordering of the step-ahead targets clear.
+--> 
 
 ### Parameters for continuous targets
 
@@ -69,7 +80,6 @@ If both Range and BinLwrs are specified, then the min(BinLwrs) must equal the lo
 
 ### Parameters for nominal targets
 
-- *unit*: (Required) E.g., "percent" or "week".
 - *cat*: (Required) a list of strings that name the categories for this target. 
 
 ### Parameters for binary targets
@@ -81,46 +91,39 @@ None needed.
 - *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and
   use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the
   units of the date target and how certain calculations are performed for dates. All inputs for date targets are
-  required to be in an unambiguous `%Y-%m-%d` or `%Y%m%d` date format that can be read by a call to `strptime`. This
+  required to be in the standard ISO `YYYY-MM-DD` date format. This
   parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a
-  forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated as
-  `week(truth_date) - week(forecasted_date)`. Therefore, for the purposes of forecast input for months, weeks, and
-  biweeks, the actual day of the month/week/biweek specified in the forecast does not matter, as this level of
-  granularity will be ignored by Zoltar. Note: to map dates to biweeks, we use the definitions as presented in Reich et
-  al (2017).
-- *bin_format*: (Required) a character string defining a `strptime` format for dates used as the labels for categories
-  for bincat and samplecat prediction types. E.g., "%Y-%W" for representing, say "2019-12-03" as "2019-48".
-- *bin_range*: (Required) a matrix <!--NGR: or some other representation--> with two columns and at least 1 row, where
-  every cell has an unambiguous date. The first column represents the lower bounds of the series of dates that are
-  valid. The second column represents the upper bounds of the series of dates that are valid. As an example, for a
-  weekly target with *bin_format* of "%Y-%W", the following matrix passed as a *bin_range*.
+  forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as
+  `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et
+  al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
+- *dates*: (Required) a list of dates in `YYYY-MM-DD` format.These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
 
- lb         | ub     
------------ | --------- 
- 2011-10-02 | 2012-05-13 
- 2012-09-30 | 2013-05-12 
- 2013-09-29 | 2014-05-11 
- 2014-09-28 | 2015-05-17 
- 
-would result in valid series of week bins where the first in each series would be from the `lb` column below and the
-last in each series would be from the `ub` column below:
+<!-- 
+General notes on date targets
+Date targets are represented by the `date` data type in the database. On the one hand, original data, submitted with data_type="text" is retained. On the other hand, a transformed version of the data is also retained, as integer values. I order for this transformation to work, we must have a unique, well-defined method to transform the submitted text into integers. We rely on standard libraries for date transformations to ensure the transformations are valid and accurate. 
 
- lb      | ub     
--------- | --------- 
- 2011-40 | 2012-20 
- 2012-40 | 2013-20
- 2013-40 | 2014-20
- 2014-40 | 2015-20
+All input data into date targets must be unambiguously readable in "YYYY-MM-DD" or "YYYYMMDD" format. 
+
+Every date target must have a set of dates (also in YYYYMMDD format) that are valid. For example, a "peak week" target might designate only a set of Sundays as valid dates. This would in essence force the dates/values to be a set of pre-specified dates. In the target description the project owner could specify that, external to Zoltar, the given set of dates would be translated into and represented as, say, MMWR weeks using the `MMWRweek` R package, or week-in-year as in `format(date, "%W")` (i.e., using strptime formatting rules).
+
+Based off of the unit in the target definition, every date would use a fixed unit conversion for point forecast scoring. For example, if `unit=="week"` then point forecast scores would be represented by "week" units. So, the truth for a given timezero-datetarget might be truth="2019-12-15" and a point forecast might be pred="2020-01-05" (both values chosen deliberately to be Sundays). Then we could operate on these numbers as "weeks" and determine the best, standardized way to produce that the difference = truth - pred = 3. 
+ -->
+
+
+### Parameters for compositional targets
+
+- *cat*: (Required) a list of strings that name the categories for this target. 
 
 ## Valid prediction types by target type
 
-target type | point     | named     | binlwr    | sample    | bincat    | samplecat 
------------ | --------- | --------- | --------- | --------- | --------- | --------- 
-continuous  |    x      |    *      |    x      |    x      |    -      |    -      
-discrete    |    x      |    **     |    -      |    x      |    x      |    -      
-nominal     |    x      |    -      |    -      |    -      |    x      |    x      
-binary      |    x      |    ***    |    -      |    x      |    -      |    -      
-date        |    x      |    -      |    -      |    -      |    x      |    x      
+target type   | data_type | point     | named     | binlwr    | sample    | bincat    | samplecat 
+------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- 
+continuous    |   float   |    x      |    *      |    x      |    x      |    -      |    -      
+discrete      |   int     |    x      |    **     |    -      |    x      |    x      |    -      
+nominal       |   text    |    x      |    -      |    -      |    -      |    x      |    x      
+binary        |   float   |    x      |    ***    |    -      |    x      |    -      |    -      
+date          |   date    |    x      |    -      |    -      |    -      |    x      |    x      
+composite     |   text    |    -      |    -      |    -      |    -      |    x      |    -      
 
 Legend:
 * = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
@@ -129,11 +132,14 @@ Legend:
 
 ## Available scores by target type
 
-target type | error     | abs error | log score | CRPS      | brier score | PIT 
------------ | --------- | --------- | --------- | --------- | ----------- | ---------  
-continuous  |    x      |    x      |    x      |    x      |    -?       |    x      
-discrete    |    x      |    x      |    x      |    x      |    -?       |    x      
-nominal     |    -      |    -      |    x      |    -?     |    x        |    -      
-binary      |    x      |    x      |    x      |    -?     |    x        |    -      
-date        |    x      |    x      |    x      |    x      |    -?       |    x      
+target type   | error     | abs error | log score | CRPS      | brier score | PIT       | EMD  
+------------- | --------- | --------- | --------- | --------- | ----------- | --------- | ---  
+continuous    |    x      |    x      |    x      |    x      |    -?       |    x      |  -  
+discrete      |    x      |    x      |    x      |    x      |    -?       |    x      |  -  
+nominal       |    -      |    -      |    x      |    -?     |    x        |    -      |  -  
+binary        |    x      |    x      |    x      |    -?     |    x        |    -      |  -  
+date          |    x      |    x      |    x      |    x      |    -?       |    x      |  -  
+composite     |    -      |    -      |    -      |    -      |    -?       |    -      |  x  
+
+* EMD = earth mover's distance
 
