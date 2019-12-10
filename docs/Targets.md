@@ -24,7 +24,7 @@ features pertain to a particular target.
 *date*: A target with a discrete set of calendar dates as possible outcomes. 
 > Example: the calendar week in which peak incidence occurs (represented by the Sunday of that week.
 
-*composite*: A nominal, unordered categorical target where observations are percentages that add up to 1. 
+*compositional*: A nominal, unordered categorical target where observations are percentages that add up to 1. 
 > Example: the proportions of all sequenced flu strains within different clades.
 
 
@@ -123,7 +123,7 @@ discrete      |   int     |    x      |    **     |    -      |    x      |    x
 nominal       |   text    |    x      |    -      |    -      |    -      |    x      |    x      
 binary        |   float   |    x      |    ***    |    -      |    x      |    -      |    -      
 date          |   date    |    x      |    -      |    -      |    -      |    x      |    x      
-composite     |   text    |    -      |    -      |    -      |    -      |    x      |    -      
+compositional |   text    |    -      |    -      |    -      |    -      |    x      |    -      
 
 Legend:
 * = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
@@ -139,7 +139,7 @@ discrete      |    x      |    x      |    x      |    x      |    -?       |   
 nominal       |    -      |    -      |    x      |    -?     |    x        |    -      |  -  
 binary        |    x      |    x      |    x      |    -?     |    x        |    -      |  -  
 date          |    x      |    x      |    x      |    x      |    -?       |    x      |  -  
-composite     |    -      |    -      |    -      |    -      |    -?       |    -      |  x  
+compositional |    -      |    -      |    -      |    -      |    -?       |    -      |  x  
 
 * EMD = earth mover's distance
 
