@@ -7,7 +7,7 @@
       "target": "pct next week",
       "class": "Point",
       "prediction": {
-        "value": "2.1"
+        "value": 2.1
       }
     },
     {"location": "location1",
@@ -24,14 +24,14 @@
       "target": "pct next week",
       "class": "Point",
       "prediction": {
-        "value": "2.0"
+        "value": 2.0
       }
     },
     {"location": "location2",
       "target": "pct next week",
       "class": "Bin",
       "prediction": {
-        "lwr": [1.1, 2.2, 3.3],
+        "cat": [1.1, 2.2, 3.3],
         "prob": [0.3, 0.2, 0.5]
       }
     },
@@ -40,7 +40,7 @@
       "target": "pct next week",
       "class": "Point",
       "prediction": {
-        "value": "3.567"
+        "value": 3.567
       }
     },
     {"location": "location3",
@@ -93,7 +93,6 @@
     },
 
 
-
     {"location": "location1",
       "target": "season severity",
       "class": "Point",
@@ -126,7 +125,6 @@
     },
 
 
-
     {"location": "location1",
       "target": "above baseline",
       "class": "Point",
@@ -151,7 +149,6 @@
       }
     },
 
-    
     {"location": "location3",
       "target": "above baseline",
       "class": "Sample",
@@ -159,7 +156,6 @@
         "sample": [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1]
       }
     },
-
 
 
     {"location": "location1",
@@ -200,7 +196,6 @@
         "prob": [0.01, 0.05, 0.05, 0.89]
       }
     },
-    
     
     {"location": "location3",
       "target": "Season peak week",

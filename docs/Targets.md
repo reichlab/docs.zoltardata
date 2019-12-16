@@ -40,10 +40,6 @@ additional, sometimes, optional parameters. These are all defined below.
 - *target_type*: One of the five target types named above, e.g., `continuous`.
 - *is_step_ahead*: `true` if the target is one of a sequence of targets that predict values at different points in the future.
 - *step_ahead_increment*: An integer, indicating the forecast horizon represented by this target. It is required if `is_step_ahead` is `true`. 
-<!-- 
-MC: clarify how used 
-  NGR: I assume this is used for visualization, e.g. if you have multiple step-aheads then this makes it the ordering of the step-ahead targets clear.
---> 
 
 ### Parameters for continuous targets
 
@@ -51,10 +47,10 @@ MC: clarify how used
 - *range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is
   not specified than range is assumed to be (-infty, infty).
-- *lwr*: (Optional, but uploaded `BinLwr` prediction types will be rejected unless these are specified) a set of
+- *lwr*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) a set of
   inclusive lower-bounds for the bins of binned distributions. <!-- NGR: is upper bound always specified as infinity?-->
 
-If both Range and BinLwrs are specified, then the min(BinLwrs) must equal the lower bound.
+If both `range` and `lwr` are specified, then the min(`lwr`) must equal the lower bound.
 
 ### Parameters for discrete targets
 
@@ -73,14 +69,7 @@ None needed.
 
 ### Parameters for date targets
 
-- *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and
-  use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the
-  units of the date target and how certain calculations are performed for dates. All inputs for date targets are
-  required to be in the standard ISO `YYYY-MM-DD` date format. This
-  parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a
-  forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as
-  `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et
-  al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
+- *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO `YYYY-MM-DD` date format. This parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
 - *dates*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
 
 <!-- 
