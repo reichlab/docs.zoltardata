@@ -48,11 +48,7 @@ NB: Bins where prob == 0 are not stored in the database.
    within prob must sum to 1.0 (values in [0.99, 1.01] are acceptable). 
  - NB: Bins where prob == 0 are not stored in the database.
 
-### `Binary` Prediction Elements
 
- - If a Binary Prediction Element exists, it should have exactly 1 Database Row.
- - `prob` (f): Entry must be a number in [0, 1]. Entries in this database row cannot be `“”`, `“NA”` or `NULL`.
- 
 ### `Named` Prediction Elements
 
  - If a Named Prediction Element exists, it should have exactly 1 Database Row.
@@ -148,7 +144,6 @@ These tests are performed when a forecast is created or updated. For all target 
 
  - any values in `Point` Prediction Elements should be a real number in [0,1]
  - any values in `SampleCat` Prediction Elements should be either 0 or 1.
- - for `BinCat` Prediction Elements, there should be two categories, labeled `0` and `1`.
  - for `Named` Prediction Elements, the family must be `bernoulli`.
 
 ### "date"

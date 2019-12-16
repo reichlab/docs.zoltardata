@@ -106,7 +106,7 @@ target type   | data_type | point     |    bin    | sample    |  named
 continuous    |   float   |    x      |    x      |    x      |    *      
 discrete      |   int     |    x      |    x      |    x      |   **      
 nominal       |   text    |    x      |    x      |    x      |    -      
-binary        |   float   |    x      |    x      |    x      |  ***      
+binary        |   float   |    x      |    -      |    x      |  ***      
 date          |   date    |    x      |    x      |    x      |    -      
 compositional |   text    |    -      |    x      |    -      |    -      
 
