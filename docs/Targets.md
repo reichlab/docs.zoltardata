@@ -7,6 +7,7 @@ created, the project owner specifies which targets should be part of any submitt
 targets have specific properties, and there are several different types of targets that determine which properties and
 features pertain to a particular target.
 
+
 ## Target types
 
 *continuous*: A quantitative target whose range encapsulates a section of the real number line. 
@@ -33,9 +34,22 @@ features pertain to a particular target.
 When defined, all targets have a set of parameters that must be defined. Each type of target then has a set of
 additional, sometimes, optional parameters. These are all defined below.
 
+### Summary of allowed, optional, and required parameters, by target type
+
+Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '-' = disallowed, '~' = optional.
+
+target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | lwr | cat | date
+------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | --- | --- | ----  
+continuous    |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  ~  |  -  |  -  
+discrete      |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  -  |  -  |  -  
+nominal       |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  x  |  -  
+binary        |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  -  |  -  
+date          |  x   |  x   |     x       |      x        |           x           |  x   |   -   |  -  |  -  |  ~  
+compositional |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  x  |  -  
+
 ### Required parameters for all targets
 
-- *name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful).
+- *name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful.)
 - *description*: A verbose description of what the target is. (The number of characters is not limited.)
 - *target_type*: One of the five target types named above, e.g., `continuous`.
 - *is_step_ahead*: `true` if the target is one of a sequence of targets that predict values at different points in the future.
@@ -83,10 +97,10 @@ Every date target must have a set of dates (also in YYYYMMDD format) that are va
 Based off of the unit in the target definition, every date would use a fixed unit conversion for point forecast scoring. For example, if `unit=="week"` then point forecast scores would be represented by "week" units. So, the truth for a given timezero-datetarget might be truth="2019-12-15" and a point forecast might be pred="2020-01-05" (both values chosen deliberately to be Sundays). Then we could operate on these numbers as "weeks" and determine the best, standardized way to produce that the difference = truth - pred = 3. 
  -->
 
-
 ### Parameters for compositional targets
 
 - *cat*: (Required) a list of strings that name the categories for this target. 
+
 
 ## Valid prediction types by target type
 
@@ -103,6 +117,7 @@ Legend:
 * = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
 ** = valid named distributions are `pois`, `nbinom`, `nbinom2`
 *** = valid named distributions are `bernoulli`
+
 
 ## Available scores by target type
 

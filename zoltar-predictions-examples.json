@@ -1,8 +1,6 @@
 {
   "meta": {},
   "predictions": [
-
-
     {"location": "location1",
       "target": "pct next week",
       "class": "Point",
@@ -85,7 +83,7 @@
     },
     {"location": "location3",
       "target": "cases next week",
-      "class": "Bin", 
+      "class": "Bin",
       "prediction": {
         "cat": [0, 1, 2],
         "prob": [0.0, 0.1, 0.9]
@@ -180,7 +178,7 @@
         "sample": ["2020-01-05", "2019-12-15", "2019-12-22", "2019-12-29", "2019-12-22", "2019-12-22", "2019-12-15", "2019-12-22", "2019-12-29"]
       }
     },
-    
+
     {"location": "location2",
       "target": "Season peak week",
       "class": "Point",
@@ -196,7 +194,7 @@
         "prob": [0.01, 0.05, 0.05, 0.89]
       }
     },
-    
+
     {"location": "location3",
       "target": "Season peak week",
       "class": "Point",
@@ -211,8 +209,8 @@
         "sample": ["2020-01-05", "2019-12-15", "2019-12-29", "2019-12-22", "2019-12-22", "2019-12-15", "2019-12-22", "2019-12-29", "2020-01-05", "2020-01-05"]
       }
     },
-    
-    
+
+
     {"location": "location1",
       "target": "Next season flu strain composition",
       "class": "Bin",
@@ -221,7 +219,7 @@
         "prob": [0.22, 0.1, 0.58, 0.05, 0.05]
       }
     },
-    
+
     {"location": "location2",
       "target": "Next season flu strain composition",
       "class": "Bin",
@@ -230,7 +228,7 @@
         "prob": [0.22, 0.1, 0.58, 0.1]
       }
     },
-    
+
     {"location": "location1",
       "target": "Next season flu strain composition",
       "class": "Bin",
@@ -239,7 +237,5 @@
         "prob": [0, 0.32, 0.58, 0.05, 0.05]
       }
     }
-    
-
   ]
 }
