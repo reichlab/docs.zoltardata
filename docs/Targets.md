@@ -58,7 +58,7 @@ If both Range and BinLwrs are specified, then the min(BinLwrs) must equal the lo
 
 ### Parameters for discrete targets
 
-- *unit*: (Required) E.g., "percent" or "week".
+- *unit*: (Required) E.g., "cases".
 - *range*: (Optional) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not
   specified than range is assumed to be (-infty, infty).

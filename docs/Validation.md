@@ -193,3 +193,35 @@ These tests are performed when a target is created or updated.
  - the `unit` parameter is required to be one of `month`, `week`, `biweek`, or `day`
  - the `dates` parameter must contain a list of text elements in `YYYY-MM-DD` format that can be interpreted as dates.
 
+
+## Tests for ground truth data tables
+
+Please see [this file](../zoltar-ground-truth-example.csv) for an example of a valid specification of ground-truth values.
+
+### For all ground truth files
+
+ - Every value of `timezero`, `target` and `location` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
+ - Each ground truth file should have a `cat` column (readable as text) and a `value` column (readable as a float). 
+
+### For all target_types except `compositional`
+
+ - For every unique `target`-`location`-`timezero` combination, there should be either one or zero rows of truth data.
+ - For each row, there should be no more than 1 of the `cat` and `value` columns should contain data.
+ - The `cat` column should have `NULL` values for all rows corresponding to `continuous`, `binary` and `discrete` targets.
+ - The `value` column should have `NULL` values for all rows corresponding to `nominal` and `date` targets.
+ - The value of the truth data (in whichever column it exists) should be interpretable as the corresponding data_type of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string. 
+
+### For `compositional` target_type
+
+ - For every unique `target`-`location`-`timezero` combination with a `compositional` target type, there should be between 0 and C rows of truth data, where C is the total number of categories defined in the project config file for this target.
+ - The entries in the `value` column for a single `target`-`location`-`timezero` combination should sum to 1.
+
+### Range-check for ground truth data
+
+The following test can be applied to any target with a range. This will always apply to `binary`, `nominal`, `compositional`, and `date` targets, as these targets are required to have sets of valid values specified as part of the target definition. If the `range` parameter is specified for a `continuous` or `discrete` target, then the following test will be applied to that target as well.
+
+For `binary`, `compositional`, and (if `range` is specified) for `discrete and `continuous` targets:
+ - The entry in the `value` column (or entries, for compositional targets) for a specific `target`-`location`-`timezero` combination must be contained within the range of valid values for the target. For `binary` and `compositional` targets, the values must be in the range of [0,1].
+ 
+For `nominal`, `compositional` and `date` target_types:
+ - The entry in the `cat` column (or entries, for compositional targets) for a specific `target`-`location`-`timezero` combination must be contained within the set of valid values for the target, as defined by the project config file.

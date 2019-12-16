@@ -1,0 +1,23 @@
+﻿timezero,location,target,cat,value
+2011-10-02,location1,pct next week,NULL,4.5432
+2011-10-02,location1,cases next week,NULL,10
+2011-10-02,location1,season severity,moderate,NULL
+2011-10-02,location1,above baseline,NULL,1
+2011-10-02,location1,Season peak week,2019-12-15,NULL
+2011-10-02,location1,Next season flu strain composition,A1,.1
+2011-10-02,location1,Next season flu strain composition,A2,.4
+2011-10-02,location1,Next season flu strain composition,A2/re,.5
+2011-10-09,location2,pct next week,NULL,99.9
+2011-10-09,location2,cases next week,NULL,3
+2011-10-09,location2,season severity,severe,NULL
+2011-10-09,location2,above baseline,NULL,1
+2011-10-09,location2,Season peak week,2019-12-29,NULL
+2011-10-09,location2,Next season flu strain composition,A1,.1
+2011-10-09,location2,Next season flu strain composition,A1a,0.05
+2011-10-09,location2,Next season flu strain composition,A2,0.35
+2011-10-09,location2,Next season flu strain composition,A2/re,0.45
+2011-10-09,location2,Next season flu strain composition,A3,0.05
+2011-10-16,location1,pct next week,NULL,0
+2011-10-16,location1,cases next week,NULL,0
+2011-10-16,location1,above baseline,NULL,0
+2011-10-16,location1,Season peak week,2019-12-22,NULL
