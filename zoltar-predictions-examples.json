@@ -29,9 +29,9 @@
     },
     {"location": "location2",
       "target": "pct next week",
-      "class": "BinLwr",
+      "class": "Bin",
       "prediction": {
-        "lwr": [1.1, 2.2,3.3],
+        "lwr": [1.1, 2.2, 3.3],
         "prob": [0.3, 0.2, 0.5]
       }
     },
@@ -47,13 +47,11 @@
       "target": "pct next week",
       "class": "Sample",
       "prediction": {
-        "sample": [2.3, 6.5, 10.0234, 0.0001]
+        "sample": [2.3, 6.5, 0, 10.0234, 0.0001]
       }
     },
 
 
-
-## note intentionally removed a point prediction here, just because it should not necessarily be required.
     {"location": "location1",
       "target": "cases next week",
       "class": "Named",
@@ -87,7 +85,7 @@
     },
     {"location": "location3",
       "target": "cases next week",
-      "class": "BinXXX",  ## not sure what we should call this at the moment...
+      "class": "Bin", 
       "prediction": {
         "cat": [0, 1, 2],
         "prob": [0.0, 0.1, 0.9]
@@ -105,7 +103,7 @@
     },
     {"location": "location1",
       "target": "season severity",
-      "class": "BinCat",
+      "class": "Bin",
       "prediction": {
         "cat": ["mild", "moderate", "severe"],
         "prob": [0.0, 0.1, 0.9]
@@ -121,7 +119,7 @@
     },
     {"location": "location2",
       "target": "season severity",
-      "class": "SampleCat",
+      "class": "Sample",
       "prediction": {
         "sample": ["moderate", "severe", "high", "moderate", "high", "high", "severe", "mild", "moderate", "mild", "mild", "mild"]
       }
@@ -168,25 +166,85 @@
       "target": "Season peak week",
       "class": "Point",
       "prediction": {
-        "value": "TBD"
+        "value": "2019-12-22"
       }
     },
     {"location": "location1",
       "target": "Season peak week",
-      "class": "BinCat",
+      "class": "Bin",
       "prediction": {
-        "cat": ["TBD", "TBD", "TBD"],
-        "prob": [0.0, 0.1, 0.9]
+        "cat": ["2019-12-15", "2019-12-22", "2019-12-29"],
+        "prob": [0.01, 0.1, 0.89]
       }
     },
     {"location": "location1",
       "target": "Season peak week",
-      "class": "SampleCat",
+      "class": "Sample",
       "prediction": {
-        "cat": ["TBD", "TBD"],
-        "sample": ["TBD sample", "TBD sample"]
+        "sample": ["2020-01-05", "2019-12-15", "2019-12-22", "2019-12-29", "2019-12-22", "2019-12-22", "2019-12-15", "2019-12-22", "2019-12-29"]
+      }
+    },
+    
+    {"location": "location2",
+      "target": "Season peak week",
+      "class": "Point",
+      "prediction": {
+        "value": "2020-01-05"
+      }
+    },
+    {"location": "location2",
+      "target": "Season peak week",
+      "class": "Bin",
+      "prediction": {
+        "cat": ["2019-12-15", "2019-12-22", "2019-12-29", "2020-01-05"],
+        "prob": [0.01, 0.05, 0.05, 0.89]
+      }
+    },
+    
+    
+    {"location": "location3",
+      "target": "Season peak week",
+      "class": "Point",
+      "prediction": {
+        "value": "2019-12-29"
+      }
+    },
+    {"location": "location3",
+      "target": "Season peak week",
+      "class": "Sample",
+      "prediction": {
+        "sample": ["2020-01-05", "2019-12-15", "2019-12-29", "2019-12-22", "2019-12-22", "2019-12-15", "2019-12-22", "2019-12-29", "2020-01-05", "2020-01-05"]
+      }
+    },
+    
+    
+    {"location": "location1",
+      "target": "Next season flu strain composition",
+      "class": "Bin",
+      "prediction": {
+        "cat": ["A1", "A1a", "A2", "A2/re", "A3"],
+        "prob": [0.22, 0.1, 0.58, 0.05, 0.05]
+      }
+    },
+    
+    {"location": "location2",
+      "target": "Next season flu strain composition",
+      "class": "Bin",
+      "prediction": {
+        "cat": ["A1", "A1a", "A2", "A3"],
+        "prob": [0.22, 0.1, 0.58, 0.1]
+      }
+    },
+    
+    {"location": "location1",
+      "target": "Next season flu strain composition",
+      "class": "Bin",
+      "prediction": {
+        "cat": ["A1", "A1a", "A2", "A2/re", "A3"],
+        "prob": [0, 0.32, 0.58, 0.05, 0.05]
       }
     }
+    
 
   ]
 }

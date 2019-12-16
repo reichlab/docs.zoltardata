@@ -38,23 +38,8 @@ additional, sometimes, optional parameters. These are all defined below.
 - *name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful).
 - *description*: A verbose description of what the target is. (The number of characters is not limited.)
 - *target_type*: One of the five target types named above, e.g., `continuous`.
-<!-- 
-- *point_value_type*: todo
-    NGR: [not sure what this is.
-       MC: it's used to decide which PointPrediction.value field to use when loading data. recall that there are three
-       types (two of which are null for any row): value_i, value_f, value_t. we discussed whether we can infer this from
-       target_type:
-         - continuous: float
-         - discrete: int
-         - nominal: text
-         - binary: float
-         - date: text, but maybe an int or other post-processed info (depends on how dates shake out)
-    NGR: I think we don't need this now that we have target_types
-  ] 
--->
-- *is_step_ahead*: `true` if the target is a step ahead one. (Step ahead targets are used to predict values in the
-  future, and are used by some analysis tools.
-- *step_ahead_increment*: An integer that's required if `is_step_ahead` is true. 
+- *is_step_ahead*: `true` if the target is one of a sequence of targets that predict values at different points in the future.
+- *step_ahead_increment*: An integer, indicating the forecast horizon represented by this target. It is required if `is_step_ahead` is `true`. 
 <!-- 
 MC: clarify how used 
   NGR: I assume this is used for visualization, e.g. if you have multiple step-aheads then this makes it the ordering of the step-ahead targets clear.
@@ -96,7 +81,7 @@ None needed.
   forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as
   `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et
   al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
-- *dates*: (Required) a list of dates in `YYYY-MM-DD` format.These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
+- *dates*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
 
 <!-- 
 General notes on date targets
@@ -116,14 +101,14 @@ Based off of the unit in the target definition, every date would use a fixed uni
 
 ## Valid prediction types by target type
 
-target type   | data_type | point     | named     | binlwr    | sample    | bincat    | samplecat 
-------------- | --------- | --------- | --------- | --------- | --------- | --------- | --------- 
-continuous    |   float   |    x      |    *      |    x      |    x      |    -      |    -      
-discrete      |   int     |    x      |    **     |    -      |    x      |    x      |    -      
-nominal       |   text    |    x      |    -      |    -      |    -      |    x      |    x      
-binary        |   float   |    x      |    ***    |    -      |    x      |    -      |    -      
-date          |   date    |    x      |    -      |    -      |    -      |    x      |    x      
-compositional |   text    |    -      |    -      |    -      |    -      |    x      |    -      
+target type   | data_type | point     |    bin    | sample    |  named     
+------------- | --------- | --------- | --------- | --------- | --------- 
+continuous    |   float   |    x      |    x      |    x      |    *      
+discrete      |   int     |    x      |    x      |    x      |   **      
+nominal       |   text    |    x      |    x      |    x      |    -      
+binary        |   float   |    x      |    x      |    x      |  ***      
+date          |   date    |    x      |    x      |    x      |    -      
+compositional |   text    |    -      |    x      |    -      |    -      
 
 Legend:
 * = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`

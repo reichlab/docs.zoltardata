@@ -101,11 +101,11 @@ These tests are performed when a forecast is created or updated.
 
 ### "continuous"
 
- - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `Sample`, `BinLwr`}.
+ - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `BinLwr`}.
  
 ### "discrete"
 
- - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `Sample`, `Bin`}.
+ - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `Bin`}.
 
 ### "binary"
 

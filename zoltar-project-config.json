@@ -24,27 +24,25 @@
       "name" : "pct next week",
       "description" : "The forecasted percentage of positive tests for the next week",
       "target_type" : "continuous",
-      "unit" : "percent",
-      "is_date" : false,
       "is_step_ahead" : true,
       "step_ahead_increment" : 1,
+      "unit" : "percent",
       "range": [0, 100],
-      "lwr" : [0, 1, 2, 5, 10, 50, 100]
+      "lwr" : [0, 1.0, 1.1, 2.0, 2.2, 3.0, 3.3, 5.0, 10, 50]
     },
     {
       "name" : "cases next week",
       "description" : "A forecasted integer number of cases for a future week.",
       "target_type" : "discrete",
-      "unit" : "cases",
       "is_step_ahead" : true,
       "step_ahead_increment" : 1,
+      "unit" : "cases",
       "range" : [0, 100000]
     },
     {
       "name" : "season severity",
       "description" : "The forecasted severity for a given season.",
       "target_type" : "nominal",
-      "unit" : "severity",
       "is_step_ahead" : false,
       "cat": ["mild", "moderate", "high", "severe"]
     },
@@ -56,12 +54,18 @@
     },
     {
       "name" : "Season peak week",
-      "description" : "The week in which the peak y value is observed.",
+      "description" : "The week in which the peak y value is observed. Given dates represent the Sunday that begin the peak week. Externally to Zoltar, weeks will be calculated using standard definitions of MMWR weeks.",
       "target_type" : "date",
-      "unit" : "week",
       "is_step_ahead" : false,
-      "bin_format" : "%Y-%U",
-      "bin_range" :  [["2011-10-02", "2012-09-30"], ["2012-05-13", "2013-05-12"]]
+      "unit" : "week",
+      "dates" :  ["2019-12-15", "2019-12-22", "2019-12-29", "2020-01-05"]
+    },
+    {
+      "name" : "Next season flu strain composition",
+      "description" : "The fraction of flu strains in the subsequent season within each specified clade.",
+      "target_type" : "compositional",
+      "is_step_ahead" : false,
+      "cat" :  ["A1", "A1a", "A2", "A2/re", "A3"]
     }
   ],
   "timezeros" : [
