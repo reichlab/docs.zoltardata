@@ -36,16 +36,16 @@ additional, sometimes, optional parameters. These are all defined below.
 
 ### Summary of allowed, optional, and required parameters, by target type
 
-Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '-' = disallowed, '~' = optional.
+Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if `is_step_ahead` is `true`, '-' = disallowed, '~' = optional.
 
-target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cat | date
+target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cat | dates 
 ------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | --- | ----  
-continuous    |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  ~  |  -  
-discrete      |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  -  |  -  
-nominal       |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  x  |  -  
-binary        |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  -  
-date          |  x   |  x   |     x       |      x        |           x           |  x   |   -   |  -  |  ~  
-compositional |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  x  |  -  
+continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~  |  -  
+discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  -  |  -  
+nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x  |  -  
+binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -  |  -  
+date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  -  |  x  
+compositional |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x  |  -  
 
 ### Required parameters for all targets
 
@@ -71,7 +71,8 @@ If both `range` and `lwr` are specified, then the min(`lwr`) must equal the lowe
 ### Parameters for discrete targets
 
 - *unit*: (Required) E.g., "cases".
-- *range*: (Optional) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous
+- *range*: (Optional, but uploaded `Bin` prediction types will be rejected unless `range` is specified) 
+  an integer vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not
   specified than range is assumed to be (-infty, infty).
 
