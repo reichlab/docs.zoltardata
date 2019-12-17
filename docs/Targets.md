@@ -38,8 +38,8 @@ additional, sometimes, optional parameters. These are all defined below.
 
 Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if `is_step_ahead` is `true`, '-' = disallowed, '~' = optional.
 
-target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cat | dates 
-------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | --- | ----  
+target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cat | date
+------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | --- | ----
 continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~  |  -  
 discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  -  |  -  
 nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x  |  -  
@@ -66,7 +66,7 @@ compositional |  x   |  x   |     x       |      x        |          (x)        
   as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty).
   <!-- NGR: is upper bound always specified as infinity?-->
 
-If both `range` and `lwr` are specified, then the min(`lwr`) must equal the lower bound.
+If both `range` and `cat` are specified, then the min(`cat`) must equal the lower bound.
 
 ### Parameters for discrete targets
 
@@ -87,7 +87,7 @@ None needed.
 ### Parameters for date targets
 
 - *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO `YYYY-MM-DD` date format. This parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
-- *dates*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
+- *date*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
 
 <!-- 
 General notes on date targets
