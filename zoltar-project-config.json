@@ -28,7 +28,7 @@
       "step_ahead_increment" : 1,
       "unit" : "percent",
       "range": [0, 100],
-      "lwr" : [0, 1.0, 1.1, 2.0, 2.2, 3.0, 3.3, 5.0, 10, 50]
+      "cat" : [0, 1.0, 1.1, 2.0, 2.2, 3.0, 3.3, 5.0, 10, 50]
     },
     {
       "name" : "cases next week",

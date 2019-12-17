@@ -38,14 +38,14 @@ additional, sometimes, optional parameters. These are all defined below.
 
 Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '-' = disallowed, '~' = optional.
 
-target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | lwr | cat | date
-------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | --- | --- | ----  
-continuous    |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  ~  |  -  |  -  
-discrete      |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  -  |  -  |  -  
-nominal       |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  x  |  -  
-binary        |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  -  |  -  
-date          |  x   |  x   |     x       |      x        |           x           |  x   |   -   |  -  |  -  |  ~  
-compositional |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  x  |  -  
+target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cat | date
+------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | --- | ----  
+continuous    |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  ~  |  -  
+discrete      |  x   |  x   |     x       |      x        |           x           |  x   |   ~   |  -  |  -  
+nominal       |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  x  |  -  
+binary        |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  -  |  -  
+date          |  x   |  x   |     x       |      x        |           x           |  x   |   -   |  -  |  ~  
+compositional |  x   |  x   |     x       |      x        |           x           |  -   |   -   |  x  |  -  
 
 ### Required parameters for all targets
 
@@ -61,8 +61,10 @@ compositional |  x   |  x   |     x       |      x        |           x         
 - *range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is
   not specified than range is assumed to be (-infty, infty).
-- *lwr*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) a set of
-  inclusive lower-bounds for the bins of binned distributions. <!-- NGR: is upper bound always specified as infinity?-->
+- *cat*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) an ordered set of
+  numeric values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cat` is specified
+  as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty).
+  <!-- NGR: is upper bound always specified as infinity?-->
 
 If both `range` and `lwr` are specified, then the min(`lwr`) must equal the lower bound.
 
