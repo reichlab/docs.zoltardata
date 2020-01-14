@@ -111,15 +111,14 @@ target type   | data_type | point     |    bin    | sample    |  named
 ------------- | --------- | --------- | --------- | --------- | --------- 
 continuous    |   float   |    x      |    x      |    x      |    *      
 discrete      |   int     |    x      |    x      |    x      |   **      
-nominal       |   text    |    x      |    x      |    x      |    -      
-binary        |   float   |    x      |    -      |    x      |  ***      
+binary        |  boolean  |    x      |    x      |    x      |    -      
 date          |   date    |    x      |    x      |    x      |    -      
+nominal       |   text    |    x      |    x      |    x      |    -      
 compositional |   text    |    -      |    x      |    -      |    -      
 
 Legend:
 * = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
 ** = valid named distributions are `pois`, `nbinom`, `nbinom2`
-*** = valid named distributions are `bernoulli`
 
 
 ## Available scores by target type
