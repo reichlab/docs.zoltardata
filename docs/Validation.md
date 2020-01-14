@@ -58,7 +58,7 @@ Neg.Binom2  |    mean   |  disp     |    -
  - If a Point Prediction Element exists, it should have exactly 1 Database Row.
  <!-- NGR: This won't be true for compositional targets. -->
  - `value` (i, f, t, d): Entries in the database rows in the cat column cannot be `“”`, `“NA”` or `NULL`. 
- - The data format of `value` should correspond or be translatable to the `target_type` as in the target definition.
+ - The data format of `value` should correspond or be translatable to the `type` as in the target definition.
  
 ### `Sample` Prediction Elements
  - If a Sample Prediction Element exists, it should have >=1 Database Rows.
@@ -169,7 +169,7 @@ Please see [this file](../zoltar-ground-truth-example.csv) for an example of a v
  - The `value` column should have `NULL` values for all rows corresponding to `nominal` and `date` targets.
  - The value of the truth data (in whichever column it exists) should be interpretable as the corresponding data_type of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string. 
 
-### For `compositional` target_type
+### For `compositional` type
 
  - For every unique `target`-`location`-`timezero` combination with a `compositional` target type, there should be between 0 and C rows of truth data, where C is the total number of categories defined in the project config file for this target.
  - The entries in the `value` column for a single `target`-`location`-`timezero` combination should sum to 1.
