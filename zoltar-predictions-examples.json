@@ -45,7 +45,7 @@
       "target": "pct next week",
       "class": "Sample",
       "prediction": {
-        "sample": [2.3, 6.5, 0, 10.0234, 0.0001]
+        "sample": [2.3, 6.5, 0.0, 10.0234, 0.0001]
       }
     },
 
@@ -118,7 +118,7 @@
       "target": "season severity",
       "class": "Sample",
       "prediction": {
-        "sample": ["moderate", "severe", "high", "moderate", "high", "high", "severe", "mild", "moderate", "mild", "mild", "mild"]
+        "sample": ["moderate", "severe", "high", "moderate", "mild"]
       }
     },
 
@@ -127,7 +127,7 @@
       "target": "above baseline",
       "class": "Point",
       "prediction": {
-        "value": 0.9
+        "value": true
       }
     },
 
@@ -135,7 +135,7 @@
       "target": "above baseline",
       "class": "Named",
       "prediction": {
-        "family": "bernoulli",
+        "family": "bern",
         "param1": 0.4
       }
     },
@@ -143,7 +143,7 @@
       "target": "above baseline",
       "class": "Sample",
       "prediction": {
-        "sample": [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1]
+        "sample": [true, false, true]
       }
     },
 
@@ -151,7 +151,7 @@
       "target": "above baseline",
       "class": "Sample",
       "prediction": {
-        "sample": [0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1]
+        "sample": [false, true, true]
       }
     },
 
@@ -175,7 +175,7 @@
       "target": "Season peak week",
       "class": "Sample",
       "prediction": {
-        "sample": ["2020-01-05", "2019-12-15", "2019-12-22", "2019-12-29", "2019-12-22", "2019-12-22", "2019-12-15", "2019-12-22", "2019-12-29"]
+        "sample": ["2020-01-05", "2019-12-15"]
       }
     },
 
@@ -206,7 +206,7 @@
       "target": "Season peak week",
       "class": "Sample",
       "prediction": {
-        "sample": ["2020-01-05", "2019-12-15", "2019-12-29", "2019-12-22", "2019-12-22", "2019-12-15", "2019-12-22", "2019-12-29", "2020-01-05", "2020-01-05"]
+        "sample": ["2020-01-06", "2019-12-16"]
       }
     },
 
@@ -229,7 +229,7 @@
       }
     },
 
-    {"location": "location1",
+    {"location": "location3",
       "target": "Next season flu strain composition",
       "class": "Bin",
       "prediction": {

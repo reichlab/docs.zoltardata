@@ -23,17 +23,17 @@
     {
       "name" : "pct next week",
       "description" : "The forecasted percentage of positive tests for the next week",
-      "target_type" : "continuous",
+      "type" : "continuous",
       "is_step_ahead" : true,
       "step_ahead_increment" : 1,
       "unit" : "percent",
-      "range": [0, 100],
-      "cat" : [0, 1.0, 1.1, 2.0, 2.2, 3.0, 3.3, 5.0, 10, 50]
+      "range": [0.0, 100.0],
+      "cats" : [0.0, 1.0, 1.1, 2.0, 2.2, 3.0, 3.3, 5.0, 10.0, 50.0]
     },
     {
       "name" : "cases next week",
       "description" : "A forecasted integer number of cases for a future week.",
-      "target_type" : "discrete",
+      "type" : "discrete",
       "is_step_ahead" : true,
       "step_ahead_increment" : 1,
       "unit" : "cases",
@@ -42,30 +42,30 @@
     {
       "name" : "season severity",
       "description" : "The forecasted severity for a given season.",
-      "target_type" : "nominal",
+      "type" : "nominal",
       "is_step_ahead" : false,
-      "cat": ["mild", "moderate", "high", "severe"]
+      "cats": ["mild", "moderate", "high", "severe"]
     },
     {
       "name" : "above baseline",
       "description" : "Whether or not a region-specific threshold will be exceeded in a given season.",
-      "target_type" : "binary",
+      "type" : "binary",
       "is_step_ahead" : false
     },
     {
       "name" : "Season peak week",
       "description" : "The week in which the peak y value is observed. Given dates represent the Sunday that begin the peak week. Externally to Zoltar, weeks will be calculated using standard definitions of MMWR weeks.",
-      "target_type" : "date",
+      "type" : "date",
       "is_step_ahead" : false,
       "unit" : "week",
-      "dates" :  ["2019-12-15", "2019-12-22", "2019-12-29", "2020-01-05"]
+      "dates" : ["2019-12-15", "2019-12-22", "2019-12-29", "2020-01-05"]
     },
     {
       "name" : "Next season flu strain composition",
       "description" : "The fraction of flu strains in the subsequent season within each specified clade.",
-      "target_type" : "compositional",
+      "type" : "compositional",
       "is_step_ahead" : false,
-      "cat" :  ["A1", "A1a", "A2", "A2/re", "A3"]
+      "cats" : ["A1", "A1a", "A2", "A2/re", "A3"]
     }
   ],
   "timezeros" : [
@@ -77,11 +77,13 @@
     },
     {
       "timezero_date" : "2011-10-09",
-      "data_version_date" : null
+      "data_version_date" : null,
+      "is_season_start" : false
     },
     {
       "timezero_date" : "2011-10-16",
-      "data_version_date" : null
+      "data_version_date" : null,
+      "is_season_start" : false
     }
   ]
 }

@@ -19,7 +19,7 @@ features pertain to a particular target.
 *nominal*: A nominal, unordered categorical target. 
 > Example: severity level in categories of "low", "moderate", and "high".
 
-*binary*: A binary target, with a defined outcome that can be seen as a 0/1 or TRUE/FALSE. 
+*binary*: A binary target, with a defined outcome that can be seen as a true/false. 
 > Example: does the maximum value of a variable exceed some threshold C in a given period of time.
 
 *date*: A target with a discrete set of calendar dates as possible outcomes. 
@@ -38,20 +38,20 @@ additional, sometimes, optional parameters. These are all defined below.
 
 Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if `is_step_ahead` is `true`, '-' = disallowed, '~' = optional.
 
-target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cat | date
-------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | --- | ----
-continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~  |  -  
-discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  -  |  -  
-nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x  |  -  
-binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -  |  -  
-date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  -  |  x  
-compositional |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x  |  -  
+target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cats | dates
+------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | ---- | -----
+continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   |  -   
+discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  -   |  -   
+nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   |  -   
+binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -   |  -   
+date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  -   |  x   
+compositional |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   |  -   
 
 ### Required parameters for all targets
 
 - *name*: A brief name for the target. (The number of characters is not limited, but brevity is helpful.)
 - *description*: A verbose description of what the target is. (The number of characters is not limited.)
-- *target_type*: One of the five target types named above, e.g., `continuous`.
+- *type*: One of the five target types named above, e.g., `continuous`.
 - *is_step_ahead*: `true` if the target is one of a sequence of targets that predict values at different points in the future.
 - *step_ahead_increment*: An integer, indicating the forecast horizon represented by this target. It is required if `is_step_ahead` is `true`. 
 
@@ -61,12 +61,12 @@ compositional |  x   |  x   |     x       |      x        |          (x)        
 - *range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is
   not specified than range is assumed to be (-infty, infty).
-- *cat*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) an ordered set of
-  numeric values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cat` is specified
+- *cats*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) an ordered set of
+  numeric values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cats` is specified
   as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty).
   <!-- NGR: is upper bound always specified as infinity?-->
 
-If both `range` and `cat` are specified, then the min(`cat`) must equal the lower bound.
+If both `range` and `cats` are specified, then the min(`cats`) must equal the lower bound.
 
 ### Parameters for discrete targets
 
@@ -78,7 +78,7 @@ If both `range` and `cat` are specified, then the min(`cat`) must equal the lowe
 
 ### Parameters for nominal targets
 
-- *cat*: (Required) a list of strings that name the categories for this target. 
+- *cats*: (Required) a list of strings that name the categories for this target. 
 
 ### Parameters for binary targets
 
@@ -87,11 +87,11 @@ None needed.
 ### Parameters for date targets
 
 - *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO `YYYY-MM-DD` date format. This parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
-- *date*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
+- *dates*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
 
 <!-- 
 General notes on date targets
-Date targets are represented by the `date` data type in the database. On the one hand, original data, submitted with data_type="text" is retained. On the other hand, a transformed version of the data is also retained, as integer values. I order for this transformation to work, we must have a unique, well-defined method to transform the submitted text into integers. We rely on standard libraries for date transformations to ensure the transformations are valid and accurate. 
+Date targets are represented by the `dates` data type in the database. On the one hand, original data, submitted with data_type="text" is retained. On the other hand, a transformed version of the data is also retained, as integer values. I order for this transformation to work, we must have a unique, well-defined method to transform the submitted text into integers. We rely on standard libraries for date transformations to ensure the transformations are valid and accurate. 
 
 All input data into date targets must be unambiguously readable in "YYYY-MM-DD" or "YYYYMMDD" format. 
 
@@ -102,7 +102,7 @@ Based off of the unit in the target definition, every date would use a fixed uni
 
 ### Parameters for compositional targets
 
-- *cat*: (Required) a list of strings that name the categories for this target. 
+- *cats*: (Required) a list of strings that name the categories for this target. 
 
 
 ## Valid prediction types by target type

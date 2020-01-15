@@ -21,21 +21,17 @@ Here are the three list object keys:
 
 
 ### `targets`
-- `name`: Target name.
-- `description`: `` description.
-- `unit`: `` unit.
-- `is_date`: `true` if this is a date-based target (e.g., "Season onset"), and `false` otherwise.
-- `is_step_ahead`: `true` if this is a step ahead target (e.g., "1 wk ahead"), and `false` otherwise.
-- `step_ahead_increment`: Applicable when `is_step_ahead` is `true`, is an integer specifying how many time steps ahead
-  the Target is. Can be negative, zero, or positive.
-- `point_value_type`: Used when importing forecasts into the database, indicates the data type of point values, and is
-  either `INTEGER`, `FLOAT`, or `TEXT`.
-- `prediction_types`: A list of strings that indicate type type of Predictions that apply to this target. The choices
-  are: `BinCat`, `BinLwr`, `Binary`, `Named`, `Point`, `Sample`, and `SampleCat`.
+Please see the [Targets.md](Targets.md) file for a detailed description of target parameters and which are required. Here are all possible parameters that can be passed in a project configuration file:
 
-Note: If `prediction_types` includes `BinLwr`, then an additional field is required:
-
-- `lwr`: A list of lower bin values (numbers) that are used to xx.
+- `name`: string
+- `description`: string
+- `type`: string - must be one of the following: "continuous", "discrete", "nominal", "binary", "date", "compositional"
+- `is_step_ahead`: boolean
+- `step_ahead_increment`: integer - negative, zero, or positive
+- `unit`: string
+- `range`: an array (list) of two numbers
+- `cats`: an array (list) of one or more numbers or strings (which depends on the target's type's data type)
+- `dates`: an array (list) of one or more strings in the `YYYY-MM-DD` format specified in the above file
 
 
 ### `timezeros`
@@ -116,17 +112,9 @@ Briefly, the dict has four top level keys:
   - `location`: name of the Location.
   - `target`: name of the Target.
   - `class`: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names
-    are : `BinCat`, `BinLwr`, `Binary`, `Named`, `Point`, `Sample`, and `SampleCat`.
-  - `prediction`: a class-specific dict containing the prediction data itself. the format varies according to class. See
-    https://github.com/cdcepi/predx/blob/master/predx_classes.md for details. Here is a summary:
-    - `BinCat`: Binned distribution with a category for each bin. is a two-column table represented by two keys, one per
-      column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
-    - `BinLwr`: Binned distribution defined by inclusive lower bounds for each bin. Similar to `BinCat`, but has these
-      two keys: `lwr` and `prob`.
-    - `Binary`: Binary distribution with a single `prob` key.
-    - `Named`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be
-      one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
+    are : `Bin`, `Named`, `Point`, and `Sample`.
+  - `prediction`: a class-specific dict containing the prediction data itself. The format varies according to class. Here is a summary:
+    - `Bin`: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
+    - `Named`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
     - `Point`: A numeric point prediction with a single `value` key.
     - `Sample`: Numeric samples represented as a table with one column that is found in the `sample` key.
-    - `SampleCat`: Character string samples from categories. Similar to `BinCat`, but has these two keys: `cat` and 
-      `sample`.
