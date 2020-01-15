@@ -112,9 +112,9 @@ Briefly, the dict has four top level keys:
   - `location`: name of the Location.
   - `target`: name of the Target.
   - `class`: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names
-    are : `Bin`, `Named`, `Point`, and `Sample`.
+    are : `bin`, `named`, `point`, and `sample`.
   - `prediction`: a class-specific dict containing the prediction data itself. The format varies according to class. Here is a summary:
-    - `Bin`: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
-    - `Named`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
-    - `Point`: A numeric point prediction with a single `value` key.
-    - `Sample`: Numeric samples represented as a table with one column that is found in the `sample` key.
+    - `bin`: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
+    - `named`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
+    - `point`: A numeric point prediction with a single `value` key.
+    - `sample`: Numeric samples represented as a table with one column that is found in the `sample` key.
