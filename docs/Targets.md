@@ -41,7 +41,7 @@ Here is a table that summarizes which are allowed, optional, and required, by ty
 target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cats | dates
 ------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | ---- | -----
 continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   |  -   
-discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  -   |  -   
+discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   |  -   
 nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   |  -   
 binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -   |  -   
 date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  -   |  x   
