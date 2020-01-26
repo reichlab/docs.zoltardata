@@ -113,16 +113,16 @@ Based off of the unit in the target definition, every date would use a fixed uni
 
 target type   | data_type | point     |    bin    | sample    |  named     
 ------------- | --------- | --------- | --------- | --------- | --------- 
-continuous    |   float   |    x      |    x      |    x      |    *      
-discrete      |   int     |    x      |    x      |    x      |   **      
+continuous    |   float   |    x      |    x      |    x      |   (1)      
+discrete      |   int     |    x      |    x      |    x      |   (2)      
 binary        |  boolean  |    x      |    x      |    x      |    -      
 date          |   date    |    x      |    x      |    x      |    -      
 nominal       |   text    |    x      |    x      |    x      |    -      
 compositional |   text    |    -      |    x      |    -      |    -      
 
 Legend:
-* = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
-** = valid named distributions are `pois`, `nbinom`, `nbinom2`
+(1) = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
+(2) = valid named distributions are `pois`, `nbinom`, `nbinom2`
 
 
 ## Available scores by target type and prediction element
