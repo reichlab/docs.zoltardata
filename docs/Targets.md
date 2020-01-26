@@ -31,21 +31,21 @@ features pertain to a particular target.
 
 ## Target parameters
 
-When defined, all targets have a set of parameters that must be defined. Each type of target then has a set of
+When created, all targets have a set of parameters that must be defined. Each type of target then has a set of
 additional, sometimes, optional parameters. These are all defined below.
 
 ### Summary of allowed, optional, and required parameters, by target type
 
 Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if `is_step_ahead` is `true`, '-' = disallowed, '~' = optional.
 
-target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cats | dates
-------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | ---- | -----
-continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   |  -   
-discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   |  -   
-nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   |  -   
-binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -   |  -   
-date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  -   |  x   
-compositional |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   |  -   
+target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cats 
+------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | ---- 
+continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   
+discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   
+nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   
+binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -   
+date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  x   
+compositional |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   
 
 ### Required parameters for all targets
 
@@ -63,10 +63,10 @@ compositional |  x   |  x   |     x       |      x        |          (x)        
   not specified than range is assumed to be (-infty, infty).
 - *cats*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) an ordered set of
   numeric values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cats` is specified
-  as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty).
+  as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty). Additionally, if `range` had been specified as [0, 100] in addition to the above `cats`, then the final bin would be [2.2, 100].
   <!-- NGR: is upper bound always specified as infinity?-->
 
-If both `range` and `cats` are specified, then the min(`cats`) must equal the lower bound.
+If both `range` and `cats` are specified, then the min(`cats`) must equal the lower bound and max(`cats`) must be less than the upper bound of `range`.
 
 ### Parameters for discrete targets
 
@@ -75,6 +75,10 @@ If both `range` and `cats` are specified, then the min(`cats`) must equal the lo
   an integer vector of length 2 specifying a lower and upper bound of a range for the continuous
   target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not
   specified than range is assumed to be (-infty, infty).
+- *cats*: (Optional, and can only be specified if `range` is also specified) an ordered set of
+  integer values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cats` is specified
+  as [0, 10, 20, 30, 40, 50] and `range` is specified as [0, 100] then the implied set of valid categories would be [0,10),
+  [10, 20), [20, 30), [30, 40), [40, 50) and [50, 100].
 
 ### Parameters for nominal targets
 
@@ -87,7 +91,7 @@ None needed.
 ### Parameters for date targets
 
 - *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO `YYYY-MM-DD` date format. This parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
-- *dates*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
+- *cats*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
 
 <!-- 
 General notes on date targets
@@ -121,16 +125,35 @@ Legend:
 ** = valid named distributions are `pois`, `nbinom`, `nbinom2`
 
 
-## Available scores by target type
+## Available scores by target type and prediction element
 
-target type   | error     | abs error | log score | CRPS      | brier score | PIT       | EMD  
-------------- | --------- | --------- | --------- | --------- | ----------- | --------- | ---  
-continuous    |    x      |    x      |    x      |    x      |    -?       |    x      |  -  
-discrete      |    x      |    x      |    x      |    x      |    -?       |    x      |  -  
-nominal       |    -      |    -      |    x      |    -?     |    x        |    -      |  -  
-binary        |    x      |    x      |    x      |    -?     |    x        |    -      |  -  
-date          |    x      |    x      |    x      |    x      |    -?       |    x      |  -  
-compositional |    -      |    -      |    -      |    -      |    -?       |    -      |  x  
+| target type   | prediction element | error       | abs error | log score           | CRPS | brier | PIT | EMD |
+|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
+| continuous    | point              | x           | x         | -                   | x(a) | -     | -   | -   |
+|               | bin                | -           | -         | x                   | x    | x     | x   | -   |
+|               | named              | -           | -         | x                   | x    | -     | x   | -   |
+|               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
+|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
+| discrete      | point              | x           | x         | -                   | x(a) | -     | -   | -   |
+|               | bin                | -           | -         | x                   | x    | x     | x   | -   |
+|               | named              | -           | -         | x                   | x    | -     | x   | -   |
+|               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
+|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
+| nominal       | point              | -           | -         | -                   | -    | -     | -   | -   |
+|               | bin                | -           | -         | x                   | -    | x     | -   | -   |
+|               | sample             | -           | -         | x                   | -    | x     | -   | -   |
+|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
+| binary        | point              | x           | x         | -                   | x(a) | -     | -   | -   |
+|               | bin                | -           | -         | x                   | x    | x     | -   | -   |
+|               | sample             | -           | -         | x(b)                | x    | x     | -   | -   |
+|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
+| date          | point              | x           | x         | -                   | x(a) | -     | -   | -   |
+|               | bin                | -           | -         | x                   | x    | x     | x   | -   |
+|               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
+|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
+| compositional | bin                | -           | -         | -                   | -    | -     | -   | x   |
 
-* EMD = earth mover's distance
+x(a) = CRPS is equivalent to abs error for point forecasts.
+x(b) = log score is required to be computed by approximation
+* EMD = earth mover's distance, PIT = probability integral transform, CRPS = continuous ranked probability score
 
