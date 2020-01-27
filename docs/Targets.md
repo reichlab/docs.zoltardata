@@ -115,9 +115,9 @@ target type   | data_type | point     |    bin    | sample    |  named
 ------------- | --------- | --------- | --------- | --------- | --------- 
 continuous    |   float   |    x      |    x      |    x      |   (1)      
 discrete      |   int     |    x      |    x      |    x      |   (2)      
+nominal       |   text    |    x      |    x      |    x      |    -      
 binary        |  boolean  |    x      |    x      |    x      |    -      
 date          |   date    |    x      |    x      |    x      |    -      
-nominal       |   text    |    x      |    x      |    x      |    -      
 compositional |   text    |    -      |    x      |    -      |    -      
 
 Legend:
@@ -129,7 +129,7 @@ Legend:
 
 | target type   | prediction element | error       | abs error | log score           | CRPS | brier | PIT | EMD |
 |---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
-| *continuous* | point              | x           | x         | -                   | x(a) | -     | -   | -   |
+| *continuous*  | point              | x           | x         | -                   | x(a) | -     | -   | -   |
 |               | bin                | -           | -         | x                   | x    | x     | x   | -   |
 |               | named              | -           | -         | x                   | x    | -     | x   | -   |
 |               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
