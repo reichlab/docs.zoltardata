@@ -30,7 +30,7 @@ These tests are performed when a forecast is created or updated.
 
  - If a Bin Prediction Element exists, it should have >=1 Database Rows.
  - `|cat| = |prob|`. The number of elements in the `cat` and `prob` vectors should be identical.
- - `cat` (i, f, t, d): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL`. Ascending order. Entries in `cat` must be a subset of `Target.cat` from the target definition.
+ - `cat` (i, f, t, d): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Ascending order. Entries in `cat` must be a subset of `Target.cat` from the target definition.
  - `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable). Note that for binary targets that by definition need only have one row, this validation does not apply.
  - NB: Rows for Bin predictions where `prob` == 0 are not stored in the database.
 
@@ -63,14 +63,14 @@ Binomial    | 0<=p<=1   |  n>0      |  -        -->
 
 ### `Point` Prediction Elements
 
- - If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets except compositional targets. For compositional targets, a Point Prediction should have the number of rows equal to the number of categories for the target.
- - `value` (i, f, t, d): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL`. 
+ - If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets.
+ - `value` (i, f, t, d): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). 
  - The data format of `value` should correspond or be translatable to the `type` as in the target definition.
 
 ### `Sample` Prediction Elements
 
  - If a Sample Prediction Element exists, it should have >=1 Database Rows.
- - `sample` (i, f, t, d): Entries in the database rows in the `sample` column cannot be `“”`, `“NA”` or `NULL`.
+ - `sample` (i, f, t, d): Entries in the database rows in the `sample` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
  - The data format of `sample` should correspond or be translatable to the `type` as in the target definition.
 
 ## Tests for Predictions by Target Type
@@ -123,10 +123,6 @@ These tests are performed when a forecast is created or updated. For all target 
  - any values in `Point` or `Sample` Prediction Elements should be string that can be interpreted as a date in `YYYY-MM-DD` format, and these values should be contained within the set of valid responses defined by `cats`.
  - for `Bin` Prediction Elements, the submitted set of `cats` must be a subset of the valid outcomes defined by the target range.
 
-### "compositional" 
-
- - for `Bin` Prediction Elements, the submitted set of `cats` in the prediction must be a subset of the `cats` defined by the target
-
 
 ## Tests for target definitions by Target Type
 
@@ -143,9 +139,9 @@ These tests are performed when a target is created or updated.
 
  - if `range` is specified, it must include two integers.
 
-### "nominal" and "compositional"
+### "nominal"
 
- - `cats` must be a character vector containing a set of unique labels of the categories for this target. The labels must not include `""`, `NA` or `NULL`.
+ - `cats` must be a character vector containing a set of unique labels of the categories for this target. The labels must not include `""`, `NA` or `NULL` (case does not matter).
 
 ### "binary"
 
@@ -166,7 +162,7 @@ Please see [this file](../zoltar-ground-truth-example.csv) for an example of a v
  - Every value of `timezero`, `target` and `location` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
  - Each ground truth file should have a `cat` column (readable as text) and a `value` column (readable as a float). 
 
-### For all target_types except `compositional`
+### For all target_types
 
  - For every unique `target`-`location`-`timezero` combination, there should be either one or zero rows of truth data.
  - For each row, only one of the `cat` or `value` columns should contain data.
@@ -174,22 +170,15 @@ Please see [this file](../zoltar-ground-truth-example.csv) for an example of a v
  - The `value` column should have `NULL` values for all rows corresponding to `nominal` and `date` targets.
  - The value of the truth data (in whichever column it exists) should be interpretable as the corresponding data_type of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string. 
 
-### For `compositional` type
-
- - For every unique `target`-`location`-`timezero` combination with a `compositional` target type, there should be between 0 and C rows of truth data, where C is the total number of categories defined in the project config file for this target.
- - The entries in the `cat` column for a single `target`-`location`-`timezero` should all be found in the `cats` parameter of the target definition.
- - The entries in the `cat` column for a single `target`-`location`-`timezero` should all be unique, i.e., no duplicate `cats`.
- - The entries in the `value` column for a single `target`-`location`-`timezero` combination should sum to 1.
-
 ### Range-check for ground truth data
 
-The following test can be applied to any target with a range. This will always apply to `binary`, `nominal`, `compositional`, and `date` targets, as these targets are required to have sets of valid values specified as part of the target definition. If the `range` parameter is specified for a `continuous` or `discrete` target, then the following test will be applied to that target as well.
+The following test can be applied to any target with a range. This will always apply to `binary`, `nominal`, and `date` targets, as these targets are required to have sets of valid values specified as part of the target definition. If the `range` parameter is specified for a `continuous` or `discrete` target, then the following test will be applied to that target as well.
 
 For `binary` targets:
  - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be either a 0 or a 1.
 
-For `compositional`, and (if `range` is specified) for `discrete and `continuous` targets:
- - The entry in the `value` column (or entries, for compositional targets) for a specific `target`-`location`-`timezero` combination must be contained within the range of valid values for the target. For `binary` and `compositional` targets, the values must be in the range of [0,1].
+For `discrete` and `continuous` targets (if `range` is specified):
+ - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the range of valid values for the target. For `binary` targets, the values must be in the range of [0,1].
  
-For `nominal`, `compositional` and `date` target_types:
- - The entry in the `cat` column (or entries, for compositional targets) for a specific `target`-`location`-`timezero` combination must be contained within the set of valid values for the target, as defined by the project config file.
+For `nominal` and `date` target_types:
+ - The entry in the `cat` column for a specific `target`-`location`-`timezero` combination must be contained within the set of valid values for the target, as defined by the project config file.

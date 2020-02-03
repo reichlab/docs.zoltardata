@@ -25,9 +25,6 @@ features pertain to a particular target.
 *date*: A target with a discrete set of calendar dates as possible outcomes. 
 > Example: the calendar week in which peak incidence occurs (represented by the Sunday of that week.
 
-*compositional*: A nominal, unordered categorical target where observations are percentages that add up to 1. 
-> Example: the proportions of all sequenced flu strains within different clades.
-
 
 ## Target parameters
 
@@ -45,7 +42,6 @@ discrete      |  x   |  x   |     x       |      x        |          (x)        
 nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   
 binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -   
 date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  x   
-compositional |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   
 
 ### Required parameters for all targets
 
@@ -85,7 +81,7 @@ If `cats` are specified, then the min(`cats`) must equal the lower bound of `ran
 
 ### Parameters for nominal targets
 
-- *cats*: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: `""`, `"NA"`, or `"NULL"`.
+- *cats*: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: `""`, `"NA"`, or `"NULL"` (case does not matter).
 
 ### Parameters for binary targets
 
@@ -107,11 +103,6 @@ Every date target must have a set of dates (also in YYYYMMDD format) that are va
 Based off of the unit in the target definition, every date would use a fixed unit conversion for point forecast scoring. For example, if `unit=="week"` then point forecast scores would be represented by "week" units. So, the truth for a given timezero-datetarget might be truth="2019-12-15" and a point forecast might be pred="2020-01-05" (both values chosen deliberately to be Sundays). Then we could operate on these numbers as "weeks" and determine the best, standardized way to produce that the difference = truth - pred = 3. 
  -->
 
-### Parameters for compositional targets
-
-- *cats*: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: `""`, `"NA"`, or `"NULL"`.
-
-
 ## Valid prediction types by target type
 
 target type   | data_type | point     |    bin    | sample    |  named     
@@ -121,7 +112,6 @@ discrete      |   int     |    x      |    x      |    x      |   (2)
 nominal       |   text    |    x      |    x      |    x      |    -      
 binary        |  boolean  |    x      |    x      |    x      |    -      
 date          |   date    |    x      |    x      |    x      |    -      
-compositional |   text    |    -      |    x      |    -      |    -      
 
 Legend:
 (1) = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
@@ -149,7 +139,6 @@ Legend:
 | *date*        | point              | x           | x         | -                   | x(a) | -     | -   | -   |
 |               | bin                | -           | -         | x                   | x    | x     | x   | -   |
 |               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
-|*compositional*| bin                | -           | -         | -                   | -    | -     | -   | x   |
 
 * x(a) = CRPS is equivalent to abs error for point forecasts.
 * x(b) = log score is required to be computed by approximation

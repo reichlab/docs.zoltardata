@@ -25,7 +25,7 @@ Please see the [Targets.md](Targets.md) file for a detailed description of targe
 
 - `name`: string
 - `description`: string
-- `type`: string - must be one of the following: "continuous", "discrete", "nominal", "binary", "date", "compositional"
+- `type`: string - must be one of the following: "continuous", "discrete", "nominal", "binary", or "date"
 - `is_step_ahead`: boolean
 - `step_ahead_increment`: integer - negative, zero, or positive
 - `unit`: string
