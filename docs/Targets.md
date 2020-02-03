@@ -80,9 +80,12 @@ If both `range` and `cats` are specified, then the min(`cats`) must equal the lo
   as [0, 10, 20, 30, 40, 50] and `range` is specified as [0, 100] then the implied set of valid categories would be [0,10),
   [10, 20), [20, 30), [30, 40), [40, 50) and [50, 100].
 
+If `cats` are specified, then the min(`cats`) must equal the lower bound of `range` and max(`cats`) must be less than the upper bound of `range`.
+
+
 ### Parameters for nominal targets
 
-- *cats*: (Required) a list of strings that name the categories for this target. 
+- *cats*: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: `""`, `"NA"`, or `"NULL"`.
 
 ### Parameters for binary targets
 
@@ -106,7 +109,7 @@ Based off of the unit in the target definition, every date would use a fixed uni
 
 ### Parameters for compositional targets
 
-- *cats*: (Required) a list of strings that name the categories for this target. 
+- *cats*: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: `""`, `"NA"`, or `"NULL"`.
 
 
 ## Valid prediction types by target type
