@@ -95,7 +95,7 @@ These tests are performed when a forecast is created or updated. For all target 
  - any values in Point or Sample Prediction Elements should be numeric
  - if `range` is specified, any values in Point or Sample Prediction Elements should be contained within `range`
  - if `range` is specified, any Named Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range.
- - for `Bin` Prediction Elements, the submitted set of `cats` values must be a subset of the `cats` defined by the target
+ - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
  - for `Named` Prediction Elements, the distribution must be one of `norm`, `lnorm`, `gamma`, `beta`
 
 ### "discrete"
@@ -103,13 +103,13 @@ These tests are performed when a forecast is created or updated. For all target 
  - any values in `Point` or `Sample` Prediction Elements should be integers
  - if `range` is specified, any values in `Point` or `Sample` Prediction Elements should be contained within `range`
  - if `range` is specified, any `Named` Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range
- - for `Bin` Prediction Elements, the submitted set of `cats` must be a subset of the valid integers defined by the target range
+ - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the valid integers defined by the target's `range`
  - for `Named` Prediction Elements, the distribution must be one of `pois`, `nbinom`, `nbinom2`.
 
 ### "nominal" 
 
- - any values in `Point` or `Sample` Prediction Elements should be contained within the valid set of `cats` defined by the variable
- - for `Bin` Prediction Elements, the submitted set of `cats` in the prediction must be a subset of the `cats` defined by the target
+ - any values in `Point` or `Sample` Prediction Elements should be contained within the valid set of `cats` defined by the target
+ - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
 
 ### "binary"
 
@@ -120,7 +120,7 @@ These tests are performed when a forecast is created or updated. For all target 
 
 ### "date"
 
- - any values in `Point` or `Sample` Prediction Elements should be string that can be interpreted as a date in `YYYY-MM-DD` format, and these values should be contained within the set of valid responses defined by `cats`.
+ - any values in `Point` or `Sample` Prediction Elements should be string that can be interpreted as a date in `YYYY-MM-DD` format, and these values should be contained within the set of valid responses defined by `cats` defined by the target.
  - for `Bin` Prediction Elements, the submitted set of `cats` must be a subset of the valid outcomes defined by the target range.
 
 
@@ -159,16 +159,10 @@ Please see [this file](../zoltar-ground-truth-example.csv) for an example of a v
 
 ### For all ground truth files
 
- - Every value of `timezero`, `target` and `location` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
- - Each ground truth file should have a `cat` column (readable as text) and a `value` column (readable as a float). 
-
-### For all target_types
-
- - For every unique `target`-`location`-`timezero` combination, there should be either one or zero rows of truth data.
- - For each row, only one of the `cat` or `value` columns should contain data.
- - The `cat` column should have `NULL` values for all rows corresponding to `continuous`, `binary` and `discrete` targets.
- - The `value` column should have `NULL` values for all rows corresponding to `nominal` and `date` targets.
- - The value of the truth data (in whichever column it exists) should be interpretable as the corresponding data_type of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string. 
+- The columns are `timezero`, `location`, `target`, and `value`.
+- For every unique `target`-`location`-`timezero` combination, there should be either one or zero rows of truth data.
+- Every value of `timezero`, `target` and `location` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
+- The `value` of the truth data should be interpretable as the corresponding `data_type` of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string. 
 
 ### Range-check for ground truth data
 
