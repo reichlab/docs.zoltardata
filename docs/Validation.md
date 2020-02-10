@@ -18,6 +18,7 @@ For clarity, we define specific terms that we will use below.
 
 These tests are performed when a forecast is created or updated.
 
+- The Prediction's class must be valid for its target's type (see [Valid prediction types by target type](Targets.md#Valid prediction types by target type).
 - Within a Prediction, there cannot be more than 1 Prediction Element of the same type.
 
 
@@ -30,7 +31,7 @@ These tests are performed when a forecast is created or updated.
 
  - If a Bin Prediction Element exists, it should have >=1 Database Rows.
  - `|cat| = |prob|`. The number of elements in the `cat` and `prob` vectors should be identical.
- - `cat` (i, f, t, d): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Ascending order. Entries in `cat` must be a subset of `Target.cat` from the target definition.
+ - `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Ascending order. Entries in `cat` must be a subset of `Target.cat` from the target definition.
  - `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable). Note that for binary targets that by definition need only have one row, this validation does not apply.
  - NB: Rows for Bin predictions where `prob` == 0 are not stored in the database.
 
@@ -64,14 +65,15 @@ Binomial    | 0<=p<=1   |  n>0      |  -        -->
 ### `Point` Prediction Elements
 
  - If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets.
- - `value` (i, f, t, d): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). 
+ - `value` (i, f, t, d, b): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). 
  - The data format of `value` should correspond or be translatable to the `type` as in the target definition.
 
 ### `Sample` Prediction Elements
 
  - If a Sample Prediction Element exists, it should have >=1 Database Rows.
- - `sample` (i, f, t, d): Entries in the database rows in the `sample` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
+ - `sample` (i, f, t, d, b): Entries in the database rows in the `sample` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
  - The data format of `sample` should correspond or be translatable to the `type` as in the target definition.
+
 
 ## Tests for Predictions by Target Type
 
@@ -113,8 +115,8 @@ These tests are performed when a forecast is created or updated. For all target 
 
 ### "binary"
 
- - any values in `Sample` or `Point` Prediction Elements should be either 0 or 1.
- - for `Bin` Prediction Elements, there must be at least one bin labeled "true". If there is a second bin, it must be labeled "false". Note that due to the special case of binary targets always having two bins, the validation of submitted bins adding up to one is not enforced here.
+ - any values in `Sample` or `Point` Prediction Elements should be either `true` or `false`.
+ - for `Bin` Prediction Elements, there must be at least one bin labeled `true`. If there is a second bin, it must be labeled `false`. For the case of binary targets having just one bin, the validation of submitted bins adding up to one is not enforced (the `false` bin's probability is implied to be 1-_<true_bin_probabilty>_).
  
  <!-- (Variations in capitalization of the "true" bin (i.e. "True", "TRUE") should be allowable but perhaps internally standardized.) -->
 
@@ -169,7 +171,7 @@ Please see [this file](../zoltar-ground-truth-example.csv) for an example of a v
 The following test can be applied to any target with a range. This will always apply to `binary`, `nominal`, and `date` targets, as these targets are required to have sets of valid values specified as part of the target definition. If the `range` parameter is specified for a `continuous` or `discrete` target, then the following test will be applied to that target as well.
 
 For `binary` targets:
- - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be either a 0 or a 1.
+ - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be either `true` or `false`.
 
 For `discrete` and `continuous` targets (if `range` is specified):
  - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the range of valid values for the target. For `binary` targets, the values must be in the range of [0,1].
