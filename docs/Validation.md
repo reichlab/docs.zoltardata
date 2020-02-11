@@ -31,7 +31,7 @@ These tests are performed when a forecast is created or updated.
 
  - If a Bin Prediction Element exists, it should have >=1 Database Rows.
  - `|cat| = |prob|`. The number of elements in the `cat` and `prob` vectors should be identical.
- - `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Ascending order. Entries in `cat` must be a subset of `Target.cat` from the target definition.
+ - `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `cat` must be a subset of `Target.cat` from the target definition.
  - `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable). Note that for binary targets that by definition need only have one row, this validation does not apply.
  - NB: Rows for Bin predictions where `prob` == 0 are not stored in the database.
 
