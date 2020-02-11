@@ -120,27 +120,27 @@ Legend:
 
 ## Available scores by target type and prediction element
 
-| target type   | prediction element | error       | abs error | log score           | CRPS | brier | PIT | EMD |
-|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|-----|
-| *continuous*  | point              | x           | x         | -                   | x(a) | -     | -   | -   |
-|               | bin                | -           | -         | x                   | x    | x     | x   | -   |
-|               | named              | -           | -         | x                   | x    | -     | x   | -   |
-|               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
-| *discrete*    | point              | x           | x         | -                   | x(a) | -     | -   | -   |
-|               | bin                | -           | -         | x                   | x    | x     | x   | -   |
-|               | named              | -           | -         | x                   | x    | -     | x   | -   |
-|               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
-| *nominal*     | point              | -           | -         | -                   | -    | -     | -   | -   |
-|               | bin                | -           | -         | x                   | -    | x     | -   | -   |
-|               | sample             | -           | -         | x                   | -    | x     | -   | -   |
-| *binary*      | point              | x           | x         | -                   | x(a) | -     | -   | -   |
-|               | bin                | -           | -         | x                   | x    | x     | -   | -   |
-|               | sample             | -           | -         | x(b)                | x    | x     | -   | -   |
-| *date*        | point              | x           | x         | -                   | x(a) | -     | -   | -   |
-|               | bin                | -           | -         | x                   | x    | x     | x   | -   |
-|               | sample             | -           | -         | x(b)                | x    | -     | x   | -   |
+| target type   | prediction element | error       | abs error | log score           | CRPS | brier | PIT |
+|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|
+| *continuous*  | point              | x           | x         | -                   | x(a) | -     | -   |
+|               | bin                | -           | -         | x                   | x    | x     | x   |
+|               | named              | -           | -         | x                   | x    | -     | x   |
+|               | sample             | -           | -         | x(b)                | x    | -     | x   |
+| *discrete*    | point              | x           | x         | -                   | x(a) | -     | -   |
+|               | bin                | -           | -         | x                   | x    | x     | x   |
+|               | named              | -           | -         | x                   | x    | -     | x   |
+|               | sample             | -           | -         | x(b)                | x    | -     | x   |
+| *nominal*     | point              | -           | -         | -                   | -    | -     | -   |
+|               | bin                | -           | -         | x                   | -    | x     | -   |
+|               | sample             | -           | -         | x                   | -    | x     | -   |
+| *binary*      | point              | x           | x         | -                   | x(a) | -     | -   |
+|               | bin                | -           | -         | x                   | x    | x     | -   |
+|               | sample             | -           | -         | x(b)                | x    | x     | -   |
+| *date*        | point              | x           | x         | -                   | x(a) | -     | -   |
+|               | bin                | -           | -         | x                   | x    | x     | x   |
+|               | sample             | -           | -         | x(b)                | x    | -     | x   |
 
 * x(a) = CRPS is equivalent to abs error for point forecasts.
 * x(b) = log score is required to be computed by approximation
-* EMD = earth mover's distance, PIT = probability integral transform, CRPS = continuous ranked probability score
+* PIT = probability integral transform, CRPS = continuous ranked probability score
 
