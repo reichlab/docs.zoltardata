@@ -19,7 +19,7 @@ For clarity, we define specific terms that we will use below.
 These tests are performed when a forecast is created or updated.
 
 - The Prediction's class must be valid for its target's type (see [Valid prediction types by target type](Targets.md#Valid prediction types by target type).
-- Within a Prediction, there cannot be more than 1 Prediction Element of the same type.
+- Within a Prediction, there cannot be more than 1 Prediction Element of the same class.
 
 
 ## Tests for Prediction Elements by Prediction Class
@@ -50,17 +50,18 @@ For reference, here is the mapping between the generic parameter names and the f
 
 Family      | param1    | param2    | param3 
 ----------- | --------- | --------- | --------- 
-Normal      |    mean   |  sd>=0    |  -        
-LogNormal   |    mean   |  sd>=0    |  -        
+Normal      |    mean   |  sd>=0    |    -        
+LogNormal   |    mean   |  sd>=0    |    -        
 Gamma       |  shape>0  |  rate>0   |    -      
 Beta        |    a>0    |    b>0    |    -    
-Poisson     |  mean>0   |  -        |    -      
+Poisson     |  mean>0   |    -      |    -      
 Neg.Binom1  |    r>0    |  0<=p<=1  |    -    
 Neg.Binom2  |  mean>0   |  disp>0   |    -      
 
 <!-- These distributions are not supported for now.
 Bernoulli   | 0<=p<=1   |    -      |    -      
-Binomial    | 0<=p<=1   |  n>0      |  -        -->
+Binomial    | 0<=p<=1   |   n>0     |    - 
+-->
 
 ### `Point` Prediction Elements
 
