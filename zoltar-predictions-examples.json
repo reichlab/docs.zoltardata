@@ -135,8 +135,8 @@
       "target": "above baseline",
       "class": "bin",
       "prediction": {
-        "cat": [true],
-        "prob": [0.9]
+        "cat": [true, false],
+        "prob": [0.9, 0.1]
       }
     },
     {"location": "location2",
