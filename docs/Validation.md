@@ -42,21 +42,22 @@ support distributions with up to three parameters. Future versions of Zoltar cou
 distributions with larger numbers of parameters.
 
  - If a Named Prediction Element exists, it should have exactly 1 Database Row.
- - `family`: must be one of the below choices
- - `param1`, `param2`, `param3` (f): The number of param columns with non-NULL entries count must match family definition (see note below)
+ - `family`: must be one of the abbreviations shown in the table below.
+ - `param1`, `param2`, `param3` (f): The number of param columns with non-NULL entries count must match family definition (see note below).
  - Parameters for each distribution must be within valid ranges, which, if constraints exist, are specified in the table below.
 
-For reference, here is the mapping between the generic parameter names and the family-specific use of them (based on https://github.com/cdcepi/predx/blob/master/predx_classes.md ):
+For reference, here is the mapping between the generic parameter names and the family-specific use of them (based on [predx_classes.md](https://github.com/cdcepi/predx/blob/master/predx_classes.md):
 
-Family      | param1    | param2    | param3 
------------ | --------- | --------- | --------- 
-Normal      |    mean   |  sd>=0    |    -        
-LogNormal   |    mean   |  sd>=0    |    -        
-Gamma       |  shape>0  |  rate>0   |    -      
-Beta        |    a>0    |    b>0    |    -    
-Poisson     |  mean>0   |    -      |    -      
-Neg.Binom1  |    r>0    |  0<=p<=1  |    -    
-Neg.Binom2  |  mean>0   |  disp>0   |    -      
+Family      | abbreviation | param1    | param2   | param3 
+----------- | ------------ | --------- | -------- | ------ 
+Normal      | `norm`       | mean      | sd>=0    |    -   
+LogNormal   | `lnorm`      | mean      | sd>=0    |    -   
+Gamma       | `gamma`      | shape>0   | rate>0   |    -   
+Beta        | `beta`       | a>0       | b>0      |    -   
+Binomial    | `binom`      | ??        | ??       |    ??  
+Poisson     | `pois`       | ??        | ??       |    ??  
+Neg.Binom1  | `nbinom`     | r>0       | 0<=p<=1  |    -   
+Neg.Binom2  | `nbinom2`    | mean>0    | disp>0   |    -   
 
 <!-- These distributions are not supported for now.
 Bernoulli   | 0<=p<=1   |    -      |    -      
