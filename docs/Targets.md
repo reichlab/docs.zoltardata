@@ -78,7 +78,6 @@ If both `range` and `cats` are specified, then the min(`cats`) must equal the lo
 
 If `cats` are specified, then the min(`cats`) must equal the lower bound of `range` and max(`cats`) must be less than the upper bound of `range`.
 
-
 ### Parameters for nominal targets
 
 - *cats*: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: `""`, `"NA"`, or `"NULL"` (case does not matter).
@@ -102,6 +101,7 @@ Every date target must have a set of dates (also in YYYYMMDD format) that are va
 
 Based off of the unit in the target definition, every date would use a fixed unit conversion for point forecast scoring. For example, if `unit=="week"` then point forecast scores would be represented by "week" units. So, the truth for a given timezero-datetarget might be truth="2019-12-15" and a point forecast might be pred="2020-01-05" (both values chosen deliberately to be Sundays). Then we could operate on these numbers as "weeks" and determine the best, standardized way to produce that the difference = truth - pred = 3. 
  -->
+
 
 ## Valid prediction types by target type
 

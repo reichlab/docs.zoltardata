@@ -2,7 +2,7 @@
 
 Forecasts stored in Zoltar are validated upon upload based on the expected structure of each forecast. Below, we document the checks and tests that are performed on all forecasts. We first list the test that is performed for every prediction, and after that, tests are broken down by the class of prediction.
 
-### Definitions
+## Definitions
 
 For clarity, we define specific terms that we will use below.
 
@@ -31,9 +31,10 @@ These tests are performed when a forecast is created or updated.
 
  - If a Bin Prediction Element exists, it should have >=1 Database Rows.
  - `|cat| = |prob|`. The number of elements in the `cat` and `prob` vectors should be identical.
- - `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `cat` must be a subset of `Target.cats` from the target definition.
- - `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable).
- - NB: Rows for Bin predictions where `prob` == 0 are not stored in the database.
+- `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `cat` must be a subset of `Target.cats` from the target definition.
+- `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable).
+- The data format of `cat` should correspond or be translatable to the `type` as in the target definition.
+- NB: Rows for Bin predictions where `prob` == 0 are not stored in the database.
 
 ### `Named` Prediction Elements
 
@@ -54,7 +55,6 @@ Normal      | `norm`       | mean      | sd>=0    |    -
 LogNormal   | `lnorm`      | mean      | sd>=0    |    -   
 Gamma       | `gamma`      | shape>0   | rate>0   |    -   
 Beta        | `beta`       | a>0       | b>0      |    -   
-Binomial    | `binom`      | 0<=p<=1   |   n>0    |    -    
 Poisson     | `pois`       | rate>0    |  -       |    -   
 Neg.Binom1  | `nbinom`     | r>0       | 0<=p<=1  |    -   
 Neg.Binom2  | `nbinom2`    | mean>0    | disp>0   |    -   
@@ -67,7 +67,7 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 ### `Point` Prediction Elements
 
  - If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets.
- - `value` (i, f, t, d, b): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). 
+ - `value` (i, f, t, d, b): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
  - The data format of `value` should correspond or be translatable to the `type` as in the target definition.
 
 ### `Sample` Prediction Elements
@@ -85,10 +85,12 @@ These tests are performed when a forecast is created or updated.
 
  - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `Bin`}.
  
+
 ### "discrete"
 
  - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `Bin`}.
  
+
 
 ## Tests for Prediction Elements by Target Type
 
