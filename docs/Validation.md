@@ -54,8 +54,8 @@ Normal      | `norm`       | mean      | sd>=0    |    -
 LogNormal   | `lnorm`      | mean      | sd>=0    |    -   
 Gamma       | `gamma`      | shape>0   | rate>0   |    -   
 Beta        | `beta`       | a>0       | b>0      |    -   
-Binomial    | `binom`      | ??        | ??       |    ??  
-Poisson     | `pois`       | ??        | ??       |    ??  
+Binomial    | `binom`      | 0<=p<=1   |   n>0    |    -    
+Poisson     | `pois`       | rate>0    |  -       |    -   
 Neg.Binom1  | `nbinom`     | r>0       | 0<=p<=1  |    -   
 Neg.Binom2  | `nbinom2`    | mean>0    | disp>0   |    -   
 
