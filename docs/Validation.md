@@ -79,17 +79,16 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 
 ## Tests for Predictions by Target Type
 
-These tests are performed when a forecast is created or updated. 
+These tests are performed when a forecast is created or updated.
+
 
 ### "continuous"
 
- - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `Bin`}.
- 
+ - Within one prediction, there can be at most one of the following prediction elements, but not both: {`Named`, `Bin`}.
 
 ### "discrete"
 
- - Within one prediction, there must not be more than one of the following prediction elements for a single target: {`Named`, `Bin`}.
- 
+ - Within one prediction, there can be at most one of the following prediction elements, but not both: {`Named`, `Bin`}.
 
 
 ## Tests for Prediction Elements by Target Type
@@ -98,7 +97,7 @@ These tests are performed when a forecast is created or updated. For all target 
 
 ### "continuous"
 
- - any values in Point or Sample Prediction Elements should be numeric
+ - any values in `Point` or `Sample` Prediction Elements should be numeric
  - if `range` is specified, any values in `Point` or `Sample` Prediction Elements should be contained within `range`
  - if `range` is specified, any `Named` Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range.
  - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
@@ -109,17 +108,17 @@ These tests are performed when a forecast is created or updated. For all target 
  - any values in `Point` or `Sample` Prediction Elements should be integers
  - if `range` is specified, any values in `Point` or `Sample` Prediction Elements should be contained within `range`
  - if `range` is specified, any `Named` Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range
- - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the valid integers defined by the target's `range`
+ - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
  - for `Named` Prediction Elements, the distribution must be one of `pois`, `nbinom`, `nbinom2`.
 
-### "nominal" 
+### "nominal"
 
  - any values in `Point` or `Sample` Prediction Elements should be contained within the valid set of `cats` defined by the target
  - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
 
 ### "binary"
 
- - any values in `Sample` or `Point` Prediction Elements should be either `true` or `false`.
+ - any values in `Point` or `Sample` Prediction Elements should be either `true` or `false`.
  - for `Bin` Prediction Elements, there must be exactly two `cat` values labeled `true` and `false`. These are the two `cats` that are implied (but not allowed to be specified) by binary target types.
 
 ### "date"

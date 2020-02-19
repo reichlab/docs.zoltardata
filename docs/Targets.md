@@ -105,13 +105,13 @@ Based off of the unit in the target definition, every date would use a fixed uni
 
 ## Valid prediction types by target type
 
-target type   | data_type | point     |    bin    | sample    |  named     
-------------- | --------- | --------- | --------- | --------- | --------- 
-continuous    |   float   |    x      |    x      |    x      |   (1)      
-discrete      |   int     |    x      |    x      |    x      |   (2)      
-nominal       |   text    |    x      |    x      |    x      |    -      
-binary        |  boolean  |    x      |    x      |    x      |    -      
-date          |   date    |    x      |    x      |    x      |    -      
+| target type | data_type | point | bin | sample | named |
+|-------------|-----------|-------|-----|--------|-------|
+| continuous  |   float   |   x   |  x  |   x    |  (1)  |
+| discrete    |   int     |   x   |  x  |   x    |  (2)  |
+| nominal     |   text    |   x   |  x  |   x    |   -   |
+| binary      |  boolean  |   x   |  x  |   x    |   -   |
+| date        |   date    |   x   |  x  |   x    |   -   |
 
 Legend:
 (1) = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
