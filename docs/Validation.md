@@ -162,20 +162,21 @@ Please see [this file](../zoltar-ground-truth-example.csv) for an example of a v
 
 ### For all ground truth files
 
-- The columns are `timezero`, `location`, `target`, and `value`.
-- For every unique `target`-`location`-`timezero` combination, there should be either one or zero rows of truth data.
-- Every value of `timezero`, `target` and `location` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
-- The `value` of the truth data should be interpretable as the corresponding `data_type` of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string. 
+ - The columns are `timezero`, `location`, `target`, and `value`.
+ - For every unique `target`-`location`-`timezero` combination, there should be either one or zero rows of truth data.
+ - Every value of `timezero`, `target` and `location` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
+ - The `value` of the truth data cannot be `“”`, `“NA”` or `NULL` (case does not matter).
+ - The `value` of the truth data should be interpretable as the corresponding `data_type` of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string.
 
 ### Range-check for ground truth data
 
-The following test can be applied to any target with a range. This will always apply to `binary`, `nominal`, and `date` targets, as these targets are required to have sets of valid values specified as part of the target definition. If the `range` parameter is specified for a `continuous` or `discrete` target, then the following test will be applied to that target as well.
+The following test can be applied to any target with a `range`. This will always apply to `binary`, `nominal`, and `date` targets, as these targets are required to have sets of valid values specified as part of the target definition. If the `range` parameter is specified for a `continuous` or `discrete` target, then the following test will be applied to that target as well.
 
 For `binary` targets:
  - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be either `true` or `false`.
 
 For `discrete` and `continuous` targets (if `range` is specified):
- - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the range of valid values for the target. For `binary` targets, the values must be in the range of [0,1].
+ - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the range of valid values for the target.
  
 For `nominal` and `date` target_types:
  - The entry in the `cat` column for a specific `target`-`location`-`timezero` combination must be contained within the set of valid values for the target, as defined by the project config file.
