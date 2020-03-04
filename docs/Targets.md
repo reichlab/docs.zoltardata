@@ -58,7 +58,7 @@ date          |  x   |  x   |     x       |      x        |          (x)        
 - *cats*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) an ordered set of numeric values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cats` is specified as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty). Additionally, if `range` had been specified as [0, 100] in addition to the above `cats`, then the final bin would be [2.2, 100].
   <!-- NGR: is upper bound always specified as infinity?-->
 
-If both `range` and `cats` are specified, then the min(`cats`) must equal the lower bound and max(`cats`) must be less than the upper bound of `range`.
+If both `range` and `cats` are specified, then min(`cats`) must equal the lower bound and max(`cats`) must be less than the upper bound of `range`.
 
 ### Parameters for discrete targets
 
@@ -66,7 +66,7 @@ If both `range` and `cats` are specified, then the min(`cats`) must equal the lo
 - *range*: (Optional, but uploaded `Bin` prediction types will be rejected unless `range` is specified) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not specified than range is assumed to be (-infty, infty).
 - *cats*: (Optional, and can only be specified if `range` is also specified) an ordered set of integer values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cats` is specified as [0, 10, 20, 30, 40, 50] and `range` is specified as [0, 100] then the implied set of valid categories would be [0,10), [10, 20), [20, 30), [30, 40), [40, 50) and [50, 100].
 
-If `cats` are specified, then the min(`cats`) must equal the lower bound of `range` and max(`cats`) must be less than the upper bound of `range`.
+If both `range` and `cats` are specified, then min(`cats`) must equal the lower bound and max(`cats`) must be less than the upper bound of `range`.
 
 ### Parameters for nominal targets
 

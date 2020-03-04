@@ -176,7 +176,7 @@ For `binary` targets:
  - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be either `true` or `false`.
 
 For `discrete` and `continuous` targets (if `range` is specified):
- - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the range of valid values for the target.
+ - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the `range` of valid values for the target. If `cats` is specified but `range` is not, then there is an implicit range for the ground truth value, and that is between min(`cats`) and \infty.
  
 For `nominal` and `date` target_types:
- - The entry in the `cat` column for a specific `target`-`location`-`timezero` combination must be contained within the set of valid values for the target, as defined by the project config file.
+ - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the set of valid `cats` for the target, as defined by the project config file.
