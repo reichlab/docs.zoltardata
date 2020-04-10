@@ -82,7 +82,7 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 - If a Quantile Prediction Element exists, it should have >=1 Database Rows.
 - `|quantile| = |value|`. The number of elements in the `quantile` and `value` vectors should be identical.
 - `quantile` (f): [0, 1]. Entries in the database rows in the `quantile` column must be numbers in [0, 1]. `quantile`s must be unique.
-- `value` (i, f, d): Entries in `value` must be non-decreasing as quantiles increase. Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `value` must be a subset of `Target.cats` from the target definition. Entries in `value` must obey existing ranges for targets.
+- `value` (i, f, d): Entries in `value` must be non-decreasing as quantiles increase. Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `value` must obey existing ranges for targets.
 - The data format of `value` should correspond or be translatable to the `type` as in the target definition.
 
 
