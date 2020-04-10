@@ -95,13 +95,13 @@ Based off of the unit in the target definition, every date would use a fixed uni
 
 ## Valid prediction types by target type
 
-| target type | data_type | point | bin | sample | named |
-|-------------|-----------|-------|-----|--------|-------|
-| continuous  |   float   |   x   |  x  |   x    |  (1)  |
-| discrete    |   int     |   x   |  x  |   x    |  (2)  |
-| nominal     |   text    |   x   |  x  |   x    |   -   |
-| binary      |  boolean  |   x   |  x  |   x    |   -   |
-| date        |   date    |   x   |  x  |   x    |   -   |
+| target type | data_type | point | bin | sample | named | quantile |
+|-------------|-----------|-------|-----|--------|-------|----------|
+| continuous  |   float   |   x   |  x  |   x    |  (1)  |    x     |
+| discrete    |   int     |   x   |  x  |   x    |  (2)  |    x     |
+| nominal     |   text    |   x   |  x  |   x    |   -   |    -     |
+| binary      |  boolean  |   x   |  x  |   x    |   -   |    -     |
+| date        |   date    |   x   |  x  |   x    |   -   |    x     |
 
 Legend:
 (1) = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
@@ -114,12 +114,14 @@ Legend:
 |---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|
 | *continuous*  | point              | x           | x         | -                   | x(a) | -     | -   |
 |               | bin                | -           | -         | x                   | x    | x     | x   |
-|               | named              | -           | -         | x                   | x    | -     | x   |
 |               | sample             | -           | -         | x(b)                | x    | -     | x   |
+|               | named              | -           | -         | x                   | x    | -     | x   |
+|               | quantile           | ?           | ?         | ?                   | ?    | ?     | ?   |
 | *discrete*    | point              | x           | x         | -                   | x(a) | -     | -   |
 |               | bin                | -           | -         | x                   | x    | x     | x   |
-|               | named              | -           | -         | x                   | x    | -     | x   |
 |               | sample             | -           | -         | x(b)                | x    | -     | x   |
+|               | named              | -           | -         | x                   | x    | -     | x   |
+|               | quantile           | ?           | ?         | ?                   | ?    | ?     | ?   |
 | *nominal*     | point              | -           | -         | -                   | -    | -     | -   |
 |               | bin                | -           | -         | x                   | -    | x     | -   |
 |               | sample             | -           | -         | x                   | -    | x     | -   |
@@ -129,6 +131,7 @@ Legend:
 | *date*        | point              | x           | x         | -                   | x(a) | -     | -   |
 |               | bin                | -           | -         | x                   | x    | x     | x   |
 |               | sample             | -           | -         | x(b)                | x    | -     | x   |
+|               | quantile           | ?           | ?         | ?                   | ?    | ?     | ?   |
 
 * x(a) = CRPS is equivalent to abs error for point forecasts.
 * x(b) = log score is required to be computed by approximation

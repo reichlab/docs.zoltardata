@@ -29,8 +29,8 @@ These tests are performed when a forecast is created or updated.
 
 ### `Bin` Prediction Elements
 
- - If a Bin Prediction Element exists, it should have >=1 Database Rows.
- - `|cat| = |prob|`. The number of elements in the `cat` and `prob` vectors should be identical.
+- If a Bin Prediction Element exists, it should have >=1 Database Rows.
+- `|cat| = |prob|`. The number of elements in the `cat` and `prob` vectors should be identical.
 - `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `cat` must be a subset of `Target.cats` from the target definition.
 - `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable).
 - The data format of `cat` should correspond or be translatable to the `type` as in the target definition.
@@ -75,6 +75,15 @@ Binomial    | 0<=p<=1   |   n>0     |    -
  - If a Sample Prediction Element exists, it should have >=1 Database Rows.
  - `sample` (i, f, t, d, b): Entries in the database rows in the `sample` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
  - The data format of `sample` should correspond or be translatable to the `type` as in the target definition.
+
+
+### `Quantile` Prediction Elements
+
+- If a Quantile Prediction Element exists, it should have >=1 Database Rows.
+- `|quantile| = |value|`. The number of elements in the `quantile` and `value` vectors should be identical.
+- `quantile` (f): [0, 1]. Entries in the database rows in the `quantile` column must be numbers in [0, 1]. `quantile`s must be unique.
+- `value` (i, f, d): Entries in `value` must be non-decreasing as quantiles increase. Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `value` must be a subset of `Target.cats` from the target definition. Entries in `value` must obey existing ranges for targets.
+- The data format of `value` should correspond or be translatable to the `type` as in the target definition.
 
 
 ## Tests for Predictions by Target Type
