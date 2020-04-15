@@ -1,0 +1,1274 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>Validation - Zoltar Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.30686662.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#forecast-validation" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="Zoltar Documentation" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Zoltar Documentation
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Validation
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="Zoltar Documentation" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Zoltar Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Web Tour
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Web Tour
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../WebTourIntro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../HomePage/" title="Zoltar Home page" class="md-nav__link">
+      Zoltar Home page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ProjectDetailPage/" title="Project detail page" class="md-nav__link">
+      Project detail page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ModelDetailPage/" title="Model detail page" class="md-nav__link">
+      Model detail page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ForecastDetailPage/" title="Forecast detail page" class="md-nav__link">
+      Forecast detail page
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      User Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        User Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../UserIntro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Concepts/" title="Concepts" class="md-nav__link">
+      Concepts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../DataModel/" title="Data model" class="md-nav__link">
+      Data model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Scoring/" title="Scoring" class="md-nav__link">
+      Scoring
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Visualizations.md" title="Visualizations" class="md-nav__link">
+      Visualizations
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Validation
+      </label>
+    
+    <a href="./" title="Validation" class="md-nav__link md-nav__link--active">
+      Validation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-all-prediction-elements" class="md-nav__link">
+    Tests for all Prediction Elements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-prediction-elements-by-prediction-class" class="md-nav__link">
+    Tests for Prediction Elements by Prediction Class
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bin-prediction-elements" class="md-nav__link">
+    Bin Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-prediction-elements" class="md-nav__link">
+    Named Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#point-prediction-elements" class="md-nav__link">
+    Point Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-prediction-elements" class="md-nav__link">
+    Sample Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantile-prediction-elements" class="md-nav__link">
+    Quantile Prediction Elements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-predictions-by-target-type" class="md-nav__link">
+    Tests for Predictions by Target Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous" class="md-nav__link">
+    "continuous"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete" class="md-nav__link">
+    "discrete"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-prediction-elements-by-target-type" class="md-nav__link">
+    Tests for Prediction Elements by Target Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous_1" class="md-nav__link">
+    "continuous"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete_1" class="md-nav__link">
+    "discrete"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominal" class="md-nav__link">
+    "nominal"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary" class="md-nav__link">
+    "binary"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    "date"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-target-definitions-by-target-type" class="md-nav__link">
+    Tests for target definitions by Target Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous_2" class="md-nav__link">
+    "continuous"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete_2" class="md-nav__link">
+    "discrete"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominal_1" class="md-nav__link">
+    "nominal"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary_1" class="md-nav__link">
+    "binary"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date_1" class="md-nav__link">
+    "date"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-ground-truth-data-tables" class="md-nav__link">
+    Tests for ground truth data tables
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-all-ground-truth-files" class="md-nav__link">
+    For all ground truth files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-check-for-ground-truth-data" class="md-nav__link">
+    Range-check for ground truth data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
+      File Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Api/" title="RESTful API" class="md-nav__link">
+      RESTful API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      zoltr Package
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        zoltr Package
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ZoltrOverview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ZoltrGettingStarted/" title="Getting Started" class="md-nav__link">
+      Getting Started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ZoltrProjectOwners/" title="ProjectOwners" class="md-nav__link">
+      ProjectOwners
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      zoltpy Library
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        zoltpy Library
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ZoltpyOverview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    Definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-all-prediction-elements" class="md-nav__link">
+    Tests for all Prediction Elements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-prediction-elements-by-prediction-class" class="md-nav__link">
+    Tests for Prediction Elements by Prediction Class
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bin-prediction-elements" class="md-nav__link">
+    Bin Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#named-prediction-elements" class="md-nav__link">
+    Named Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#point-prediction-elements" class="md-nav__link">
+    Point Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sample-prediction-elements" class="md-nav__link">
+    Sample Prediction Elements
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantile-prediction-elements" class="md-nav__link">
+    Quantile Prediction Elements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-predictions-by-target-type" class="md-nav__link">
+    Tests for Predictions by Target Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous" class="md-nav__link">
+    "continuous"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete" class="md-nav__link">
+    "discrete"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-prediction-elements-by-target-type" class="md-nav__link">
+    Tests for Prediction Elements by Target Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous_1" class="md-nav__link">
+    "continuous"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete_1" class="md-nav__link">
+    "discrete"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominal" class="md-nav__link">
+    "nominal"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary" class="md-nav__link">
+    "binary"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date" class="md-nav__link">
+    "date"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-target-definitions-by-target-type" class="md-nav__link">
+    Tests for target definitions by Target Type
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#continuous_2" class="md-nav__link">
+    "continuous"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#discrete_2" class="md-nav__link">
+    "discrete"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nominal_1" class="md-nav__link">
+    "nominal"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#binary_1" class="md-nav__link">
+    "binary"
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date_1" class="md-nav__link">
+    "date"
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tests-for-ground-truth-data-tables" class="md-nav__link">
+    Tests for ground truth data tables
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-all-ground-truth-files" class="md-nav__link">
+    For all ground truth files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#range-check-for-ground-truth-data" class="md-nav__link">
+    Range-check for ground truth data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="forecast-validation">Forecast validation</h1>
+<p>Forecasts stored in Zoltar are validated upon upload based on the expected structure of each forecast. Below, we document the checks and tests that are performed on all forecasts. We first list the test that is performed for every prediction, and after that, tests are broken down by the class of prediction.</p>
+<h2 id="definitions">Definitions</h2>
+<p>For clarity, we define specific terms that we will use below.</p>
+<ul>
+<li>Forecast: a collection of data specific to a project &gt; model &gt; timezero.</li>
+<li>Prediction: a group of a prediction elements(s) specific to a location and target.</li>
+<li>Prediction Element: data that define a unique single prediction, specific to the class of prediction it is.</li>
+<li>Prediction Class: data structures representing different types of predictions, e.g. "Point" and "Bin" (see <a href="../DataModel/">Data Model</a> for more detail)</li>
+<li>Target Type: the classification for a specific forecast target, one of "continuous", "discrete", "nominal", "binary" or "date" (see <a href="../Targets/">Targets</a> for more info)</li>
+<li>Database Row(s): the entry(ies)/row(s) in the database that comprise a prediction element.</li>
+</ul>
+<h2 id="tests-for-all-prediction-elements">Tests for all Prediction Elements</h2>
+<p>These tests are performed when a forecast is created or updated.</p>
+<ul>
+<li>The Prediction's class must be valid for its target's type (see <a href="../Targets/#Valid prediction types by target type">Valid prediction types by target type</a>.</li>
+<li>Within a Prediction, there cannot be more than 1 Prediction Element of the same class.</li>
+</ul>
+<h2 id="tests-for-prediction-elements-by-prediction-class">Tests for Prediction Elements by Prediction Class</h2>
+<p>These tests are performed when a forecast is created or updated.</p>
+<h3 id="bin-prediction-elements"><code>Bin</code> Prediction Elements</h3>
+<ul>
+<li>If a Bin Prediction Element exists, it should have &gt;=1 Database Rows.</li>
+<li><code>|cat| = |prob|</code>. The number of elements in the <code>cat</code> and <code>prob</code> vectors should be identical.</li>
+<li><code>cat</code> (i, f, t, d, b): Entries in the database rows in the <code>cat</code> column cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter). Entries in <code>cat</code> must be a subset of <code>Target.cats</code> from the target definition.</li>
+<li><code>prob</code> (f): [0, 1]. Entries in the database rows in the <code>prob</code> column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable).</li>
+<li>The data format of <code>cat</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
+<li>NB: Rows for Bin predictions where <code>prob</code> == 0 are not stored in the database.</li>
+</ul>
+<h3 id="named-prediction-elements"><code>Named</code> Prediction Elements</h3>
+<p>We note that <code>Named</code> predictions currently only support fairly simple distributions. We currently
+support distributions with up to three parameters. Future versions of Zoltar could support
+distributions with larger numbers of parameters.</p>
+<ul>
+<li>If a Named Prediction Element exists, it should have exactly 1 Database Row.</li>
+<li><code>family</code>: must be one of the abbreviations shown in the table below.</li>
+<li><code>param1</code>, <code>param2</code>, <code>param3</code> (f): The number of param columns with non-NULL entries count must match family definition (see note below).</li>
+<li>Parameters for each distribution must be within valid ranges, which, if constraints exist, are specified in the table below.</li>
+</ul>
+<p>For reference, here is the mapping between the generic parameter names and the family-specific use of them (based on <a href="https://github.com/cdcepi/predx/blob/master/predx_classes.md">predx_classes.md</a>:</p>
+<table>
+<thead>
+<tr>
+<th>Family</th>
+<th>abbreviation</th>
+<th>param1</th>
+<th>param2</th>
+<th>param3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal</td>
+<td><code>norm</code></td>
+<td>mean</td>
+<td>sd&gt;=0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>LogNormal</td>
+<td><code>lnorm</code></td>
+<td>mean</td>
+<td>sd&gt;=0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Gamma</td>
+<td><code>gamma</code></td>
+<td>shape&gt;0</td>
+<td>rate&gt;0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td><code>beta</code></td>
+<td>a&gt;0</td>
+<td>b&gt;0</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Poisson</td>
+<td><code>pois</code></td>
+<td>rate&gt;0</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Neg.Binom1</td>
+<td><code>nbinom</code></td>
+<td>r&gt;0</td>
+<td>0&lt;=p&lt;=1</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Neg.Binom2</td>
+<td><code>nbinom2</code></td>
+<td>mean&gt;0</td>
+<td>disp&gt;0</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<!-- These distributions are not supported for now.
+Bernoulli   | 0<=p<=1   |    -      |    -      
+Binomial    | 0<=p<=1   |   n>0     |    - 
+-->
+
+<h3 id="point-prediction-elements"><code>Point</code> Prediction Elements</h3>
+<ul>
+<li>If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets.</li>
+<li><code>value</code> (i, f, t, d, b): Entries in the database rows in the <code>value</code> column cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter).</li>
+<li>The data format of <code>value</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
+</ul>
+<h3 id="sample-prediction-elements"><code>Sample</code> Prediction Elements</h3>
+<ul>
+<li>If a Sample Prediction Element exists, it should have &gt;=1 Database Rows.</li>
+<li><code>sample</code> (i, f, t, d, b): Entries in the database rows in the <code>sample</code> column cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter).</li>
+<li>The data format of <code>sample</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
+</ul>
+<h3 id="quantile-prediction-elements"><code>Quantile</code> Prediction Elements</h3>
+<ul>
+<li>If a Quantile Prediction Element exists, it should have &gt;=1 Database Rows.</li>
+<li><code>|quantile| = |value|</code>. The number of elements in the <code>quantile</code> and <code>value</code> vectors should be identical.</li>
+<li><code>quantile</code> (f): [0, 1]. Entries in the database rows in the <code>quantile</code> column must be numbers in [0, 1]. <code>quantile</code>s must be unique.</li>
+<li><code>value</code> (i, f, d): Entries in <code>value</code> must be non-decreasing as quantiles increase. Entries in <code>value</code> must obey existing ranges for targets.</li>
+<li>The data format of <code>value</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
+</ul>
+<h2 id="tests-for-predictions-by-target-type">Tests for Predictions by Target Type</h2>
+<p>These tests are performed when a forecast is created or updated.</p>
+<h3 id="continuous">"continuous"</h3>
+<ul>
+<li>Within one prediction, there can be at most one of the following prediction elements, but not both: {<code>Named</code>, <code>Bin</code>}.</li>
+</ul>
+<h3 id="discrete">"discrete"</h3>
+<ul>
+<li>Within one prediction, there can be at most one of the following prediction elements, but not both: {<code>Named</code>, <code>Bin</code>}.</li>
+</ul>
+<h2 id="tests-for-prediction-elements-by-target-type">Tests for Prediction Elements by Target Type</h2>
+<p>These tests are performed when a forecast is created or updated. For all target types, only <a href="../Targets/#valid-prediction-types-by-target">valid Prediction Types</a> are accepted.</p>
+<h3 id="continuous_1">"continuous"</h3>
+<ul>
+<li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be numeric</li>
+<li>if <code>range</code> is specified, any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be contained within <code>range</code></li>
+<li>if <code>range</code> is specified, any <code>Named</code> Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range.</li>
+<li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cat</code> values must be a subset of the <code>cats</code> defined by the target</li>
+<li>for <code>Named</code> Prediction Elements, the distribution must be one of <code>norm</code>, <code>lnorm</code>, <code>gamma</code>, <code>beta</code></li>
+</ul>
+<h3 id="discrete_1">"discrete"</h3>
+<ul>
+<li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be integers</li>
+<li>if <code>range</code> is specified, any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be contained within <code>range</code></li>
+<li>if <code>range</code> is specified, any <code>Named</code> Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range</li>
+<li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cat</code> values must be a subset of the <code>cats</code> defined by the target</li>
+<li>for <code>Named</code> Prediction Elements, the distribution must be one of <code>pois</code>, <code>nbinom</code>, <code>nbinom2</code>.</li>
+</ul>
+<h3 id="nominal">"nominal"</h3>
+<ul>
+<li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be contained within the valid set of <code>cats</code> defined by the target</li>
+<li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cat</code> values must be a subset of the <code>cats</code> defined by the target</li>
+</ul>
+<h3 id="binary">"binary"</h3>
+<ul>
+<li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be either <code>true</code> or <code>false</code>.</li>
+<li>for <code>Bin</code> Prediction Elements, there must be exactly two <code>cat</code> values labeled <code>true</code> and <code>false</code>. These are the two <code>cats</code> that are implied (but not allowed to be specified) by binary target types.</li>
+</ul>
+<h3 id="date">"date"</h3>
+<ul>
+<li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be string that can be interpreted as a date in <code>YYYY-MM-DD</code> format, and these values should be contained within the set of valid responses defined by <code>cats</code> defined by the target.</li>
+<li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cats</code> must be a subset of the valid outcomes defined by the target range.</li>
+</ul>
+<h2 id="tests-for-target-definitions-by-target-type">Tests for target definitions by Target Type</h2>
+<p>These tests are performed when a target is created or updated.</p>
+<h3 id="continuous_2">"continuous"</h3>
+<ul>
+<li>if both <code>range</code> and <code>cats</code> are specified, then the <code>min(cats)</code> must equal the lower bound and <code>max(cats)</code> must be less than the upper bound.</li>
+<li>if <code>range</code> is specified it must contain two numeric values</li>
+<li><code>range</code> lower bound must be smaller than the upper bound. </li>
+<li>if <code>range</code> is specified, is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b).</li>
+</ul>
+<h3 id="discrete_2">"discrete"</h3>
+<ul>
+<li>if <code>range</code> is specified, it must include two integers.</li>
+</ul>
+<h3 id="nominal_1">"nominal"</h3>
+<ul>
+<li><code>cats</code> must be a character vector containing a set of unique labels of the categories for this target. The labels must not include <code>""</code>, <code>NA</code> or <code>NULL</code> (case does not matter).</li>
+</ul>
+<h3 id="binary_1">"binary"</h3>
+<ul>
+<li>none.</li>
+</ul>
+<h3 id="date_1">"date"</h3>
+<ul>
+<li>the <code>unit</code> parameter is required to be one of <code>month</code>, <code>week</code>, <code>biweek</code>, or <code>day</code></li>
+<li>the <code>date</code> parameter must contain a list of text elements in <code>YYYY-MM-DD</code> format that can be interpreted as dates.</li>
+</ul>
+<h2 id="tests-for-ground-truth-data-tables">Tests for ground truth data tables</h2>
+<p>Please see <a href="../zoltar-ground-truth-example.csv">this file</a> for an example of a valid specification of ground-truth values.</p>
+<h3 id="for-all-ground-truth-files">For all ground truth files</h3>
+<ul>
+<li>The columns are <code>timezero</code>, <code>location</code>, <code>target</code>, and <code>value</code>.</li>
+<li>For every unique <code>target</code>-<code>location</code>-<code>timezero</code> combination, there should be either one or zero rows of truth data.</li>
+<li>Every value of <code>timezero</code>, <code>target</code> and <code>location</code> must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)</li>
+<li>The <code>value</code> of the truth data cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter).</li>
+<li>The <code>value</code> of the truth data should be interpretable as the corresponding <code>data_type</code> of the specified target. E.g., for a row corresponding to a <code>date</code> target, the entry must contain a valid ISO-formatted date string.</li>
+</ul>
+<h3 id="range-check-for-ground-truth-data">Range-check for ground truth data</h3>
+<p>The following test can be applied to any target with a <code>range</code>. This will always apply to <code>binary</code>, <code>nominal</code>, and <code>date</code> targets, as these targets are required to have sets of valid values specified as part of the target definition. If the <code>range</code> parameter is specified for a <code>continuous</code> or <code>discrete</code> target, then the following test will be applied to that target as well.</p>
+<p>For <code>binary</code> targets:
+ - The entry in the <code>value</code> column for a specific <code>target</code>-<code>location</code>-<code>timezero</code> combination must be either <code>true</code> or <code>false</code>.</p>
+<p>For <code>discrete</code> and <code>continuous</code> targets (if <code>range</code> is specified):
+ - The entry in the <code>value</code> column for a specific <code>target</code>-<code>location</code>-<code>timezero</code> combination must be contained within the <code>range</code> of valid values for the target. If <code>cats</code> is specified but <code>range</code> is not, then there is an implicit range for the ground truth value, and that is between min(<code>cats</code>) and \infty.</p>
+<p>For <code>nominal</code> and <code>date</code> target_types:
+ - The entry in the <code>value</code> column for a specific <code>target</code>-<code>location</code>-<code>timezero</code> combination must be contained within the set of valid <code>cats</code> for the target, as defined by the project config file.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../Scoring/" title="Scoring" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Scoring
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../FileFormats/" title="File Formats" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                File Formats
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.ac79c3b0.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

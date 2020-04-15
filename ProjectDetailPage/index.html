@@ -377,44 +377,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../DataModel/" title="Data model" class="md-nav__link">
       Data model
     </a>
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Researcher Guide
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Researcher Guide
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../ResearcherIntro/" title="Introduction" class="md-nav__link">
-      Introduction
+    <a href="../Scoring/" title="Scoring" class="md-nav__link">
+      Scoring
     </a>
   </li>
 
@@ -425,35 +413,11 @@
 
 
   <li class="md-nav__item">
-    <a href="../DataAnalysis/" title="Data analysis" class="md-nav__link">
-      Data analysis
+    <a href="../Visualizations.md" title="Visualizations" class="md-nav__link">
+      Visualizations
     </a>
   </li>
 
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Developer Guide
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Developer Guide
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
         
           
           
@@ -461,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../DeveloperIntro/" title="Introduction" class="md-nav__link">
-      Introduction
+    <a href="../Validation/" title="Validation" class="md-nav__link">
+      Validation
     </a>
   </li>
 
@@ -503,13 +467,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-4">
       zoltr Package
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-4">
         zoltr Package
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -563,13 +527,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-5">
       zoltpy Library
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-5">
         zoltpy Library
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -725,19 +689,13 @@ are described next: </p>
 <h2 id="targets">Targets</h2>
 <p>This section lists information about project forecast targets. Like locations, these were either created explicitly by
 the project owner, or automatically when the template was loaded. The information includes the following fields.</p>
-<p>(A note regarding auto-created targets. Auto-created targets require further, careful editing to be complete. In
-particular, users must fill in the <code>description</code> and <code>unit</code> fields, identify the date-related ones by checking <code>Is
-date</code>, and check <code>Is step ahead</code> and fill in the <code>Step ahead increment</code> integer value. <em>Importantly</em>: You will get
-unwanted results if <code>Is date</code> or <code>Is step ahead</code> is incorrect.)</p>
 <ul>
 <li><em>Name</em>: Self-explanatory.</li>
-<li><em>Description</em>: "". For auto-created targets, this field must be filled in.</li>
-<li><em>Unit</em>: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. For auto-created
-  targets, ensure that you've entered a unit. Otherwise it will be blank in previews and downloads.</li>
+<li><em>Description</em>: "".</li>
+<li><em>Unit</em>: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it.</li>
 <li><em>Point Value Type</em>: todo</li>
 <li><em>Date?</em>: This identifies whether the target is date-related or not. Examples of date-related targets might include
-  "Season onset" or "Season peak week". For auto-created targets, the consequences of not checking off this field include
-  forecasts being rejected as invalid if they have no point value.</li>
+  "Season onset" or "Season peak week".</li>
 <li><em>Step Ahead?</em>: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the
   "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis
   tools.)</li>

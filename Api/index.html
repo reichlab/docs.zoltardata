@@ -264,10 +264,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       User Guide
@@ -309,44 +311,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../DataModel/" title="Data model" class="md-nav__link">
       Data model
     </a>
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Researcher Guide
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Researcher Guide
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../ResearcherIntro/" title="Introduction" class="md-nav__link">
-      Introduction
+    <a href="../Scoring/" title="Scoring" class="md-nav__link">
+      Scoring
     </a>
   </li>
 
@@ -357,37 +347,11 @@
 
 
   <li class="md-nav__item">
-    <a href="../DataAnalysis/" title="Data analysis" class="md-nav__link">
-      Data analysis
+    <a href="../Visualizations.md" title="Visualizations" class="md-nav__link">
+      Visualizations
     </a>
   </li>
 
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
-    
-    <label class="md-nav__link" for="nav-5">
-      Developer Guide
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Developer Guide
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
         
           
           
@@ -395,8 +359,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../DeveloperIntro/" title="Introduction" class="md-nav__link">
-      Introduction
+    <a href="../Validation/" title="Validation" class="md-nav__link">
+      Validation
     </a>
   </li>
 
@@ -427,9 +391,38 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        RESTful API
+      </label>
+    
     <a href="./" title="RESTful API" class="md-nav__link md-nav__link--active">
       RESTful API
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    Endpoints
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -446,13 +439,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-4">
       zoltr Package
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-4">
         zoltr Package
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -506,13 +499,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-5">
       zoltpy Library
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-5">
         zoltpy Library
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -552,6 +545,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#endpoints" class="md-nav__link">
+    Endpoints
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -564,24 +573,50 @@
                 
                 
                 <h1 id="api">API</h1>
-<p>Zoltar's functionality is accessible via the following <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> 
-endpoints. All results are JSON. The API is browsable from the <a href="https://www.zoltardata.com/api/">root URI</a> on the home
-page (look for <code>API</code> buttons on any page), and is a great starting point for developers. Note that all projects and 
-users are listed on the home page, but private projects, their models, and their forecasts, can only be accessed by 
-authorized accounts.</p>
-<p>Endpoints:</p>
-<pre><code>api/ # browsable API root
-api/projects/ # list of all projects
-api/project/[project_id]/ # project detail
-api/project/[project_id]/template/ # template detail
-api/project/[project_id]/template_data/ # template, formatted as JSON - see above
-api/project/[project_id]/truth/ # truth detail
-api/project/[project_id]/truth_data/ # truth data
-api/user/[user_id]/ # user detail
-api/model/[model_id]/ # model detail
-api/forecast/[forecast_id]/ # forecast detail
-api/forecast/[forecast_id]/data/ # forecast data as JSON - see above
-</code></pre>
+<p>Zoltar's functionality is accessible via the following <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> endpoints. All results are JSON. The API is browsable from the <a href="https://www.zoltardata.com/api/">root URI</a> on the home page (look for <code>API</code> buttons on any page), and is a great starting point for developers. Note that all projects and users are listed on the home page, but private projects, their models, and their forecasts, can only be accessed by authorized accounts.</p>
+<h2 id="endpoints">Endpoints</h2>
+<p>The following endpoints are available. All are under the <code>&lt;host&gt;</code>, typically <code>https://www.zoltardata.com</code>.</p>
+<ul>
+<li><code>api</code>: the API root (currently just an object with one key, <code>projects</code>, that's an array of all projects)</li>
+<li>
+<p><code>api/projects/</code>: an array of all projects</p>
+</li>
+<li>
+<p><code>api/project/&lt;project_id&gt;/units/</code>: an array of the project's units</p>
+</li>
+<li><code>api/project/&lt;project_id&gt;/targets/</code>: "" targets</li>
+<li><code>api/project/&lt;project_id&gt;/timezeros/</code>: "" timezeros</li>
+<li>
+<p><code>api/project/&lt;project_id&gt;/models/</code>: "" forecast models</p>
+</li>
+<li>
+<p><code>api/project/&lt;project_id&gt;/</code>: project detail. an object with these keys: <code>id</code>, <code>url</code>, <code>owner</code>, <code>is_public</code>, <code>name</code>, <code>description</code>, <code>home_url</code>, <code>logo_url</code>, <code>core_data</code>, <code>time_interval_type</code>, <code>visualization_y_label</code>, <code>truth</code>, <code>model_owners</code>, <code>score_data</code>, <code>models</code>, <code>units</code>, <code>targets</code>, <code>timezeros</code></p>
+</li>
+<li>
+<p><code>api/project/&lt;project_id&gt;/truth/</code>: project truth detail. an object with these keys: <code>id</code>, <code>url</code>, <code>project</code>, <code>truth_csv_filename</code>, <code>truth_data</code></p>
+</li>
+<li><code>api/project/&lt;project_id&gt;/truth_data/</code>: truth data as CSV. has these columns: <code>timezero</code>, <code>unit</code>, <code>target</code>, <code>value</code></li>
+<li>
+<p><code>api/project/&lt;project_id&gt;/score_data/</code>: score data "". columns: <code>timezero</code>, <code>unit</code>, <code>target</code>, <code>value</code></p>
+</li>
+<li>
+<p><code>api/unit/&lt;unit_id&gt;/</code>: unit detail. an object with these keys: <code>id</code>, <code>url</code>, <code>name</code></p>
+</li>
+<li><code>api/target/&lt;target_id&gt;/</code>: target detail. an object with these keys: <code>id</code>, <code>url</code>, <code>name</code>, <code>type</code>, <code>description</code>, <code>is_step_ahead</code></li>
+<li>
+<p><code>api/timezero/&lt;timezero_id&gt;/</code>: timezero detail. an object with these keys: <code>id</code>, <code>url</code>, <code>timezero_date</code>, <code>data_version_date</code>, <code>is_season_start</code></p>
+</li>
+<li>
+<p><code>api/model/&lt;model_id&gt;/</code>: forecast model detail. an object with these keys: <code>id</code>, <code>url</code>, <code>project</code>, <code>owner</code>, <code>name</code>, <code>abbreviation</code>, <code>description</code>, <code>home_url</code>, <code>aux_data_url</code>, <code>forecasts</code></p>
+</li>
+<li>
+<p><code>api/model/&lt;model_id&gt;/forecasts/</code>: a list of a model's forecast URLs (see forecast detail below)</p>
+</li>
+<li>
+<p><code>api/forecast/&lt;forecast_id&gt;/</code>: forecast detail. an object with these keys: <code>id</code>, <code>url</code>, <code>forecast_model</code>, <code>source</code>, <code>time_zero</code>, <code>created_at</code>, <code>forecast_data</code></p>
+</li>
+<li><code>api/forecast/&lt;forecast_id&gt;/data/</code>: forecast data as JSON (see <a href="../FileFormats/">file formats</a> for details)</li>
+</ul>
                 
                   
                 

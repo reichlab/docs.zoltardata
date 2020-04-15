@@ -264,10 +264,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       User Guide
@@ -309,44 +311,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../DataModel/" title="Data model" class="md-nav__link">
       Data model
     </a>
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Researcher Guide
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Researcher Guide
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../ResearcherIntro/" title="Introduction" class="md-nav__link">
-      Introduction
+    <a href="../Scoring/" title="Scoring" class="md-nav__link">
+      Scoring
     </a>
   </li>
 
@@ -357,37 +347,11 @@
 
 
   <li class="md-nav__item">
-    <a href="../DataAnalysis/" title="Data analysis" class="md-nav__link">
-      Data analysis
+    <a href="../Visualizations.md" title="Visualizations" class="md-nav__link">
+      Visualizations
     </a>
   </li>
 
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
-    
-    <label class="md-nav__link" for="nav-5">
-      Developer Guide
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Developer Guide
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
         
           
           
@@ -395,8 +359,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../DeveloperIntro/" title="Introduction" class="md-nav__link">
-      Introduction
+    <a href="../Validation/" title="Validation" class="md-nav__link">
+      Validation
     </a>
   </li>
 
@@ -482,6 +446,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quantile-forecast-format-csv" class="md-nav__link">
+    Quantile forecast format (CSV)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#forecast-data-format-json" class="md-nav__link">
     Forecast data format (JSON)
   </a>
@@ -523,13 +494,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
-    <label class="md-nav__link" for="nav-6">
+    <label class="md-nav__link" for="nav-4">
       zoltr Package
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-6">
+      <label class="md-nav__title" for="nav-4">
         zoltr Package
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -583,13 +554,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
-    <label class="md-nav__link" for="nav-7">
+    <label class="md-nav__link" for="nav-5">
       zoltpy Library
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
+      <label class="md-nav__title" for="nav-5">
         zoltpy Library
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -681,6 +652,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#quantile-forecast-format-csv" class="md-nav__link">
+    Quantile forecast format (CSV)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#forecast-data-format-json" class="md-nav__link">
     Forecast data format (JSON)
   </a>
@@ -707,12 +685,7 @@
                 <h1 id="file-formats">File Formats</h1>
 <p>Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.</p>
 <h2 id="project-creation-configuration-json">Project creation configuration (JSON)</h2>
-<p>As an alternative to manually creating a project via the web interface, projects can be created from a JSON
-configuration file. You can find an example at
-<a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json">cdc-project.json</a>.
-The file contains eight metadata keys (<code>name</code>, <code>is_public</code>, <code>description</code>, <code>home_url</code>, <code>logo_url</code>, <code>core_data</code>,
-<code>time_interval_type</code>, <code>visualization_y_label</code>), plus three keys that are lists of objects (<code>locations</code>, <code>targets</code>, and
-<code>timezeros</code>). The metadata values' meanings are self-evident except for these two:</p>
+<p>As an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. You can find an example at <a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json">cdc-project.json</a>. The file contains eight metadata keys (<code>name</code>, <code>is_public</code>, <code>description</code>, <code>home_url</code>, <code>logo_url</code>, <code>core_data</code>, <code>time_interval_type</code>, <code>visualization_y_label</code>), plus three keys that are lists of objects (<code>locations</code>, <code>targets</code>, and <code>timezeros</code>). The metadata values' meanings are self-evident except for these two:</p>
 <ul>
 <li><code>time_interval_type</code>: Either <code>Week</code>, <code>Biweek</code>, or <code>Month</code>.</li>
 <li><code>visualization_y_label</code>: Used by the D3 component to label the Y axis.</li>
@@ -723,22 +696,17 @@ The file contains eight metadata keys (<code>name</code>, <code>is_public</code>
 <li><code>name</code>: The name of the location.</li>
 </ul>
 <h3 id="targets"><code>targets</code></h3>
+<p>Please see the <a href="../Targets/">Targets.md</a> file for a detailed description of target parameters and which are required. Here are all possible parameters that can be passed in a project configuration file:</p>
 <ul>
-<li><code>name</code>: Target name.</li>
-<li><code>description</code>: `` description.</li>
-<li><code>unit</code>: `` unit.</li>
-<li><code>is_date</code>: <code>true</code> if this is a date-based target (e.g., "Season onset"), and <code>false</code> otherwise.</li>
-<li><code>is_step_ahead</code>: <code>true</code> if this is a step ahead target (e.g., "1 wk ahead"), and <code>false</code> otherwise.</li>
-<li><code>step_ahead_increment</code>: Applicable when <code>is_step_ahead</code> is <code>true</code>, is an integer specifying how many time steps ahead
-  the Target is. Can be negative, zero, or positive.</li>
-<li><code>point_value_type</code>: Used when importing forecasts into the database, indicates the data type of point values, and is
-  either <code>INTEGER</code>, <code>FLOAT</code>, or <code>TEXT</code>.</li>
-<li><code>prediction_types</code>: A list of strings that indicate type type of Predictions that apply to this target. The choices
-  are: <code>BinCat</code>, <code>BinLwr</code>, <code>Binary</code>, <code>Named</code>, <code>Point</code>, <code>Sample</code>, and <code>SampleCat</code>.</li>
-</ul>
-<p>Note: If <code>prediction_types</code> includes <code>BinLwr</code>, then an additional field is required:</p>
-<ul>
-<li><code>lwr</code>: A list of lower bin values (numbers) that are used to xx.</li>
+<li><code>name</code>: string</li>
+<li><code>description</code>: string</li>
+<li><code>type</code>: string - must be one of the following: "continuous", "discrete", "nominal", "binary", or "date"</li>
+<li><code>is_step_ahead</code>: boolean</li>
+<li><code>step_ahead_increment</code>: integer - negative, zero, or positive</li>
+<li><code>unit</code>: string</li>
+<li><code>range</code>: an array (list) of two numbers</li>
+<li><code>cats</code>: an array (list) of one or more numbers or strings (which depends on the target's type's data type)</li>
+<li><code>dates</code>: an array (list) of one or more strings in the <code>YYYY-MM-DD</code> format specified in the above file</li>
 </ul>
 <h3 id="timezeros"><code>timezeros</code></h3>
 <ul>
@@ -748,70 +716,60 @@ The file contains eight metadata keys (<code>name</code>, <code>is_public</code>
 <li><code>season_name</code>: Applicable when <code>is_season_start</code> is <code>true</code>, names the season, e.g., "2010-2011".</li>
 </ul>
 <h2 id="score-download-format-csv">Score download format (CSV)</h2>
-<p>There is one column per ScoreValue BUT: all Scores are on one line. Thus, the row <code>key</code> is the (fixed) first five 
-columns:</p>
-<pre><code>    `ForecastModel.abbreviation | ForecastModel.name , TimeZero.timezero_date, season, Location.name, Target.name`
-
-Followed on the same line by a variable number of ScoreValue.value columns, one for each Score. Score names are in
-the header. An example header and first few rows:
-
-    model,           timezero,  season,    location,  target,          constant score,  Absolute Error
-    gam_lag1_tops3,  20170423,  2017-2018  TH01,      1_biweek_ahead,  1                &lt;blank&gt;
-    gam_lag1_tops3,  20170423,  2017-2018  TH01,      1_biweek_ahead,  &lt;blank&gt;          2
-    gam_lag1_tops3,  20170423,  2017-2018  TH01,      2_biweek_ahead,  &lt;blank&gt;          1
-    gam_lag1_tops3,  20170423,  2017-2018  TH01,      3_biweek_ahead,  &lt;blank&gt;          9
-    gam_lag1_tops3,  20170423,  2017-2018  TH01,      4_biweek_ahead,  &lt;blank&gt;          6
-    gam_lag1_tops3,  20170423,  2017-2018  TH01,      5_biweek_ahead,  &lt;blank&gt;          8
-    gam_lag1_tops3,  20170423,  2017-2018  TH02,      1_biweek_ahead,  &lt;blank&gt;          6
-    gam_lag1_tops3,  20170423,  2017-2018  TH02,      2_biweek_ahead,  &lt;blank&gt;          6
-    gam_lag1_tops3,  20170423,  2017-2018  TH02,      3_biweek_ahead,  &lt;blank&gt;          37
-    gam_lag1_tops3,  20170423,  2017-2018  TH02,      4_biweek_ahead,  &lt;blank&gt;          25
-    gam_lag1_tops3,  20170423,  2017-2018  TH02,      5_biweek_ahead,  &lt;blank&gt;          62
-
-Notes:
-- `season` is each TimeZero`s containing season_name, similar to Project.timezeros_in_season().
--  for the model column we use the model`s abbreviation if it`s not empty, otherwise we use its name
-- NB: we were using get_valid_filename() to ensure values are CSV-compliant, i.e., no commas, returns, tabs, etc.
-  (a function that was as good as any), but we removed it to help performance in the loop
-- we use groupby to group row `keys` so that all score values are together
+<p>Zoltar calculates scores for all projects in the archive. Users can access them as CSV through the web UI or the programmer API. The file has five columns that are always present independent of the scores available, plus one row for each specific score. Score names are in the header. Here is an example header and the first few rows:</p>
+<pre><code>model,timezero,season,location,target,error,abs_error,log_single_bin,log_multi_bin,pit
+BMA,20171023,2017-2018,HHS Region 1,Season peak percentage,1.9,1.9,-5.34357208776754,-2.76546821334079,0.9777734401
+BMA,20171023,2017-2018,HHS Region 1,1 wk ahead,-0.2,0.2,-1.73188807219066,-0.0198524421369183,0.3452268498
+BMA,20171023,2017-2018,HHS Region 1,2 wk ahead,-0.0999999999999999,0.0999999999999999,-1.82712761306585,-0.0323377750120003,0.4673084875
+BMA,20171023,2017-2018,HHS Region 1,3 wk ahead,-0.1,0.1,-2.20819351679503,-0.14128307370904,0.393643899
+BMA,20171023,2017-2018,HHS Region 1,4 wk ahead,0.0,0.0,-2.21949472646195,-0.146689467362866,0.532728928
+BMA,20171023,2017-2018,HHS Region 2,Season peak percentage,6.2,6.2,-9.65891133061945,-7.26101605782108,0.998308013
+BMA,20171023,2017-2018,HHS Region 2,1 wk ahead,0.0,0.0,-6.21796372223555,-0.55145601008177,0.9919600412
+BMA,20171023,2017-2018,HHS Region 2,2 wk ahead,0.0,0.0,-2.45422343139561,-0.270984128983646,0.504271003
+BMA,20171023,2017-2018,HHS Region 2,3 wk ahead,0.4,0.4,-3.10357809725514,-0.598672167592193,0.8944900092
+BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.156176129883708,0.9925874469
 </code></pre>
 <h2 id="truth-data-format-csv">Truth data format (CSV)</h2>
+<p>Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV through the web UI or the programmer API. The data has four columns: <code>timezero</code>, <code>location</code>, <code>target</code>, <code>value</code>:</p>
 <ul>
-<li>CSV format</li>
-<li>A header must be included</li>
-<li>One csv file/project, which includes timezeros across all seasons</li>
-<li>columns: <code>timezero</code>, <code>location</code>, <code>target</code>, <code>value</code></li>
-<li>timezeros are formatted <code>yyyymmdd</code></li>
-<li>For date-based onset or peak targets, values must be dates in the same format as timezeros, rather than
-  project-specific time intervals such as an epidemic week.</li>
-<li>Validation:<ul>
-<li>Every timezero in the csv file must have a matching one in the project. Note that the inverse is not necessarily
-  true, such as in the case above of missing timezeros.</li>
-<li>Every location in the csv file must a matching one in the Project.</li>
-<li>Ditto for every target.</li>
+<li><code>timezero</code>: date the truth applies to, formatted as <code>yyyy-mm-dd</code></li>
+<li><code>location</code>: the location's name</li>
+<li><code>target</code>: target name</li>
+<li><code>value</code>: truth value, formatted according to the target's type. date values are formatted <code>yyyy-mm-dd</code>. <!-- todo boolean value format? --></li>
 </ul>
-</li>
+<p>Here's an example:</p>
+<pre><code>timezero,unit,target,value
+2017-04-23,TH01,1_biweek_ahead,2
+2017-04-23,TH01,2_biweek_ahead,0
+2017-04-23,TH01,3_biweek_ahead,11
+2017-04-23,TH01,4_biweek_ahead,8
+2017-04-23,TH01,5_biweek_ahead,11
+</code></pre>
+<h2 id="quantile-forecast-format-csv">Quantile forecast format (CSV)</h2>
+<p>Zoltar libraries support importing quantile data via a zoltar-specific CSV format. The data has five columns: <code>location</code>, <code>target</code>, <code>type</code>, <code>quantile</code>, <code>value</code>:</p>
+<ul>
+<li><code>location</code>: the location's name</li>
+<li><code>target</code>: target name</li>
+<li><code>type</code>: row type, either <code>point</code> or <code>quantile</code></li>
+<li><code>quantile</code>: quantile</li>
+<li><code>value</code>: quantile value, formatted according to the target's type. date values are formatted <code>yyyy-mm-dd</code>.</li>
 </ul>
+<p>Please see <a href="docs/Validation.md">Validation.md</a> for details about quantile and value data.</p>
+<p>Here's an example from <a href="quantile-predictions.csv">quantile-predictions.csv</a>:</p>
+<pre><code>location,target,type,quantile,value
+New York,1 wk ahead,point,NA,10
+New York,1 wk ahead,quantile,0.1,3
+New York,1 wk ahead,quantile,0.5,10
+New York,1 wk ahead,quantile,0.9,67
+</code></pre>
 <h2 id="forecast-data-format-json">Forecast data format (JSON)</h2>
-<p>For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a<code>JSON IO dict</code>
-in code documentation. See predictions-example.json for an example. Functions that accept a <code>json_io_dict</code> include:</p>
-<ul>
-<li><code>load_predictions_from_json_io_dict()</code>.</li>
-</ul>
-<p>Functions that return a <code>json_io_dict</code> include:</p>
-<ul>
-<li><code>json_io_dict_from_forecast()</code> and</li>
-<li><code>json_io_dict_from_cdc_csv_file()</code>.</li>
-</ul>
+<p>For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a<code>JSON IO dict</code> in code documentation. See <a href="zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example.</p>
 <p>This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md .</p>
 <p>Briefly, the dict has four top level keys:</p>
 <ul>
-<li><code>forecast</code>: a metadata dict about the file's forecast. has these keys: <code>id</code>, <code>forecast_model_id</code>, <code>source</code>,
-  <code>created_at</code>, and <code>time_zero</code>. Some or all of these keys might be ignored by functions that accept a JSON IO dict.</li>
-<li><code>locations</code>: a list of <code>location dicts</code>, each of which has just a <code>name</code> key whose value is the name of a location in
-  the below <code>predictions</code> section.</li>
-<li><code>targets</code>: a list of <code>target dicts</code>, each of which has the following fields. The fields are: <code>name</code>, <code>description</code>,
-  <code>unit</code>, <code>is_date</code>, <code>is_step_ahead</code>, and <code>step_ahead_increment</code>.</li>
+<li><code>forecast</code>: a metadata dict about the file's forecast. has these keys: <code>id</code>, <code>forecast_model_id</code>, <code>source</code>, <code>created_at</code>, and <code>time_zero</code>. Some or all of these keys might be ignored by functions that accept a JSON IO dict.</li>
+<li><code>locations</code>: a list of <code>location dicts</code>, each of which has just a <code>name</code> key whose value is the name of a location in the below <code>predictions</code> section.</li>
+<li><code>targets</code>: a list of <code>target dicts</code>, each of which has the following fields. The fields are: <code>name</code>, <code>description</code>, <code>unit</code>, <code>is_date</code>, <code>is_step_ahead</code>, and <code>step_ahead_increment</code>.</li>
 <li>
 <p><code>predictions</code>: a list of <code>prediction dicts</code> that contains the prediction data. Each dict has these fields:</p>
 </li>
@@ -819,21 +777,12 @@ in code documentation. See predictions-example.json for an example. Functions th
 <p><code>location</code>: name of the Location.</p>
 </li>
 <li><code>target</code>: name of the Target.</li>
-<li><code>class</code>: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names
-    are : <code>BinCat</code>, <code>BinLwr</code>, <code>Binary</code>, <code>Named</code>, <code>Point</code>, <code>Sample</code>, and <code>SampleCat</code>.</li>
-<li><code>prediction</code>: a class-specific dict containing the prediction data itself. the format varies according to class. See
-    https://github.com/cdcepi/predx/blob/master/predx_classes.md for details. Here is a summary:<ul>
-<li><code>BinCat</code>: Binned distribution with a category for each bin. is a two-column table represented by two keys, one per
-  column: <code>cat</code> and <code>prob</code>. They are paired, i.e., have the same number of rows.</li>
-<li><code>BinLwr</code>: Binned distribution defined by inclusive lower bounds for each bin. Similar to <code>BinCat</code>, but has these
-  two keys: <code>lwr</code> and <code>prob</code>.</li>
-<li><code>Binary</code>: Binary distribution with a single <code>prob</code> key.</li>
-<li><code>Named</code>: A named distribution with four fields: <code>family</code> and <code>param1</code> through <code>param3</code>. <code>family</code> names must be
-  one of : <code>norm</code>, <code>lnorm</code>, <code>gamma</code>, <code>beta</code>, <code>bern</code>, <code>binom</code>, <code>pois</code>, <code>nbinom</code>, and <code>nbinom2</code>.</li>
-<li><code>Point</code>: A numeric point prediction with a single <code>value</code> key.</li>
-<li><code>Sample</code>: Numeric samples represented as a table with one column that is found in the <code>sample</code> key.</li>
-<li><code>SampleCat</code>: Character string samples from categories. Similar to <code>BinCat</code>, but has these two keys: <code>cat</code> and 
-  <code>sample</code>.</li>
+<li><code>class</code>: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : <code>bin</code>, <code>named</code>, <code>point</code>, and <code>sample</code>.</li>
+<li><code>prediction</code>: a class-specific dict containing the prediction data itself. The format varies according to class. Here is a summary:<ul>
+<li><code>bin</code>: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: <code>cat</code> and <code>prob</code>. They are paired, i.e., have the same number of rows.</li>
+<li><code>named</code>: A named distribution with four fields: <code>family</code> and <code>param1</code> through <code>param3</code>. <code>family</code> names must be one of : <code>norm</code>, <code>lnorm</code>, <code>gamma</code>, <code>beta</code>, <code>bern</code>, <code>binom</code>, <code>pois</code>, <code>nbinom</code>, and <code>nbinom2</code>.</li>
+<li><code>point</code>: A numeric point prediction with a single <code>value</code> key.</li>
+<li><code>sample</code>: Numeric samples represented as a table with one column that is found in the <code>sample</code> key.</li>
 </ul>
 </li>
 </ul>
@@ -857,7 +806,7 @@ in code documentation. See predictions-example.json for an example. Functions th
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../DeveloperIntro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Validation/" title="Validation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -866,7 +815,7 @@ in code documentation. See predictions-example.json for an example. Functions th
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Introduction
+                Validation
               </span>
             </div>
           </a>
