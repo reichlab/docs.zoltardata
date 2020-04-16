@@ -71,23 +71,17 @@ Here's an example:
 
 
 ## Quantile forecast format (CSV)
-Zoltar libraries support importing quantile data via a zoltar-specific CSV format. The data has five columns: `location`, `target`, `type`, `quantile`, `value`:
+Zoltar libraries support importing quantile data via the CSV format documented at 
+[covid19-death-forecasts](https://github.com/reichlab/covid19-death-forecasts/blob/master/README.md#data-model). Summary:
 
-- `location`: the location's name
-- `target`: target name
-- `type`: row type, either `point` or `quantile`
-- `quantile`: quantile
-- `value`: quantile value, formatted according to the target's type. date values are formatted `yyyy-mm-dd`.
+- `target`: a unique id for the target
+- `location`: a unique id for the location (we have standardized to FIPS codes)
+- `location_name`: (optional) if desired to have a human-readable name for the location, this column may be specified. Note that the `location` column will be considered to be authoritative and for programmatic reading and importing of data, this column will be ignored.
+- `type`: one of either `point` or `quantile`
+- `quantile`: a value between 0 and 1 (inclusive), representing the quantile displayed in this row. if `type=="point"` then `NULL`.
+- `value`: a numeric value representing the value of the cumulative distribution function evaluated at the specified `quantile`
 
-Please see [Validation.md](docs/Validation.md) for details about quantile and value data.
-
-Here's an example from [quantile-predictions.csv](quantile-predictions.csv):
-
-    location,target,type,quantile,value
-    New York,1 wk ahead,point,NA,10
-    New York,1 wk ahead,quantile,0.1,3
-    New York,1 wk ahead,quantile,0.5,10
-    New York,1 wk ahead,quantile,0.9,67
+Please see [Validation.md](Validation.md) for details about quantile and value data. An example is at [quantile-predictions.csv](quantile-predictions.csv).
 
 
 ## Forecast data format (JSON)

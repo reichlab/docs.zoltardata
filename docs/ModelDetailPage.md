@@ -4,7 +4,7 @@ A _model_ is the representation of code that generates forecasts. Clicking on a 
 The detail page is divided into two vertical sections, described next: Details table and forecasts list. Here's an
 example model detail page:
 
-![Model detail page](img/ModelDetailPage.png "Model detail page")
+![Model detail page](img/model-detail-page.png "Model detail page")
 
 
 ## Model details table

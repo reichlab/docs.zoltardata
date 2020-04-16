@@ -13,16 +13,20 @@ nav:
       - 'Concepts': 'Concepts.md'
       - 'Targets': 'Targets.md'
       - 'Data model': 'DataModel.md'
+      - 'Creating projects': 'CreatingProjects.md'
+      - 'Creating models': 'CreatingModels.md'
+      - 'Uploading forecasts': 'UploadingForecasts.md'
       - 'Scoring': 'Scoring.md'
-      - 'Visualizations': 'Visualizations.md'
-      - 'Validation': 'Validation.md'
-      - 'File Formats': 'FileFormats.md'
-      - 'RESTful API': 'Api.md'
+      - 'Visualizations': 'Visualization.md'
+  - zoltpy Library:
+      - 'Overview': 'ZoltpyOverview.md'
   - zoltr Package:
       - 'Overview': 'ZoltrOverview.md'
       - 'Getting Started': 'ZoltrGettingStarted.md'
       - 'ProjectOwners': 'ZoltrProjectOwners.md'
-  - zoltpy Library:
-      - 'Overview': 'ZoltpyOverview.md'
+  - Technical details:
+      - 'Validation': 'Validation.md'
+      - 'File Formats': 'FileFormats.md'
+      - 'RESTful API': 'Api.md'
 
 theme: material
