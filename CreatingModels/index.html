@@ -36,7 +36,7 @@
     
     
       
-        <title>Data model - Zoltar Documentation</title>
+        <title>Creating models - Zoltar Documentation</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#data-model" tabindex="1" class="md-skip">
+      <a href="#creating-models" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Data model
+                Creating models
               
             </span>
           
@@ -321,56 +321,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Data model
-      </label>
-    
-    <a href="./" title="Data model" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../DataModel/" title="Data model" class="md-nav__link">
       Data model
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#containers" class="md-nav__link">
-    "Containers"
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#forecasts-and-predictions" class="md-nav__link">
-    Forecasts and Predictions
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -390,11 +345,20 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../CreatingModels/" title="Creating models" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Creating models" class="md-nav__link md-nav__link--active">
       Creating models
     </a>
+    
   </li>
 
         
@@ -612,29 +576,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#containers" class="md-nav__link">
-    "Containers"
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#forecasts-and-predictions" class="md-nav__link">
-    Forecasts and Predictions
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -646,38 +587,8 @@
               
                 
                 
-                <h1 id="data-model">Data model</h1>
-<p>This page documents the internal <a href="https://docs.djangoproject.com/en/1.11/topics/db/models/">Django model classes</a> that
-make up Zoltar. This page is a reference meant to help users understand how forecast data is modeled, and the actual
-data structures that represent the different types of predictions.</p>
-<h2 id="containers">"Containers"</h2>
-<p>These are the classes that users see when working within Zoltar, and they structure where forecast data resides.</p>
-<ul>
-<li><strong>Project</strong>: Defines the valid locations, targets, and timezeros for the project's forecasts, and contains its
-  forecast models.</li>
-<li><strong>Forecast Model</strong>: Contains forecasts, zero or one for each timezero in the model's project.</li>
-<li><strong>Forecast</strong>: Contains the specific predictions for a particular timezero.</li>
-<li><strong>Timezero</strong>: todo</li>
-</ul>
-<h2 id="forecasts-and-predictions">Forecasts and Predictions</h2>
-<p>Each forecast is for a particular timezero, and contains some number of <em>Predictions</em>. Each prediction is for a location
-and target in the forecast's timezero. In other words, a Forecast now has one or more Predictions of various types. We
-use Prediction class hierarchy with seven concrete subclasses:</p>
-<ul>
-<li><em>Prediction</em> (abstract):<ul>
-<li>(1) <strong>NamedDistribution</strong>: Represents named distributions like normal, log normal, gamma, etc.</li>
-<li>(2) <strong>PointPrediction</strong>: Represents point predictions.</li>
-<li><em>EmpiricalDistribution</em> (abstract):<ul>
-<li>(3)  <strong>BinCatDistribution</strong>: Represents binned distribution with a category for each bin.</li>
-<li>(4)  <strong>BinLwrDistribution</strong>: Represents binned distribution defined by inclusive lower bounds for each bin.</li>
-<li>(5)   <strong>BinaryDistribution</strong>: Represents binary distributions.</li>
-<li>(6)   <strong>SampleDistribution</strong>: Represents numeric samples.</li>
-<li>(7)   <strong>SampleCatDistribution</strong>: Represents character string samples from categories.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
+                <h1 id="creating-models">Creating models</h1>
+<p>todo</p>
                 
                   
                 
@@ -698,7 +609,7 @@ use Prediction class hierarchy with seven concrete subclasses:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Targets/" title="Targets" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../CreatingProjects/" title="Creating projects" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -707,19 +618,19 @@ use Prediction class hierarchy with seven concrete subclasses:</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Targets
+                Creating projects
               </span>
             </div>
           </a>
         
         
-          <a href="../CreatingProjects/" title="Creating projects" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../UploadingForecasts/" title="Uploading forecasts" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Creating projects
+                Uploading forecasts
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

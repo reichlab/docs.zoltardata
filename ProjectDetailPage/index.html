@@ -268,8 +268,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#locations" class="md-nav__link">
-    Locations
+  <a href="#units" class="md-nav__link">
+    Units
   </a>
   
 </li>
@@ -401,6 +401,42 @@
 
 
   <li class="md-nav__item">
+    <a href="../CreatingProjects/" title="Creating projects" class="md-nav__link">
+      Creating projects
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CreatingModels/" title="Creating models" class="md-nav__link">
+      Creating models
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../UploadingForecasts/" title="Uploading forecasts" class="md-nav__link">
+      Uploading forecasts
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../Scoring/" title="Scoring" class="md-nav__link">
       Scoring
     </a>
@@ -413,44 +449,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Visualizations.md" title="Visualizations" class="md-nav__link">
+    <a href="../Visualization/" title="Visualizations" class="md-nav__link">
       Visualizations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Validation/" title="Validation" class="md-nav__link">
-      Validation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
-      File Formats
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Api/" title="RESTful API" class="md-nav__link">
-      RESTful API
     </a>
   </li>
 
@@ -470,10 +470,46 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
-      zoltr Package
+      zoltpy Library
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
+        zoltpy Library
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ZoltpyOverview/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      zoltr Package
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
         zoltr Package
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -527,14 +563,14 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
-    <label class="md-nav__link" for="nav-5">
-      zoltpy Library
+    <label class="md-nav__link" for="nav-6">
+      Technical details
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        zoltpy Library
+      <label class="md-nav__title" for="nav-6">
+        Technical details
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -545,8 +581,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../ZoltpyOverview/" title="Overview" class="md-nav__link">
-      Overview
+    <a href="../Validation/" title="Validation" class="md-nav__link">
+      Validation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
+      File Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Api/" title="RESTful API" class="md-nav__link">
+      RESTful API
     </a>
   </li>
 
@@ -591,8 +651,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#locations" class="md-nav__link">
-    Locations
+  <a href="#units" class="md-nav__link">
+    Units
   </a>
   
 </li>
@@ -629,46 +689,26 @@
                 
                 
                 <h1 id="project-detail-page">Project detail page</h1>
-<p>A <em>project</em> is the main element for representing a forecasting challenge. It has an <em>owner</em> (a registered user in the
-system), and zero or more <em>model owners</em> (also users). A project owner can do anything to the project, including what
-model owners can do, but model owners are limited to creating, editing, and deleting Models, and uploading and deleting
-forecasts. (To become a model owner you must contact the project owner.)</p>
-<p>Each project's detail page is divided into four vertical sections, described next: Details table, forecast models,
-targets, and time zeros. Currently the top looks something like this. (The project shown is a large one, so only the
-details table and Models sections are visible.)</p>
-<p><img alt="Project detail page" src="../img/ProjectDetailPage_top.png" title="Project detail page" /></p>
+<p>A <em>project</em> is the main element for representing a forecasting challenge. It has an <em>owner</em> (a registered user in the system), and zero or more <em>model owners</em> (also users in the system). A project owner can do anything to the project, but model owners are limited to creating, editing, and deleting forecast models, and uploading and deleting forecasts. (To become a model owner you must contact the project owner.)</p>
+<p>Each project's detail page is divided into five vertical sections with <strong>bold</strong> headings, described next: Details table, forecast models, units, targets, and time zeros. Currently the top looks like this:</p>
+<p><img alt="Project detail page" src="../img/project-detail-page.png" title="Project detail page" /></p>
 <h2 id="project-details-table">Project details table</h2>
-<p>At the top of the page is a table showing non-model information related to the project:</p>
+<p>At the top of the page is a table showing this information related to the project:</p>
 <ul>
-<li><em>Summary</em>: The same summary as on the home page: An estimate of the number of models and forecasts in the project.</li>
-<li><em>Owner</em>: The user that has full control of the project, and includes authorization to view, edit, and delete anything
-  (models, forecasts, etc.) The owner is the user that created the project (which is done on the home page).</li>
-<li><em>Model owners</em>: A list of users who can view the project (applicable only if the project is private), and who can
-  create and delete models, and upload and delete forecasts. The project owner controls specifies model owners when she
-  creates or edits the project.</li>
-<li><em>Time Interval Type</em>: Tells the <a href="https://github.com/reichlab/d3-foresight">D3 Foresight</a> component what its x-axis
-  label should be. Choices: Week, Biweek, or Month.</li>
-<li><em>Visibility</em>: A project can be either public or private, which controls project visibility, including accessing data.
-  This applies to list and detail pages, along with API endpoints. Public projects are available to anybody, users and
-  anonymous visitors included. Private projects can only be viewed by project owners and model owners. This means that in
-  order to grant a user access to a private account, the project owner must add her to the project's model owners list,
-  even if that user will not be managing any models.</li>
-<li><em>Description</em>: Prose provided by project owner. It should cover the following topics:<ul>
+<li><em>Summary</em>: The same summary as on the home page: The number of models and forecasts in the project. Note that this may be an estimate.</li>
+<li><em>Owner</em>: The user that has full control of the project, and includes authorization to view, edit, and delete anything (models, forecasts, etc.) The owner is the user that created the project (which is done on the home page).</li>
+<li><em>Model owners</em>: A list of users who can view the project (applicable only if the project is private), and who can create and delete models, and upload and delete forecasts. The project owner specifies model owners when she creates or edits the project.</li>
+<li><em>Time Interval Type</em>: Tells the <a href="https://github.com/reichlab/d3-foresight">D3 Foresight</a> component what its x-axis label should be. Choices: Week, Biweek, or Month.</li>
+<li><em>Visibility</em>: A project can be either <em>public</em> or <em>private</em>, which controls project visibility, including accessing data. Project owners set this when they create the project. Visibility applies to list and detail pages, along with API endpoints. Public projects are viewable by anyone, users and anonymous visitors included. Private projects can only be viewed by project owners and model owners. This means that in order to grant a user access to a private account, the project owner must add her to the project's model owners list, even if that user will not be managing any models.</li>
+<li><em>Description</em>: Prose provided by project owner. It should cover these topics:<ul>
 <li>Information about the "real-time-ness" of data, i.e., revised/unrevised.</li>
 <li>Details about how models interpret time zeros and data version dates.</li>
 <li>Data file naming scheme.</li>
 </ul>
 </li>
-<li><em>Home</em>: A link to the project's home page, which might include details about any competitions, source code, team
-  members, included models, etc.</li>
-<li><em>Core data</em>: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it
-  should include all data sets made available to everyone in the challenge, including supplemental data like Google
-  queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home
-  and core data directories. However, they are not used directly by Zoltar.</li>
-<li><em>Truth data</em>: Similar to the template, this is a data file that the project owner uploads. This data contains observed
-  target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that
-  models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's
-  TimeChart. Each Project is responsible for generating a truth table csv file in a project-specific manner. Details:<ul>
+<li><em>Home</em>: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.</li>
+<li><em>Core data</em>: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.</li>
+<li><em>Truth data</em>: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. Each Project is responsible for generating a truth table csv file in a project-specific manner. Briefly (see <a href="../FileFormats/#truth-data-format-csv">Truth data format (CSV)</a> for details):<ul>
 <li>CSV file</li>
 <li>No file name restrictions</li>
 <li>Columns: <code>Timezero</code>, <code>Location</code>, <code>Target</code>, <code>Value</code> - see FileFormats.md .</li>
@@ -677,47 +717,28 @@ details table and Models sections are visible.)</p>
 <li><em>Analysis</em>: Links to visualization and score pages (see below for details).</li>
 </ul>
 <h2 id="forecast-models">Forecast models</h2>
-<p>The <strong>Models</strong> section lists the project's forecast models by name, with links to model detail pages (see details
-below). If you're a project owner or model owner then a "New" button is shown that takes you to a form for creating a
-model.</p>
-<h2 id="locations">Locations</h2>
-<p>This section lists names of the locations in the project. These were either defined by project owner when creating the
-project, or were created automatically when the project template was loaded and a referenced location was not found.
-Here's a screen shot that shows Locations for a particular project, along with the Targets and TimeZeros sections that
-are described next: </p>
-<p><img alt="locations, targets, timzeros" src="../img/ProjectDetailPage_locations_targets_timzeros.png" title="locations, targets, timzeros" /></p>
+<p>The <strong>Models</strong> section lists the project's forecast models by name, with links to model detail pages (see details below). A <strong>model</strong> captures a team's prediction challenge effort, and includes forecasts for some or all <strong>time zeros</strong> defined for the project. (See <a href="../Concepts/">Concepts</a> for more about time zeros.) If you're a project owner or model owner then a "New" button is shown that takes you to a form for creating a model. Clicking on a model's name takes you to its <a href="../ModelDetailPage/">model detail page</a>.</p>
+<h2 id="units">Units</h2>
+<p>This section lists names of the <strong>units</strong> in the project. (See <a href="../Concepts/">Concepts</a> for more about time zeros.) These were defined by project owner when creating the project. Often units are used to represent locations or regions that targets apply to.</p>
 <h2 id="targets">Targets</h2>
-<p>This section lists information about project forecast targets. Like locations, these were either created explicitly by
-the project owner, or automatically when the template was loaded. The information includes the following fields.</p>
+<p>This section lists information about project forecast targets, which are a central Zoltar concept (see <a href="../Targets/">Targets</a> for more about them). Like units, these were created by the project owner. Some of these parameters are optional - <a href="xx#summary-of-allowed-optional-and-required-parameters-by-target-type">this table</a> shows which apply based on target type.</p>
+<p>the table includes the following columns:</p>
 <ul>
 <li><em>Name</em>: Self-explanatory.</li>
 <li><em>Description</em>: "".</li>
-<li><em>Unit</em>: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it.</li>
-<li><em>Point Value Type</em>: todo</li>
-<li><em>Date?</em>: This identifies whether the target is date-related or not. Examples of date-related targets might include
-  "Season onset" or "Season peak week".</li>
-<li><em>Step Ahead?</em>: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the
-  "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis
-  tools.)</li>
-<li><em>Predictions</em>: todo</li>
-<li><em>BinLwrs</em>: todo</li>
+<li><em>Type</em>: The target's <a href="../Targets/#target-types">type</a>.</li>
+<li><em>Unit</em>: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. (Be aware that it can be confusing having both <strong>unit</strong> objects as above along with a specific target's unit.)</li>
+<li><em>Step Ahead?</em>: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis tools.)</li>
+<li><em>Range</em>: An optional numerical range of acceptable values.</li>
+<li><em>Cats</em>: Optional acceptable categories for binned distributions.</li>
 </ul>
 <h2 id="time-zeros">Time zeros</h2>
-<p>This section details the project's <code>time zeros</code>. About time zeros and <code>data version dates</code>: Because the forecasting
-field does not have standard terminology, we have settled on the following two concepts for this application. Note that
-some time zeros are tagged as starting a season, specifying the season's name, which helps to segment the time zeros.
-Zoltar uses season information in the visualization and score pages, where the user can select which season to show data
-for. This also helps to keep performance up.</p>
+<p>This section details the project's <code>time zeros</code> (see <a href="../Concepts/">Concepts</a> for more about time zeros). It has these columns:</p>
 <ul>
-<li><em>Time zero</em>: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead
-  forecast" is two weeks ahead of the time-zero). Every forecast has a time zero.</li>
-<li><em>Data version date</em>: An optional additional piece of metadata for a forecast. If it exists, it is associated with a
-  time-zero. It refers to the latest date at which any data source used for the forecasts should be considered. If
-  present, it can be used externally by system users to recreate model results by "rolling back" the core data to a
-  particular state.</li>
-<li><em># Forecasts</em>: A count of the number of forecasts for this time-zero.</li>
-<li><em>Starts Season</em>: Shows two pieces of information: 1) Whether the time zero is starts a season (it is blank if it does
-  not start a season), and 2) the season name itself (which indicates the time zero does start a season.)</li>
+<li><em>Time zero</em>: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time zero). Every forecast has a time zero.</li>
+<li><em>Data version date</em>: An optional piece of metadata for a forecast. If it exists, it is associated with a time zero. It refers to the latest date at which any data source used for the forecasts should be considered. If present, it can be used externally by system users to recreate model results by "rolling back" the core data to a particular state.</li>
+<li><em># Forecasts</em>: A count of the number of forecasts for this time zero.</li>
+<li><em>Starts Season</em>: Shows two pieces of information: 1) Whether the time zero is starts a season (it is blank if it does not start a season), and 2) the season name itself (which indicates that the time zero does start a season.)</li>
 </ul>
                 
                   
