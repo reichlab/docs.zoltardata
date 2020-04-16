@@ -2,7 +2,7 @@
 
 A *project* is the main element for representing a forecasting challenge. It has an *owner* (a registered user in the system), and zero or more *model owners* (also users in the system). A project owner can do anything to the project, but model owners are limited to creating, editing, and deleting forecast models, and uploading and deleting forecasts. (To become a model owner you must contact the project owner.)
 
-Each project's detail page is divided into five vertical sections with **bold** headings, described next: Details table, forecast models, units, targets, and time zeros. Currently the top looks like this:
+Each project's detail page is divided into five vertical sections with **bold** headings, described next: **Details table**, **Models**, **Units**, **Targets**, and **Time zeros**. Currently the top looks like this:
 
 ![Project detail page](img/project-detail-page.png "Project detail page")
 
