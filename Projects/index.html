@@ -36,7 +36,7 @@
     
     
       
-        <title>Introduction - Zoltar Documentation</title>
+        <title>Create, edit, or delete a project - Zoltar Documentation</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#user-guide" tabindex="1" class="md-skip">
+      <a href="#manging-projects" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Introduction
+                Create, edit, or delete a project
               
             </span>
           
@@ -285,6 +285,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../UserIntro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -295,22 +307,93 @@
       
     
     
-    <a href="./" title="Introduction" class="md-nav__link md-nav__link--active">
-      Introduction
-    </a>
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Create, edit, or delete a project
+      </label>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Projects/" title="Create, edit, or delete a project" class="md-nav__link">
+    <a href="./" title="Create, edit, or delete a project" class="md-nav__link md-nav__link--active">
       Create, edit, or delete a project
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-project" class="md-nav__link">
+    Create a project
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-create-a-project-via-a-form" class="md-nav__link">
+    To create a project via a form:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-create-a-project-via-a-configuration-file" class="md-nav__link">
+    To create a project via a configuration file:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edit-a-project" class="md-nav__link">
+    Edit a project
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-edit-a-project-via-a-form" class="md-nav__link">
+    To edit a project via a form:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-edit-a-project-via-a-configuration-file" class="md-nav__link">
+    To edit a project via a configuration file:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-a-project" class="md-nav__link">
+    Delete a project
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -552,6 +635,76 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-project" class="md-nav__link">
+    Create a project
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-create-a-project-via-a-form" class="md-nav__link">
+    To create a project via a form:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-create-a-project-via-a-configuration-file" class="md-nav__link">
+    To create a project via a configuration file:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#edit-a-project" class="md-nav__link">
+    Edit a project
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#to-edit-a-project-via-a-form" class="md-nav__link">
+    To edit a project via a form:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-edit-a-project-via-a-configuration-file" class="md-nav__link">
+    To edit a project via a configuration file:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-a-project" class="md-nav__link">
+    Delete a project
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -563,8 +716,63 @@
               
                 
                 
-                <h1 id="user-guide">User guide</h1>
-<p>This section is a how-to for common Zoltar tasks. Use the navigation sidebar to go to the section of interest.</p>
+                <h1 id="manging-projects">Manging Projects</h1>
+<p><em>Projects</em> are the central organizing concept in Zoltar. They define the <em>units</em>, <em>targets</em> and <em>time zeros</em> that forecasts are relative to, and contain the <em>forecast models</em> that teams use to represent a forecasting challenge. Descried here are the common operations done with projects. Note that you must have a Zoltar account to create a project, and only project owners can edit or delete projects.</p>
+<h2 id="create-a-project">Create a project</h2>
+<p>There are two ways to create a project: by editing a form or by uploading a JSON project configuration file. Using a form is a quick way to make a project to get a team started, but is very limited in what can be specified, mainly the information in the <strong>Details table</strong> as described in the link above (name, visibility, time interval type, description, home URL, core data, logo url, and model owners). The second method - using a configuration file - is preferred as it allows specifying all aspects of a project. Both methods are accessed via the green "New" dropdown button at the top of the <a href="../HomePage/#projects-page">Projects page</a>.</p>
+<h3 id="to-create-a-project-via-a-form">To create a project via a form:</h3>
+<ol>
+<li>Click the green "New" button at the top of the projects list and select "From form..."</li>
+<li>Fill in the fields and click "Create". Most fields are required, which will be indicated with error messages when you submit the form and any are missing. </li>
+</ol>
+<h3 id="to-create-a-project-via-a-configuration-file">To create a project via a configuration file:</h3>
+<ol>
+<li>Click the green "New" dropdown button at the top of the projects list and select "From file..."</li>
+<li>In the dialog that appears, click the "Browse..." button to select a project configuration JSON file.</li>
+<li>Click the green upload button.</li>
+</ol>
+<p>Depending on the file you uploaded you will see either a message noting success ("Created project __" message at the top of the page) or an error page with a message showing the details.</p>
+<p>It may be helpful to get started by downloading and modifying an existing project's configuration file:</p>
+<ol>
+<li>Go to the project of interest's <a href="../ProjectDetailPage/">detail page</a>.</li>
+<li>At the top, to the right of the project name, click the green download "Config" button and save the file.</li>
+</ol>
+<h2 id="edit-a-project">Edit a project</h2>
+<p>There are two ways to edit a project, similar to creating one as described above: by editing a form or by uploading an edited version of the original JSON project configuration file that was used to create the project. Both are accessed from the project's <a href="../ProjectDetailPage/">detail page</a> using the green "Edit" dropdown button to the right of the project name.</p>
+<h3 id="to-edit-a-project-via-a-form">To edit a project via a form:</h3>
+<ol>
+<li>Click the green "Edit" dropdown button at the top of the projects list and select "From form..."</li>
+<li>Edit the fields as above and then click "Save".</li>
+</ol>
+<h3 id="to-edit-a-project-via-a-configuration-file">To edit a project via a configuration file:</h3>
+<ol>
+<li>Click the green "Edit" dropdown button at the top of the projects list and select "From file..."</li>
+<li>In the dialog that appears, click the "Browse..." button to select a project configuration JSON file.</li>
+<li>Click the green edit button.</li>
+</ol>
+<p>This invokes a kind of <a href="https://en.wikipedia.org/wiki/File_comparison">"diff" analysis</a> that compares the uploaded file to the to-be-edited project's current structure. The result is shown on a "Confirm project configuration changes" page listing the changes you're about to apply. (You will see an error page if there's a problem with the uploaded file.) The confirmation page has three possible sections:</p>
+<ul>
+<li>A sentence at the top summarizing the changes, including whether any will delete data.</li>
+<li><strong>All changes</strong>: All changes that were detected, including both non-data-destructive and destructive ones.</li>
+<li><strong>Changes that will delete data</strong>: Lists just the data-destructive changes, including details about what kinds of predictions (or truth) will be deleted, and how many of each.</li>
+</ul>
+<p>Here's an example:</p>
+<p><img alt="Project changes confirmation" src="../img/confirm-project-changes.png" title="Project changes confirmation page" /></p>
+<p>The diff function categorizes each change according to the type of change and what item it applies to. For example, the first change under <strong>All changes</strong> in the above screen shot is the editing of the project's "name" field. Another change is the third one in that list, which is the removal of the <em>unit</em> named "location3". Here are all the kinds of change that might be identified:</p>
+<ul>
+<li><em>OBJ_ADDED</em>: An item of a particular type will be added to the project. For example, adding a new unit named "location4".</li>
+<li><em>OBJ_REMOVED</em>: "" will be removed "" from a project. Removing the target "pct next week", say. </li>
+<li><em>FIELD_EDITED</em>: An item's field will be set to a new value. For example, setting the "data_version_date" of the project's time zero named "2011-10-09".</li>
+<li><em>FIELD_ADDED</em>: Set an item's field that was not set before. Adding a "season_name" to the time zero "2011-10-16", say.</li>
+<li><em>FIELD_REMOVED</em>: Remove an item's field, such as the "step_ahead_increment" of the target "cases next week"." </li>
+</ul>
+<p>As implied above, there are four types of item that can be changed: The <em>project</em> itself or one of its <em>units</em>, <em>targets</em>, or <em>time zeros</em>.</p>
+<h2 id="delete-a-project">Delete a project</h2>
+<p>Finally, to delete a project:</p>
+<ol>
+<li>Go to the project of interest's <a href="../ProjectDetailPage/">detail page</a>.</li>
+<li>At the top, to the right of the project name, click the red delete trash can button and then click "Delete" in the confirmation dialog that appears. <strong>Note that this cannot be undone!</strong></li>
+</ol>
                 
                   
                 
@@ -585,7 +793,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../ForecastDetailPage/" title="Forecast detail page" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../UserIntro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -594,19 +802,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Forecast detail page
+                Introduction
               </span>
             </div>
           </a>
         
         
-          <a href="../Projects/" title="Create, edit, or delete a project" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Models/" title="Create or delete a model" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Create, edit, or delete a project
+                Create or delete a model
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
