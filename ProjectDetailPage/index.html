@@ -721,7 +721,7 @@
 <h2 id="units">Units</h2>
 <p>This section lists names of the <strong>units</strong> in the project. (See <a href="../Concepts/">Concepts</a> for more about time zeros.) These were defined by project owner when creating the project. Often units are used to represent locations or regions that targets apply to.</p>
 <h2 id="targets">Targets</h2>
-<p>This section lists information about project forecast targets, which are a central Zoltar concept (see <a href="../Targets/">Targets</a> for more about them). Like units, these were created by the project owner. Some of these parameters are optional - <a href="xx#summary-of-allowed-optional-and-required-parameters-by-target-type">this table</a> shows which apply based on target type.</p>
+<p>This section lists information about project forecast targets, which are a central Zoltar concept. See <a href="../Targets/">Targets</a> for more about them. Like units, these were created by the project owner. Some of these parameters are optional - <a href="xx#summary-of-allowed-optional-and-required-parameters-by-target-type">this table</a> shows which apply based on target type.</p>
 <p>the table includes the following columns:</p>
 <ul>
 <li><em>Name</em>: Self-explanatory.</li>
@@ -733,9 +733,9 @@
 <li><em>Cats</em>: Optional acceptable categories for binned distributions.</li>
 </ul>
 <h2 id="time-zeros">Time zeros</h2>
-<p>This section details the project's <code>time zeros</code> (see <a href="../Concepts/">Concepts</a> for more about time zeros). It has these columns:</p>
+<p>This section details the project's <code>time zeros</code> . (See <a href="../Concepts/">Concepts</a> for more about time zeros.) It has these columns:</p>
 <ul>
-<li><em>Time zero</em>: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time zero). Every forecast has a time zero.</li>
+<li><em>Time zero</em>: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time zero). Every forecast has a time zero. See <a href="../Concepts/">Concepts</a> for more about time zeros.</li>
 <li><em>Data version date</em>: An optional piece of metadata for a forecast. If it exists, it is associated with a time zero. It refers to the latest date at which any data source used for the forecasts should be considered. If present, it can be used externally by system users to recreate model results by "rolling back" the core data to a particular state.</li>
 <li><em># Forecasts</em>: A count of the number of forecasts for this time zero.</li>
 <li><em>Starts Season</em>: Shows two pieces of information: 1) Whether the time zero is starts a season (it is blank if it does not start a season), and 2) the season name itself (which indicates that the time zero does start a season.)</li>

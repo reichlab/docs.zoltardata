@@ -647,18 +647,19 @@
                 
                 
                 <h1 id="forecast-detail-page">Forecast detail page</h1>
-<p>The forecast detail pages shows information about a particular forecast, and is divided into two vertical sections with <strong>bold</strong> headings, described next: <strong>Details table</strong> and <strong>Prediction information</strong>. Here's an example forecast detail page: </p>
+<p>The forecast detail page shows information about a particular forecast, and is divided into two vertical sections with <strong>bold</strong> headings, described next: <strong>Details table</strong> and <strong>Prediction information</strong>. Here's an example forecast detail page: </p>
 <p><img alt="Forecast detail page" src="../img/forecast-detail-page.png" title="Forecast detail page" /></p>
 <h2 id="forecast-details-table">Forecast details table</h2>
 <p>At the top of the page is a table showing information related to the forecast:</p>
 <ul>
 <li><em>Model</em>: A link to the owning <a href="../ModelDetailPage/">model</a>.</li>
-<li><em>TimeZero</em>: The time zero in the owning project that this forecast is for. </li>
-<li><em>Data Source</em>: The name of the "source" of this forecast, which is typically a file name. </li>
-<li><em>Upload Date</em>: Date the forecast was uploaded to Zoltar.</li>
+<li><em>Timezero</em>: The time zero that the forecast applies to. (The data version date, if any, is not shown here.) See <a href="../Concepts/">Concepts</a> for more about time zeros.</li>
+<li><em>Data Source</em>: Text describing where the forecast came from. It can be anything but is typically a data file name, such as a CSV. The source is a link to the forecast's <a href="./">forecast detail page</a>. It says "(No data)" if a forecast has not yet been uploaded for that time zero. </li>
+<li><em>Upload Date</em>: The date and time that the forecast was uploaded to Zoltar.</li>
+<li><em>Notes</em>: Text describing anything slightly different about a given forecast, e.g., a changed set of assumptions or a comment about when the forecast was created. Notes should be brief, typically less than 50 words.</li>
 </ul>
 <h2 id="predictions">Predictions</h2>
-<p>The predictions section has a heading like <strong>"Forecast has __ predictions"</strong> (where __ is the actual number) and a summary of the counts of the five different prediction types that can be associated with a forecast: <code>bin</code>, <code>named</code>, <code>point</code>, <code>quantile</code>, and <code>sample</code>. See <a href="../DataModel/">Data Model</a> for more information on how forecast data is modeled.</p>
+<p>The predictions section has a heading like <strong>"Forecast has __ predictions"</strong> (where __ is the actual number of predictions) and a bulleted summary of the counts of the five different prediction types that can be associated with a forecast: <code>bin</code>, <code>named</code>, <code>point</code>, <code>quantile</code>, and <code>sample</code>. The "Download JSON" button downloads a JSON file containing the forecast's predictions. See <a href="../DataModel/">Data Model</a> for more information on how forecast data is modeled.</p>
                 
                   
                 

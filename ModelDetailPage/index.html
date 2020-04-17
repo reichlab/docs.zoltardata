@@ -662,7 +662,13 @@
 <li><em>Auxiliary data</em>: An optional link to model-specific data files that were used by the model beyond the project's core data. Not used directly by Zoltar.</li>
 </ul>
 <h2 id="forecasts">Forecasts</h2>
-<p>The <strong>Forecasts</strong> section lists the model's forecasts, with links to each one's <a href="../ForecastDetailPage/">forecast detail page</a> that includes a data preview plus a <strong>Download</strong> button. Each forecast is data associated with a particular time zero in the project. The data is loaded from a file with a <a href="../FileFormats/#forecast-data-format-json">specific format</a>. There is one line per time zero, specifying the time zero date (but not the data version date), the original forecast <em>data source</em> that was uploaded (arbitrary text, but is usually a file name), and an <strong>Action</strong> button, either a green upload one if there is no data associated with the time zero or a red delete button otherwise.</p>
+<p>The <strong>Forecasts</strong> section is a table of the model's forecasts, ordered by project's time zeros. Each row has these fields:</p>
+<ul>
+<li><em>Timezero</em>: The time zero that the forecast applies to. (The data version date, if any, is not shown here.) See <a href="../Concepts/">Concepts</a> for more about time zeros.</li>
+<li><em>Data Source</em>: Text describing where the forecast came from. It can be anything but is typically a data file name, such as a CSV. The source is a link to the forecast's <a href="../ForecastDetailPage/">forecast detail page</a>. It says "(No data)" if a forecast has not yet been uploaded for that time zero. </li>
+<li><em>Upload Date</em>: The date and time that the forecast was uploaded to Zoltar.</li>
+<li><em>Action</em>: A button that is either a green upload icon if there is no data associated with the time zero, or a red delete button otherwise. See <a href="../UploadingForecasts/">Uploading forecasts</a> for instructions on how to upload forecasts, and <a href="../FileFormats/#forecast-data-format-json">File formats</a> for how forecast files are structured in Zoltar.</li>
+</ul>
                 
                   
                 
