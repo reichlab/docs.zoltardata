@@ -10,23 +10,22 @@ nav:
       - 'Forecast detail page': 'ForecastDetailPage.md'
   - User Guide:
       - 'Introduction': 'UserIntro.md'
+      - 'Create, edit, or delete a project': 'Projects.md'
+      - 'Create or delete a model': 'Models.md'
+      - 'Upload, download, or delete a forecast': 'Forecasts.md'
+      - 'View or download scores': 'Scoring.md'
+      - 'Visualize data': 'Visualization.md'
+      - 'Upload, view, download or delete truth': 'Truth.md'
+      - 'Create or manage an account': 'Accounts.md'
+  - Reference:
       - 'Concepts': 'Concepts.md'
       - 'Targets': 'Targets.md'
       - 'Data model': 'DataModel.md'
-      - 'Creating projects': 'CreatingProjects.md'
-      - 'Creating models': 'CreatingModels.md'
-      - 'Uploading forecasts': 'UploadingForecasts.md'
-      - 'Scoring': 'Scoring.md'
-      - 'Visualizations': 'Visualization.md'
-  - zoltpy Library:
-      - 'Overview': 'ZoltpyOverview.md'
-  - zoltr Package:
-      - 'Overview': 'ZoltrOverview.md'
-      - 'Getting Started': 'ZoltrGettingStarted.md'
-      - 'ProjectOwners': 'ZoltrProjectOwners.md'
-  - Technical details:
       - 'Validation': 'Validation.md'
       - 'File Formats': 'FileFormats.md'
+  - Programming libraries and API:
+      - 'zoltpy (Python)': 'Zoltpy.md'
+      - 'zoltpr (R)': 'Zoltr.md'
       - 'RESTful API': 'Api.md'
 
 theme: material

@@ -10,7 +10,7 @@ Zoltar is a web application to develop ideas for a repository of model forecast 
 
 ## Getting started
 
-Use the navigation links in the sidebar to get started [touring the web site](WebTourIntro.md), [reading the user guide](UserIntro.md), or learning about our [python](ZoltpyOverview.md) and [R](ZoltrOverview.md) packages for interacting with the Zoltar API from your programming language.  
+Use the navigation links in the sidebar to get started [touring the web site](WebTourIntro.md), [reading the user guide](UserIntro.md), or learning about our [python](Zoltpy.md) and [R](Zoltr.md) packages for interacting with the Zoltar API from your programming language.  
 
 
 ## Assumptions/Limitations

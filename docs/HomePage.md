@@ -2,14 +2,14 @@
 
 The Zoltar home page [zoltardata.com](https://www.zoltardata.com/) is a simple welcome page with options for listing all projects, signing in, or getting started reading this documentation. Clicking on "View Projects" below the "Projects" text (or "Projects" in the header) takes you to the [Zoltar Projects page](https://www.zoltardata.com/projects), which lists all of the projects in the archive.
 
-At the page's top is a black navigation header that's shown on all pages. It contains three icons: Home page (the Zoltar crystal ball in the upper left), and on the right a user drop down menu and a help icon (question mark) on the far right. The drop down menu's appearance depends on whether a user is logged in. If you are not logged in then "Sign in" is shown as in the screen shot. Clicking "Sign in" takes you to a typical login page where you specify your account's user name and password. (To obtain an account, please [contact us](index.md#contact).) If you are logged in then its text is the user name and the menu items are links to the user profile page, and a logout item. 
+At the page's top is a black navigation header that's shown on all pages. It contains three icons: Home page (the Zoltar crystal ball in the upper left), and on the right a user drop down menu and a help icon (question mark) on the far right. The drop down menu's appearance depends on whether a user is logged in. If you are not logged in then "Sign in" is shown as in the screen shot. Clicking "Sign in" takes you to a typical login page where you specify your account's user name and password. (To obtain an account, please [contact us](index.md#contact).) If you are logged in then its text is the user name and the menu items are links to the user profile page, and a logout item. Currently the page looks like this:
 
 ![Zoltar Home page](img/home-page.png "Zoltar Home page")
 
-A *project* is a collection of *forecast models* and their *forecasts*, and is described in more detail below. The projects page shows basic project information, including name, owner, description, and (in the "Summary" column) information about the number of models and forecasts in the project.
- 
-Currently the page looks like this:
 
+# Projects page
+
+A *project* is a collection of *forecast models* and their *forecasts*, and is described in more detail below. The projects page shows basic project information, including name, owner, description, and (in the "Summary" column) information about the number of models and forecasts in the project. Currently the page looks like this:
 
 ![Zoltar Projects page](img/projects-page.png "Zoltar Projects page")
 
@@ -20,4 +20,4 @@ This page shows all projects in the archive that are visible to you, based on wh
 From here you can:
 
 - Click on a project name to go to its [detail page](ProjectDetailPage.md).
-- Create a project if your are singed in. (Any logged in user can create projects via the "New" drop down button towards the top. Clicking it allows you to create one either by uploading a [project configuration file](FileFormats.md#project-creation-configuration-json) or creating via a form where you can fill in some basic details. See [Creating projects](CreatingProjects.md) for details.
+- Create a project if your are singed in. (Any logged in user can create projects via the "New" drop down button towards the top. Clicking it allows you to create one either by uploading a [project configuration file](FileFormats.md#project-creation-configuration-json) or creating via a form where you can fill in some basic details. See [Creating projects](Projects.md) for details.
