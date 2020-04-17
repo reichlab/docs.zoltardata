@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#uploading-forecasts" tabindex="1" class="md-skip">
+      <a href="#managing-forecasts" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -311,8 +311,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Models/" title="Create or delete a model" class="md-nav__link">
-      Create or delete a model
+    <a href="../Models/" title="Create, edit, or delete a model" class="md-nav__link">
+      Create, edit, or delete a model
     </a>
   </li>
 
@@ -331,9 +331,45 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Upload, download, or delete a forecast
+      </label>
+    
     <a href="./" title="Upload, download, or delete a forecast" class="md-nav__link md-nav__link--active">
       Upload, download, or delete a forecast
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#upload-a-forecast" class="md-nav__link">
+    Upload a forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-a-forecast" class="md-nav__link">
+    Download a forecast
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -552,6 +588,29 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#upload-a-forecast" class="md-nav__link">
+    Upload a forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-a-forecast" class="md-nav__link">
+    Download a forecast
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -563,8 +622,64 @@
               
                 
                 
-                <h1 id="uploading-forecasts">Uploading forecasts</h1>
-<p>todo</p>
+                <h1 id="managing-forecasts">Managing forecasts</h1>
+<p>A <em>forecast</em> is a set of predictions for combinations of units and targets. See see <a href="../DataModel/">Data Model</a> for detail on the structure of predictions. Following are the forecast operations you can do from within Zoltar.</p>
+<h2 id="upload-a-forecast">Upload a forecast</h2>
+<p>Here we show how to upload forecast data into Zoltar. It is important to know that Zoltar <em>enqueues</em> long operations like forecast uploading, which keeps the site responsive but makes uploading a little more complicated. Rather than having the upload feature <em>block</em> until the upload is done, you instead get a quick response in the form of an <em>upload file job</em> detail page that shows the status of your upload. This page is described in <a href="#check_an_uploads_status">Check an upload's status</a> below.</p>
+<p>Forecasts are uploaded to a particular model for a particular time zero. To upload one:</p>
+<ol>
+<li>Go to the <a href="../ModelDetailPage/">model detail page</a> of the one you want to upload into.</li>
+<li>Find the time zero that the forecast is associated with.</li>
+<li>If the time zero already has a forecast then delete it (see <strong>Delete a forecast</strong> below). You can tell if a time zero has an uploaded forecast in two ways: the text in the "Data Source" column is a link instead of the words "(No data)" and the icon in the "Action" column is a red trash can and not a green upload icon.</li>
+<li>Click the "Browse..." button in the time zero's "Action" column.</li>
+<li>In the dialog that appears, select a Forecast data format JSON file</li>
+<li>Click the green upload button.</li>
+<li>If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the forecast file <strong> for uploading.", where </strong> is your file's name. See <a href="#check_an_uploads_status">Check an upload's status</a> below for this page's details.</li>
+<li>Once the upload is successful (you can refresh the upload file job page to check) then you will see it next to the selected time zero on the <a href="../ModelDetailPage/">model detail page</a>.</li>
+</ol>
+<h2 id="download-a-forecast">Download a forecast</h2>
+<p>To download a forecast:</p>
+<ol>
+<li>Go to the <a href="../ModelDetailPage/">model detail page</a> where the forecast resides.</li>
+<li>Click the link in the "Data Source" column to go to the <a href="./">forecast detail page</a>.</li>
+<li>Click the "Download JSON" button and save the file in the JSON format documented at <a href="../FileFormats/#forecast-data-file-format-json">Forecast data format</a> for details.</li>
+</ol>
+<h1 id="delete-a-forecast">Delete a forecast</h1>
+<p>Delete a forecast via these steps:</p>
+<ol>
+<li>Go to the <a href="../ModelDetailPage/">model detail page</a> where the forecast resides.</li>
+<li>Click the red trash can button in the "Action" column.</li>
+<li>Click "Delete" in the confirmation dialog that appears. <strong>Note that this cannot be undone!</strong></li>
+</ol>
+<h1 id="check-an-uploads-status">Check an upload's status</h1>
+<p>As described above, uploading a file <em>enqueues</em> the actual uploading of the data for handling by a Zoltar worker process, rather than processing the upload immediately. The upload file job detail page is where you can check the status of an upload. (Note that how long it takes for a file to be processed depends on how busy the site is.) Here's an example upload file job detail page for one whose status is QUEUED:</p>
+<p><img alt="Upload file job detail page" src="../img/upload-file-job-detail-queued.png" title="Upload file job detail page" /></p>
+<p>You can see that it has the following fields:</p>
+<ul>
+<li><em>User</em>: User who uploaded the file.</li>
+<li><em>Status</em>: The upload's status, which is one of the following:<ul>
+<li><strong>PENDING</strong>: The state an upload starts in.</li>
+<li><strong>CLOUD_FILE_UPLOADED</strong>: The uploaded file was successfully saved to temporary cloud storage.</li>
+<li><strong>QUEUED</strong>: The upload file job was successfully enqueued for processing.</li>
+<li><strong>CLOUD_FILE_DOWNLOADED</strong>: The uploaded file was successfully retrieved from temporary cloud storage</li>
+<li><strong>SUCCESS</strong>: The job was successfully completed.</li>
+<li><strong>FAILED</strong>: The job failed.</li>
+</ul>
+</li>
+<li><em>File Name</em>: The uploaded file's name that was given to Zoltar.</li>
+<li><em>Failure</em>: The failure message if status is FAILED, or "None" otherwise.</li>
+<li><em>ΔT</em>: How much time the upload took to process.</li>
+<li><em>Created</em>: Date and time the file was uploaded at.</li>
+<li><em>Updated</em>: The last time the upload's status was changed.</li>
+<li><em>JSON In</em>: The JSON information passed internally to the upload. You can ignore this.</li>
+<li><em>JSON Out</em>: "" returned internally by the upload. ""</li>
+</ul>
+<p>Note that you must refresh this page to get the latest status (it does not update dynamically). </p>
+<p>You can see all of your upload file jobs in the <strong>Upload File Jobs</strong> section on your <a href="../Accounts/">user profile page</a>. </p>
+<p>For reference, here are two other jobs in different states. This one's state is SUCCESS:</p>
+<p><img alt="Upload file job success" src="../img/upload-file-job-detail-success.png" title="Upload file job success" /></p>
+<p>And this one FAILED:</p>
+<p><img alt="Upload file job failed" src="../img/upload-file-job-detail-failed.png" title="Upload file job failed" /></p>
                 
                   
                 
@@ -585,7 +700,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Models/" title="Create or delete a model" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Models/" title="Create, edit, or delete a model" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -594,7 +709,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Create or delete a model
+                Create, edit, or delete a model
               </span>
             </div>
           </a>
