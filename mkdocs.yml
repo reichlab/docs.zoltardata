@@ -11,7 +11,7 @@ nav:
   - User Guide:
       - 'Introduction': 'UserIntro.md'
       - 'Create, edit, or delete a project': 'Projects.md'
-      - 'Create or delete a model': 'Models.md'
+      - 'Create, edit, or delete a model': 'Models.md'
       - 'Upload, download, or delete a forecast': 'Forecasts.md'
       - 'View or download scores': 'Scoring.md'
       - 'Visualize data': 'Visualization.md'

@@ -8,5 +8,5 @@ This page uses the [D3 Foresight component](https://github.com/reichlab/d3-fores
 - Hover over the plot to see details.
 - The legend shows model names, and allows showing or hiding them. Hover over a model name for details, and click the link button to show model details in a separate Zoltar page.
 - Click the left and right arrows to the right of the legend to move the current time zero.
-- Click the 'hamburger' icon to toggle the legend.
+- Click the "hamburger" icon to toggle the legend.
 
