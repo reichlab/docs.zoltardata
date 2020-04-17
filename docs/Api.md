@@ -28,4 +28,4 @@ The following endpoints are available. All are under the `<host>`, typically `ht
 - `api/model/<model_id>/forecasts/`: a list of a model's forecast URLs (see forecast detail below)
 
 - `api/forecast/<forecast_id>/`: forecast detail. an object with these keys: `id`, `url`, `forecast_model`, `source`, `time_zero`, `created_at`, `forecast_data`
-- `api/forecast/<forecast_id>/data/`: forecast data as JSON (see [file formats](FileFormats.md) for details)
+- `api/forecast/<forecast_id>/data/`: forecast data as JSON. (See [file formats](FileFormats.md) for details.)

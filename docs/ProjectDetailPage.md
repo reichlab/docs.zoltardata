@@ -11,22 +11,22 @@ Each project's detail page is divided into five vertical sections with **bold** 
 
 At the top of the page is a table showing this information related to the project:
 
-- *Summary*: The same summary as on the home page: The number of models and forecasts in the project. Note that this may be an estimate.
-- *Owner*: The user that has full control of the project, and includes authorization to view, edit, and delete anything (models, forecasts, etc.) The owner is the user that created the project (which is done on the home page).
-- *Model owners*: A list of users who can view the project (applicable only if the project is private), and who can create and delete models, and upload and delete forecasts. The project owner specifies model owners when she creates or edits the project.
-- *Time Interval Type*: Tells the [D3 Foresight](https://github.com/reichlab/d3-foresight) component what its x-axis label should be. Choices: Week, Biweek, or Month.
-- *Visibility*: A project can be either _public_ or _private_, which controls project visibility, including accessing data. Project owners set this when they create the project. Visibility applies to list and detail pages, along with API endpoints. Public projects are viewable by anyone, users and anonymous visitors included. Private projects can only be viewed by project owners and model owners. This means that in order to grant a user access to a private account, the project owner must add her to the project's model owners list, even if that user will not be managing any models.
-- *Description*: Prose provided by project owner. It should cover these topics:
+- _Summary_: The same summary as on the home page: The number of models and forecasts in the project. Note that this may be an estimate.
+- _Owner_: The user that has full control of the project, and includes authorization to view, edit, and delete anything (models, forecasts, etc.) The owner is the user that created the project (which is done on the home page).
+- _Model owners_: A list of users who can view the project (applicable only if the project is private), and who can create and delete models, and upload and delete forecasts. The project owner specifies model owners when she creates or edits the project.
+- _Time Interval Type_: Tells the [D3 Foresight](https://github.com/reichlab/d3-foresight) component what its x-axis label should be. Choices: Week, Biweek, or Month.
+- _Visibility_: A project can be either _public_ or _private_, which controls project visibility, including accessing data. Project owners set this when they create the project. Visibility applies to list and detail pages, along with API endpoints. Public projects are viewable by anyone, users and anonymous visitors included. Private projects can only be viewed by project owners and model owners. This means that in order to grant a user access to a private account, the project owner must add her to the project's model owners list, even if that user will not be managing any models.
+- _Description_: Prose provided by project owner. It should cover these topics:
     - Information about the "real-time-ness" of data, i.e., revised/unrevised.
     - Details about how models interpret time zeros and data version dates.
     - Data file naming scheme.
-- *Home*: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.
-- *Core data*: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.
-- *Truth data*: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. Each Project is responsible for generating a truth table csv file in a project-specific manner. Briefly (see [Truth data format (CSV)](FileFormats.md#truth-data-format-csv) for details):
+- _Home_: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.
+- _Core data_: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.
+- _Truth data_: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. Each Project is responsible for generating a truth table csv file in a project-specific manner. Briefly (see [Truth data format (CSV)](FileFormats.md#truth-data-format-csv) for details):
     - CSV file
     - No file name restrictions
     - Columns: `Timezero`, `Location`, `Target`, `Value` - see FileFormats.md .
-- *Analysis*: Links to visualization and score pages (see below for details).
+- _Analysis_: Links to visualization and score pages (see below for details).
 
 
 ## Forecast models
@@ -41,25 +41,25 @@ This section lists names of the **units** in the project. (See [Concepts](Concep
 
 ## Targets
 
-This section lists information about project forecast targets, which are a central Zoltar concept (see [Targets](Targets.md) for more about them). Like units, these were created by the project owner. Some of these parameters are optional - [this table](xx#summary-of-allowed-optional-and-required-parameters-by-target-type) shows which apply based on target type.
+This section lists information about project forecast targets, which are a central Zoltar concept. See [Targets](Targets.md) for more about them. Like units, these were created by the project owner. Some of these parameters are optional - [this table](xx#summary-of-allowed-optional-and-required-parameters-by-target-type) shows which apply based on target type.
 
 the table includes the following columns:
 
-- *Name*: Self-explanatory.
-- *Description*: "".
-- *Type*: The target's [type](Targets.md#target-types).
-- *Unit*: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. (Be aware that it can be confusing having both **unit** objects as above along with a specific target's unit.)
-- *Step Ahead?*: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis tools.)
-- *Range*: An optional numerical range of acceptable values.
-- *Cats*: Optional acceptable categories for binned distributions.
+- _Name_: Self-explanatory.
+- _Description_: "".
+- _Type_: The target's [type](Targets.md#target-types).
+- _Unit_: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. (Be aware that it can be confusing having both __unit__ objects as above along with a specific target's unit.)
+- _Step Ahead?_: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis tools.)
+- _Range_: An optional numerical range of acceptable values.
+- _Cats_: Optional acceptable categories for binned distributions.
 
 
 ## Time zeros
 
-This section details the project's `time zeros` (see [Concepts](Concepts.md) for more about time zeros). It has these columns:
+This section details the project's `time zeros` . (See [Concepts](Concepts.md) for more about time zeros.) It has these columns:
 
-- *Time zero*: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time zero). Every forecast has a time zero.
-- *Data version date*: An optional piece of metadata for a forecast. If it exists, it is associated with a time zero. It refers to the latest date at which any data source used for the forecasts should be considered. If present, it can be used externally by system users to recreate model results by "rolling back" the core data to a particular state.
-- *# Forecasts*: A count of the number of forecasts for this time zero.
-- *Starts Season*: Shows two pieces of information: 1) Whether the time zero is starts a season (it is blank if it does not start a season), and 2) the season name itself (which indicates that the time zero does start a season.)
+- _Time zero_: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time zero). Every forecast has a time zero. See [Concepts](Concepts.md) for more about time zeros.
+- _Data version date_: An optional piece of metadata for a forecast. If it exists, it is associated with a time zero. It refers to the latest date at which any data source used for the forecasts should be considered. If present, it can be used externally by system users to recreate model results by "rolling back" the core data to a particular state.
+- _# Forecasts_: A count of the number of forecasts for this time zero.
+- _Starts Season_: Shows two pieces of information: 1) Whether the time zero is starts a season (it is blank if it does not start a season), and 2) the season name itself (which indicates that the time zero does start a season.)
 
