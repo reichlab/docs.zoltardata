@@ -110,6 +110,8 @@ Legend:
 
 ## Available scores by target type and prediction element
 
+(Note that CRPS and brier scores have not yet been implemented.)
+
 | target type   | prediction element | error       | abs error | log score           | CRPS | brier | PIT |
 |---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|
 | *continuous*  | point              | x           | x         | -                   | x(a) | -     | -   |

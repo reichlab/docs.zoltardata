@@ -26,7 +26,7 @@ At the top of the page is a table showing this information related to the projec
     - CSV file
     - No file name restrictions
     - Columns: `Timezero`, `Location`, `Target`, `Value` - see FileFormats.md .
-- _Analysis_: Links to visualization and score pages (see below for details).
+- _Analysis_: Links to visualization and score pages. See [Scoring](Scoring.md) for details.
 
 
 ## Forecast models

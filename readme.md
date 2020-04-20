@@ -1,9 +1,6 @@
 # Zoltar documentation site source
 
-This repository holds documentation content for all aspects of [Zoltar](https://www.zoltardata.com/) such as the web
-site user guide, help for researchers, API and client libraries, etc. The documentation source format is 
-[Markdown](https://python-markdown.github.io/). We use [Mkdocs](https://www.mkdocs.org/) uses to generate the static
-site.
+This repository holds documentation content for all aspects of [Zoltar](https://www.zoltardata.com/) such as the web site user guide, help for researchers, API and client libraries, etc. The documentation source format is [Markdown](https://python-markdown.github.io/). We use [Mkdocs](https://www.mkdocs.org/) uses to generate the static site.
 
 
 # Requirements (see Pipfile)
@@ -29,8 +26,7 @@ pipenv install mkdocs-material
 ```
 
 ## Workflow
-- Edit content located in the `docs/` directory. Note: Only edit on the `master` branch, **not** the `gh-pages` one. 
-  The latter is overwritten by the `mkdocs gh-deploy` command when deploying (see below).
+- Edit content located in the `docs/` directory. Note: Only edit on the `master` branch, **not** the `gh-pages` one. The latter is overwritten by the `mkdocs gh-deploy` command when deploying (see below).
 - Preview the documentation locally. To run a local development server:
 ```bash
 $ cd <readme.md's dir>
@@ -50,13 +46,7 @@ $ mkdocs gh-deploy
 
 ## Hosts and servers
 Here are the moving parts that implement the documentation site:
-- a GitHub repo [docs.zoltardata](https://github.com/reichlab/docs.zoltardata/) to store doc source in 
-  [Mkdocs flavored Markdown](https://python-markdown.github.io/) format
+- a GitHub repo [docs.zoltardata](https://github.com/reichlab/docs.zoltardata/) to store doc source in [Mkdocs flavored Markdown](https://python-markdown.github.io/) format
 - the [Mkdocs](https://www.mkdocs.org/) static site generator to build the site HTML from doc source
-- a [Netlify](https://www.netlify.com/) host to serve the built docs:
-  [docs-zoltardata-staging.netlify.com](https://docs-zoltardata-staging.netlify.com/)
-- a [docs.zoltardata.com](https://docs.zoltardata.com/) subdomain configured on our [DNSimple](https://dnsimple.com/)
-  namespace server that points to the Netlify location. The dnsimple records are 
-  [here](https://dnsimple.com/a/91354/domains/zoltardata.com/records) and the Netlify domain configuration is
-  [here](https://app.netlify.com/sites/docs-zoltardata-staging/settings/domain).
-
+- a [Netlify](https://www.netlify.com/) host to serve the built docs: [docs-zoltardata-staging.netlify.com](https://docs-zoltardata-staging.netlify.com/)
+- a [docs.zoltardata.com](https://docs.zoltardata.com/) subdomain configured on our [DNSimple](https://dnsimple.com/) namespace server that points to the Netlify location. The dnsimple records are [here](https://dnsimple.com/a/91354/domains/zoltardata.com/records) and the Netlify domain configuration is [here](https://app.netlify.com/sites/docs-zoltardata-staging/settings/domain).
