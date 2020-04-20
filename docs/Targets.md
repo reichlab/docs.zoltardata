@@ -2,7 +2,7 @@
 
 Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give
 predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead
-incidence and a prediction of when incidence will reach its maximum in a given period of time. When a project is
+values and a prediction of when the time series will reach its maximum in a given period of time. When a project is
 created, the project owner specifies which targets should be part of any submitted forecast. As we will see below,
 targets have specific properties, and there are several different types of targets that determine which properties and
 features pertain to a particular target.
@@ -51,7 +51,7 @@ date          |  x   |  x   |     x       |      x        |          (x)        
 - *is_step_ahead*: `true` if the target is one of a sequence of targets that predict values at different points in the future.
 - *step_ahead_increment*: An integer, indicating the forecast horizon represented by this target. It is required if `is_step_ahead` is `true`. 
 
-### Parameters for continuous targets
+### Parameters specific to continuous targets
 
 - *unit*: (Required) E.g., "percent" or "week".
 - *range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is not specified than range is assumed to be (-infty, infty).
@@ -60,7 +60,7 @@ date          |  x   |  x   |     x       |      x        |          (x)        
 
 If both `range` and `cats` are specified, then min(`cats`) must equal the lower bound and max(`cats`) must be less than the upper bound of `range`.
 
-### Parameters for discrete targets
+### Parameters  specific to discrete targets
 
 - *unit*: (Required) E.g., "cases".
 - *range*: (Optional, but uploaded `Bin` prediction types will be rejected unless `range` is specified) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not specified than range is assumed to be (-infty, infty).
@@ -68,15 +68,15 @@ If both `range` and `cats` are specified, then min(`cats`) must equal the lower 
 
 If both `range` and `cats` are specified, then min(`cats`) must equal the lower bound and max(`cats`) must be less than the upper bound of `range`.
 
-### Parameters for nominal targets
+### Parameters  specific to nominal targets
 
 - *cats*: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: `""`, `"NA"`, or `"NULL"` (case does not matter).
 
-### Parameters for binary targets
+### Parameters  specific to binary targets
 
-None needed.
+None.
 
-### Parameters for date targets
+### Parameters  specific to date targets
 
 - *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO `YYYY-MM-DD` date format. This parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a forecast where the point prediction is `forecasted_date` and the unit is "week", the score would be calculated heuristically as `week(truth_date) - week(forecasted_date)`. Note: to map dates to biweeks, we use the definitions as presented in [Reich et al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
 - *cats*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
