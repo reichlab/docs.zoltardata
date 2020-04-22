@@ -29,9 +29,14 @@ In addition an aggregate score values are calculated (see below).
 
 Scores are accessed from the [project detail page](ProjectDetailPage.md) of the project of interest via the links in the **Analysis** row in the project details table at the top of the page. There are three links:
 
-- _Visualizations_: Takes you to a page that shows a time chart of the project's predictions, along with the ground truth (if available). <!-- TODO more detail -->
+- _Visualizations_: Takes you to a page that shows a time chart of the project's predictions. See the [visualization](Visualization.md) page for details.
 - _Aggregate scores_: Goes to the "Mean Absolute Error" page. [Absolute error](https://github.com/reichlab/flusight/wiki/Scoring#1-absolute-error) is the absolute value of difference between the eventually observed value and the point prediction. This page is an aggregate of scores that are currently in Zoltar, and only as up-to-date as they are. No scores are shown for a particular unit or target if the errors could not be calculated because not all truth values were available for it. <!-- TODO more detail -->
 - _Score data_: The linked-to page shows score counts at both the project and model levels. Only those scores that have values are shown.
+
+
+Here's an example score page: 
+
+![Scores page](img/scores-page.png "Scores page")
 
 
 ## Downloading scores
@@ -42,3 +47,5 @@ Scores are downloaded from the [project detail page](ProjectDetailPage.md). To d
 1. Click the ":"Download CSV" button and save the file.
 
 The scores are saved in the CSV format documented at [Score download format (CSV)](FileFormats.md#score-download-format-csv).
+
+Note that because creating score CSV files can be time consuming, Zoltar caches creating them to help keep the site responsive. Normally the cached version will be available, which should download as soon as you click the button. However, the download will be delayed (and likely time out) otherwise. The state of caching is indicated by the text to the right of the button. If it says something like "(Cached file updated 2020-04-20 05:00:30)" then the faster download is available. Otherwise it will say "(No cached file - download may be slow.)"

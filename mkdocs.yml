@@ -29,3 +29,7 @@ nav:
       - 'RESTful API': 'Api.md'
 
 theme: material
+
+markdown_extensions:
+    - toc:
+          permalink: true
