@@ -563,8 +563,42 @@
               
                 
                 
-                <h1 id="scores">Scores</h1>
-<p>This page shows the mean absolute error values for all models in the project. (This can take a long time to load for large projects.) The location and season drop downs work like those on the visualization page. The smallest errors are shown in inverse text.</p>
+                <h1 id="scores">Scores<a class="headerlink" href="#scores" title="Permanent link">&para;</a></h1>
+<p>Zoltar automatically computes a fixed set of scores (more are in development) for all projects and forecasts. They are updated in the background on a per-forecast basis by a scheduler that currently runs Daily at <a href="http://www.timebie.com/std/utc.php?q=5.5">5:30 AM UTC</a>. The update is performed only on models that have changed, i.e., those that have added or removed forecasts since the last update. Following are details about scoring.</p>
+<h1 id="scoring-requirements">Scoring requirements<a class="headerlink" href="#scoring-requirements" title="Permanent link">&para;</a></h1>
+<p>For Zoltar to calculate a forecast's scores, the following must be true:</p>
+<ul>
+<li><a href="../Truth/">Ground truth</a> has been uploaded, and contains truth values for each unit/target combination in the forecast.</li>
+<li>Data is available in the prediction elements shown in the table <a href="../Targets/#available-scores-by-target-type-and-prediction-element">Available scores by target type and prediction element</a>.
+<!-- todo more requirements? --></li>
+</ul>
+<h2 id="current-scores">Current scores<a class="headerlink" href="#current-scores" title="Permanent link">&para;</a></h2>
+<p>At the time of writing Zoltar implements these scores:</p>
+<ul>
+<li><strong>Error</strong>: The the truth value minus the model's point estimate. </li>
+<li><strong>Absolute Error</strong>: The absolute value of the truth value minus the model's point estimate. Lower is better.</li>
+<li><strong>Log score (single bin)</strong>: Natural log of probability assigned to the true bin. Higher is " "better." More detail is <a href="https://github.com/reichlab/flusight/wiki/Scoring#2-log-score-single-bin">here</a>.</li>
+<li><strong>Log score (multi bin)</strong>: This is calculated by finding the natural log of probability " "assigned to the true and a few neighbouring bins. Higher is better. See <a href="https://github.com/reichlab/flusight/wiki/Scoring#3-log-score-multi-bin">this page</a> for how it works.</li>
+<li><strong>Probability Integral Transform (PIT)</strong>: The probability integral transform (PIT) is a metric commonly " "used to evaluate the calibration of probabilistic forecasts. </li>
+</ul>
+<p>In addition an aggregate score values are calculated (see below).</p>
+<h2 id="viewing-scores">Viewing scores<a class="headerlink" href="#viewing-scores" title="Permanent link">&para;</a></h2>
+<p>Scores are accessed from the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest via the links in the <strong>Analysis</strong> row in the project details table at the top of the page. There are three links:</p>
+<ul>
+<li><em>Visualizations</em>: Takes you to a page that shows a time chart of the project's predictions. See the <a href="../Visualization/">visualization</a> page for details.</li>
+<li><em>Aggregate scores</em>: Goes to the "Mean Absolute Error" page. <a href="https://github.com/reichlab/flusight/wiki/Scoring#1-absolute-error">Absolute error</a> is the absolute value of difference between the eventually observed value and the point prediction. This page is an aggregate of scores that are currently in Zoltar, and only as up-to-date as they are. No scores are shown for a particular unit or target if the errors could not be calculated because not all truth values were available for it. <!-- TODO more detail --></li>
+<li><em>Score data</em>: The linked-to page shows score counts at both the project and model levels. Only those scores that have values are shown.</li>
+</ul>
+<p>Here's an example score page: </p>
+<p><img alt="Scores page" src="../img/scores-page.png" title="Scores page" /></p>
+<h2 id="downloading-scores">Downloading scores<a class="headerlink" href="#downloading-scores" title="Permanent link">&para;</a></h2>
+<p>Scores are downloaded from the <a href="../ProjectDetailPage/">project detail page</a>. To download a project's scores:</p>
+<ol>
+<li>Go to the <a href="../ModelDetailPage/">model detail page</a> of the one you want to upload into.</li>
+<li>Click the ":"Download CSV" button and save the file.</li>
+</ol>
+<p>The scores are saved in the CSV format documented at <a href="../FileFormats/#score-download-format-csv">Score download format (CSV)</a>.</p>
+<p>Note that because creating score CSV files can be time consuming, Zoltar caches creating them to help keep the site responsive. Normally the cached version will be available, which should download as soon as you click the button. However, the download will be delayed (and likely time out) otherwise. The state of caching is indicated by the text to the right of the button. If it says something like "(Cached file updated 2020-04-20 05:00:30)" then the faster download is available. Otherwise it will say "(No cached file - download may be slow.)"</p>
                 
                   
                 

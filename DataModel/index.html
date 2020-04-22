@@ -622,11 +622,11 @@
               
                 
                 
-                <h1 id="data-model">Data model</h1>
+                <h1 id="data-model">Data model<a class="headerlink" href="#data-model" title="Permanent link">&para;</a></h1>
 <p>This page documents the internal <a href="https://docs.djangoproject.com/en/1.11/topics/db/models/">Django model classes</a> that
 make up Zoltar. This page is a reference meant to help users understand how forecast data is modeled, and the actual
 data structures that represent the different types of predictions.</p>
-<h2 id="containers">"Containers"</h2>
+<h2 id="containers">"Containers"<a class="headerlink" href="#containers" title="Permanent link">&para;</a></h2>
 <p>These are the classes that users see when working within Zoltar, and they structure where forecast data resides.</p>
 <ul>
 <li><strong>Project</strong>: Defines the valid locations, targets, and timezeros for the project's forecasts, and contains its
@@ -635,24 +635,20 @@ data structures that represent the different types of predictions.</p>
 <li><strong>Forecast</strong>: Contains the specific predictions for a particular timezero.</li>
 <li><strong>Timezero</strong>: todo</li>
 </ul>
-<h2 id="forecasts-and-predictions">Forecasts and Predictions</h2>
+<h2 id="forecasts-and-predictions">Forecasts and Predictions<a class="headerlink" href="#forecasts-and-predictions" title="Permanent link">&para;</a></h2>
 <p>Each forecast is for a particular timezero, and contains some number of <em>Predictions</em>. Each prediction is for a location
-and target in the forecast's timezero. In other words, a Forecast now has one or more Predictions of various types. We
+and target in the forecast's timezero. In other words, a forecast has one or more Predictions of various types. We
 use Prediction class hierarchy with seven concrete subclasses:</p>
 <ul>
-<li><em>Prediction</em> (abstract):<ul>
-<li>(1) <strong>NamedDistribution</strong>: Represents named distributions like normal, log normal, gamma, etc.</li>
-<li>(2) <strong>PointPrediction</strong>: Represents point predictions.</li>
-<li><em>EmpiricalDistribution</em> (abstract):<ul>
-<li>(3)  <strong>BinCatDistribution</strong>: Represents binned distribution with a category for each bin.</li>
-<li>(4)  <strong>BinLwrDistribution</strong>: Represents binned distribution defined by inclusive lower bounds for each bin.</li>
-<li>(5)   <strong>BinaryDistribution</strong>: Represents binary distributions.</li>
-<li>(6)   <strong>SampleDistribution</strong>: Represents numeric samples.</li>
-<li>(7)   <strong>SampleCatDistribution</strong>: Represents character string samples from categories.</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><em>Prediction</em> (abstract):
+    (1) <strong>NamedDistribution</strong>: Represents named distributions like normal, log normal, gamma, etc.
+    (2) <strong>PointPrediction</strong>: Represents point predictions.</li>
+<li><em>EmpiricalDistribution</em> (abstract):
+    (3)  <strong>BinCatDistribution</strong>: Represents binned distribution with a category for each bin.
+    (4)  <strong>BinLwrDistribution</strong>: Represents binned distribution defined by inclusive lower bounds for each bin.
+    (5)   <strong>BinaryDistribution</strong>: Represents binary distributions.
+    (6)   <strong>SampleDistribution</strong>: Represents numeric samples.
+    (7)   <strong>SampleCatDistribution</strong>: Represents character string samples from categories.</li>
 </ul>
                 
                   

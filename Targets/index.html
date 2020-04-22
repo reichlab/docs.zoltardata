@@ -475,36 +475,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-continuous-targets" class="md-nav__link">
-    Parameters for continuous targets
+  <a href="#parameters-specific-to-continuous-targets" class="md-nav__link">
+    Parameters specific to continuous targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-discrete-targets" class="md-nav__link">
-    Parameters for discrete targets
+  <a href="#parameters-specific-to-discrete-targets" class="md-nav__link">
+    Parameters  specific to discrete targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-nominal-targets" class="md-nav__link">
-    Parameters for nominal targets
+  <a href="#parameters-specific-to-nominal-targets" class="md-nav__link">
+    Parameters  specific to nominal targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-binary-targets" class="md-nav__link">
-    Parameters for binary targets
+  <a href="#parameters-specific-to-binary-targets" class="md-nav__link">
+    Parameters  specific to binary targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-date-targets" class="md-nav__link">
-    Parameters for date targets
+  <a href="#parameters-specific-to-date-targets" class="md-nav__link">
+    Parameters  specific to date targets
   </a>
   
 </li>
@@ -690,36 +690,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-continuous-targets" class="md-nav__link">
-    Parameters for continuous targets
+  <a href="#parameters-specific-to-continuous-targets" class="md-nav__link">
+    Parameters specific to continuous targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-discrete-targets" class="md-nav__link">
-    Parameters for discrete targets
+  <a href="#parameters-specific-to-discrete-targets" class="md-nav__link">
+    Parameters  specific to discrete targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-nominal-targets" class="md-nav__link">
-    Parameters for nominal targets
+  <a href="#parameters-specific-to-nominal-targets" class="md-nav__link">
+    Parameters  specific to nominal targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-binary-targets" class="md-nav__link">
-    Parameters for binary targets
+  <a href="#parameters-specific-to-binary-targets" class="md-nav__link">
+    Parameters  specific to binary targets
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#parameters-for-date-targets" class="md-nav__link">
-    Parameters for date targets
+  <a href="#parameters-specific-to-date-targets" class="md-nav__link">
+    Parameters  specific to date targets
   </a>
   
 </li>
@@ -760,14 +760,14 @@
               
                 
                 
-                <h1 id="forecast-targets-in-zoltar">Forecast Targets in Zoltar</h1>
+                <h1 id="forecast-targets-in-zoltar">Forecast Targets in Zoltar<a class="headerlink" href="#forecast-targets-in-zoltar" title="Permanent link">&para;</a></h1>
 <p>Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give
 predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead
-incidence and a prediction of when incidence will reach its maximum in a given period of time. When a project is
+values and a prediction of when the time series will reach its maximum in a given period of time. When a project is
 created, the project owner specifies which targets should be part of any submitted forecast. As we will see below,
 targets have specific properties, and there are several different types of targets that determine which properties and
 features pertain to a particular target.</p>
-<h2 id="target-types">Target types</h2>
+<h2 id="target-types">Target types<a class="headerlink" href="#target-types" title="Permanent link">&para;</a></h2>
 <p><em>continuous</em>: A quantitative target whose range encapsulates a section of the real number line. </p>
 <blockquote>
 <p>Examples: percentage of all doctors' office visits due to influenza like-illness, or disease incidence per 100,000 population.</p>
@@ -788,10 +788,10 @@ features pertain to a particular target.</p>
 <blockquote>
 <p>Example: the calendar week in which peak incidence occurs (represented by the Sunday of that week.</p>
 </blockquote>
-<h2 id="target-parameters">Target parameters</h2>
+<h2 id="target-parameters">Target parameters<a class="headerlink" href="#target-parameters" title="Permanent link">&para;</a></h2>
 <p>When created, all targets have a set of parameters that must be defined. Each type of target then has a set of
 additional, sometimes, optional parameters. These are all defined below.</p>
-<h3 id="summary-of-allowed-optional-and-required-parameters-by-target-type">Summary of allowed, optional, and required parameters, by target type</h3>
+<h3 id="summary-of-allowed-optional-and-required-parameters-by-target-type">Summary of allowed, optional, and required parameters, by target type<a class="headerlink" href="#summary-of-allowed-optional-and-required-parameters-by-target-type" title="Permanent link">&para;</a></h3>
 <p>Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if <code>is_step_ahead</code> is <code>true</code>, '-' = disallowed, '~' = optional.</p>
 <table>
 <thead>
@@ -865,7 +865,7 @@ additional, sometimes, optional parameters. These are all defined below.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="required-parameters-for-all-targets">Required parameters for all targets</h3>
+<h3 id="required-parameters-for-all-targets">Required parameters for all targets<a class="headerlink" href="#required-parameters-for-all-targets" title="Permanent link">&para;</a></h3>
 <ul>
 <li><em>name</em>: A brief name for the target. (The number of characters is not limited, but brevity is helpful.)</li>
 <li><em>description</em>: A verbose description of what the target is. (The number of characters is not limited.)</li>
@@ -873,7 +873,7 @@ additional, sometimes, optional parameters. These are all defined below.</p>
 <li><em>is_step_ahead</em>: <code>true</code> if the target is one of a sequence of targets that predict values at different points in the future.</li>
 <li><em>step_ahead_increment</em>: An integer, indicating the forecast horizon represented by this target. It is required if <code>is_step_ahead</code> is <code>true</code>. </li>
 </ul>
-<h3 id="parameters-for-continuous-targets">Parameters for continuous targets</h3>
+<h3 id="parameters-specific-to-continuous-targets">Parameters specific to continuous targets<a class="headerlink" href="#parameters-specific-to-continuous-targets" title="Permanent link">&para;</a></h3>
 <ul>
 <li><em>unit</em>: (Required) E.g., "percent" or "week".</li>
 <li><em>range</em>: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is not specified than range is assumed to be (-infty, infty).</li>
@@ -881,20 +881,20 @@ additional, sometimes, optional parameters. These are all defined below.</p>
   <!-- NGR: is upper bound always specified as infinity?--></li>
 </ul>
 <p>If both <code>range</code> and <code>cats</code> are specified, then min(<code>cats</code>) must equal the lower bound and max(<code>cats</code>) must be less than the upper bound of <code>range</code>.</p>
-<h3 id="parameters-for-discrete-targets">Parameters for discrete targets</h3>
+<h3 id="parameters-specific-to-discrete-targets">Parameters  specific to discrete targets<a class="headerlink" href="#parameters-specific-to-discrete-targets" title="Permanent link">&para;</a></h3>
 <ul>
 <li><em>unit</em>: (Required) E.g., "cases".</li>
 <li><em>range</em>: (Optional, but uploaded <code>Bin</code> prediction types will be rejected unless <code>range</code> is specified) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not specified than range is assumed to be (-infty, infty).</li>
 <li><em>cats</em>: (Optional, and can only be specified if <code>range</code> is also specified) an ordered set of integer values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if <code>cats</code> is specified as [0, 10, 20, 30, 40, 50] and <code>range</code> is specified as [0, 100] then the implied set of valid categories would be [0,10), [10, 20), [20, 30), [30, 40), [40, 50) and [50, 100].</li>
 </ul>
 <p>If both <code>range</code> and <code>cats</code> are specified, then min(<code>cats</code>) must equal the lower bound and max(<code>cats</code>) must be less than the upper bound of <code>range</code>.</p>
-<h3 id="parameters-for-nominal-targets">Parameters for nominal targets</h3>
+<h3 id="parameters-specific-to-nominal-targets">Parameters  specific to nominal targets<a class="headerlink" href="#parameters-specific-to-nominal-targets" title="Permanent link">&para;</a></h3>
 <ul>
 <li><em>cats</em>: (Required) a list of strings that name the categories for this target. Categories must not include the following strings: <code>""</code>, <code>"NA"</code>, or <code>"NULL"</code> (case does not matter).</li>
 </ul>
-<h3 id="parameters-for-binary-targets">Parameters for binary targets</h3>
-<p>None needed.</p>
-<h3 id="parameters-for-date-targets">Parameters for date targets</h3>
+<h3 id="parameters-specific-to-binary-targets">Parameters  specific to binary targets<a class="headerlink" href="#parameters-specific-to-binary-targets" title="Permanent link">&para;</a></h3>
+<p>None.</p>
+<h3 id="parameters-specific-to-date-targets">Parameters  specific to date targets<a class="headerlink" href="#parameters-specific-to-date-targets" title="Permanent link">&para;</a></h3>
 <ul>
 <li><em>unit</em>: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO <code>YYYY-MM-DD</code> date format. This parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a forecast where the point prediction is <code>forecasted_date</code> and the unit is "week", the score would be calculated heuristically as <code>week(truth_date) - week(forecasted_date)</code>. Note: to map dates to biweeks, we use the definitions as presented in <a href="https://doi.org/10.1371/journal.pntd.0004761.s001">Reich et al (2017)</a>.</li>
 <li><em>cats</em>: (Required) a list of dates in <code>YYYY-MM-DD</code> format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  --></li>
@@ -910,7 +910,7 @@ Every date target must have a set of dates (also in YYYYMMDD format) that are va
 Based off of the unit in the target definition, every date would use a fixed unit conversion for point forecast scoring. For example, if `unit=="week"` then point forecast scores would be represented by "week" units. So, the truth for a given timezero-datetarget might be truth="2019-12-15" and a point forecast might be pred="2020-01-05" (both values chosen deliberately to be Sundays). Then we could operate on these numbers as "weeks" and determine the best, standardized way to produce that the difference = truth - pred = 3. 
  -->
 
-<h2 id="valid-prediction-types-by-target-type">Valid prediction types by target type</h2>
+<h2 id="valid-prediction-types-by-target-type">Valid prediction types by target type<a class="headerlink" href="#valid-prediction-types-by-target-type" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -974,7 +974,8 @@ Based off of the unit in the target definition, every date would use a fixed uni
 <p>Legend:
 (1) = valid named distributions are <code>norm</code>, <code>lnorm</code>, <code>gamma</code>, <code>beta</code>
 (2) = valid named distributions are <code>pois</code>, <code>nbinom</code>, <code>nbinom2</code></p>
-<h2 id="available-scores-by-target-type-and-prediction-element">Available scores by target type and prediction element</h2>
+<h2 id="available-scores-by-target-type-and-prediction-element">Available scores by target type and prediction element<a class="headerlink" href="#available-scores-by-target-type-and-prediction-element" title="Permanent link">&para;</a></h2>
+<p>(Note that CRPS and brier scores have not yet been implemented.)</p>
 <table>
 <thead>
 <tr>

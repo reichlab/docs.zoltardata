@@ -1018,9 +1018,9 @@
               
                 
                 
-                <h1 id="forecast-validation">Forecast validation</h1>
+                <h1 id="forecast-validation">Forecast validation<a class="headerlink" href="#forecast-validation" title="Permanent link">&para;</a></h1>
 <p>Forecasts stored in Zoltar are validated upon upload based on the expected structure of each forecast. Below, we document the checks and tests that are performed on all forecasts. We first list the test that is performed for every prediction, and after that, tests are broken down by the class of prediction.</p>
-<h2 id="definitions">Definitions</h2>
+<h2 id="definitions">Definitions<a class="headerlink" href="#definitions" title="Permanent link">&para;</a></h2>
 <p>For clarity, we define specific terms that we will use below.</p>
 <ul>
 <li>Forecast: a collection of data specific to a project &gt; model &gt; timezero.</li>
@@ -1030,15 +1030,15 @@
 <li>Target Type: the classification for a specific forecast target, one of "continuous", "discrete", "nominal", "binary" or "date" (see <a href="../Targets/">Targets</a> for more info)</li>
 <li>Database Row(s): the entry(ies)/row(s) in the database that comprise a prediction element.</li>
 </ul>
-<h2 id="tests-for-all-prediction-elements">Tests for all Prediction Elements</h2>
+<h2 id="tests-for-all-prediction-elements">Tests for all Prediction Elements<a class="headerlink" href="#tests-for-all-prediction-elements" title="Permanent link">&para;</a></h2>
 <p>These tests are performed when a forecast is created or updated.</p>
 <ul>
 <li>The Prediction's class must be valid for its target's type (see <a href="../Targets/#Valid prediction types by target type">Valid prediction types by target type</a>.</li>
 <li>Within a Prediction, there cannot be more than 1 Prediction Element of the same class.</li>
 </ul>
-<h2 id="tests-for-prediction-elements-by-prediction-class">Tests for Prediction Elements by Prediction Class</h2>
+<h2 id="tests-for-prediction-elements-by-prediction-class">Tests for Prediction Elements by Prediction Class<a class="headerlink" href="#tests-for-prediction-elements-by-prediction-class" title="Permanent link">&para;</a></h2>
 <p>These tests are performed when a forecast is created or updated.</p>
-<h3 id="bin-prediction-elements"><code>Bin</code> Prediction Elements</h3>
+<h3 id="bin-prediction-elements"><code>Bin</code> Prediction Elements<a class="headerlink" href="#bin-prediction-elements" title="Permanent link">&para;</a></h3>
 <ul>
 <li>If a Bin Prediction Element exists, it should have &gt;=1 Database Rows.</li>
 <li><code>|cat| = |prob|</code>. The number of elements in the <code>cat</code> and <code>prob</code> vectors should be identical.</li>
@@ -1047,7 +1047,7 @@
 <li>The data format of <code>cat</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
 <li>NB: Rows for Bin predictions where <code>prob</code> == 0 are not stored in the database.</li>
 </ul>
-<h3 id="named-prediction-elements"><code>Named</code> Prediction Elements</h3>
+<h3 id="named-prediction-elements"><code>Named</code> Prediction Elements<a class="headerlink" href="#named-prediction-elements" title="Permanent link">&para;</a></h3>
 <p>We note that <code>Named</code> predictions currently only support fairly simple distributions. We currently
 support distributions with up to three parameters. Future versions of Zoltar could support
 distributions with larger numbers of parameters.</p>
@@ -1125,19 +1125,19 @@ Bernoulli   | 0<=p<=1   |    -      |    -
 Binomial    | 0<=p<=1   |   n>0     |    - 
 -->
 
-<h3 id="point-prediction-elements"><code>Point</code> Prediction Elements</h3>
+<h3 id="point-prediction-elements"><code>Point</code> Prediction Elements<a class="headerlink" href="#point-prediction-elements" title="Permanent link">&para;</a></h3>
 <ul>
 <li>If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets.</li>
 <li><code>value</code> (i, f, t, d, b): Entries in the database rows in the <code>value</code> column cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter).</li>
 <li>The data format of <code>value</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
 </ul>
-<h3 id="sample-prediction-elements"><code>Sample</code> Prediction Elements</h3>
+<h3 id="sample-prediction-elements"><code>Sample</code> Prediction Elements<a class="headerlink" href="#sample-prediction-elements" title="Permanent link">&para;</a></h3>
 <ul>
 <li>If a Sample Prediction Element exists, it should have &gt;=1 Database Rows.</li>
 <li><code>sample</code> (i, f, t, d, b): Entries in the database rows in the <code>sample</code> column cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter).</li>
 <li>The data format of <code>sample</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
 </ul>
-<h3 id="quantile-prediction-elements"><code>Quantile</code> Prediction Elements</h3>
+<h3 id="quantile-prediction-elements"><code>Quantile</code> Prediction Elements<a class="headerlink" href="#quantile-prediction-elements" title="Permanent link">&para;</a></h3>
 <ul>
 <li>If a Quantile Prediction Element exists, it should have &gt;=1 Database Rows.</li>
 <li><code>|quantile| = |value|</code>. The number of elements in the <code>quantile</code> and <code>value</code> vectors should be identical.</li>
@@ -1145,19 +1145,19 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 <li><code>value</code> (i, f, d): Entries in <code>value</code> must be non-decreasing as quantiles increase. Entries in <code>value</code> must obey existing ranges for targets.</li>
 <li>The data format of <code>value</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
 </ul>
-<h2 id="tests-for-predictions-by-target-type">Tests for Predictions by Target Type</h2>
+<h2 id="tests-for-predictions-by-target-type">Tests for Predictions by Target Type<a class="headerlink" href="#tests-for-predictions-by-target-type" title="Permanent link">&para;</a></h2>
 <p>These tests are performed when a forecast is created or updated.</p>
-<h3 id="continuous">"continuous"</h3>
+<h3 id="continuous">"continuous"<a class="headerlink" href="#continuous" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Within one prediction, there can be at most one of the following prediction elements, but not both: {<code>Named</code>, <code>Bin</code>}.</li>
 </ul>
-<h3 id="discrete">"discrete"</h3>
+<h3 id="discrete">"discrete"<a class="headerlink" href="#discrete" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Within one prediction, there can be at most one of the following prediction elements, but not both: {<code>Named</code>, <code>Bin</code>}.</li>
 </ul>
-<h2 id="tests-for-prediction-elements-by-target-type">Tests for Prediction Elements by Target Type</h2>
+<h2 id="tests-for-prediction-elements-by-target-type">Tests for Prediction Elements by Target Type<a class="headerlink" href="#tests-for-prediction-elements-by-target-type" title="Permanent link">&para;</a></h2>
 <p>These tests are performed when a forecast is created or updated. For all target types, only <a href="../Targets/#valid-prediction-types-by-target">valid Prediction Types</a> are accepted.</p>
-<h3 id="continuous_1">"continuous"</h3>
+<h3 id="continuous_1">"continuous"<a class="headerlink" href="#continuous_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be numeric</li>
 <li>if <code>range</code> is specified, any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be contained within <code>range</code></li>
@@ -1165,7 +1165,7 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 <li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cat</code> values must be a subset of the <code>cats</code> defined by the target</li>
 <li>for <code>Named</code> Prediction Elements, the distribution must be one of <code>norm</code>, <code>lnorm</code>, <code>gamma</code>, <code>beta</code></li>
 </ul>
-<h3 id="discrete_1">"discrete"</h3>
+<h3 id="discrete_1">"discrete"<a class="headerlink" href="#discrete_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be integers</li>
 <li>if <code>range</code> is specified, any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be contained within <code>range</code></li>
@@ -1173,50 +1173,50 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 <li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cat</code> values must be a subset of the <code>cats</code> defined by the target</li>
 <li>for <code>Named</code> Prediction Elements, the distribution must be one of <code>pois</code>, <code>nbinom</code>, <code>nbinom2</code>.</li>
 </ul>
-<h3 id="nominal">"nominal"</h3>
+<h3 id="nominal">"nominal"<a class="headerlink" href="#nominal" title="Permanent link">&para;</a></h3>
 <ul>
 <li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be contained within the valid set of <code>cats</code> defined by the target</li>
 <li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cat</code> values must be a subset of the <code>cats</code> defined by the target</li>
 </ul>
-<h3 id="binary">"binary"</h3>
+<h3 id="binary">"binary"<a class="headerlink" href="#binary" title="Permanent link">&para;</a></h3>
 <ul>
 <li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be either <code>true</code> or <code>false</code>.</li>
 <li>for <code>Bin</code> Prediction Elements, there must be exactly two <code>cat</code> values labeled <code>true</code> and <code>false</code>. These are the two <code>cats</code> that are implied (but not allowed to be specified) by binary target types.</li>
 </ul>
-<h3 id="date">"date"</h3>
+<h3 id="date">"date"<a class="headerlink" href="#date" title="Permanent link">&para;</a></h3>
 <ul>
 <li>any values in <code>Point</code> or <code>Sample</code> Prediction Elements should be string that can be interpreted as a date in <code>YYYY-MM-DD</code> format, and these values should be contained within the set of valid responses defined by <code>cats</code> defined by the target.</li>
 <li>for <code>Bin</code> Prediction Elements, the submitted set of <code>cats</code> must be a subset of the valid outcomes defined by the target range.</li>
 </ul>
-<h2 id="tests-for-target-definitions-by-target-type">Tests for target definitions by Target Type</h2>
+<h2 id="tests-for-target-definitions-by-target-type">Tests for target definitions by Target Type<a class="headerlink" href="#tests-for-target-definitions-by-target-type" title="Permanent link">&para;</a></h2>
 <p>These tests are performed when a target is created or updated.</p>
-<h3 id="continuous_2">"continuous"</h3>
+<h3 id="continuous_2">"continuous"<a class="headerlink" href="#continuous_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>if both <code>range</code> and <code>cats</code> are specified, then the <code>min(cats)</code> must equal the lower bound and <code>max(cats)</code> must be less than the upper bound.</li>
 <li>if <code>range</code> is specified it must contain two numeric values</li>
 <li><code>range</code> lower bound must be smaller than the upper bound. </li>
 <li>if <code>range</code> is specified, is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b).</li>
 </ul>
-<h3 id="discrete_2">"discrete"</h3>
+<h3 id="discrete_2">"discrete"<a class="headerlink" href="#discrete_2" title="Permanent link">&para;</a></h3>
 <ul>
 <li>if <code>range</code> is specified, it must include two integers.</li>
 </ul>
-<h3 id="nominal_1">"nominal"</h3>
+<h3 id="nominal_1">"nominal"<a class="headerlink" href="#nominal_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li><code>cats</code> must be a character vector containing a set of unique labels of the categories for this target. The labels must not include <code>""</code>, <code>NA</code> or <code>NULL</code> (case does not matter).</li>
 </ul>
-<h3 id="binary_1">"binary"</h3>
+<h3 id="binary_1">"binary"<a class="headerlink" href="#binary_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>none.</li>
 </ul>
-<h3 id="date_1">"date"</h3>
+<h3 id="date_1">"date"<a class="headerlink" href="#date_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>the <code>unit</code> parameter is required to be one of <code>month</code>, <code>week</code>, <code>biweek</code>, or <code>day</code></li>
 <li>the <code>date</code> parameter must contain a list of text elements in <code>YYYY-MM-DD</code> format that can be interpreted as dates.</li>
 </ul>
-<h2 id="tests-for-ground-truth-data-tables">Tests for ground truth data tables</h2>
+<h2 id="tests-for-ground-truth-data-tables">Tests for ground truth data tables<a class="headerlink" href="#tests-for-ground-truth-data-tables" title="Permanent link">&para;</a></h2>
 <p>Please see <a href="../zoltar-ground-truth-example.csv">this file</a> for an example of a valid specification of ground-truth values.</p>
-<h3 id="for-all-ground-truth-files">For all ground truth files</h3>
+<h3 id="for-all-ground-truth-files">For all ground truth files<a class="headerlink" href="#for-all-ground-truth-files" title="Permanent link">&para;</a></h3>
 <ul>
 <li>The columns are <code>timezero</code>, <code>location</code>, <code>target</code>, and <code>value</code>.</li>
 <li>For every unique <code>target</code>-<code>location</code>-<code>timezero</code> combination, there should be either one or zero rows of truth data.</li>
@@ -1224,7 +1224,7 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 <li>The <code>value</code> of the truth data cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter).</li>
 <li>The <code>value</code> of the truth data should be interpretable as the corresponding <code>data_type</code> of the specified target. E.g., for a row corresponding to a <code>date</code> target, the entry must contain a valid ISO-formatted date string.</li>
 </ul>
-<h3 id="range-check-for-ground-truth-data">Range-check for ground truth data</h3>
+<h3 id="range-check-for-ground-truth-data">Range-check for ground truth data<a class="headerlink" href="#range-check-for-ground-truth-data" title="Permanent link">&para;</a></h3>
 <p>The following test can be applied to any target with a <code>range</code>. This will always apply to <code>binary</code>, <code>nominal</code>, and <code>date</code> targets, as these targets are required to have sets of valid values specified as part of the target definition. If the <code>range</code> parameter is specified for a <code>continuous</code> or <code>discrete</code> target, then the following test will be applied to that target as well.</p>
 <p>For <code>binary</code> targets:
  - The entry in the <code>value</code> column for a specific <code>target</code>-<code>location</code>-<code>timezero</code> combination must be either <code>true</code> or <code>false</code>.</p>

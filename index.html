@@ -662,27 +662,26 @@
               
                 
                 
-                <h1 id="zoltar-the-forecast-archive">Zoltar - The Forecast Archive</h1>
-<p>Welcome to the documentation site for <a href="https://www.zoltardata.com/">Zoltar</a>, a system developed by <a href="http://reichlab.io/">the Reich Lab</a> in the <a href="http://www.umass.edu/sphhs/biostatistics">Department of Biostatistics and Epidemiology</a> at the <a href="https://www.umass.edu/">University of Massachusetts Amherst</a> to store timeseries forecasts along with tools to browse, analyze, visualize, and score them.</p>
-<h2 id="introduction">Introduction</h2>
-<p>Zoltar is a web application to develop ideas for a repository of model forecast results. Until now, predictions made by models have been stored in differing formats and locations. This complicates tracking, comparing, and revisiting forecasts. Zoltar supports storing, retrieving, comparing, and analyzing time series forecasts for prediction challenges of interest to the modeling community.</p>
-<h2 id="getting-started">Getting started</h2>
+                <h1 id="zoltar-the-forecast-archive">Zoltar - The Forecast Archive<a class="headerlink" href="#zoltar-the-forecast-archive" title="Permanent link">&para;</a></h1>
+<p>Welcome to the documentation site for <a href="https://www.zoltardata.com/">Zoltar</a>, a system developed by <a href="http://reichlab.io/">the Reich Lab</a> in the <a href="http://www.umass.edu/sphhs/biostatistics">Department of Biostatistics and Epidemiology</a> at the <a href="https://www.umass.edu/">University of Massachusetts Amherst</a> to store time series forecasts along with tools to browse, analyze, visualize, and score them.</p>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Zoltar is a web application to that hosts a repository of model forecast results. For many existing forecasting projects, predictions made by models have been stored in differing formats and locations or in sets of unstructured data files. This complicates tracking, comparing, visualizing and scoring forecasts. Zoltar supports storing, retrieving, comparing, and analyzing time series forecasts for prediction challenges of interest to many different modeling communities.</p>
+<h2 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p>Use the navigation links in the sidebar to get started <a href="WebTourIntro/">touring the web site</a>, <a href="UserIntro/">reading the user guide</a>, or learning about our <a href="Zoltpy/">python</a> and <a href="Zoltr/">R</a> packages for interacting with the Zoltar API from your programming language.  </p>
-<h2 id="assumptionslimitations">Assumptions/Limitations</h2>
+<h2 id="assumptionslimitations">Assumptions/Limitations<a class="headerlink" href="#assumptionslimitations" title="Permanent link">&para;</a></h2>
 <p>The scope of this first iteration is limited in these ways:</p>
 <ul>
 <li><em>Process-agnostic</em>: By storing only core datasets, we make no assumptions about ML processes behind a model’s forecast, such as how it’s fit.</li>
-<li><em>Enforceability</em>: There is currently not a method in place to test whether the models were fit on the right data subsets (this is something that the below ForecastFramework integration could help with).</li>
+<li><em>Enforceability</em>: There is currently not a method in place to test whether the models were fit on the right data subsets (this is something that pipeline-focused software such as <a href="https://mlr3.mlr-org.com/">mlr3</a>, among others, could assist with).</li>
 <li><em>Unrevised vs. revised data</em>: A Project’s core dataset may or may not include data revisions, such as those used to model or forecast reporting delays. Each project should give specific instructions on what type of data (revised vs. unrevised) is used in the training and testing phases of the forecasting.</li>
 <li><em>Model instances</em>: The system stores only model metadata, rather than computable representations of models (internals) that could be used to reconstruct and re-run them.</li>
 <li><em>Reports</em>: Some projects generate automated narrative reports from forecast data. This system does not support storing reports with their models.</li>
 <li><em>Training/testing data</em>: The only information about what subsets of the core data were used for different ML stages (e.g. training vs testing) will be stored in narrative format in the project description.</li>
 <li><em>Reproducibility</em>: Since this system stores data involved in forecasts and not source code, information about how to re-run models is only captured in narrative form in the model's description, and is linked to by the model's url field.</li>
-<li><em>Metrics</em>: This version does not capture metric information. If metrics change, then a new project should be created.</li>
 </ul>
-<h2 id="funding">Funding</h2>
+<h2 id="funding">Funding<a class="headerlink" href="#funding" title="Permanent link">&para;</a></h2>
 <p>This work has been supported by the National Institutes of General Medical Sciences (R35GM119582). The content is solely the responsibility of the authors and does not necessarily represent the official views of NIGMS, or the National Institutes of Health.</p>
-<h2 id="contact">Contact</h2>
+<h2 id="contact">Contact<a class="headerlink" href="#contact" title="Permanent link">&para;</a></h2>
 <p>If you have questions about this site or want an account, please contact Professor Nicholas Reich (nick@schoolph.umass.edu), director of the <a href="href=&quot;http://reichlab.io/">Reich Lab</a>.</p>
                 
                   
