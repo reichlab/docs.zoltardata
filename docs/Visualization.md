@@ -1,4 +1,4 @@
-# Visualizations
+# Zoltar Visualizations
 
 Visualizations are provided for each project and they can be accessed by clicking visualization link on the [project detail page](ProjectDetailPage.md). This page uses the [D3 Foresight component](https://github.com/reichlab/d3-foresight)'s TimeChart to display the project's models' forecasts for each step ahead target. Currently we only use the basic plot feature along with the **actual** component. We plan to add baseline, history, and other features. To use the chart:
 

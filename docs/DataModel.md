@@ -1,4 +1,4 @@
-# Data model
+# Zoltar data model
 
 This page documents the internal [Django model classes](https://docs.djangoproject.com/en/1.11/topics/db/models/) that
 make up Zoltar. This page is a reference meant to help users understand how forecast data is modeled, and the actual

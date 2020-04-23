@@ -1,4 +1,4 @@
-# Truth
+# Manging truth data
 
 Zoltar supports uploading ground truth data for each project that desires automatic scoring. This data is specified as a CSV file as documented in [Truth data format](http://127.0.0.1:8000/FileFormats/#truth-data-format-csv), and each project is responsible for generating the CSV file for their particular set of [time zeros](Concepts.md), [units](Concepts.md) and [targets](Concepts.md). You can tell whether truth has been uploaded to a project by looking at the **Truth Data** row in the [Project details table](http://127.0.0.1:8000/ProjectDetailPage/#project-details-table) section of the [project detail page](ProjectDetailPage.md). It will either be a link with the truth data file name (which means truth is present) and the number of rows in parentheses, or a "Browse..." button next to a green "Upload" button with the text _(No truth data)_ to its right otherwise. Clicking on the link takes you to the Truth detail page documented in [Truth detail page](#view-truth-details) below.
 

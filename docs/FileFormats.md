@@ -1,4 +1,5 @@
 # File Formats
+
 Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.
 
 
