@@ -1,33 +1,69 @@
 # Zoltar data model
 
-This page documents the internal [Django model classes](https://docs.djangoproject.com/en/1.11/topics/db/models/) that
-make up Zoltar. This page is a reference meant to help users understand how forecast data is modeled, and the actual
-data structures that represent the different types of predictions.
+This page documents how Zoltar represents forecast data, and the various types of predictions that are supported. Each forecast is made for a particular _time zero_ in the project, and contains some number of _predictions_, one or more for each combination of the project's _units_ and _targets_. Zoltar supports the following five prediction types, which we've found covers many forecasting applications. All predictions must pass a number of validity checks as documented in [Validation](Validation.md). Each section has an example as represented in Zoltar's [JSON format](FileFormats.md#forecast-data-file-format-json) which was taken from the "Docs Example Project" demo project.
 
 
-## "Containers"
+## Point predictions
 
-These are the classes that users see when working within Zoltar, and they structure where forecast data resides.
+Point predictions represent a single value. See [here](Validation.md#point-prediction-elements) for details. In this example we see a prediction of `2.1` for the unit "location1" and target "pct next week". Note that, like all predictions, the data type (in this case the float `2.1`) must match the target's data type. (In this case it does; "pct next week" is a _discrete_ target.)
 
-- **Project**: Defines the valid locations, targets, and timezeros for the project's forecasts, and contains its
-  forecast models.
-- **Forecast Model**: Contains forecasts, zero or one for each timezero in the model's project.
-- **Forecast**: Contains the specific predictions for a particular timezero.
-- **Timezero**: todo
+    {"unit": "location1",
+      "target": "pct next week",
+      "class": "point",
+      "prediction": {
+        "value": 2.1
+      }
 
 
-## Forecasts and Predictions
+## Named distributions
 
-Each forecast is for a particular timezero, and contains some number of _Predictions_. Each prediction is for a location
-and target in the forecast's timezero. In other words, a forecast has one or more Predictions of various types. We
-use Prediction class hierarchy with seven concrete subclasses:
+Named distributions represent distributions like _normal_, _log normal_, _gamma_, etc. See [here](Validation.md#named-prediction-elements) for details. Here is an example in which a _normal_ distribution ("norm" is the abbreviation) is specified for unit "location1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: _mean_ ("param1") and _sd_ ("param2"). "param3" is unused and not listed.
 
-- _Prediction_ (abstract):
-    (1) **NamedDistribution**: Represents named distributions like normal, log normal, gamma, etc.
-    (2) **PointPrediction**: Represents point predictions.
-- _EmpiricalDistribution_ (abstract):
-    (3)  **BinCatDistribution**: Represents binned distribution with a category for each bin.
-    (4)  **BinLwrDistribution**: Represents binned distribution defined by inclusive lower bounds for each bin.
-    (5)   **BinaryDistribution**: Represents binary distributions.
-    (6)   **SampleDistribution**: Represents numeric samples.
-    (7)   **SampleCatDistribution**: Represents character string samples from categories.
+    {"unit": "location1",
+      "target": "pct next week",
+      "class": "named",
+      "prediction": {
+        "family": "norm",
+        "param1": 1.1,
+        "param2": 2.2
+      }
+
+
+## Bin distributions
+
+Bin distributions represent binned distribution defined by inclusive lower bounds for each bin. See [here](Validation.md#bin-prediction-elements) for details. Example:
+
+    {"unit": "location2",
+      "target": "pct next week",
+      "class": "bin",
+      "prediction": {
+        "cat": [1.1, 2.2, 3.3],
+        "prob": [0.3, 0.2, 0.5]
+      }
+    },
+
+
+## Sample distributions
+
+Sample distributions represent samples taken for the unit and target. Here's an example:
+
+    {"unit": "location3",
+      "target": "pct next week",
+      "class": "sample",
+      "prediction": {
+        "sample": [2.3, 6.5, 0.0, 10.0234, 0.0001]
+      }
+
+
+## Quantile distributions
+
+Quantile distributions represent ... TBD. For example:
+
+    {"unit": "location2",
+      "target": "pct next week",
+      "class": "quantile",
+      "prediction": {
+        "quantile": [0.025, 0.25, 0.5, 0.75, 0.975],
+        "value": [1.0, 2.2, 2.2, 5.0, 50.0]
+      }
+    },

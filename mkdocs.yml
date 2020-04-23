@@ -19,10 +19,10 @@ nav:
       - 'Create or manage an account': 'Accounts.md'
   - Reference:
       - 'Concepts': 'Concepts.md'
-      - 'Targets': 'Targets.md'
       - 'Data model': 'DataModel.md'
-      - 'Validation': 'Validation.md'
       - 'File Formats': 'FileFormats.md'
+      - 'Targets': 'Targets.md'
+      - 'Validation': 'Validation.md'
   - Programming libraries and API:
       - 'zoltpy (Python)': 'Zoltpy.md'
       - 'zoltpr (R)': 'Zoltr.md'

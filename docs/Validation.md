@@ -38,16 +38,14 @@ These tests are performed when a forecast is created or updated.
 
 ### `Named` Prediction Elements
 
-We note that `Named` predictions currently only support fairly simple distributions. We currently
-support distributions with up to three parameters. Future versions of Zoltar could support
-distributions with larger numbers of parameters.
+We note that `Named` predictions currently only support fairly simple distributions. We currently support distributions with up to three parameters. Future versions of Zoltar could support distributions with larger numbers of parameters.
 
  - If a Named Prediction Element exists, it should have exactly 1 Database Row.
  - `family`: must be one of the abbreviations shown in the table below.
  - `param1`, `param2`, `param3` (f): The number of param columns with non-NULL entries count must match family definition (see note below).
  - Parameters for each distribution must be within valid ranges, which, if constraints exist, are specified in the table below.
 
-For reference, here is the mapping between the generic parameter names and the family-specific use of them (based on [predx_classes.md](https://github.com/cdcepi/predx/blob/master/predx_classes.md):
+For reference, here is the mapping between the generic parameter names and the family-specific use of them (based on [predx_classes.md](https://github.com/cdcepi/predx/blob/master/predx_classes.md)):
 
 Family      | abbreviation | param1    | param2   | param3 
 ----------- | ------------ | --------- | -------- | ------ 

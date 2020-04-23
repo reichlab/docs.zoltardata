@@ -2,6 +2,12 @@
 
 Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.
 
+- [Project creation configuration (JSON)](#project-creation-configuration-json)
+- [Score download format (CSV)](#score-download-format-csv)
+- [Truth data format (CSV)](#truth-data-format-csv)
+- [Forecast data format (JSON)](#forecast-data-format-json)
+- [Quantile forecast format (CSV)](#quantile-forecast-format-csv)
+
 
 ## Project creation configuration (JSON)
 As an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. You can find an example at [cdc-project.json](https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json). The file contains eight metadata keys (`name`, `is_public`, `description`, `home_url`, `logo_url`, `core_data`, `time_interval_type`, `visualization_y_label`), plus three keys that are lists of objects (`locations`, `targets`, and `timezeros`). The metadata values' meanings are self-evident except for these two:
@@ -71,20 +77,6 @@ Here's an example:
     2017-04-23,TH01,5_biweek_ahead,11
 
 
-## Quantile forecast format (CSV)
-Zoltar libraries support importing quantile data via the CSV format documented at 
-[covid19-death-forecasts](https://github.com/reichlab/covid19-death-forecasts/blob/master/README.md#data-model). Summary:
-
-- `target`: a unique id for the target
-- `location`: a unique id for the location (we have standardized to FIPS codes)
-- `location_name`: (optional) if desired to have a human-readable name for the location, this column may be specified. Note that the `location` column will be considered to be authoritative and for programmatic reading and importing of data, this column will be ignored.
-- `type`: one of either `point` or `quantile`
-- `quantile`: a value between 0 and 1 (inclusive), representing the quantile displayed in this row. if `type=="point"` then `NULL`.
-- `value`: a numeric value representing the value of the cumulative distribution function evaluated at the specified `quantile`
-
-Please see [Validation.md](Validation.md) for details about quantile and value data. An example is at [quantile-predictions.csv](quantile-predictions.csv).
-
-
 ## Forecast data format (JSON)
 For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a`JSON IO dict` in code documentation. See [zoltar-predictions-examples.json](zoltar-predictions-examples.json) for an example.
 
@@ -105,3 +97,18 @@ Briefly, the dict has four top level keys:
     - `named`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
     - `point`: A numeric point prediction with a single `value` key.
     - `sample`: Numeric samples represented as a table with one column that is found in the `sample` key.
+
+
+## Quantile forecast format (CSV)
+Zoltar libraries support importing quantile data via the CSV format documented at 
+[covid19-death-forecasts](https://github.com/reichlab/covid19-death-forecasts/blob/master/README.md#data-model). While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the [above format](#project-creation-configuration-json)), the libraries allow you to translate between the two.
+
+The format allows these columns in any order. Additional columns (such as the common `location_name`) are allowed but ignored.
+
+- `target`: a unique id for the target
+- `location`: a unique id for the location (we have standardized to FIPS codes)
+- `type`: one of either `point` or `quantile`
+- `quantile`: a value between 0 and 1 (inclusive), representing the quantile displayed in this row. if `type=="point"` then `NULL`.
+- `value`: a numeric value representing the value of the cumulative distribution function evaluated at the specified `quantile`
+
+Please see [Validation.md](Validation.md) for details about quantile and value data.

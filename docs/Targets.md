@@ -1,11 +1,6 @@
 # Forecast Targets in Zoltar
 
-Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give
-predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead
-values and a prediction of when the time series will reach its maximum in a given period of time. When a project is
-created, the project owner specifies which targets should be part of any submitted forecast. As we will see below,
-targets have specific properties, and there are several different types of targets that determine which properties and
-features pertain to a particular target.
+Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead values and a prediction of when the time series will reach its maximum in a given period of time. When a project is created, the project owner specifies which targets should be part of any submitted forecast. As we will see below, targets have specific properties, and there are several different types of targets that determine which properties and features pertain to a particular target.
 
 
 ## Target types
@@ -28,8 +23,7 @@ features pertain to a particular target.
 
 ## Target parameters
 
-When created, all targets have a set of parameters that must be defined. Each type of target then has a set of
-additional, sometimes, optional parameters. These are all defined below.
+When created, all targets have a set of parameters that must be defined. Each type of target then has a set of additional, sometimes, optional parameters. These are all defined below.
 
 ### Summary of allowed, optional, and required parameters, by target type
 
