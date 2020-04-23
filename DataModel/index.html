@@ -417,18 +417,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../Targets/" title="Targets" class="md-nav__link">
-      Targets
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -458,15 +446,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#containers" class="md-nav__link">
-    "Containers"
+  <a href="#point-predictions" class="md-nav__link">
+    Point predictions
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#forecasts-and-predictions" class="md-nav__link">
-    Forecasts and Predictions
+  <a href="#named-distributions" class="md-nav__link">
+    Named distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bin-distributions" class="md-nav__link">
+    Bin distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-distributions" class="md-nav__link">
+    Sample distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantile-distributions" class="md-nav__link">
+    Quantile distributions
   </a>
   
 </li>
@@ -488,8 +497,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Validation/" title="Validation" class="md-nav__link">
-      Validation
+    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
+      File Formats
     </a>
   </li>
 
@@ -500,8 +509,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
-      File Formats
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Validation/" title="Validation" class="md-nav__link">
+      Validation
     </a>
   </li>
 
@@ -592,15 +613,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#containers" class="md-nav__link">
-    "Containers"
+  <a href="#point-predictions" class="md-nav__link">
+    Point predictions
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#forecasts-and-predictions" class="md-nav__link">
-    Forecasts and Predictions
+  <a href="#named-distributions" class="md-nav__link">
+    Named distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bin-distributions" class="md-nav__link">
+    Bin distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample-distributions" class="md-nav__link">
+    Sample distributions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quantile-distributions" class="md-nav__link">
+    Quantile distributions
   </a>
   
 </li>
@@ -623,33 +665,58 @@
                 
                 
                 <h1 id="zoltar-data-model">Zoltar data model<a class="headerlink" href="#zoltar-data-model" title="Permanent link">&para;</a></h1>
-<p>This page documents the internal <a href="https://docs.djangoproject.com/en/1.11/topics/db/models/">Django model classes</a> that
-make up Zoltar. This page is a reference meant to help users understand how forecast data is modeled, and the actual
-data structures that represent the different types of predictions.</p>
-<h2 id="containers">"Containers"<a class="headerlink" href="#containers" title="Permanent link">&para;</a></h2>
-<p>These are the classes that users see when working within Zoltar, and they structure where forecast data resides.</p>
-<ul>
-<li><strong>Project</strong>: Defines the valid locations, targets, and timezeros for the project's forecasts, and contains its
-  forecast models.</li>
-<li><strong>Forecast Model</strong>: Contains forecasts, zero or one for each timezero in the model's project.</li>
-<li><strong>Forecast</strong>: Contains the specific predictions for a particular timezero.</li>
-<li><strong>Timezero</strong>: todo</li>
-</ul>
-<h2 id="forecasts-and-predictions">Forecasts and Predictions<a class="headerlink" href="#forecasts-and-predictions" title="Permanent link">&para;</a></h2>
-<p>Each forecast is for a particular timezero, and contains some number of <em>Predictions</em>. Each prediction is for a location
-and target in the forecast's timezero. In other words, a forecast has one or more Predictions of various types. We
-use Prediction class hierarchy with seven concrete subclasses:</p>
-<ul>
-<li><em>Prediction</em> (abstract):
-    (1) <strong>NamedDistribution</strong>: Represents named distributions like normal, log normal, gamma, etc.
-    (2) <strong>PointPrediction</strong>: Represents point predictions.</li>
-<li><em>EmpiricalDistribution</em> (abstract):
-    (3)  <strong>BinCatDistribution</strong>: Represents binned distribution with a category for each bin.
-    (4)  <strong>BinLwrDistribution</strong>: Represents binned distribution defined by inclusive lower bounds for each bin.
-    (5)   <strong>BinaryDistribution</strong>: Represents binary distributions.
-    (6)   <strong>SampleDistribution</strong>: Represents numeric samples.
-    (7)   <strong>SampleCatDistribution</strong>: Represents character string samples from categories.</li>
-</ul>
+<p>This page documents how Zoltar represents forecast data, and the various types of predictions that are supported. Each forecast is made for a particular <em>time zero</em> in the project, and contains some number of <em>predictions</em>, one or more for each combination of the project's <em>units</em> and <em>targets</em>. Zoltar supports the following five prediction types, which we've found covers many forecasting applications. All predictions must pass a number of validity checks as documented in <a href="../Validation/">Validation</a>. Each section has an example as represented in Zoltar's <a href="../FileFormats/#forecast-data-file-format-json">JSON format</a> which was taken from the "Docs Example Project" demo project.</p>
+<h2 id="point-predictions">Point predictions<a class="headerlink" href="#point-predictions" title="Permanent link">&para;</a></h2>
+<p>Point predictions represent a single value. See <a href="../Validation/#point-prediction-elements">here</a> for details. In this example we see a prediction of <code>2.1</code> for the unit "location1" and target "pct next week". Note that, like all predictions, the data type (in this case the float <code>2.1</code>) must match the target's data type. (In this case it does; "pct next week" is a <em>discrete</em> target.)</p>
+<pre><code>{"unit": "location1",
+  "target": "pct next week",
+  "class": "point",
+  "prediction": {
+    "value": 2.1
+  }
+</code></pre>
+<h2 id="named-distributions">Named distributions<a class="headerlink" href="#named-distributions" title="Permanent link">&para;</a></h2>
+<p>Named distributions represent distributions like <em>normal</em>, <em>log normal</em>, <em>gamma</em>, etc. See <a href="../Validation/#named-prediction-elements">here</a> for details. Here is an example in which a <em>normal</em> distribution ("norm" is the abbreviation) is specified for unit "location1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: <em>mean</em> ("param1") and <em>sd</em> ("param2"). "param3" is unused and not listed.</p>
+<pre><code>{"unit": "location1",
+  "target": "pct next week",
+  "class": "named",
+  "prediction": {
+    "family": "norm",
+    "param1": 1.1,
+    "param2": 2.2
+  }
+</code></pre>
+<h2 id="bin-distributions">Bin distributions<a class="headerlink" href="#bin-distributions" title="Permanent link">&para;</a></h2>
+<p>Bin distributions represent binned distribution defined by inclusive lower bounds for each bin. See <a href="../Validation/#bin-prediction-elements">here</a> for details. Example:</p>
+<pre><code>{"unit": "location2",
+  "target": "pct next week",
+  "class": "bin",
+  "prediction": {
+    "cat": [1.1, 2.2, 3.3],
+    "prob": [0.3, 0.2, 0.5]
+  }
+},
+</code></pre>
+<h2 id="sample-distributions">Sample distributions<a class="headerlink" href="#sample-distributions" title="Permanent link">&para;</a></h2>
+<p>Sample distributions represent samples taken for the unit and target. Here's an example:</p>
+<pre><code>{"unit": "location3",
+  "target": "pct next week",
+  "class": "sample",
+  "prediction": {
+    "sample": [2.3, 6.5, 0.0, 10.0234, 0.0001]
+  }
+</code></pre>
+<h2 id="quantile-distributions">Quantile distributions<a class="headerlink" href="#quantile-distributions" title="Permanent link">&para;</a></h2>
+<p>Quantile distributions represent ... TBD. For example:</p>
+<pre><code>{"unit": "location2",
+  "target": "pct next week",
+  "class": "quantile",
+  "prediction": {
+    "quantile": [0.025, 0.25, 0.5, 0.75, 0.975],
+    "value": [1.0, 2.2, 2.2, 5.0, 50.0]
+  }
+},
+</code></pre>
                 
                   
                 
@@ -670,7 +737,7 @@ use Prediction class hierarchy with seven concrete subclasses:</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Targets/" title="Targets" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Concepts/" title="Concepts" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -679,19 +746,19 @@ use Prediction class hierarchy with seven concrete subclasses:</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Targets
+                Concepts
               </span>
             </div>
           </a>
         
         
-          <a href="../Validation/" title="Validation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../FileFormats/" title="File Formats" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Validation
+                File Formats
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

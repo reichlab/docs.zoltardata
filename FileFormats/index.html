@@ -419,32 +419,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Targets/" title="Targets" class="md-nav__link">
-      Targets
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../DataModel/" title="Data model" class="md-nav__link">
       Data model
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Validation/" title="Validation" class="md-nav__link">
-      Validation
     </a>
   </li>
 
@@ -530,15 +506,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quantile-forecast-format-csv" class="md-nav__link">
-    Quantile forecast format (CSV)
+  <a href="#forecast-data-format-json" class="md-nav__link">
+    Forecast data format (JSON)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#forecast-data-format-json" class="md-nav__link">
-    Forecast data format (JSON)
+  <a href="#quantile-forecast-format-csv" class="md-nav__link">
+    Quantile forecast format (CSV)
   </a>
   
 </li>
@@ -551,6 +527,30 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Validation/" title="Validation" class="md-nav__link">
+      Validation
+    </a>
   </li>
 
         
@@ -688,15 +688,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#quantile-forecast-format-csv" class="md-nav__link">
-    Quantile forecast format (CSV)
+  <a href="#forecast-data-format-json" class="md-nav__link">
+    Forecast data format (JSON)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#forecast-data-format-json" class="md-nav__link">
-    Forecast data format (JSON)
+  <a href="#quantile-forecast-format-csv" class="md-nav__link">
+    Quantile forecast format (CSV)
   </a>
   
 </li>
@@ -720,6 +720,13 @@
                 
                 <h1 id="file-formats">File Formats<a class="headerlink" href="#file-formats" title="Permanent link">&para;</a></h1>
 <p>Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.</p>
+<ul>
+<li><a href="#project-creation-configuration-json">Project creation configuration (JSON)</a></li>
+<li><a href="#score-download-format-csv">Score download format (CSV)</a></li>
+<li><a href="#truth-data-format-csv">Truth data format (CSV)</a></li>
+<li><a href="#forecast-data-format-json">Forecast data format (JSON)</a></li>
+<li><a href="#quantile-forecast-format-csv">Quantile forecast format (CSV)</a></li>
+</ul>
 <h2 id="project-creation-configuration-json">Project creation configuration (JSON)<a class="headerlink" href="#project-creation-configuration-json" title="Permanent link">&para;</a></h2>
 <p>As an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. You can find an example at <a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json">cdc-project.json</a>. The file contains eight metadata keys (<code>name</code>, <code>is_public</code>, <code>description</code>, <code>home_url</code>, <code>logo_url</code>, <code>core_data</code>, <code>time_interval_type</code>, <code>visualization_y_label</code>), plus three keys that are lists of objects (<code>locations</code>, <code>targets</code>, and <code>timezeros</code>). The metadata values' meanings are self-evident except for these two:</p>
 <ul>
@@ -781,18 +788,6 @@ BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.1561
 2017-04-23,TH01,4_biweek_ahead,8
 2017-04-23,TH01,5_biweek_ahead,11
 </code></pre>
-<h2 id="quantile-forecast-format-csv">Quantile forecast format (CSV)<a class="headerlink" href="#quantile-forecast-format-csv" title="Permanent link">&para;</a></h2>
-<p>Zoltar libraries support importing quantile data via the CSV format documented at 
-<a href="https://github.com/reichlab/covid19-death-forecasts/blob/master/README.md#data-model">covid19-death-forecasts</a>. Summary:</p>
-<ul>
-<li><code>target</code>: a unique id for the target</li>
-<li><code>location</code>: a unique id for the location (we have standardized to FIPS codes)</li>
-<li><code>location_name</code>: (optional) if desired to have a human-readable name for the location, this column may be specified. Note that the <code>location</code> column will be considered to be authoritative and for programmatic reading and importing of data, this column will be ignored.</li>
-<li><code>type</code>: one of either <code>point</code> or <code>quantile</code></li>
-<li><code>quantile</code>: a value between 0 and 1 (inclusive), representing the quantile displayed in this row. if <code>type=="point"</code> then <code>NULL</code>.</li>
-<li><code>value</code>: a numeric value representing the value of the cumulative distribution function evaluated at the specified <code>quantile</code></li>
-</ul>
-<p>Please see <a href="../Validation/">Validation.md</a> for details about quantile and value data. An example is at <a href="quantile-predictions.csv">quantile-predictions.csv</a>.</p>
 <h2 id="forecast-data-format-json">Forecast data format (JSON)<a class="headerlink" href="#forecast-data-format-json" title="Permanent link">&para;</a></h2>
 <p>For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a<code>JSON IO dict</code> in code documentation. See <a href="zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example.</p>
 <p>This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md .</p>
@@ -817,6 +812,18 @@ BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.1561
 </ul>
 </li>
 </ul>
+<h2 id="quantile-forecast-format-csv">Quantile forecast format (CSV)<a class="headerlink" href="#quantile-forecast-format-csv" title="Permanent link">&para;</a></h2>
+<p>Zoltar libraries support importing quantile data via the CSV format documented at 
+<a href="https://github.com/reichlab/covid19-death-forecasts/blob/master/README.md#data-model">covid19-death-forecasts</a>. While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the <a href="#project-creation-configuration-json">above format</a>), the libraries allow you to translate between the two.</p>
+<p>The format allows these columns in any order. Additional columns (such as the common <code>location_name</code>) are allowed but ignored.</p>
+<ul>
+<li><code>target</code>: a unique id for the target</li>
+<li><code>location</code>: a unique id for the location (we have standardized to FIPS codes)</li>
+<li><code>type</code>: one of either <code>point</code> or <code>quantile</code></li>
+<li><code>quantile</code>: a value between 0 and 1 (inclusive), representing the quantile displayed in this row. if <code>type=="point"</code> then <code>NULL</code>.</li>
+<li><code>value</code>: a numeric value representing the value of the cumulative distribution function evaluated at the specified <code>quantile</code></li>
+</ul>
+<p>Please see <a href="../Validation/">Validation.md</a> for details about quantile and value data.</p>
                 
                   
                 
@@ -837,7 +844,7 @@ BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.1561
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Validation/" title="Validation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../DataModel/" title="Data model" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -846,19 +853,19 @@ BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.1561
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Validation
+                Data model
               </span>
             </div>
           </a>
         
         
-          <a href="../Zoltpy/" title="zoltpy (Python)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Targets/" title="Targets" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                zoltpy (Python)
+                Targets
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

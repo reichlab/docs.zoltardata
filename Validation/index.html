@@ -419,8 +419,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Targets/" title="Targets" class="md-nav__link">
-      Targets
+    <a href="../DataModel/" title="Data model" class="md-nav__link">
+      Data model
     </a>
   </li>
 
@@ -431,8 +431,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../DataModel/" title="Data model" class="md-nav__link">
-      Data model
+    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
+      File Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
     </a>
   </li>
 
@@ -689,18 +701,6 @@
   
 </nav>
     
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
-      File Formats
-    </a>
   </li>
 
         
@@ -1048,16 +1048,14 @@
 <li>NB: Rows for Bin predictions where <code>prob</code> == 0 are not stored in the database.</li>
 </ul>
 <h3 id="named-prediction-elements"><code>Named</code> Prediction Elements<a class="headerlink" href="#named-prediction-elements" title="Permanent link">&para;</a></h3>
-<p>We note that <code>Named</code> predictions currently only support fairly simple distributions. We currently
-support distributions with up to three parameters. Future versions of Zoltar could support
-distributions with larger numbers of parameters.</p>
+<p>We note that <code>Named</code> predictions currently only support fairly simple distributions. We currently support distributions with up to three parameters. Future versions of Zoltar could support distributions with larger numbers of parameters.</p>
 <ul>
 <li>If a Named Prediction Element exists, it should have exactly 1 Database Row.</li>
 <li><code>family</code>: must be one of the abbreviations shown in the table below.</li>
 <li><code>param1</code>, <code>param2</code>, <code>param3</code> (f): The number of param columns with non-NULL entries count must match family definition (see note below).</li>
 <li>Parameters for each distribution must be within valid ranges, which, if constraints exist, are specified in the table below.</li>
 </ul>
-<p>For reference, here is the mapping between the generic parameter names and the family-specific use of them (based on <a href="https://github.com/cdcepi/predx/blob/master/predx_classes.md">predx_classes.md</a>:</p>
+<p>For reference, here is the mapping between the generic parameter names and the family-specific use of them (based on <a href="https://github.com/cdcepi/predx/blob/master/predx_classes.md">predx_classes.md</a>):</p>
 <table>
 <thead>
 <tr>
@@ -1252,7 +1250,7 @@ Binomial    | 0<=p<=1   |   n>0     |    -
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../DataModel/" title="Data model" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Targets/" title="Targets" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1261,19 +1259,19 @@ Binomial    | 0<=p<=1   |   n>0     |    -
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Data model
+                Targets
               </span>
             </div>
           </a>
         
         
-          <a href="../FileFormats/" title="File Formats" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Zoltpy/" title="zoltpy (Python)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                File Formats
+                zoltpy (Python)
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

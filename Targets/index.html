@@ -417,6 +417,30 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../DataModel/" title="Data model" class="md-nav__link">
+      Data model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
+      File Formats
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -545,32 +569,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../DataModel/" title="Data model" class="md-nav__link">
-      Data model
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../Validation/" title="Validation" class="md-nav__link">
       Validation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
-      File Formats
     </a>
   </li>
 
@@ -761,12 +761,7 @@
                 
                 
                 <h1 id="forecast-targets-in-zoltar">Forecast Targets in Zoltar<a class="headerlink" href="#forecast-targets-in-zoltar" title="Permanent link">&para;</a></h1>
-<p>Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give
-predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead
-values and a prediction of when the time series will reach its maximum in a given period of time. When a project is
-created, the project owner specifies which targets should be part of any submitted forecast. As we will see below,
-targets have specific properties, and there are several different types of targets that determine which properties and
-features pertain to a particular target.</p>
+<p>Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead values and a prediction of when the time series will reach its maximum in a given period of time. When a project is created, the project owner specifies which targets should be part of any submitted forecast. As we will see below, targets have specific properties, and there are several different types of targets that determine which properties and features pertain to a particular target.</p>
 <h2 id="target-types">Target types<a class="headerlink" href="#target-types" title="Permanent link">&para;</a></h2>
 <p><em>continuous</em>: A quantitative target whose range encapsulates a section of the real number line. </p>
 <blockquote>
@@ -789,8 +784,7 @@ features pertain to a particular target.</p>
 <p>Example: the calendar week in which peak incidence occurs (represented by the Sunday of that week.</p>
 </blockquote>
 <h2 id="target-parameters">Target parameters<a class="headerlink" href="#target-parameters" title="Permanent link">&para;</a></h2>
-<p>When created, all targets have a set of parameters that must be defined. Each type of target then has a set of
-additional, sometimes, optional parameters. These are all defined below.</p>
+<p>When created, all targets have a set of parameters that must be defined. Each type of target then has a set of additional, sometimes, optional parameters. These are all defined below.</p>
 <h3 id="summary-of-allowed-optional-and-required-parameters-by-target-type">Summary of allowed, optional, and required parameters, by target type<a class="headerlink" href="#summary-of-allowed-optional-and-required-parameters-by-target-type" title="Permanent link">&para;</a></h3>
 <p>Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if <code>is_step_ahead</code> is <code>true</code>, '-' = disallowed, '~' = optional.</p>
 <table>
@@ -1217,7 +1211,7 @@ Based off of the unit in the target definition, every date would use a fixed uni
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Concepts/" title="Concepts" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../FileFormats/" title="File Formats" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1226,19 +1220,19 @@ Based off of the unit in the target definition, every date would use a fixed uni
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Concepts
+                File Formats
               </span>
             </div>
           </a>
         
         
-          <a href="../DataModel/" title="Data model" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Validation/" title="Validation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Data model
+                Validation
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

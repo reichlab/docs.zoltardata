@@ -415,86 +415,10 @@
       
     
     
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Concepts
-      </label>
-    
     <a href="./" title="Concepts" class="md-nav__link md-nav__link--active">
       Concepts
     </a>
     
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#projects" class="md-nav__link">
-    Projects
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#forecast-models" class="md-nav__link">
-    Forecast models
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#units" class="md-nav__link">
-    Units
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#targets" class="md-nav__link">
-    Targets
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#time-zeros" class="md-nav__link">
-    Time zeros
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prediction-types" class="md-nav__link">
-    Prediction types
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Targets/" title="Targets" class="md-nav__link">
-      Targets
-    </a>
   </li>
 
         
@@ -516,8 +440,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Validation/" title="Validation" class="md-nav__link">
-      Validation
+    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
+      File Formats
     </a>
   </li>
 
@@ -528,8 +452,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../FileFormats/" title="File Formats" class="md-nav__link">
-      File Formats
+    <a href="../Targets/" title="Targets" class="md-nav__link">
+      Targets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Validation/" title="Validation" class="md-nav__link">
+      Validation
     </a>
   </li>
 
@@ -616,57 +552,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#projects" class="md-nav__link">
-    Projects
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#forecast-models" class="md-nav__link">
-    Forecast models
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#units" class="md-nav__link">
-    Units
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#targets" class="md-nav__link">
-    Targets
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#time-zeros" class="md-nav__link">
-    Time zeros
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#prediction-types" class="md-nav__link">
-    Prediction types
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -679,17 +564,16 @@
                 
                 
                 <h1 id="zoltar-concepts">Zoltar concepts<a class="headerlink" href="#zoltar-concepts" title="Permanent link">&para;</a></h1>
-<p>todo</p>
-<h2 id="projects">Projects<a class="headerlink" href="#projects" title="Permanent link">&para;</a></h2>
-<h2 id="forecast-models">Forecast models<a class="headerlink" href="#forecast-models" title="Permanent link">&para;</a></h2>
-<p>A <strong>model</strong> is the representation of code that generates forecasts.</p>
-<h2 id="units">Units<a class="headerlink" href="#units" title="Permanent link">&para;</a></h2>
-<h2 id="targets">Targets<a class="headerlink" href="#targets" title="Permanent link">&para;</a></h2>
-<h2 id="time-zeros">Time zeros<a class="headerlink" href="#time-zeros" title="Permanent link">&para;</a></h2>
-<p>A <strong>time zero</strong> is ...</p>
-<p>About time zeros and <code>data version dates</code>: Because the forecasting field does not have standard terminology, we have settled on the following two concepts for this application. Note that some time zeros are tagged as starting a season, specifying the season's name, which helps to segment the time zeros. Zoltar uses season information in the visualization and score pages, where the user can select which season to show data for. This also helps to keep performance up.</p>
-<h2 id="prediction-types">Prediction types<a class="headerlink" href="#prediction-types" title="Permanent link">&para;</a></h2>
-<p>(or maybe just in DataModel.md ?)</p>
+<p>On this page we explain the fundamental ideas behind Zoltar's envisioning of representing forecasts in a challenge.</p>
+<ul>
+<li><em>Projects</em>: As mentioned in <a href="../Projects/">Manging Projects</a>, <em>projects</em> are the central organizing concept in Zoltar. They define the <em>units</em>, <em>targets</em> and <em>time zeros</em> that forecasts are relative to, and contain the <em>forecast models</em> that teams use to represent a forecasting challenge.</li>
+<li><em>Forecast models</em>: A <em>model</em> is the representation of code that generates forecasts. It has zero or one <em>forecasts</em> associated with the project's <em>time zeros</em>.</li>
+<li><em>Forecasts</em>: A forecast consists of a set of predictions of the various types supported by Zoltar. <a href="../DataModel/">The data model page</a> describes them in detail.</li>
+<li><em>Units</em>: TBD</li>
+<li><em>Targets</em>: Targets are the fundamental data structure of a forecast, and as such have a <a href="../Targets/">separate page</a> documenting them.</li>
+<li><em>Time zeros</em>: Because the forecasting field does not have standard terminology, we have settled on the following two concepts for this application. Note that some time zeros are tagged as starting a season, specifying the season's name, which helps to segment the time zeros. TBD</li>
+<li><em>Truth</em>: Zoltar supports uploading ground truth data for each project that desires automatic scoring. Please see <a href="../Truth/">this page</a> for details.</li>
+</ul>
                 
                   
                 
@@ -725,13 +609,13 @@
           </a>
         
         
-          <a href="../Targets/" title="Targets" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../DataModel/" title="Data model" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Targets
+                Data model
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
