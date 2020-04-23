@@ -22,10 +22,7 @@ At the top of the page is a table showing this information related to the projec
     - Data file naming scheme.
 - _Home_: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.
 - _Core data_: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.
-- _Truth data_: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. Each Project is responsible for generating a truth table csv file in a project-specific manner. Briefly (see [Truth data format (CSV)](FileFormats.md#truth-data-format-csv) for details):
-    - CSV file
-    - No file name restrictions
-    - Columns: `Timezero`, `Location`, `Target`, `Value` - see FileFormats.md .
+- _Truth data_: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. See [Truth](Truth.md) for details.
 - _Analysis_: Links to visualization and score pages. See [Scoring](Scoring.md) for details.
 
 

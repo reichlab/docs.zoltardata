@@ -44,7 +44,7 @@ Here's an example score page:
 Scores are downloaded from the [project detail page](ProjectDetailPage.md). To download a project's scores:
 
 1. Go to the [model detail page](ModelDetailPage.md) of the one you want to upload into.
-1. Click the ":"Download CSV" button and save the file.
+1. Click the "Download CSV" button and save the file.
 
 The scores are saved in the CSV format documented at [Score download format (CSV)](FileFormats.md#score-download-format-csv).
 

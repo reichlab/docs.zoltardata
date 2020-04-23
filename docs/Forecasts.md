@@ -17,6 +17,7 @@ Forecasts are uploaded to a particular model for a particular time zero. To uplo
 1. Click the green upload button.
 1. If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the forecast file __ for uploading.", where __ is your file's name. See [Check an upload's status](#check_an_uploads_status) below for this page's details.
 1. Once the upload is successful (you can refresh the upload file job page to check) then you will see it next to the selected time zero on the [model detail page](ModelDetailPage.md).
+1. If there was a problem uploading then you will see the upload's status as **FAILED**. The **Failure** section will provide some information to help debug the problem.
 
 
 ## Download a forecast
@@ -54,8 +55,8 @@ You can see that it has the following fields:
     - **SUCCESS**: The job was successfully completed.
     - **FAILED**: The job failed.
 - _File Name_: The uploaded file's name that was given to Zoltar.
-- _Failure_: The failure message if status is FAILED, or "None" otherwise.
-- _ΔT_: How much time the upload took to process.
+- _Failure_: The failure message if status is FAILED, or "None" otherwise. This section will provide some information to help debug the problem.
+- _ΔT_: How much time the upload took to process. This is formatted as "<hours>:<minutes>:<seconds>.<microsecond>", For example, "0:00:01.155223" means the job took zero hours, zero minutes, one second, and 155223 microseconds.
 - _Created_: Date and time the file was uploaded at.
 - _Updated_: The last time the upload's status was changed.
 - _JSON In_: The JSON information passed internally to the upload. You can ignore this.
