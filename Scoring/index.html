@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#scores" tabindex="1" class="md-skip">
+      <a href="#scoring-in-zoltar" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -563,7 +563,7 @@
               
                 
                 
-                <h1 id="scores">Scores<a class="headerlink" href="#scores" title="Permanent link">&para;</a></h1>
+                <h1 id="scoring-in-zoltar">Scoring in Zoltar<a class="headerlink" href="#scoring-in-zoltar" title="Permanent link">&para;</a></h1>
 <p>Zoltar automatically computes a fixed set of scores (more are in development) for all projects and forecasts. They are updated in the background on a per-forecast basis by a scheduler that currently runs Daily at <a href="http://www.timebie.com/std/utc.php?q=5.5">5:30 AM UTC</a>. The update is performed only on models that have changed, i.e., those that have added or removed forecasts since the last update. Following are details about scoring.</p>
 <h1 id="scoring-requirements">Scoring requirements<a class="headerlink" href="#scoring-requirements" title="Permanent link">&para;</a></h1>
 <p>For Zoltar to calculate a forecast's scores, the following must be true:</p>
@@ -595,7 +595,7 @@
 <p>Scores are downloaded from the <a href="../ProjectDetailPage/">project detail page</a>. To download a project's scores:</p>
 <ol>
 <li>Go to the <a href="../ModelDetailPage/">model detail page</a> of the one you want to upload into.</li>
-<li>Click the ":"Download CSV" button and save the file.</li>
+<li>Click the "Download CSV" button and save the file.</li>
 </ol>
 <p>The scores are saved in the CSV format documented at <a href="../FileFormats/#score-download-format-csv">Score download format (CSV)</a>.</p>
 <p>Note that because creating score CSV files can be time consuming, Zoltar caches creating them to help keep the site responsive. Normally the cached version will be available, which should download as soon as you click the button. However, the download will be delayed (and likely time out) otherwise. The state of caching is indicated by the text to the right of the button. If it says something like "(Cached file updated 2020-04-20 05:00:30)" then the faster download is available. Otherwise it will say "(No cached file - download may be slow.)"</p>

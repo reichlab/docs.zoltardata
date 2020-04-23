@@ -75,6 +75,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#manging-truth-data" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -360,10 +364,62 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Upload, view, download or delete truth
+      </label>
     
     <a href="./" title="Upload, view, download or delete truth" class="md-nav__link md-nav__link--active">
       Upload, view, download or delete truth
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#view-truth-details" class="md-nav__link">
+    View truth details
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload-truth" class="md-nav__link">
+    Upload truth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-truth" class="md-nav__link">
+    Download truth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-truth" class="md-nav__link">
+    Delete truth
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -536,18 +592,101 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#view-truth-details" class="md-nav__link">
+    View truth details
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload-truth" class="md-nav__link">
+    Upload truth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-truth" class="md-nav__link">
+    Download truth
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-truth" class="md-nav__link">
+    Delete truth
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>Upload, view, download or delete truth</h1>
-                
-                <p>TBD</p>
-<ul>
-<li>file format</li>
-</ul>
+                <h1 id="manging-truth-data">Manging truth data<a class="headerlink" href="#manging-truth-data" title="Permanent link">&para;</a></h1>
+<p>Zoltar supports uploading ground truth data for each project that desires automatic scoring. This data is specified as a CSV file as documented in <a href="http://127.0.0.1:8000/FileFormats/#truth-data-format-csv">Truth data format</a>, and each project is responsible for generating the CSV file for their particular set of <a href="../Concepts/">time zeros</a>, <a href="../Concepts/">units</a> and <a href="../Concepts/">targets</a>. You can tell whether truth has been uploaded to a project by looking at the <strong>Truth Data</strong> row in the <a href="http://127.0.0.1:8000/ProjectDetailPage/#project-details-table">Project details table</a> section of the <a href="../ProjectDetailPage/">project detail page</a>. It will either be a link with the truth data file name (which means truth is present) and the number of rows in parentheses, or a "Browse..." button next to a green "Upload" button with the text <em>(No truth data)</em> to its right otherwise. Clicking on the link takes you to the Truth detail page documented in <a href="#view-truth-details">Truth detail page</a> below.</p>
+<p>Here's a screen shot showing a project where truth has been uploaded (circled in red):</p>
+<p><img alt="Truth uploaded" src="../img/project-detail-page-truth-uploaded.png" title="Truth uploaded" /></p>
+<p>And here's just the truth row when no data has been uploaded:</p>
+<p><img alt="Truth not uploaded" src="../img/project-detail-page-truth-not-uploaded.png" title="Truth not uploaded" /></p>
+<p>Following operations on truth data that you can do from within Zoltar. </p>
+<h2 id="view-truth-details">View truth details<a class="headerlink" href="#view-truth-details" title="Permanent link">&para;</a></h2>
+<p>Clicking on the truth link above takes you to the truth details page:</p>
+<p><img alt="Truth detail page" src="../img/truth-detail-page.png" title="Truth detail page" /></p>
+<p>Here you see a small information table at the top showing the project and truth data filename, followed by a preview of the truth data. At the bottom is a "Download CSV" button that you can click to get the data back as a CSV file.</p>
+<h2 id="upload-truth">Upload truth<a class="headerlink" href="#upload-truth" title="Permanent link">&para;</a></h2>
+<p>Follow these steps to upload a truth CSV file:</p>
+<ol>
+<li>Go to the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest.</li>
+<li>Click the "Browse..." button in the <a href="http://127.0.0.1:8000/ProjectDetailPage/#project-details-table">Project details table</a>'s <strong>Truth Data</strong> row.</li>
+<li>In the dialog that appears, select a truth data CSV file in Zoltar's <a href="http://127.0.0.1:8000/FileFormats/#truth-data-format-csv">Truth data format</a>.</li>
+<li>Click the green upload button.</li>
+<li>If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the truth file <strong> for uploading.", where </strong> is your file's name. See <a href="#check_an_uploads_status">Check an upload's status</a> below for this page's details.</li>
+<li>Once the upload is successful (you can refresh the upload file job page to check) then you will the file name as a link as described above.</li>
+<li>If there was a problem uploading then you will see the upload's status as <strong>FAILED</strong>. The <strong>Failure</strong> section will provide some information to help debug the problem.</li>
+</ol>
+<h2 id="download-truth">Download truth<a class="headerlink" href="#download-truth" title="Permanent link">&para;</a></h2>
+<p>Here are the steps to download a project's truth data as a CSV file in Zoltar's <a href="http://127.0.0.1:8000/FileFormats/#truth-data-format-csv">Truth data format</a>:</p>
+<ol>
+<li>Go to the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest.</li>
+<li>Click the truth link above go to the <a href="#view-truth-details">Truth detail page</a> page.</li>
+<li>Click the 1. Click the "Download CSV" button and save the file.</li>
+</ol>
+<h2 id="delete-truth">Delete truth<a class="headerlink" href="#delete-truth" title="Permanent link">&para;</a></h2>
+<p>To delete a project's truth data:</p>
+<ol>
+<li>Go to the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest.</li>
+<li>Click the truth link above go to the <a href="#view-truth-details">Truth detail page</a> page.</li>
+<li>Click the red trash can button at the top of the page.</li>
+<li>Click "Delete" in the confirmation dialog that appears. <strong>Note that this cannot be undone!</strong></li>
+</ol>
                 
                   
                 

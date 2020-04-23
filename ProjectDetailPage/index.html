@@ -684,12 +684,7 @@
 </li>
 <li><em>Home</em>: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.</li>
 <li><em>Core data</em>: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.</li>
-<li><em>Truth data</em>: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. Each Project is responsible for generating a truth table csv file in a project-specific manner. Briefly (see <a href="../FileFormats/#truth-data-format-csv">Truth data format (CSV)</a> for details):<ul>
-<li>CSV file</li>
-<li>No file name restrictions</li>
-<li>Columns: <code>Timezero</code>, <code>Location</code>, <code>Target</code>, <code>Value</code> - see FileFormats.md .</li>
-</ul>
-</li>
+<li><em>Truth data</em>: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. See <a href="../Truth/">Truth</a> for details.</li>
 <li><em>Analysis</em>: Links to visualization and score pages. See <a href="../Scoring/">Scoring</a> for details.</li>
 </ul>
 <h2 id="forecast-models">Forecast models<a class="headerlink" href="#forecast-models" title="Permanent link">&para;</a></h2>

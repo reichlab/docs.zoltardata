@@ -636,6 +636,7 @@
 <li>Click the green upload button.</li>
 <li>If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the forecast file <strong> for uploading.", where </strong> is your file's name. See <a href="#check_an_uploads_status">Check an upload's status</a> below for this page's details.</li>
 <li>Once the upload is successful (you can refresh the upload file job page to check) then you will see it next to the selected time zero on the <a href="../ModelDetailPage/">model detail page</a>.</li>
+<li>If there was a problem uploading then you will see the upload's status as <strong>FAILED</strong>. The <strong>Failure</strong> section will provide some information to help debug the problem.</li>
 </ol>
 <h2 id="download-a-forecast">Download a forecast<a class="headerlink" href="#download-a-forecast" title="Permanent link">&para;</a></h2>
 <p>To download a forecast:</p>
@@ -667,8 +668,8 @@
 </ul>
 </li>
 <li><em>File Name</em>: The uploaded file's name that was given to Zoltar.</li>
-<li><em>Failure</em>: The failure message if status is FAILED, or "None" otherwise.</li>
-<li><em>ΔT</em>: How much time the upload took to process.</li>
+<li><em>Failure</em>: The failure message if status is FAILED, or "None" otherwise. This section will provide some information to help debug the problem.</li>
+<li><em>ΔT</em>: How much time the upload took to process. This is formatted as "<hours>:<minutes>:<seconds>.<microsecond>", For example, "0:00:01.155223" means the job took zero hours, zero minutes, one second, and 155223 microseconds.</li>
 <li><em>Created</em>: Date and time the file was uploaded at.</li>
 <li><em>Updated</em>: The last time the upload's status was changed.</li>
 <li><em>JSON In</em>: The JSON information passed internally to the upload. You can ignore this.</li>
