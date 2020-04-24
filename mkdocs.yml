@@ -10,13 +10,13 @@ nav:
       - 'Forecast detail page': 'ForecastDetailPage.md'
   - User Guide:
       - 'Introduction': 'UserIntro.md'
-      - 'Create, edit, or delete a project': 'Projects.md'
-      - 'Create, edit, or delete a model': 'Models.md'
-      - 'Upload, download, or delete a forecast': 'Forecasts.md'
-      - 'View or download scores': 'Scoring.md'
-      - 'Visualize data': 'Visualization.md'
-      - 'Upload, view, download or delete truth': 'Truth.md'
-      - 'Create or manage an account': 'Accounts.md'
+      - 'Projects': 'Projects.md'
+      - 'Models': 'Models.md'
+      - 'Forecasts': 'Forecasts.md'
+      - 'Scores': 'Scoring.md'
+      - 'Visualiations': 'Visualization.md'
+      - 'Truth': 'Truth.md'
+      - 'Accounts': 'Accounts.md'
   - Reference:
       - 'Concepts': 'Concepts.md'
       - 'Data model': 'DataModel.md'
@@ -24,6 +24,7 @@ nav:
       - 'Targets': 'Targets.md'
       - 'Validation': 'Validation.md'
   - Programming libraries and API:
+      - 'Introduction': 'ApiIntro.md'
       - 'zoltpy (Python)': 'Zoltpy.md'
       - 'zoltr (R)': 'Zoltr.md'
       - 'RESTful API': 'Api.md'

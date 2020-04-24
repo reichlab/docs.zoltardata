@@ -1,5 +1,1 @@
-Zoltpy is a python module that contains functions for working with the Zoltar forecast repository’s API,
-including projects, models, forecasts, and scores. Please see the [GitHub repository](https://github.com/reichlab/zoltpy)
-for details.
-
-It is called a `JSON IO dict` in code documentation. 
+Zoltpy is a Python module that contains functions for working with the Zoltar forecast repository’s API, including projects, models, forecasts, truth, and scores. The source is at [github.com/reichlab/zoltpy](https://github.com/reichlab/zoltpy).
