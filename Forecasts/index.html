@@ -36,7 +36,7 @@
     
     
       
-        <title>Upload, download, or delete a forecast - Zoltar Documentation</title>
+        <title>Forecasts - Zoltar Documentation</title>
       
     
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Upload, download, or delete a forecast
+                Forecasts
               
             </span>
           
@@ -299,8 +299,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Projects/" title="Create, edit, or delete a project" class="md-nav__link">
-      Create, edit, or delete a project
+    <a href="../Projects/" title="Projects" class="md-nav__link">
+      Projects
     </a>
   </li>
 
@@ -311,8 +311,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Models/" title="Create, edit, or delete a model" class="md-nav__link">
-      Create, edit, or delete a model
+    <a href="../Models/" title="Models" class="md-nav__link">
+      Models
     </a>
   </li>
 
@@ -332,11 +332,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Upload, download, or delete a forecast
+        Forecasts
       </label>
     
-    <a href="./" title="Upload, download, or delete a forecast" class="md-nav__link md-nav__link--active">
-      Upload, download, or delete a forecast
+    <a href="./" title="Forecasts" class="md-nav__link md-nav__link--active">
+      Forecasts
     </a>
     
       
@@ -380,8 +380,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Scoring/" title="View or download scores" class="md-nav__link">
-      View or download scores
+    <a href="../Scoring/" title="Scores" class="md-nav__link">
+      Scores
     </a>
   </li>
 
@@ -392,8 +392,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Visualization/" title="Visualize data" class="md-nav__link">
-      Visualize data
+    <a href="../Visualization/" title="Visualiations" class="md-nav__link">
+      Visualiations
     </a>
   </li>
 
@@ -404,8 +404,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Truth/" title="Upload, view, download or delete truth" class="md-nav__link">
-      Upload, view, download or delete truth
+    <a href="../Truth/" title="Truth" class="md-nav__link">
+      Truth
     </a>
   </li>
 
@@ -416,8 +416,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Accounts/" title="Create or manage an account" class="md-nav__link">
-      Create or manage an account
+    <a href="../Accounts/" title="Accounts" class="md-nav__link">
+      Accounts
     </a>
   </li>
 
@@ -536,6 +536,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../ApiIntro/" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../Zoltpy/" title="zoltpy (Python)" class="md-nav__link">
       zoltpy (Python)
     </a>
@@ -623,7 +635,10 @@
                 
                 
                 <h1 id="managing-forecasts">Managing forecasts<a class="headerlink" href="#managing-forecasts" title="Permanent link">&para;</a></h1>
-<p>A <em>forecast</em> is a set of predictions for combinations of units and targets. See see <a href="../DataModel/">Data Model</a> for detail on the structure of predictions. Following are the forecast operations you can do from within Zoltar.</p>
+<p>A <em>forecast</em> is a set of predictions for combinations of units and targets. See <a href="../DataModel/">Data Model</a> for detail on the structure of predictions. Following are the forecast operations you can do from within Zoltar.</p>
+<blockquote>
+<p>Note: Operations on forecasts, like many Zoltar activities, can be done either through the <a href="https://www.zoltardata.com/">zoltardata.com</a> web interface or programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>.</p>
+</blockquote>
 <h2 id="upload-a-forecast">Upload a forecast<a class="headerlink" href="#upload-a-forecast" title="Permanent link">&para;</a></h2>
 <p>Here we show how to upload forecast data into Zoltar. It is important to know that Zoltar <em>enqueues</em> long operations like forecast uploading, which keeps the site responsive but makes uploading a little more complicated. Rather than having the upload feature <em>block</em> until the upload is done, you instead get a quick response in the form of an <em>upload file job</em> detail page that shows the status of your upload. This page is described in <a href="#check_an_uploads_status">Check an upload's status</a> below.</p>
 <p>Forecasts are uploaded to a particular model for a particular time zero. To upload one:</p>
@@ -701,7 +716,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Models/" title="Create, edit, or delete a model" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Models/" title="Models" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -710,19 +725,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Create, edit, or delete a model
+                Models
               </span>
             </div>
           </a>
         
         
-          <a href="../Scoring/" title="View or download scores" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Scoring/" title="Scores" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                View or download scores
+                Scores
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
