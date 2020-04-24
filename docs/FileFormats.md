@@ -3,48 +3,63 @@
 Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.
 
 - [Project creation configuration (JSON)](#project-creation-configuration-json)
-- [Score download format (CSV)](#score-download-format-csv)
 - [Truth data format (CSV)](#truth-data-format-csv)
+- [Score download format (CSV)](#score-download-format-csv)
 - [Forecast data format (JSON)](#forecast-data-format-json)
 - [Quantile forecast format (CSV)](#quantile-forecast-format-csv)
 
 
 ## Project creation configuration (JSON)
-As an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. You can find an example at [cdc-project.json](https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/projects/cdc-project.json). The file contains eight metadata keys (`name`, `is_public`, `description`, `home_url`, `logo_url`, `core_data`, `time_interval_type`, `visualization_y_label`), plus three keys that are lists of objects (`locations`, `targets`, and `timezeros`). The metadata values' meanings are self-evident except for these two:
 
-- `time_interval_type`: Either `Week`, `Biweek`, or `Month`.
-- `visualization_y_label`: Used by the D3 component to label the Y axis.
+As documented in [Projects](Projects.md#to-create-a-project-via-a-configuration-file), as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: [docs-project.json](https://github.com/reichlab/zoltpy/blob/master/examples/docs-project.json).
 
-Here are the three list object keys:
+Project configuration files contain eight metadata keys (`"name`, `"is_public"`, `"description"`, `"home_url"`, `"logo_url"`, `"core_data"`, `"time_interval_type"`, `"visualization_y_label"`), plus three keys that are lists of objects (`"units"`, `"targets"`, and `"timezeros"`). The metadata values' meanings are self-evident except for these two:
 
-
-### `locations`
-- `name`: The name of the location.
+- `time_interval_type`: Used by the D3 component to label the X axis, is either `Week`, `Biweek`, or `Month`
+- `visualization_y_label`: "" Y axis, can be any text
 
 
-### `targets`
-Please see the [Targets.md](Targets.md) file for a detailed description of target parameters and which are required. Here are all possible parameters that can be passed in a project configuration file:
+Here are the three list objects' formats:
+
+**"units"**: a list of objects containing only one field:
+
+- `name`: The name of the unit.
+
+
+**"targets"**: a list of the project's targets. Please see the [Targets.md](Targets.md) file for a detailed description of target parameters and which are required. Here are all possible parameters that can be passed in a project configuration file:
 
 - `name`: string
 - `description`: string
-- `type`: string - must be one of the following: "continuous", "discrete", "nominal", "binary", or "date"
+- `type`: string - must be one of the following: `continuous`, `discrete`, `nominal`, `binary`, or `date`
 - `is_step_ahead`: boolean
 - `step_ahead_increment`: integer - negative, zero, or positive
 - `unit`: string
 - `range`: an array (list) of two numbers
 - `cats`: an array (list) of one or more numbers or strings (which depends on the target's type's data type)
-- `dates`: an array (list) of one or more strings in the `YYYY-MM-DD` format specified in the above file
+- `dates`: an array (list) of one or more strings in the `YYYY-MM-DD` format
 
 
-### `timezeros`
-- `timezero_date`: The timezero's date in `yyyymmdd` format.
-- `data_version_date` : Optional data version date in the same format. Pass `null` if the timezero does not have one. 
-- `is_season_start`: `true` if this starts a season, and `false` otherwise.
-- `season_name`: Applicable when `is_season_start` is `true`, names the season, e.g., "2010-2011".
+**"timezeros"**: a list of the projects time zeros. Each has these fields:
 
+- `timezero_date`: The timezero's date in `yyyymmdd` format
+- `data_version_date` : Optional data version date in the same format. Pass `null` if the timezero does not have one
+- `is_season_start`: `true` if this starts a season, and `false` otherwise
+- `season_name`: Applicable when `is_season_start` is `true`, names the season, e.g., "2010-2011"
+
+
+## Truth data format (CSV)
+
+Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [docs-ground-truth.csv](https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/truth_data/docs-ground-truth.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
+
+- `timezero`: date the truth applies to, formatted as `yyyy-mm-dd`
+- `unit`: the unit's name
+- `target`: target name
+- `value`: truth value, formatted according to the target's type. date values are formatted `yyyy-mm-dd` and booleans as `true` or `false`
+ 
 
 ## Score download format (CSV)
-Zoltar calculates scores for all projects in the archive. Users can access them as CSV through the web UI or the programmer API. The file has five columns that are always present independent of the scores available, plus one row for each specific score. Score names are in the header. Here is an example header and the first few rows:
+
+Zoltar calculates scores for all projects in the archive if they meet the requirements specified in [Scoring](Scoring.md#scoring-requirements). Users can download them as CSV through the web UI. The file has five fixed columns plus one column for each [implemented score](Scoring.md#current-scores). Score names are in the header. Here is an example header and a few rows:
 
     model,timezero,season,location,target,error,abs_error,log_single_bin,log_multi_bin,pit
     BMA,20171023,2017-2018,HHS Region 1,Season peak percentage,1.9,1.9,-5.34357208776754,-2.76546821334079,0.9777734401
@@ -59,56 +74,27 @@ Zoltar calculates scores for all projects in the archive. Users can access them 
     BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.156176129883708,0.9925874469
 
 
-## Truth data format (CSV)
-Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV through the web UI or the programmer API. The data has four columns: `timezero`, `location`, `target`, `value`:
-
-- `timezero`: date the truth applies to, formatted as `yyyy-mm-dd`
-- `location`: the location's name
-- `target`: target name
-- `value`: truth value, formatted according to the target's type. date values are formatted `yyyy-mm-dd`. <!-- todo boolean value format? -->
- 
-Here's an example:
-
-    timezero,unit,target,value
-    2017-04-23,TH01,1_biweek_ahead,2
-    2017-04-23,TH01,2_biweek_ahead,0
-    2017-04-23,TH01,3_biweek_ahead,11
-    2017-04-23,TH01,4_biweek_ahead,8
-    2017-04-23,TH01,5_biweek_ahead,11
-
-
 ## Forecast data format (JSON)
-For prediction input and output we use a dictionary structure suitable for JSON I/O. The dict is called a`JSON IO dict` in code documentation. See [zoltar-predictions-examples.json](zoltar-predictions-examples.json) for an example.
 
-This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md .
+For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See [zoltar-predictions-examples.json](zoltar-predictions-examples.json) for an example. The file contains a top-level with two keys: `"meta"` and `"predictions"`. The `meta` section is unused for uploads, and for downloads contains various information about the forecast in the repository in the `"forecast"` field) plus lists of the project's `"units"` and `"targets"`.
 
-Briefly, the dict has four top level keys:
+The `"predictions"` list contains objects for each prediction, and each object contains the following four keys:
 
-- `forecast`: a metadata dict about the file's forecast. has these keys: `id`, `forecast_model_id`, `source`, `created_at`, and `time_zero`. Some or all of these keys might be ignored by functions that accept a JSON IO dict.
-- `locations`: a list of `location dicts`, each of which has just a `name` key whose value is the name of a location in the below `predictions` section.
-- `targets`: a list of `target dicts`, each of which has the following fields. The fields are: `name`, `description`, `unit`, `is_date`, `is_step_ahead`, and `step_ahead_increment`.
-- `predictions`: a list of `prediction dicts` that contains the prediction data. Each dict has these fields:
+- `"location"`: name of the Location.
+- `"target"`: name of the Target.
+- `"class"`: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : `bin`, `named`, `point`, and `sample`.
+- `"prediction"`: a class-specific dict containing the prediction data itself. The format varies according to class. Here is a summary (see [Data model](DataModel.md) for details and examples):
 
-  - `location`: name of the Location.
-  - `target`: name of the Target.
-  - `class`: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : `bin`, `named`, `point`, and `sample`.
-  - `prediction`: a class-specific dict containing the prediction data itself. The format varies according to class. Here is a summary:
-    - `bin`: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
-    - `named`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
-    - `point`: A numeric point prediction with a single `value` key.
-    - `sample`: Numeric samples represented as a table with one column that is found in the `sample` key.
+    - `"bin"`: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
+    - `"named"`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
+    - `"point`: A numeric point prediction with a single `value` key.
+    - `"sample"`: Numeric samples represented as a table with one column that is found in the `sample` key.
 
 
 ## Quantile forecast format (CSV)
-Zoltar libraries support importing quantile data via the CSV format documented at 
-[covid19-death-forecasts](https://github.com/reichlab/covid19-death-forecasts/blob/master/README.md#data-model). While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the [above format](#project-creation-configuration-json)), the libraries allow you to translate between the two.
 
-The format allows these columns in any order. Additional columns (such as the common `location_name`) are allowed but ignored.
+Zoltar libraries support importing quantile data via the COVID-19 CSV format documented at [covid19-forecast-hub](https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model). While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the [above format](#project-creation-configuration-json)), the Zoltar libraries allow you to translate between the two.
 
-- `target`: a unique id for the target
-- `location`: a unique id for the location (we have standardized to FIPS codes)
-- `type`: one of either `point` or `quantile`
-- `quantile`: a value between 0 and 1 (inclusive), representing the quantile displayed in this row. if `type=="point"` then `NULL`.
-- `value`: a numeric value representing the value of the cumulative distribution function evaluated at the specified `quantile`
+Please see the above link for CSV column details. The Zoltar libraries ignore all but the following, which are allowed to be in any order: `"target"`, `"location"` (translated to Zoltar's "unit" concept), `"type"`, `"quantile"`, and `"value"`.
 
 Please see [Validation.md](Validation.md) for details about quantile and value data.

@@ -25,7 +25,7 @@ nav:
       - 'Validation': 'Validation.md'
   - Programming libraries and API:
       - 'zoltpy (Python)': 'Zoltpy.md'
-      - 'zoltpr (R)': 'Zoltr.md'
+      - 'zoltr (R)': 'Zoltr.md'
       - 'RESTful API': 'Api.md'
 
 theme: material
