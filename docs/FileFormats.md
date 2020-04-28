@@ -11,7 +11,7 @@ Zoltar uses a number of formats for representing truth data, forecasts, configur
 
 ## Project creation configuration (JSON)
 
-As documented in [Projects](Projects.md#to-create-a-project-via-a-configuration-file), as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: [zoltar-project-config.json](zoltar-project-config.json).
+As documented in [Projects](Projects.md#to-create-a-project-via-a-configuration-file), as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: [zoltar-project-config.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-project-config.json).
 
 Project configuration files contain eight metadata keys (`"name`, `"is_public"`, `"description"`, `"home_url"`, `"logo_url"`, `"core_data"`, `"time_interval_type"`, `"visualization_y_label"`), plus three keys that are lists of objects (`"units"`, `"targets"`, and `"timezeros"`). The metadata values' meanings are self-evident except for these two:
 
@@ -49,7 +49,7 @@ Here are the three list objects' formats:
 
 ## Truth data format (CSV)
 
-Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [zoltar-ground-truth-example.csv](zoltar-ground-truth-example.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
+Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [zoltar-ground-truth-example.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
 
 - `timezero`: date the truth applies to, formatted as `yyyy-mm-dd`
 - `unit`: the unit's name
@@ -76,7 +76,7 @@ Zoltar calculates scores for all projects in the archive if they meet the requir
 
 ## Forecast data format (JSON)
 
-For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See [zoltar-predictions-examples.json](zoltar-predictions-examples.json) for an example. The file contains a top-level with two keys: `"meta"` and `"predictions"`. The `meta` section is unused for uploads, and for downloads contains various information about the forecast in the repository in the `"forecast"` field) plus lists of the project's `"units"` and `"targets"`.
+For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See [zoltar-predictions-examples.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json) for an example. The file contains a top-level with two keys: `"meta"` and `"predictions"`. The `meta` section is unused for uploads, and for downloads contains various information about the forecast in the repository in the `"forecast"` field) plus lists of the project's `"units"` and `"targets"`.
 
 The `"predictions"` list contains objects for each prediction, and each object contains the following four keys:
 
@@ -103,4 +103,4 @@ Columns: The Zoltar libraries ignore all but the following, which are allowed to
 - `"quantile"`: a value between 0 and 1 (inclusive), stating which quantile is displayed in this row. if type=="point" then NA.
 - `"value"`: a numeric value representing the value of the quantile function evaluated at the probability specified in quantile
 
-See [quantile-predictions.csv](quantile-predictions.csv) for an example.
+See [quantile-predictions.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/quantile-predictions.csv) for an example.

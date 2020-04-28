@@ -165,7 +165,7 @@ These tests are performed when a target is created or updated.
 
 ## Tests for ground truth data tables
 
-Please see [this file](zoltar-ground-truth-example.csv) for an example of a valid specification of ground-truth values.
+Please see [zoltar-ground-truth-example.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv) for an example of a valid specification of ground-truth values.
 
 ### For all ground truth files
 
