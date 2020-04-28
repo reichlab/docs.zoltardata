@@ -686,7 +686,7 @@
 <li><a href="#quantile-forecast-format-csv">Quantile forecast format (CSV)</a></li>
 </ul>
 <h2 id="project-creation-configuration-json">Project creation configuration (JSON)<a class="headerlink" href="#project-creation-configuration-json" title="Permanent link">&para;</a></h2>
-<p>As documented in <a href="../Projects/#to-create-a-project-via-a-configuration-file">Projects</a>, as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: <a href="https://github.com/reichlab/zoltpy/blob/master/examples/docs-project.json">docs-project.json</a>.</p>
+<p>As documented in <a href="../Projects/#to-create-a-project-via-a-configuration-file">Projects</a>, as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: <a href="../zoltar-project-config.json">zoltar-project-config.json</a>.</p>
 <p>Project configuration files contain eight metadata keys (<code>"name</code>, <code>"is_public"</code>, <code>"description"</code>, <code>"home_url"</code>, <code>"logo_url"</code>, <code>"core_data"</code>, <code>"time_interval_type"</code>, <code>"visualization_y_label"</code>), plus three keys that are lists of objects (<code>"units"</code>, <code>"targets"</code>, and <code>"timezeros"</code>). The metadata values' meanings are self-evident except for these two:</p>
 <ul>
 <li><code>time_interval_type</code>: Used by the D3 component to label the X axis, is either <code>Week</code>, <code>Biweek</code>, or <code>Month</code></li>
@@ -717,7 +717,7 @@
 <li><code>season_name</code>: Applicable when <code>is_season_start</code> is <code>true</code>, names the season, e.g., "2010-2011"</li>
 </ul>
 <h2 id="truth-data-format-csv">Truth data format (CSV)<a class="headerlink" href="#truth-data-format-csv" title="Permanent link">&para;</a></h2>
-<p>Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in <a href="../Truth/">Truth</a>. An example truths file is <a href="https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/truth_data/docs-ground-truth.csv">docs-ground-truth.csv</a>. The file has four columns: <code>timezero</code>, <code>unit</code>, <code>target</code>, <code>value</code>:</p>
+<p>Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in <a href="../Truth/">Truth</a>. An example truths file is <a href="../zoltar-ground-truth-example.csv">zoltar-ground-truth-example.csv</a>. The file has four columns: <code>timezero</code>, <code>unit</code>, <code>target</code>, <code>value</code>:</p>
 <ul>
 <li><code>timezero</code>: date the truth applies to, formatted as <code>yyyy-mm-dd</code></li>
 <li><code>unit</code>: the unit's name</li>
@@ -739,7 +739,7 @@ BMA,20171023,2017-2018,HHS Region 2,3 wk ahead,0.4,0.4,-3.10357809725514,-0.5986
 BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.156176129883708,0.9925874469
 </code></pre>
 <h2 id="forecast-data-format-json">Forecast data format (JSON)<a class="headerlink" href="#forecast-data-format-json" title="Permanent link">&para;</a></h2>
-<p>For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See <a href="zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example. The file contains a top-level with two keys: <code>"meta"</code> and <code>"predictions"</code>. The <code>meta</code> section is unused for uploads, and for downloads contains various information about the forecast in the repository in the <code>"forecast"</code> field) plus lists of the project's <code>"units"</code> and <code>"targets"</code>.</p>
+<p>For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See <a href="../zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example. The file contains a top-level with two keys: <code>"meta"</code> and <code>"predictions"</code>. The <code>meta</code> section is unused for uploads, and for downloads contains various information about the forecast in the repository in the <code>"forecast"</code> field) plus lists of the project's <code>"units"</code> and <code>"targets"</code>.</p>
 <p>The <code>"predictions"</code> list contains objects for each prediction, and each object contains the following four keys:</p>
 <ul>
 <li><code>"location"</code>: name of the Location.</li>
@@ -756,9 +756,16 @@ BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.1561
 </li>
 </ul>
 <h2 id="quantile-forecast-format-csv">Quantile forecast format (CSV)<a class="headerlink" href="#quantile-forecast-format-csv" title="Permanent link">&para;</a></h2>
-<p>Zoltar libraries support importing quantile data via the COVID-19 CSV format documented at <a href="https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model">covid19-forecast-hub</a>. While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the <a href="#project-creation-configuration-json">above format</a>), the Zoltar libraries allow you to translate between the two.</p>
-<p>Please see the above link for CSV column details. The Zoltar libraries ignore all but the following, which are allowed to be in any order: <code>"target"</code>, <code>"location"</code> (translated to Zoltar's "unit" concept), <code>"type"</code>, <code>"quantile"</code>, and <code>"value"</code>.</p>
-<p>Please see <a href="../Validation/">Validation.md</a> for details about quantile and value data.</p>
+<p>Zoltar libraries support importing quantile data (see <a href="../Validation/">Validation.md</a> for more information) via the COVID-19 CSV format documented at <a href="https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model">covid19-forecast-hub</a>. While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the <a href="#project-creation-configuration-json">above format</a>), the libraries allow you to translate between the two.</p>
+<p>Columns: The Zoltar libraries ignore all but the following, which are allowed to be in any order:</p>
+<ul>
+<li><code>"target"</code>: a unique id for the target</li>
+<li><code>"location"</code>: a unique id for the location (we have standardized to <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">FIPS codes</a>). It is translated to Zoltar's "unit" concept.</li>
+<li><code>"type"</code>: one of either <code>"point"</code> or <code>"quantile"</code></li>
+<li><code>"quantile"</code>: a value between 0 and 1 (inclusive), stating which quantile is displayed in this row. if type=="point" then NA.</li>
+<li><code>"value"</code>: a numeric value representing the value of the quantile function evaluated at the probability specified in quantile</li>
+</ul>
+<p>See <a href="../quantile-predictions.csv">quantile-predictions.csv</a> for an example.</p>
                 
                   
                 
