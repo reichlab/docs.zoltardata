@@ -11,7 +11,7 @@ Zoltar uses a number of formats for representing truth data, forecasts, configur
 
 ## Project creation configuration (JSON)
 
-As documented in [Projects](Projects.md#to-create-a-project-via-a-configuration-file), as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: [docs-project.json](https://github.com/reichlab/zoltpy/blob/master/examples/docs-project.json).
+As documented in [Projects](Projects.md#to-create-a-project-via-a-configuration-file), as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: [zoltar-project-config.json](zoltar-project-config.json).
 
 Project configuration files contain eight metadata keys (`"name`, `"is_public"`, `"description"`, `"home_url"`, `"logo_url"`, `"core_data"`, `"time_interval_type"`, `"visualization_y_label"`), plus three keys that are lists of objects (`"units"`, `"targets"`, and `"timezeros"`). The metadata values' meanings are self-evident except for these two:
 
@@ -49,7 +49,7 @@ Here are the three list objects' formats:
 
 ## Truth data format (CSV)
 
-Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [docs-ground-truth.csv](https://github.com/reichlab/forecast-repository/blob/master/forecast_app/tests/truth_data/docs-ground-truth.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
+Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [zoltar-ground-truth-example.csv](zoltar-ground-truth-example.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
 
 - `timezero`: date the truth applies to, formatted as `yyyy-mm-dd`
 - `unit`: the unit's name
@@ -93,8 +93,14 @@ The `"predictions"` list contains objects for each prediction, and each object c
 
 ## Quantile forecast format (CSV)
 
-Zoltar libraries support importing quantile data via the COVID-19 CSV format documented at [covid19-forecast-hub](https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model). While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the [above format](#project-creation-configuration-json)), the Zoltar libraries allow you to translate between the two.
+Zoltar libraries support importing quantile data (see [Validation.md](Validation.md) for more information) via the COVID-19 CSV format documented at [covid19-forecast-hub](https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model). While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the [above format](#project-creation-configuration-json)), the libraries allow you to translate between the two.
 
-Please see the above link for CSV column details. The Zoltar libraries ignore all but the following, which are allowed to be in any order: `"target"`, `"location"` (translated to Zoltar's "unit" concept), `"type"`, `"quantile"`, and `"value"`.
+Columns: The Zoltar libraries ignore all but the following, which are allowed to be in any order:
 
-Please see [Validation.md](Validation.md) for details about quantile and value data.
+- `"target"`: a unique id for the target
+- `"location"`: a unique id for the location (we have standardized to [FIPS codes](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code)). It is translated to Zoltar's "unit" concept.
+- `"type"`: one of either `"point"` or `"quantile"`
+- `"quantile"`: a value between 0 and 1 (inclusive), stating which quantile is displayed in this row. if type=="point" then NA.
+- `"value"`: a numeric value representing the value of the quantile function evaluated at the probability specified in quantile
+
+See [quantile-predictions.csv](quantile-predictions.csv) for an example.
