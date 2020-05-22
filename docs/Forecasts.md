@@ -22,9 +22,12 @@ Forecasts are uploaded to a particular model for a particular time zero. To uplo
 1. If there was a problem uploading then you will see the upload's status as **FAILED**. The **Failure** section will provide some information to help debug the problem.
 
 
-## Download a forecast
+## Download a single forecast
 
-To download a forecast:
+> Note: Downloading multiple forecasts is possible, but only programmatically using the [Zoltar libraries](ApiIntro.md). Learn more on the [query format](QueryFormat.md) page.
+
+
+To download a particular forecast:
 
 1. Go to the [model detail page](ModelDetailPage.md) where the forecast resides.
 1. Click the link in the "Data Source" column to go to the [forecast detail page](Forecasts.md).
