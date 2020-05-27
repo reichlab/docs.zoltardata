@@ -36,7 +36,7 @@
     
     
       
-        <title>Data model - Zoltar Documentation</title>
+        <title>Query Format - Zoltar Documentation</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#zoltar-data-model" tabindex="1" class="md-skip">
+      <a href="#querying-a-projects-forecasts" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Data model
+                Query Format
               
             </span>
           
@@ -417,77 +417,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Data model
-      </label>
-    
-    <a href="./" title="Data model" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../DataModel/" title="Data model" class="md-nav__link">
       Data model
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#point-predictions" class="md-nav__link">
-    Point predictions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#named-distributions" class="md-nav__link">
-    Named distributions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bin-distributions" class="md-nav__link">
-    Bin distributions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-distributions" class="md-nav__link">
-    Sample distributions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantile-distributions" class="md-nav__link">
-    Quantile distributions
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -507,11 +441,70 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../QueryFormat/" title="Query Format" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Query Format
+      </label>
+    
+    <a href="./" title="Query Format" class="md-nav__link md-nav__link--active">
       Query Format
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#querying-workflow" class="md-nav__link">
+    Querying workflow
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-format" class="md-nav__link">
+    Query format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-format" class="md-nav__link">
+    Data format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-limits" class="md-nav__link">
+    Data limits
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -637,36 +630,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#point-predictions" class="md-nav__link">
-    Point predictions
+  <a href="#querying-workflow" class="md-nav__link">
+    Querying workflow
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#named-distributions" class="md-nav__link">
-    Named distributions
+  <a href="#query-format" class="md-nav__link">
+    Query format
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#bin-distributions" class="md-nav__link">
-    Bin distributions
+  <a href="#data-format" class="md-nav__link">
+    Data format
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-distributions" class="md-nav__link">
-    Sample distributions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#quantile-distributions" class="md-nav__link">
-    Quantile distributions
+  <a href="#data-limits" class="md-nav__link">
+    Data limits
   </a>
   
 </li>
@@ -688,59 +674,82 @@
               
                 
                 
-                <h1 id="zoltar-data-model">Zoltar data model<a class="headerlink" href="#zoltar-data-model" title="Permanent link">&para;</a></h1>
-<p>This page documents how Zoltar represents forecast data, and the various types of predictions that are supported. Each forecast is made for a particular <em>time zero</em> in the project, and contains some number of <em>predictions</em>, one or more for each combination of the project's <em>units</em> and <em>targets</em>. Zoltar supports the following five prediction types, which we've found covers many forecasting applications. All predictions must pass a number of validity checks as documented in <a href="../Validation/">Validation</a>. Each section has an example as represented in Zoltar's <a href="../FileFormats/#forecast-data-file-format-json">JSON format</a> which was taken from the "Docs Example Project" demo project.</p>
-<h2 id="point-predictions">Point predictions<a class="headerlink" href="#point-predictions" title="Permanent link">&para;</a></h2>
-<p>Point predictions represent a single value. See <a href="../Validation/#point-prediction-elements">here</a> for details. In this example we see a prediction of <code>2.1</code> for the unit "location1" and target "pct next week". Note that, like all predictions, the data type (in this case the float <code>2.1</code>) must match the target's data type. (In this case it does; "pct next week" is a <em>discrete</em> target.)</p>
-<pre><code>{"unit": "location1",
-  "target": "pct next week",
-  "class": "point",
-  "prediction": {
-    "value": 2.1
-  }
+                <h1 id="querying-a-projects-forecasts">Querying a project's forecasts<a class="headerlink" href="#querying-a-projects-forecasts" title="Permanent link">&para;</a></h1>
+<p>In addition to the ability to download individual forecasts via both the <a href="../Forecasts/#download-a-single-forecast">Web UI</a> and the <a href="../ApiIntro/">Zoltar libraries</a>, Zoltar supports downloading multiple forecasts at once, but currently only through the libraries.</p>
+<h2 id="querying-workflow">Querying workflow<a class="headerlink" href="#querying-workflow" title="Permanent link">&para;</a></h2>
+<p>Like <a href="../Forecasts/#upload-a-forecast">uploading a forecast</a>, querying a project's forecasts can be a long operation. For this reason, Zoltar <em>enqueues</em> queries as jobs that are operated on separately from the web process. This means querying follows these steps:</p>
+<ol>
+<li>Create and submit the <a href="#query_format">query</a>. This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).</li>
+<li>Poll the job until its status is <strong>SUCCESS</strong>. (You can use the Web UI to do this as well. See <a href="../Forecasts/#check_an_uploads_status">Check an upload's status</a> for how.)</li>
+<li>Download the data associated with the job.</li>
+</ol>
+<h2 id="query-format">Query format<a class="headerlink" href="#query-format" title="Permanent link">&para;</a></h2>
+<p>Zoltar supports a simple filtering feature that allows users to limit what data is downloaded.</p>
+<p>To filter a project's forecast data, we will support the following five types of filters. They are passed behind the scenes to the server as JSON.</p>
+<blockquote>
+<p>Note that <em>server IDs</em> are passed, not URLs or names, which makes queries unambiguous. Libraries will provide helper functions that hide details and make the feature more convenient. For example, instead of passing time zeros as IDs, the user will be able to use our standard <code>yyyy-mm-dd</code> format, which the library will convert to IDs.</p>
+</blockquote>
+<p>Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of model IDs means get data from <em>any</em> of them. The filters are combined by ANDs, meaning only data that matches <em>all</em> filters. For example</p>
+<p>The types of filters:</p>
+<p>1) Filter by <em>model</em>: Pass zero or more model IDs in the <code>models</code> field. Example:</p>
+<pre><code class="json">{&quot;models&quot;: [150, 237]}  # gets data only from either of these two models. 150 = &quot;60-contact&quot;, 237 = &quot;CovidIL_100&quot;
 </code></pre>
-<h2 id="named-distributions">Named distributions<a class="headerlink" href="#named-distributions" title="Permanent link">&para;</a></h2>
-<p>Named distributions represent distributions like <em>normal</em>, <em>log normal</em>, <em>gamma</em>, etc. See <a href="../Validation/#named-prediction-elements">here</a> for details. Here is an example in which a <em>normal</em> distribution ("norm" is the abbreviation) is specified for unit "location1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: <em>mean</em> ("param1") and <em>sd</em> ("param2"). "param3" is unused and not listed.</p>
-<pre><code>{"unit": "location1",
-  "target": "pct next week",
-  "class": "named",
-  "prediction": {
-    "family": "norm",
-    "param1": 1.1,
-    "param2": 2.2
-  }
+
+<p>2) Filter by <em>unit</em>: Pass zero or more unit IDs <code>units</code> field. Example:</p>
+<pre><code class="json">{&quot;units&quot;: [335]}  # get data only for these this unit. 335 = &quot;US&quot;
 </code></pre>
-<h2 id="bin-distributions">Bin distributions<a class="headerlink" href="#bin-distributions" title="Permanent link">&para;</a></h2>
-<p>Bin distributions represent binned distribution defined by inclusive lower bounds for each bin. See <a href="../Validation/#bin-prediction-elements">here</a> for details. Example:</p>
-<pre><code>{"unit": "location2",
-  "target": "pct next week",
-  "class": "bin",
-  "prediction": {
-    "cat": [1.1, 2.2, 3.3],
-    "prob": [0.3, 0.2, 0.5]
-  }
-},
+
+<p>3) Filter by <em>target</em>: Pass zero or more target IDs in the <code>targets</code> field. Example:</p>
+<pre><code class="json">{&quot;targets&quot;: [1894, 1897]}  # get data only for either of these two targets. 1894 = &quot;0 day ahead cum death&quot;, 1897 = &quot;1 day ahead cum death&quot;
 </code></pre>
-<h2 id="sample-distributions">Sample distributions<a class="headerlink" href="#sample-distributions" title="Permanent link">&para;</a></h2>
-<p>Sample distributions represent samples taken for the unit and target. Here's an example:</p>
-<pre><code>{"unit": "location3",
-  "target": "pct next week",
-  "class": "sample",
-  "prediction": {
-    "sample": [2.3, 6.5, 0.0, 10.0234, 0.0001]
-  }
+
+<p>4) Filter by <em>timezero</em>: Pass zero or more timezero IDs in the <code>timezeros</code> field. Example:</p>
+<pre><code class="json">{&quot;timezeros&quot;: [739, 738]}  # get data only for either of these two time zeros. 739 = &quot;2020-05-14&quot;, 738 = &quot;2020-05-09&quot;
 </code></pre>
-<h2 id="quantile-distributions">Quantile distributions<a class="headerlink" href="#quantile-distributions" title="Permanent link">&para;</a></h2>
-<p>Quantile distributions represent ... TBD. For example:</p>
-<pre><code>{"unit": "location2",
-  "target": "pct next week",
-  "class": "quantile",
-  "prediction": {
-    "quantile": [0.025, 0.25, 0.5, 0.75, 0.975],
-    "value": [1.0, 2.2, 2.2, 5.0, 50.0]
-  }
-},
+
+<p>5) Filter by forecast <em>type</em>: Pass a list of string types in the <code>types</code> field. Choices are <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code>. Treated as "OR". Example:</p>
+<pre><code class="json">{&quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]}  # get only point and quantile data
 </code></pre>
+
+<p>The lists in 1, 2, 3, and 4 operate as "OR" on their own, but they are combined as "AND"s. Here's an example:</p>
+<pre><code class="json">{&quot;models&quot;: [150, 237],
+ &quot;units&quot;: [335],
+ &quot;targets&quot;: [1894, 1897],
+ &quot;timezeros&quot;: [739, 738],
+ &quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]
+}
+</code></pre>
+
+<p>This results in data that is:</p>
+<ul>
+<li>(from either the <code>60-contact</code> OR <code>CovidIL_100</code> models) AND</li>
+<li>(the unit is <code>US</code>) AND</li>
+<li>(the target is either <code>0 day ahead cum death</code> or <code>1 day ahead cum death</code>) AND</li>
+<li>(the timezero is either <code>2020-05-14</code> OR <code>2020-05-09</code>) AND</li>
+<li>(the prediction type is either <code>point</code> OR <code>quantile</code>)</li>
+</ul>
+<p>Note that not all types of filters are required to be specified. Any missing ones are treated by default as "all". In the previous example, if we omitted <code>types</code> then we'd get similar data except it would include all prediction types instead of just <code>point</code> or <code>quantile</code> ones.</p>
+<h2 id="data-format">Data format<a class="headerlink" href="#data-format" title="Permanent link">&para;</a></h2>
+<p>Data is returned in tabular CVS format with the following columns. Because we support five different prediction types in our <a href="../DataModel/">Data Model</a>, the format of each row must account for all possible values. For this reason, the CSV is 'sparse': not every row uses all columns; unused ones are empty (''). Note that the first six columns are always present for any prediction type.</p>
+<ul>
+<li><code>model</code>: the model's abbreviation (if defined) or name </li>
+<li><code>timezero</code>: date the truth applies to, formatted as <code>yyyy-mm-dd</code></li>
+<li><code>season</code>: the season the <code>timezero</code> corresponds to. empty if no defined seasons in the project</li>
+<li><code>unit</code>: the unit's name</li>
+<li><code>target</code>: target name</li>
+<li><code>class</code>: prediction type. one of <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code></li>
+<li><code>value</code>: used for <code>point</code> and <code>quantile</code> prediction types. empty otherwise</li>
+<li><code>cat</code>: used for <code>bin</code> prediction types. empty otherwise</li>
+<li><code>prob</code>: ""</li>
+<li><code>sample</code>: used for <code>sample</code> prediction types. empty otherwise</li>
+<li><code>quantile</code>: used for <code>quantile</code> prediction types. empty otherwise</li>
+<li><code>family</code>: used for <code>named</code> prediction types. empty otherwise</li>
+<li><code>param1</code>: ""</li>
+<li><code>param2</code>: ""</li>
+<li><code>param3</code>: ""</li>
+</ul>
+<h2 id="data-limits">Data limits<a class="headerlink" href="#data-limits" title="Permanent link">&para;</a></h2>
+<p>Because queries have the potential to return millions of rows, we currently limit the number of them to 100,000. If a query would return more than that, then the query fails.</p>
                 
                   
                 
@@ -761,7 +770,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Concepts/" title="Concepts" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../FileFormats/" title="File Formats" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -770,19 +779,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Concepts
+                File Formats
               </span>
             </div>
           </a>
         
         
-          <a href="../FileFormats/" title="File Formats" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Targets/" title="Targets" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                File Formats
+                Targets
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
