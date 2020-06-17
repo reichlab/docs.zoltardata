@@ -27,6 +27,8 @@ It may be helpful to get started by downloading and modifying an existing projec
 1. Go to the project of interest's [detail page](ProjectDetailPage.md).
 1. At the top, to the right of the project name, click the green download "Config" button and save the file.
 
+Note that the `id` and `url` fields in the downloaded file are ignored when creating a new project from that file, and can safely be edited out when creating your new file.
+
 
 ## Edit a project
 

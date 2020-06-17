@@ -32,5 +32,4 @@ This work has been supported by the National Institutes of General Medical Scien
 
 ## Contact
 
-If you have questions about this site or want an account, please contact Professor Nicholas Reich (nick@schoolph.umass.edu), director of the [Reich Lab](href="http://reichlab.io/).
-
+If you have questions about this site, please contact us at [zoltar@reichlab.io](mailto:zoltar@reichlab.io). For account requests, please fill out the [Zoltardata.com user request form](https://docs.google.com/forms/d/1C7IEFbBEJ1JibG-svM5XbnnKkgwvH0770LYILDjBxUc/viewform?edit_requested=true) to be added to our beta-tester invitation queue.
