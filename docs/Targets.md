@@ -106,28 +106,257 @@ Legend:
 
 (Note that CRPS and brier scores have not yet been implemented.)
 
-| target type   | prediction element | error       | abs error | log score           | CRPS | brier | PIT | interval |
-|---------------|--------------------|-------------|-----------|---------------------|------|-------|-----|----------|
-| *continuous*  | point              | x           | x         | -                   | x(a) | -     | -   |    ?     |
-|               | bin                | -           | -         | x                   | x    | x     | x   |    ?     |
-|               | sample             | -           | -         | x(b)                | x    | -     | x   |    ?     |
-|               | named              | -           | -         | x                   | x    | -     | x   |    ?     |
-|               | quantile           | ?           | ?         | ?                   | ?    | ?     | ?   |    ?     |
-| *discrete*    | point              | x           | x         | -                   | x(a) | -     | -   |    ?     |
-|               | bin                | -           | -         | x                   | x    | x     | x   |    ?     |
-|               | sample             | -           | -         | x(b)                | x    | -     | x   |    ?     |
-|               | named              | -           | -         | x                   | x    | -     | x   |    ?     |
-|               | quantile           | ?           | ?         | ?                   | ?    | ?     | ?   |    ?     |
-| *nominal*     | point              | -           | -         | -                   | -    | -     | -   |    ?     |
-|               | bin                | -           | -         | x                   | -    | x     | -   |    ?     |
-|               | sample             | -           | -         | x                   | -    | x     | -   |    ?     |
-| *binary*      | point              | x           | x         | -                   | x(a) | -     | -   |    ?     |
-|               | bin                | -           | -         | x                   | x    | x     | -   |    ?     |
-|               | sample             | -           | -         | x(b)                | x    | x     | -   |    ?     |
-| *date*        | point              | x           | x         | -                   | x(a) | -     | -   |    ?     |
-|               | bin                | -           | -         | x                   | x    | x     | x   |    ?     |
-|               | sample             | -           | -         | x(b)                | x    | -     | x   |    ?     |
-|               | quantile           | ?           | ?         | ?                   | ?    | ?     | ?   |    ?     |
+<html>
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th colspan="2">**point scores**</th>
+        <th colspan="5">**probabilistic scores**</th>
+    </tr>
+    <tr>
+        <th>target</th>
+        <th>elem.</th>
+        <th>error</th>
+        <th>abs</th>
+        <th>log score</th>
+        <th>CRPS</th>
+        <th>Brier</th>
+        <th>PIT</th>
+        <th>int. score</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- continuous -->
+    <tr>
+        <td>*continuous*</td>
+        <td>point</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x(a)</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>bin</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>named</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>sample</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x(b)</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>quantile</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+</tr>
+    <!-- discrete -->
+    <tr>
+        <td>*discrete*</td>
+        <td>point</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x(a)</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>bin</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>named</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>sample</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x(b)</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>quantile</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+</tr>
+    <!-- nominal -->
+    <tr>
+        <td>*nominal*</td>
+        <td>point</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>bin</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>sample</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x(b)</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <!-- binary -->
+    <tr>
+        <td>*binary*</td>
+        <td>point</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x(a)</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>bin</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>sample</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x(b)</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <!-- date -->
+    <tr>
+        <td>*date*</td>
+        <td>point</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x(a)</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>bin</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>sample</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x(b)</td>
+        <td>x</td>
+        <td>-</td>
+        <td>x</td>
+        <td>-</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>quantile</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>x</td>
+</tr>
+    </tbody>
+</table>
+</html>
+
 
 * x(a) = CRPS is equivalent to abs error for point forecasts.
 * x(b) = log score is required to be computed by approximation
