@@ -16,13 +16,11 @@ Like [uploading a forecast](Forecasts.md#upload-a-forecast), querying a project'
 
 Zoltar supports a simple filtering feature that allows users to limit what data is downloaded.
 
-To filter a project's forecast data, we will support the following five types of filters. They are passed behind the scenes to the server as JSON.
+To filter a project's forecast data, we support the following five types of filters. They are passed behind the scenes to the server as JSON.
 
-> Note that *server IDs* are passed, not URLs or names, which makes queries unambiguous. Libraries will provide helper functions that hide details and make the feature more convenient. For example, instead of passing time zeros as IDs, the user will be able to use our standard `yyyy-mm-dd` format, which the library will convert to IDs.
+> Note that *server IDs* are passed, not URLs or names, which makes queries unambiguous. Libraries may provide helper functions that hide details and make the feature more convenient. For example, instead of passing time zeros as IDs, the user would be able to use our standard `yyyy-mm-dd` format, which the library would convert to IDs.
 
-Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of model IDs means get data from *any* of them. The filters are combined by ANDs, meaning only data that matches *all* filters. For example
-
-The types of filters:
+Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of model IDs means get data from *any* of them. The filters are combined by ANDs, meaning only data that matches *all* filters. (See the below example.) The types of filters are:
 
 1) Filter by *model*: Pass zero or more model IDs in the `models` field. Example:
 ```json
@@ -31,7 +29,7 @@ The types of filters:
 
 2) Filter by *unit*: Pass zero or more unit IDs `units` field. Example:
 ```json
-{"units": [335]}  # get data only for these this unit. 335 = "US"
+{"units": [335]}  # get data only for this unit. 335 = "US"
 ```
 
 3) Filter by *target*: Pass zero or more target IDs in the `targets` field. Example:
@@ -45,12 +43,12 @@ The types of filters:
 {"timezeros": [739, 738]}  # get data only for either of these two time zeros. 739 = "2020-05-14", 738 = "2020-05-09"
 ```
 
-5) Filter by forecast *type*: Pass a list of string types in the `types` field. Choices are `bin`, `named`, `point`, `sample`, and `quantile`. Treated as "OR". Example:
+5) Filter by forecast *type*: Pass a list of string types in the `types` field. Choices are `bin`, `named`, `point`, `sample`, and `quantile`. Example:
 ```json
 {"types": ["point", "quantile"]}  # get only point and quantile data
 ```
 
-The lists in 1, 2, 3, and 4 operate as "OR" on their own, but they are combined as "AND"s. Here's an example:
+The lists in 1 through 5 operate as "OR" on their own but are combined in the final query as "AND"s. Here's an example:
 
 ```json
 {"models": [150, 237],
@@ -95,4 +93,4 @@ Data is returned in tabular CVS format with the following columns. Because we su
 
 ## Data limits
 
-Because queries have the potential to return millions of rows, we currently limit the number of them to 100,000. If a query would return more than that, then the query fails.
+Because queries have the potential to return millions of rows, the number of resulting rows is capped. The query fails if it would exceed the limit.
