@@ -685,18 +685,17 @@
 </ol>
 <h2 id="query-format">Query format<a class="headerlink" href="#query-format" title="Permanent link">&para;</a></h2>
 <p>Zoltar supports a simple filtering feature that allows users to limit what data is downloaded.</p>
-<p>To filter a project's forecast data, we will support the following five types of filters. They are passed behind the scenes to the server as JSON.</p>
+<p>To filter a project's forecast data, we support the following five types of filters. They are passed behind the scenes to the server as JSON.</p>
 <blockquote>
-<p>Note that <em>server IDs</em> are passed, not URLs or names, which makes queries unambiguous. Libraries will provide helper functions that hide details and make the feature more convenient. For example, instead of passing time zeros as IDs, the user will be able to use our standard <code>yyyy-mm-dd</code> format, which the library will convert to IDs.</p>
+<p>Note that <em>server IDs</em> are passed, not URLs or names, which makes queries unambiguous. Libraries may provide helper functions that hide details and make the feature more convenient. For example, instead of passing time zeros as IDs, the user would be able to use our standard <code>yyyy-mm-dd</code> format, which the library would convert to IDs.</p>
 </blockquote>
-<p>Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of model IDs means get data from <em>any</em> of them. The filters are combined by ANDs, meaning only data that matches <em>all</em> filters. For example</p>
-<p>The types of filters:</p>
+<p>Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of model IDs means get data from <em>any</em> of them. The filters are combined by ANDs, meaning only data that matches <em>all</em> filters. (See the below example.) The types of filters are:</p>
 <p>1) Filter by <em>model</em>: Pass zero or more model IDs in the <code>models</code> field. Example:</p>
 <pre><code class="json">{&quot;models&quot;: [150, 237]}  # gets data only from either of these two models. 150 = &quot;60-contact&quot;, 237 = &quot;CovidIL_100&quot;
 </code></pre>
 
 <p>2) Filter by <em>unit</em>: Pass zero or more unit IDs <code>units</code> field. Example:</p>
-<pre><code class="json">{&quot;units&quot;: [335]}  # get data only for these this unit. 335 = &quot;US&quot;
+<pre><code class="json">{&quot;units&quot;: [335]}  # get data only for this unit. 335 = &quot;US&quot;
 </code></pre>
 
 <p>3) Filter by <em>target</em>: Pass zero or more target IDs in the <code>targets</code> field. Example:</p>
@@ -707,11 +706,11 @@
 <pre><code class="json">{&quot;timezeros&quot;: [739, 738]}  # get data only for either of these two time zeros. 739 = &quot;2020-05-14&quot;, 738 = &quot;2020-05-09&quot;
 </code></pre>
 
-<p>5) Filter by forecast <em>type</em>: Pass a list of string types in the <code>types</code> field. Choices are <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code>. Treated as "OR". Example:</p>
+<p>5) Filter by forecast <em>type</em>: Pass a list of string types in the <code>types</code> field. Choices are <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code>. Example:</p>
 <pre><code class="json">{&quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]}  # get only point and quantile data
 </code></pre>
 
-<p>The lists in 1, 2, 3, and 4 operate as "OR" on their own, but they are combined as "AND"s. Here's an example:</p>
+<p>The lists in 1 through 5 operate as "OR" on their own but are combined in the final query as "AND"s. Here's an example:</p>
 <pre><code class="json">{&quot;models&quot;: [150, 237],
  &quot;units&quot;: [335],
  &quot;targets&quot;: [1894, 1897],
@@ -749,7 +748,7 @@
 <li><code>param3</code>: ""</li>
 </ul>
 <h2 id="data-limits">Data limits<a class="headerlink" href="#data-limits" title="Permanent link">&para;</a></h2>
-<p>Because queries have the potential to return millions of rows, we currently limit the number of them to 100,000. If a query would return more than that, then the query fails.</p>
+<p>Because queries have the potential to return millions of rows, the number of resulting rows is capped. The query fails if it would exceed the limit.</p>
                 
                   
                 
