@@ -1,11 +1,12 @@
 # File Formats
 
-Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.
+Zoltar uses a number of formats for representing truth data, forecast data, configurations, etc. This page documents those.
 
 - [Project creation configuration (JSON)](#project-creation-configuration-json)
 - [Truth data format (CSV)](#truth-data-format-csv)
 - [Score download format (CSV)](#score-download-format-csv)
 - [Forecast data format (JSON)](#forecast-data-format-json)
+- [Forecast data format (CSV)](#forecast-data-format-csv)
 - [Quantile forecast format (CSV)](#quantile-forecast-format-csv)
 
 
@@ -89,6 +90,24 @@ The `"predictions"` list contains objects for each prediction, and each object c
     - `"named"`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
     - `"point`: A numeric point prediction with a single `value` key.
     - `"sample"`: Numeric samples represented as a table with one column that is found in the `sample` key.
+
+
+## Forecast data format (CSV)
+
+Because the native Zoltar JSON format can be inconvenient to work with, the [Zoltar libraries](ApiIntro.md) provide functions to convert from JSON to a Zoltar-specific CSV format with the following columns. Each row represents a prediction of a particular type as described on [the data model page](DataModel.md). Note that because different prediction types have different contents, the frame is 'sparse': not every row uses all columns, and unused ones are empty (`""`). However, the first three columns (`unit`, `target`, and `class`) are always non-empty.
+
+- `unit`: the prediction's unit
+- `target`: "" target
+- `class`: "" type. one of: `bin`, `named`, `point`, `sample`, or `quantile`
+- `value`: value for `point` and `quantile` predictions
+- `cat`: "" category for `bin` predictions
+- `prob`: "" probability for `bin` predictions
+- `sample`: "" sample for `sample` predictions
+- `quantile`: "" quantile for `quantile` predictions
+- `family`: family name for `named` predictions. see [`Named` Prediction Elements](Validation.md#named-prediction-elements) for a list of them
+- `param1`: parameter ""
+- `param2`: parameter ""
+- `param3`: parameter ""
 
 
 ## Quantile forecast format (CSV)
