@@ -787,12 +787,12 @@ BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.1561
 <ul>
 <li><code>unit</code>: the prediction's unit</li>
 <li><code>target</code>: "" target</li>
-<li><code>class</code>: "" type. one of: <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, or <code>quantile</code></li>
-<li><code>value</code>: value for <code>point</code> and <code>quantile</code> predictions</li>
-<li><code>cat</code>: "" category for <code>bin</code> predictions</li>
-<li><code>prob</code>: "" probability for <code>bin</code> predictions</li>
-<li><code>sample</code>: "" sample for <code>sample</code> predictions</li>
-<li><code>quantile</code>: "" quantile for <code>quantile</code> predictions</li>
+<li><code>class</code>: "" prediction type. one of <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code></li>
+<li><code>value</code>: used for <code>point</code> and <code>quantile</code> prediction types. empty otherwise</li>
+<li><code>cat</code>: used for <code>bin</code> prediction types. empty otherwise</li>
+<li><code>prob</code>: ""</li>
+<li><code>sample</code>: used for <code>sample</code> prediction types. empty otherwise</li>
+<li><code>quantile</code>: used for <code>quantile</code> prediction types. empty otherwise</li>
 <li><code>family</code>: family name for <code>named</code> predictions. see <a href="../Validation/#named-prediction-elements"><code>Named</code> Prediction Elements</a> for a list of them</li>
 <li><code>param1</code>: parameter ""</li>
 <li><code>param2</code>: parameter ""</li>
