@@ -486,6 +486,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#forecast-data-format-csv" class="md-nav__link">
+    Forecast data format (CSV)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#quantile-forecast-format-csv" class="md-nav__link">
     Quantile forecast format (CSV)
   </a>
@@ -665,6 +672,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#forecast-data-format-csv" class="md-nav__link">
+    Forecast data format (CSV)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#quantile-forecast-format-csv" class="md-nav__link">
     Quantile forecast format (CSV)
   </a>
@@ -689,12 +703,13 @@
                 
                 
                 <h1 id="file-formats">File Formats<a class="headerlink" href="#file-formats" title="Permanent link">&para;</a></h1>
-<p>Zoltar uses a number of formats for representing truth data, forecasts, configurations, etc. This page documents those.</p>
+<p>Zoltar uses a number of formats for representing truth data, forecast data, configurations, etc. This page documents those.</p>
 <ul>
 <li><a href="#project-creation-configuration-json">Project creation configuration (JSON)</a></li>
 <li><a href="#truth-data-format-csv">Truth data format (CSV)</a></li>
 <li><a href="#score-download-format-csv">Score download format (CSV)</a></li>
 <li><a href="#forecast-data-format-json">Forecast data format (JSON)</a></li>
+<li><a href="#forecast-data-format-csv">Forecast data format (CSV)</a></li>
 <li><a href="#quantile-forecast-format-csv">Quantile forecast format (CSV)</a></li>
 </ul>
 <h2 id="project-creation-configuration-json">Project creation configuration (JSON)<a class="headerlink" href="#project-creation-configuration-json" title="Permanent link">&para;</a></h2>
@@ -766,6 +781,22 @@ BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.1561
 <li><code>"sample"</code>: Numeric samples represented as a table with one column that is found in the <code>sample</code> key.</li>
 </ul>
 </li>
+</ul>
+<h2 id="forecast-data-format-csv">Forecast data format (CSV)<a class="headerlink" href="#forecast-data-format-csv" title="Permanent link">&para;</a></h2>
+<p>Because the native Zoltar JSON format can be inconvenient to work with, the <a href="../ApiIntro/">Zoltar libraries</a> provide functions to convert from JSON to a Zoltar-specific CSV format with the following columns. Each row represents a prediction of a particular type as described on <a href="../DataModel/">the data model page</a>. Note that because different prediction types have different contents, the frame is 'sparse': not every row uses all columns, and unused ones are empty (<code>""</code>). However, the first three columns (<code>unit</code>, <code>target</code>, and <code>class</code>) are always non-empty.</p>
+<ul>
+<li><code>unit</code>: the prediction's unit</li>
+<li><code>target</code>: "" target</li>
+<li><code>class</code>: "" type. one of: <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, or <code>quantile</code></li>
+<li><code>value</code>: value for <code>point</code> and <code>quantile</code> predictions</li>
+<li><code>cat</code>: "" category for <code>bin</code> predictions</li>
+<li><code>prob</code>: "" probability for <code>bin</code> predictions</li>
+<li><code>sample</code>: "" sample for <code>sample</code> predictions</li>
+<li><code>quantile</code>: "" quantile for <code>quantile</code> predictions</li>
+<li><code>family</code>: family name for <code>named</code> predictions. see <a href="../Validation/#named-prediction-elements"><code>Named</code> Prediction Elements</a> for a list of them</li>
+<li><code>param1</code>: parameter ""</li>
+<li><code>param2</code>: parameter ""</li>
+<li><code>param3</code>: parameter ""</li>
 </ul>
 <h2 id="quantile-forecast-format-csv">Quantile forecast format (CSV)<a class="headerlink" href="#quantile-forecast-format-csv" title="Permanent link">&para;</a></h2>
 <p>Zoltar libraries support importing quantile data (see <a href="../Validation/">Validation.md</a> for more information) via the COVID-19 CSV format documented at <a href="https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model">covid19-forecast-hub</a>. While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the <a href="#project-creation-configuration-json">above format</a>), the libraries allow you to translate between the two.</p>
