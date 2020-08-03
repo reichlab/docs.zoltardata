@@ -85,10 +85,10 @@ Data is returned in tabular CVS format with the following columns. Because we su
 - `prob`: ""
 - `sample`: used for `sample` prediction types. empty otherwise
 - `quantile`: used for `quantile` prediction types. empty otherwise
-- `family`: used for `named` prediction types. empty otherwise
-- `param1`: ""
-- `param2`: ""
-- `param3`: ""
+- `family`: family name for `named` predictions. see [`Named` Prediction Elements](Validation.md#named-prediction-elements) for a list of them
+- `param1`: parameter ""
+- `param2`: parameter ""
+- `param3`: parameter ""
 
 
 ## Data limits

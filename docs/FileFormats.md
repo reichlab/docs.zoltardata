@@ -98,12 +98,12 @@ Because the native Zoltar JSON format can be inconvenient to work with, the [Zol
 
 - `unit`: the prediction's unit
 - `target`: "" target
-- `class`: "" type. one of: `bin`, `named`, `point`, `sample`, or `quantile`
-- `value`: value for `point` and `quantile` predictions
-- `cat`: "" category for `bin` predictions
-- `prob`: "" probability for `bin` predictions
-- `sample`: "" sample for `sample` predictions
-- `quantile`: "" quantile for `quantile` predictions
+- `class`: "" prediction type. one of `bin`, `named`, `point`, `sample`, and `quantile`
+- `value`: used for `point` and `quantile` prediction types. empty otherwise
+- `cat`: used for `bin` prediction types. empty otherwise
+- `prob`: ""
+- `sample`: used for `sample` prediction types. empty otherwise
+- `quantile`: used for `quantile` prediction types. empty otherwise
 - `family`: family name for `named` predictions. see [`Named` Prediction Elements](Validation.md#named-prediction-elements) for a list of them
 - `param1`: parameter ""
 - `param2`: parameter ""
