@@ -21,8 +21,9 @@ At the time of writing Zoltar implements these scores:
 - **Log score (single bin)**: Natural log of probability assigned to the true bin. Higher is " "better." More detail is [here](https://github.com/reichlab/flusight/wiki/Scoring#2-log-score-single-bin).
 - **Log score (multi bin)**: This is calculated by finding the natural log of probability " "assigned to the true and a few neighbouring bins. Higher is better. See [this page](https://github.com/reichlab/flusight/wiki/Scoring#3-log-score-multi-bin) for how it works.
 - **Probability Integral Transform (PIT)**: The probability integral transform (PIT) is a metric commonly " "used to evaluate the calibration of probabilistic forecasts. 
+- **Interval**: This score is a proper score used to assess calibration and sharpness of quantile forecasts. Lower is better. The supported intervals alpha values are: 0.02, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, and 1.0. 
 
-In addition an aggregate score values are calculated (see below).
+In addition, aggregate score values are calculated (see below).
 
 
 ## Viewing scores
@@ -41,11 +42,4 @@ Here's an example score page:
 
 ## Downloading scores
 
-Scores are downloaded from the [project detail page](ProjectDetailPage.md). To download a project's scores:
-
-1. Go to the [model detail page](ModelDetailPage.md) of the one you want to upload into.
-1. Click the "Download CSV" button and save the file.
-
-The scores are saved in the CSV format documented at [Score download format (CSV)](FileFormats.md#score-download-format-csv).
-
-Note that because creating score CSV files can be time consuming, Zoltar caches creating them to help keep the site responsive. Normally the cached version will be available, which should download as soon as you click the button. However, the download will be delayed (and likely time out) otherwise. The state of caching is indicated by the text to the right of the button. If it says something like "(Cached file updated 2020-04-20 05:00:30)" then the faster download is available. Otherwise it will say "(No cached file - download may be slow.)"
+Currently scores can only be downloaded programmatically using the [Zoltar libraries](ApiIntro.md). Learn more on the [score query format](ScoreQueryFormat.md) page.

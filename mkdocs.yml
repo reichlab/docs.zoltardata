@@ -21,7 +21,8 @@ nav:
       - 'Concepts': 'Concepts.md'
       - 'Data model': 'DataModel.md'
       - 'File Formats': 'FileFormats.md'
-      - 'Query Format': 'QueryFormat.md'
+      - 'Forecast Query Format': 'ForecastQueryFormat.md'
+      - 'Score Query Format': 'ScoreQueryFormat.md'
       - 'Targets': 'Targets.md'
       - 'Validation': 'Validation.md'
   - Programming libraries and API:

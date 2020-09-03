@@ -24,7 +24,7 @@ Forecasts are uploaded to a particular model for a particular time zero. To uplo
 
 ## Download a single forecast
 
-> Note: Downloading multiple forecasts is possible, but only programmatically using the [Zoltar libraries](ApiIntro.md). Learn more on the [query format](QueryFormat.md) page.
+> Note: Downloading multiple forecasts is possible, but only programmatically using the [Zoltar libraries](ApiIntro.md). Learn more on the [forecast query format](ForecastQueryFormat.md) page.
 
 
 To download a particular forecast:

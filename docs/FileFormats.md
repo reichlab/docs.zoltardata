@@ -4,7 +4,7 @@ Zoltar uses a number of formats for representing truth data, forecast data, conf
 
 - [Project creation configuration (JSON)](#project-creation-configuration-json)
 - [Truth data format (CSV)](#truth-data-format-csv)
-- [Score download format (CSV)](#score-download-format-csv)
+- [Score data format (CSV)](#score-data-format-csv)
 - [Forecast data format (JSON)](#forecast-data-format-json)
 - [Forecast data format (CSV)](#forecast-data-format-csv)
 - [Quantile forecast format (CSV)](#quantile-forecast-format-csv)
@@ -58,22 +58,22 @@ Every project in Zoltar can have ground truth values associated with targets. Th
 - `value`: truth value, formatted according to the target's type. date values are formatted `yyyy-mm-dd` and booleans as `true` or `false`
  
 
-## Score download format (CSV)
+## Score data format (CSV)
 
-Zoltar calculates scores for all projects in the archive if they meet the requirements specified in [Scoring](Scoring.md#scoring-requirements). Users can download them as CSV through the web UI. The file has five fixed columns plus one column for each [implemented score](Scoring.md#current-scores). Score names are in the header. Here is an example header and a few rows:
+Zoltar calculates scores for all projects in the archive if they meet the requirements specified in [Scoring](Scoring.md#scoring-requirements). Users can download them as CSV through the web UI. The file has five fixed columns plus one column for each [implemented score](Scoring.md#current-scores). Score names are in the header. Here is an example header and a few rows from the "COVID-19 Forecasts" project, starting with the zoltr query that returned them:
 
-    model,timezero,season,location,target,error,abs_error,log_single_bin,log_multi_bin,pit
-    BMA,20171023,2017-2018,HHS Region 1,Season peak percentage,1.9,1.9,-5.34357208776754,-2.76546821334079,0.9777734401
-    BMA,20171023,2017-2018,HHS Region 1,1 wk ahead,-0.2,0.2,-1.73188807219066,-0.0198524421369183,0.3452268498
-    BMA,20171023,2017-2018,HHS Region 1,2 wk ahead,-0.0999999999999999,0.0999999999999999,-1.82712761306585,-0.0323377750120003,0.4673084875
-    BMA,20171023,2017-2018,HHS Region 1,3 wk ahead,-0.1,0.1,-2.20819351679503,-0.14128307370904,0.393643899
-    BMA,20171023,2017-2018,HHS Region 1,4 wk ahead,0.0,0.0,-2.21949472646195,-0.146689467362866,0.532728928
-    BMA,20171023,2017-2018,HHS Region 2,Season peak percentage,6.2,6.2,-9.65891133061945,-7.26101605782108,0.998308013
-    BMA,20171023,2017-2018,HHS Region 2,1 wk ahead,0.0,0.0,-6.21796372223555,-0.55145601008177,0.9919600412
-    BMA,20171023,2017-2018,HHS Region 2,2 wk ahead,0.0,0.0,-2.45422343139561,-0.270984128983646,0.504271003
-    BMA,20171023,2017-2018,HHS Region 2,3 wk ahead,0.4,0.4,-3.10357809725514,-0.598672167592193,0.8944900092
-    BMA,20171023,2017-2018,HHS Region 2,4 wk ahead,0.4,0.4,-6.42663862873283,-0.156176129883708,0.9925874469
+```R
+score_data <- zoltr::do_zoltar_query(zoltar_connection, project_url, FALSE, models = "YYG-ParamSearch",
+                                     units=c("US", "01"), targets = "4 wk ahead cum death",
+                                     timezeros = c("2020-05-11", "2020-05-12"), scores = "abs_error")
+```
 
+    model            timezero    season     unit  target                truth   abs_error
+    YYG-ParamSearch  2020-05-11  2019-2020  US    4 wk ahead cum death  112787  2681.353647
+    YYG-ParamSearch  2020-05-11  2019-2020  1     4 wk ahead cum death  689     69.14696021
+    YYG-ParamSearch  2020-05-12  2019-2020  US    4 wk ahead cum death  118093  4783.580487
+    YYG-ParamSearch  2020-05-12  2019-2020  1     4 wk ahead cum death  773     94.82157045
+    
 
 ## Forecast data format (JSON)
 
