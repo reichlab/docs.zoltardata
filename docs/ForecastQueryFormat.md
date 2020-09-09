@@ -25,7 +25,7 @@ Logically, the filters are treated as a list of "ANDs of ORs": Each of the five 
 {"models": ["60-contact", "CovidIL_100"]}  # gets data only from either of these two models
 ```
 
-2) Filter by *unit*: Pass zero or more unit **names* in the `units` field. Example:
+2) Filter by *unit*: Pass zero or more unit **names** in the `units` field. Example:
 ```json
 {"units": ["US"]}  # get data only for this unit
 ```
