@@ -32,4 +32,7 @@ This work has been supported by the National Institutes of General Medical Scien
 
 ## Contact
 
-If you have questions about this site, please contact us at [zoltar@reichlab.io](mailto:zoltar@reichlab.io). For account requests, please fill out the [Zoltardata.com user request form](https://docs.google.com/forms/d/1C7IEFbBEJ1JibG-svM5XbnnKkgwvH0770LYILDjBxUc/viewform?edit_requested=true) to be added to our beta-tester invitation queue.
+- **Email**: If you have questions about this site, please contact us at [zoltar@reichlab.io](mailto:zoltar@reichlab.io).
+- **Account requests**: Please fill out the [Zoltardata.com user request form](https://docs.google.com/forms/d/1C7IEFbBEJ1JibG-svM5XbnnKkgwvH0770LYILDjBxUc/viewform?edit_requested=true) to be added to our beta-tester invitation queue.
+- **Zoltar users email list**: We have set up an email group at [https://groups.io/g/zoltardata](https://groups.io/g/zoltardata) where Zoltar developers will make occasional announcements about important system changes, releases, etc. To subscribe either [create a groups.io account](https://groups.io/register) and then add this group, or just send an email to [zoltardata+subscribe@groups.io](mailto:zoltardata+subscribe@groups.io) to auto-create an account.
+- **GitHub repository issues**: Zoltar is under active development, so you may have questions, encounter issues, or want new features. Please feel free to create issues for us at [https://github.com/reichlab/forecast-repository/issues](https://github.com/reichlab/forecast-repository/issues).

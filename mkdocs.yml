@@ -30,6 +30,7 @@ nav:
       - 'zoltpy (Python)': 'Zoltpy.md'
       - 'zoltr (R)': 'Zoltr.md'
       - 'RESTful API': 'Api.md'
+  - Getting Help: 'Help.md'
 
 theme: material
 
