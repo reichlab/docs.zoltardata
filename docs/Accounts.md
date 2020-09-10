@@ -14,7 +14,7 @@ Selecting "Profile Page" takes you to details about your account:
 
 ![User profile page](img/user-profile-page.png "User profile page")
 
-From this page you can use the buttons at the top to edit your email address and name, and to change your password. In addition, you'll see sections for the **Projects** you're involved with (either as a project owner or model owner), the **Models** you own, and the **[Upload File Jobs](Forecasts.md#check-an-uploads-status)** you have created.
+From this page you can use the buttons at the top to edit your email address and name, and to change your password. In addition, you'll see sections for the **Projects** you're involved with (either as a project owner or model owner), the **Models** you own, and the **[Jobs](Jobs.md)** you have created.
 
 
 ## Reset your password

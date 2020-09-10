@@ -26,20 +26,26 @@ At the time of writing Zoltar implements these scores:
 In addition, aggregate score values are calculated (see below).
 
 
-## Viewing scores
-
-Scores are accessed from the [project detail page](ProjectDetailPage.md) of the project of interest via the links in the **Analysis** row in the project details table at the top of the page. There are three links:
-
-- _Visualizations_: Takes you to a page that shows a time chart of the project's predictions. See the [visualization](Visualization.md) page for details.
-- _Aggregate scores_: Goes to the "Mean Absolute Error" page. [Absolute error](https://github.com/reichlab/flusight/wiki/Scoring#1-absolute-error) is the absolute value of difference between the eventually observed value and the point prediction. This page is an aggregate of scores that are currently in Zoltar, and only as up-to-date as they are. No scores are shown for a particular unit or target if the errors could not be calculated because not all truth values were available for it. <!-- TODO more detail -->
-- _Score data_: The linked-to page shows score counts at both the project and model levels. Only those scores that have values are shown.
-
-
-Here's an example score page: 
-
-![Scores page](img/scores-page.png "Scores page")
-
-
 ## Downloading scores
 
-Currently scores can only be downloaded programmatically using the [Zoltar libraries](ApiIntro.md). Learn more on the [score query format](ScoreQueryFormat.md) page.
+> Note: Downloading scores is currently available only to users with Zoltar accounts.
+>
+> Note: As mentioned at [Jobs](Jobs.md), downloading scores is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see [Job workflow](Jobs.md#workflow) for details).
+
+Scores are downloaded by executing a [scores query](ScoreQueryFormat.md) by either a) [Zoltar API](Api.md) using the [Zoltar libraries](ApiIntro.md), or b) via a simple web UI form (shown below). In both cases you need to follow these steps:
+ 
+ 1. Decide the data of interest (i.e., `models`, `units`, `targets`, `timezeros`, and `scores`).
+ 1. Submit the query to get a Job ID.
+ 1. Poll the resulting Job until it succeeds (see [Check a job's status](Jobs.md#check-a-jobs-status)).
+ 1. Download the job's data (see [Download a job's data](Jobs.md#download-a-jobs-data)). The format is described at [Score data format (CSV)](FileFormats.md#score-data-format-csv).
+ 
+ 
+## Download scores via the web UI
+ 
+ To download score data via the web UI:
+ 
+ 1. Go to the [project detail page](ProjectDetailPage.md) whose models contain the forecasts. 
+ 1. Click the "Download" button to the right of "Scores" in the Features section at the page's top.
+ 1. On the "Edit Scores Query" page that shows, enter your query and then click "Submit" (see the screen shot below).
+ 1. Poll the resulting Job until it succeeds (see [Check a job's status](Jobs.md#check-a-jobs-status)).
+ 1. Download the job's data (see [Download a job's data](Jobs.md#download-a-jobs-data)).

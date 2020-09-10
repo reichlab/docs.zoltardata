@@ -2,7 +2,7 @@
 
 A *project* is the main element for representing a forecasting challenge. It has an *owner* (a registered user in the system), and zero or more *model owners* (also users in the system). A project owner can do anything to the project, but model owners are limited to creating, editing, and deleting forecast models, and uploading and deleting forecasts. (To become a model owner you must contact the project owner.)
 
-Each project's detail page is divided into five vertical sections with **bold** headings, described next: **Details table**, **Models**, **Units**, **Targets**, and **Time zeros**. Currently the top looks like this:
+Each project's detail page is divided into five vertical sections with **bold** headings, described next: **Details table**, **Models**, **Units**, **Targets**, and **Time zeros**. Here's an example (the bottom has been cut off):
 
 ![Project detail page](img/project-detail-page.png "Project detail page")
 
@@ -23,7 +23,7 @@ At the top of the page is a table showing this information related to the projec
 - _Home_: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.
 - _Core data_: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.
 - _Truth data_: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. See [Truth](Truth.md) for details.
-- _Analysis_: Links to visualization and score pages. See [Scoring](Scoring.md) for details.
+- _Analysis_: Links to visualization and score pages, including links to [download forecasts](Forecasts.md#download-multiple-forecasts) and [download scores](Scoring.md#downloading-scores). 
 
 
 ## Forecast models
@@ -38,17 +38,16 @@ This section lists names of the **units** in the project. (See [Concepts](Concep
 
 ## Targets
 
-This section lists information about project forecast targets, which are a central Zoltar concept. See [Targets](Targets.md) for more about them. Like units, these were created by the project owner. Some of these parameters are optional - [this table](xx#summary-of-allowed-optional-and-required-parameters-by-target-type) shows which apply based on target type.
+This section lists information about project forecast targets, which are a central Zoltar concept. See [Targets](Targets.md) for more about them. Like units, these were created by the project owner. Some of these parameters are optional - [this table](Targets.md#summary-of-allowed-optional-and-required-parameters-by-target-type) shows which apply based on target type.
 
-the table includes the following columns:
+The table includes the following columns:
 
-- _Name_: Self-explanatory.
-- _Description_: "".
+- _Target group_: This column is either a target's name, or a derived name from a group of related targets (step-ahead ones whose step ahead increment is in the name).
+- _# Targets_: How many targets are in the group, or _1_ if not a group.
 - _Type_: The target's [type](Targets.md#target-types).
-- _Unit_: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. (Be aware that it can be confusing having both __unit__ objects as above along with a specific target's unit.)
+- _Unit_: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. (Be aware that it can be confusing having both **unit** objects as above along with a specific target's unit.)
 - _Step Ahead?_: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis tools.)
-- _Range_: An optional numerical range of acceptable values.
-- _Cats_: Optional acceptable categories for binned distributions.
+- _Example Target_: A specific target's name if a group, or the one target's name otherwise.
 
 
 ## Time zeros

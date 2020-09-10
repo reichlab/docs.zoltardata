@@ -1,6 +1,6 @@
 # Manging truth data
 
-Zoltar supports uploading ground truth data for each project that desires automatic scoring. This data is specified as a CSV file as documented in [Truth data format](http://127.0.0.1:8000/FileFormats/#truth-data-format-csv), and each project is responsible for generating the CSV file for their particular set of [time zeros](Concepts.md), [units](Concepts.md) and [targets](Concepts.md). You can tell whether truth has been uploaded to a project by looking at the **Truth Data** row in the [Project details table](http://127.0.0.1:8000/ProjectDetailPage/#project-details-table) section of the [project detail page](ProjectDetailPage.md). It will either be a link with the truth data file name (which means truth is present) and the number of rows in parentheses, or a "Browse..." button next to a green "Upload" button with the text _(No truth data)_ to its right otherwise. Clicking on the link takes you to the Truth detail page documented in [Truth detail page](#view-truth-details) below.
+Zoltar supports uploading ground truth data for each project that desires automatic scoring. This data is specified as a CSV file as documented in [Truth data format](FileFormats.md#truth-data-format-csv), and each project is responsible for generating the CSV file for their particular set of [time zeros](Concepts.md), [units](Concepts.md) and [targets](Concepts.md). You can tell whether truth has been uploaded to a project by looking at the **Truth Data** row in the [Project details table](ProjectDetailPage.md#project-details-table) section of the [project detail page](ProjectDetailPage.md). It will either be a link with the truth data file name (which means truth is present) and the number of rows in parentheses, or a "Browse..." button next to a green "Upload" button with the text _(No truth data)_ to its right otherwise. Clicking on the link takes you to the Truth detail page documented in [Truth detail page](#view-truth-details) below.
 
 Here's a screen shot showing a project where truth has been uploaded (circled in red):
 
@@ -29,17 +29,17 @@ Here you see a small information table at the top showing the project and truth 
 Follow these steps to upload a truth CSV file:
 
 1. Go to the [project detail page](ProjectDetailPage.md) of the project of interest.
-1. Click the "Browse..." button in the [Project details table](http://127.0.0.1:8000/ProjectDetailPage/#project-details-table)'s **Truth Data** row.
-1. In the dialog that appears, select a truth data CSV file in Zoltar's [Truth data format](http://127.0.0.1:8000/FileFormats/#truth-data-format-csv).
+1. Click the "Browse..." button in the [Project details table](ProjectDetailPage.md#project-details-table)'s **Truth Data** row.
+1. In the dialog that appears, select a truth data CSV file in Zoltar's [Truth data format](FileFormats.md#truth-data-format-csv).
 1. Click the green upload button.
-1. If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the truth file __ for uploading.", where __ is your file's name. See [Check an upload's status](#check-an-uploads-status) below for this page's details.
+1. If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the truth file _ for uploading.", where _ is your file's name. See [Check an upload's status](#check-an-uploads-status) below for this page's details.
 1. Once the upload is successful (you can refresh the upload file job page to check) then you will the file name as a link as described above.
 1. If there was a problem uploading then you will see the upload's status as **FAILED**. The **Failure** section will provide some information to help debug the problem.
 
 
 ## Download truth
 
-Here are the steps to download a project's truth data as a CSV file in Zoltar's [Truth data format](http://127.0.0.1:8000/FileFormats/#truth-data-format-csv):
+Here are the steps to download a project's truth data as a CSV file in Zoltar's [Truth data format](FileFormats.md#truth-data-format-csv):
 
 1. Go to the [project detail page](ProjectDetailPage.md) of the project of interest.
 1. Click the truth link above go to the [Truth detail page](#view-truth-details) page.

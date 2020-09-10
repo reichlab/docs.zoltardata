@@ -14,8 +14,8 @@ nav:
       - 'Models': 'Models.md'
       - 'Forecasts': 'Forecasts.md'
       - 'Scores': 'Scoring.md'
-      - 'Visualiations': 'Visualization.md'
       - 'Truth': 'Truth.md'
+      - 'Jobs': 'Jobs.md'
       - 'Accounts': 'Accounts.md'
   - Reference:
       - 'Concepts': 'Concepts.md'
