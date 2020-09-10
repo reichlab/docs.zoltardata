@@ -343,9 +343,59 @@
       
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Scores
+      </label>
+    
     <a href="./" title="Scores" class="md-nav__link md-nav__link--active">
       Scores
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-requirements" class="md-nav__link">
+    Scoring requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-scores" class="md-nav__link">
+    Current scores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-scores" class="md-nav__link">
+    Downloading scores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-scores-via-the-web-ui" class="md-nav__link">
+    Download scores via the web UI
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -600,6 +650,43 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#scoring-requirements" class="md-nav__link">
+    Scoring requirements
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#current-scores" class="md-nav__link">
+    Current scores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#downloading-scores" class="md-nav__link">
+    Downloading scores
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-scores-via-the-web-ui" class="md-nav__link">
+    Download scores via the web UI
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -613,7 +700,7 @@
                 
                 <h1 id="scoring-in-zoltar">Scoring in Zoltar<a class="headerlink" href="#scoring-in-zoltar" title="Permanent link">&para;</a></h1>
 <p>Zoltar automatically computes a fixed set of scores (more are in development) for all projects and forecasts. They are updated in the background on a per-forecast basis by a scheduler that currently runs Daily at <a href="http://www.timebie.com/std/utc.php?q=5.5">5:30 AM UTC</a>. The update is performed only on models that have changed, i.e., those that have added or removed forecasts since the last update. Following are details about scoring.</p>
-<h1 id="scoring-requirements">Scoring requirements<a class="headerlink" href="#scoring-requirements" title="Permanent link">&para;</a></h1>
+<h2 id="scoring-requirements">Scoring requirements<a class="headerlink" href="#scoring-requirements" title="Permanent link">&para;</a></h2>
 <p>For Zoltar to calculate a forecast's scores, the following must be true:</p>
 <ul>
 <li><a href="../Truth/">Ground truth</a> has been uploaded, and contains truth values for each unit/target combination in the forecast.</li>
