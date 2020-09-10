@@ -3,7 +3,7 @@
 Zoltar automatically computes a fixed set of scores (more are in development) for all projects and forecasts. They are updated in the background on a per-forecast basis by a scheduler that currently runs Daily at [5:30 AM UTC](http://www.timebie.com/std/utc.php?q=5.5). The update is performed only on models that have changed, i.e., those that have added or removed forecasts since the last update. Following are details about scoring.
 
 
-# Scoring requirements
+## Scoring requirements
 
 For Zoltar to calculate a forecast's scores, the following must be true:
 
