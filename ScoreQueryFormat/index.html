@@ -36,7 +36,7 @@
     
     
       
-        <title>Query Format - Zoltar Documentation</title>
+        <title>Score Query Format - Zoltar Documentation</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#querying-a-projects-forecasts" tabindex="1" class="md-skip">
+      <a href="#querying-a-projects-scores" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Query Format
+                Score Query Format
               
             </span>
           
@@ -441,6 +441,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../ForecastQueryFormat/" title="Forecast Query Format" class="md-nav__link">
+      Forecast Query Format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -452,11 +464,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Query Format
+        Score Query Format
       </label>
     
-    <a href="./" title="Query Format" class="md-nav__link md-nav__link--active">
-      Query Format
+    <a href="./" title="Score Query Format" class="md-nav__link md-nav__link--active">
+      Score Query Format
     </a>
     
       
@@ -470,13 +482,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#querying-workflow" class="md-nav__link">
-    Querying workflow
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#query-format" class="md-nav__link">
     Query format
   </a>
@@ -486,13 +491,6 @@
         <li class="md-nav__item">
   <a href="#data-format" class="md-nav__link">
     Data format
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-limits" class="md-nav__link">
-    Data limits
   </a>
   
 </li>
@@ -609,6 +607,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Help/" title="Getting Help" class="md-nav__link">
+      Getting Help
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -630,13 +640,6 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#querying-workflow" class="md-nav__link">
-    Querying workflow
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#query-format" class="md-nav__link">
     Query format
   </a>
@@ -646,13 +649,6 @@
         <li class="md-nav__item">
   <a href="#data-format" class="md-nav__link">
     Data format
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#data-limits" class="md-nav__link">
-    Data limits
   </a>
   
 </li>
@@ -674,81 +670,44 @@
               
                 
                 
-                <h1 id="querying-a-projects-forecasts">Querying a project's forecasts<a class="headerlink" href="#querying-a-projects-forecasts" title="Permanent link">&para;</a></h1>
-<p>In addition to the ability to download individual forecasts via both the <a href="../Forecasts/#download-a-single-forecast">Web UI</a> and the <a href="../ApiIntro/">Zoltar libraries</a>, Zoltar supports downloading multiple forecasts at once, but currently only through the libraries.</p>
-<h2 id="querying-workflow">Querying workflow<a class="headerlink" href="#querying-workflow" title="Permanent link">&para;</a></h2>
-<p>Like <a href="../Forecasts/#upload-a-forecast">uploading a forecast</a>, querying a project's forecasts can be a long operation. For this reason, Zoltar <em>enqueues</em> queries as jobs that are operated on separately from the web process. This means querying follows these steps:</p>
-<ol>
-<li>Create and submit the <a href="#query_format">query</a>. This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).</li>
-<li>Poll the job until its status is <strong>SUCCESS</strong>. (You can use the Web UI to do this as well. See <a href="../Forecasts/#check_an_uploads_status">Check an upload's status</a> for how.)</li>
-<li>Download the data associated with the job.</li>
-</ol>
+                <h1 id="querying-a-projects-scores">Querying a project's scores<a class="headerlink" href="#querying-a-projects-scores" title="Permanent link">&para;</a></h1>
+<p>Currently scores can only be downloaded programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>. The workflow is identical to downloading forecasts as described at <a href="../ForecastQueryFormat/">forecast query format</a> page) except for the following. (Note: data limits are the same as querying forecasts.)</p>
 <h2 id="query-format">Query format<a class="headerlink" href="#query-format" title="Permanent link">&para;</a></h2>
-<p>Zoltar supports a simple filtering feature that allows users to limit what data is downloaded.</p>
-<p>To filter a project's forecast data, we support the following five types of filters. They are passed behind the scenes to the server as JSON.</p>
-<blockquote>
-<p>Note that <em>server IDs</em> are passed, not URLs or names, which makes queries unambiguous. Libraries may provide helper functions that hide details and make the feature more convenient. For example, instead of passing time zeros as IDs, the user would be able to use our standard <code>yyyy-mm-dd</code> format, which the library would convert to IDs.</p>
-</blockquote>
-<p>Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of model IDs means get data from <em>any</em> of them. The filters are combined by ANDs, meaning only data that matches <em>all</em> filters. (See the below example.) The types of filters are:</p>
-<p>1) Filter by <em>model</em>: Pass zero or more model IDs in the <code>models</code> field. Example:</p>
-<pre><code class="json">{&quot;models&quot;: [150, 237]}  # gets data only from either of these two models. 150 = &quot;60-contact&quot;, 237 = &quot;CovidIL_100&quot;
+<p>The format is identical to querying forecasts except that there is a <code>scores</code>field instead the <code>types</code> one. All other fields (<code>models</code>, <code>units</code>, <code>targets</code>, and <code>timezeros</code>) are allowed, and function the same way. The <code>scores</code> field implements filtering by <em>score abbreviation</em>. Pass the abbreviations as a list of strings, e.g.,</p>
+<pre><code class="json">{&quot;scores&quot;: [&quot;log_single_bin&quot;, &quot;interval_100&quot;]}  # get data for only these two scores
 </code></pre>
 
-<p>2) Filter by <em>unit</em>: Pass zero or more unit IDs <code>units</code> field. Example:</p>
-<pre><code class="json">{&quot;units&quot;: [335]}  # get data only for this unit. 335 = &quot;US&quot;
-</code></pre>
-
-<p>3) Filter by <em>target</em>: Pass zero or more target IDs in the <code>targets</code> field. Example:</p>
-<pre><code class="json">{&quot;targets&quot;: [1894, 1897]}  # get data only for either of these two targets. 1894 = &quot;0 day ahead cum death&quot;, 1897 = &quot;1 day ahead cum death&quot;
-</code></pre>
-
-<p>4) Filter by <em>timezero</em>: Pass zero or more timezero IDs in the <code>timezeros</code> field. Example:</p>
-<pre><code class="json">{&quot;timezeros&quot;: [739, 738]}  # get data only for either of these two time zeros. 739 = &quot;2020-05-14&quot;, 738 = &quot;2020-05-09&quot;
-</code></pre>
-
-<p>5) Filter by forecast <em>type</em>: Pass a list of string types in the <code>types</code> field. Choices are <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code>. Example:</p>
-<pre><code class="json">{&quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]}  # get only point and quantile data
-</code></pre>
-
-<p>The lists in 1 through 5 operate as "OR" on their own but are combined in the final query as "AND"s. Here's an example:</p>
-<pre><code class="json">{&quot;models&quot;: [150, 237],
- &quot;units&quot;: [335],
- &quot;targets&quot;: [1894, 1897],
- &quot;timezeros&quot;: [739, 738],
- &quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]
+<p>Here's a full example:</p>
+<pre><code class="json">{&quot;models&quot;: [&quot;60-contact&quot;, &quot;CovidIL_100&quot;],
+ &quot;units&quot;: [&quot;US&quot;],
+ &quot;targets&quot;: [&quot;0 day ahead cum death&quot;, &quot;1 day ahead cum death&quot;],
+ &quot;timezeros&quot;: [&quot;2020-05-14&quot;, &quot;2020-05-09&quot;],
+ &quot;scores&quot;: [&quot;log_single_bin&quot;, &quot;interval_100&quot;]
 }
 </code></pre>
 
-<p>This results in data that is:</p>
+<p>Here are the current score abbreviations:</p>
 <ul>
-<li>(from either the <code>60-contact</code> OR <code>CovidIL_100</code> models) AND</li>
-<li>(the unit is <code>US</code>) AND</li>
-<li>(the target is either <code>0 day ahead cum death</code> or <code>1 day ahead cum death</code>) AND</li>
-<li>(the timezero is either <code>2020-05-14</code> OR <code>2020-05-09</code>) AND</li>
-<li>(the prediction type is either <code>point</code> OR <code>quantile</code>)</li>
+<li>'error'</li>
+<li>'abs_error'</li>
+<li>'log_single_bin'</li>
+<li>'log_multi_bin'</li>
+<li>'pit'</li>
+<li>'interval_2'</li>
+<li>'interval_5'</li>
+<li>'interval_10'</li>
+<li>'interval_20'</li>
+<li>'interval_30'</li>
+<li>'interval_40'</li>
+<li>'interval_50'</li>
+<li>'interval_60'</li>
+<li>'interval_70'</li>
+<li>'interval_80'</li>
+<li>'interval_90'</li>
+<li>'interval_100'</li>
 </ul>
-<p>Note that not all types of filters are required to be specified. Any missing ones are treated by default as "all". In the previous example, if we omitted <code>types</code> then we'd get similar data except it would include all prediction types instead of just <code>point</code> or <code>quantile</code> ones.</p>
 <h2 id="data-format">Data format<a class="headerlink" href="#data-format" title="Permanent link">&para;</a></h2>
-<p>Data is returned in tabular CVS format with the following columns. Because we support five different prediction types in our <a href="../DataModel/">Data Model</a>, the format of each row must account for all possible values. For this reason, the CSV is 'sparse': not every row uses all columns; unused ones are empty (''). Note that the first six columns are always present for any prediction type.</p>
-<ul>
-<li><code>model</code>: the model's abbreviation (if defined) or name </li>
-<li><code>timezero</code>: date the truth applies to, formatted as <code>yyyy-mm-dd</code></li>
-<li><code>season</code>: the season the <code>timezero</code> corresponds to. empty if no defined seasons in the project</li>
-<li><code>unit</code>: the unit's name</li>
-<li><code>target</code>: target name</li>
-<li><code>class</code>: prediction type. one of <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code></li>
-<li><code>value</code>: used for <code>point</code> and <code>quantile</code> prediction types. empty otherwise</li>
-<li><code>cat</code>: used for <code>bin</code> prediction types. empty otherwise</li>
-<li><code>prob</code>: ""</li>
-<li><code>sample</code>: used for <code>sample</code> prediction types. empty otherwise</li>
-<li><code>quantile</code>: used for <code>quantile</code> prediction types. empty otherwise</li>
-<li><code>family</code>: family name for <code>named</code> predictions. see <a href="../Validation/#named-prediction-elements"><code>Named</code> Prediction Elements</a> for a list of them</li>
-<li><code>param1</code>: parameter ""</li>
-<li><code>param2</code>: parameter ""</li>
-<li><code>param3</code>: parameter ""</li>
-</ul>
-<h2 id="data-limits">Data limits<a class="headerlink" href="#data-limits" title="Permanent link">&para;</a></h2>
-<p>Because queries have the potential to return millions of rows, the number of resulting rows is capped. The query fails if it would exceed the limit.</p>
+<p>The scores are saved in the CSV format documented at <a href="../FileFormats/#score-data-format-csv">Score data format (CSV)</a>.</p>
                 
                   
                 
@@ -769,7 +728,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../FileFormats/" title="File Formats" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ForecastQueryFormat/" title="Forecast Query Format" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -778,7 +737,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                File Formats
+                Forecast Query Format
               </span>
             </div>
           </a>

@@ -452,8 +452,20 @@
 
 
   <li class="md-nav__item">
-    <a href="../QueryFormat/" title="Query Format" class="md-nav__link">
-      Query Format
+    <a href="../ForecastQueryFormat/" title="Forecast Query Format" class="md-nav__link">
+      Forecast Query Format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ScoreQueryFormat/" title="Score Query Format" class="md-nav__link">
+      Score Query Format
     </a>
   </li>
 
@@ -559,6 +571,18 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Help/" title="Getting Help" class="md-nav__link">
+      Getting Help
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -604,8 +628,9 @@
 <li><strong>Log score (single bin)</strong>: Natural log of probability assigned to the true bin. Higher is " "better." More detail is <a href="https://github.com/reichlab/flusight/wiki/Scoring#2-log-score-single-bin">here</a>.</li>
 <li><strong>Log score (multi bin)</strong>: This is calculated by finding the natural log of probability " "assigned to the true and a few neighbouring bins. Higher is better. See <a href="https://github.com/reichlab/flusight/wiki/Scoring#3-log-score-multi-bin">this page</a> for how it works.</li>
 <li><strong>Probability Integral Transform (PIT)</strong>: The probability integral transform (PIT) is a metric commonly " "used to evaluate the calibration of probabilistic forecasts. </li>
+<li><strong>Interval</strong>: This score is a proper score used to assess calibration and sharpness of quantile forecasts. Lower is better. The supported intervals alpha values are: 0.02, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, and 1.0. </li>
 </ul>
-<p>In addition an aggregate score values are calculated (see below).</p>
+<p>In addition, aggregate score values are calculated (see below).</p>
 <h2 id="viewing-scores">Viewing scores<a class="headerlink" href="#viewing-scores" title="Permanent link">&para;</a></h2>
 <p>Scores are accessed from the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest via the links in the <strong>Analysis</strong> row in the project details table at the top of the page. There are three links:</p>
 <ul>
@@ -616,13 +641,7 @@
 <p>Here's an example score page: </p>
 <p><img alt="Scores page" src="../img/scores-page.png" title="Scores page" /></p>
 <h2 id="downloading-scores">Downloading scores<a class="headerlink" href="#downloading-scores" title="Permanent link">&para;</a></h2>
-<p>Scores are downloaded from the <a href="../ProjectDetailPage/">project detail page</a>. To download a project's scores:</p>
-<ol>
-<li>Go to the <a href="../ModelDetailPage/">model detail page</a> of the one you want to upload into.</li>
-<li>Click the "Download CSV" button and save the file.</li>
-</ol>
-<p>The scores are saved in the CSV format documented at <a href="../FileFormats/#score-download-format-csv">Score download format (CSV)</a>.</p>
-<p>Note that because creating score CSV files can be time consuming, Zoltar caches creating them to help keep the site responsive. Normally the cached version will be available, which should download as soon as you click the button. However, the download will be delayed (and likely time out) otherwise. The state of caching is indicated by the text to the right of the button. If it says something like "(Cached file updated 2020-04-20 05:00:30)" then the faster download is available. Otherwise it will say "(No cached file - download may be slow.)"</p>
+<p>Currently scores can only be downloaded programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>. Learn more on the <a href="../ScoreQueryFormat/">score query format</a> page.</p>
                 
                   
                 
