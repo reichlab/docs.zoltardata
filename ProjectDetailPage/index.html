@@ -413,8 +413,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Visualization/" title="Visualiations" class="md-nav__link">
-      Visualiations
+    <a href="../Truth/" title="Truth" class="md-nav__link">
+      Truth
     </a>
   </li>
 
@@ -425,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Truth/" title="Truth" class="md-nav__link">
-      Truth
+    <a href="../Jobs/" title="Jobs" class="md-nav__link">
+      Jobs
     </a>
   </li>
 
@@ -714,7 +714,7 @@
                 
                 <h1 id="project-detail-page">Project detail page<a class="headerlink" href="#project-detail-page" title="Permanent link">&para;</a></h1>
 <p>A <em>project</em> is the main element for representing a forecasting challenge. It has an <em>owner</em> (a registered user in the system), and zero or more <em>model owners</em> (also users in the system). A project owner can do anything to the project, but model owners are limited to creating, editing, and deleting forecast models, and uploading and deleting forecasts. (To become a model owner you must contact the project owner.)</p>
-<p>Each project's detail page is divided into five vertical sections with <strong>bold</strong> headings, described next: <strong>Details table</strong>, <strong>Models</strong>, <strong>Units</strong>, <strong>Targets</strong>, and <strong>Time zeros</strong>. Currently the top looks like this:</p>
+<p>Each project's detail page is divided into five vertical sections with <strong>bold</strong> headings, described next: <strong>Details table</strong>, <strong>Models</strong>, <strong>Units</strong>, <strong>Targets</strong>, and <strong>Time zeros</strong>. Here's an example (the bottom has been cut off):</p>
 <p><img alt="Project detail page" src="../img/project-detail-page.png" title="Project detail page" /></p>
 <h2 id="project-details-table">Project details table<a class="headerlink" href="#project-details-table" title="Permanent link">&para;</a></h2>
 <p>At the top of the page is a table showing this information related to the project:</p>
@@ -733,23 +733,22 @@
 <li><em>Home</em>: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.</li>
 <li><em>Core data</em>: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.</li>
 <li><em>Truth data</em>: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and locations in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to calculate scores, and to extract the 'actual' data used in the D3 component's TimeChart. See <a href="../Truth/">Truth</a> for details.</li>
-<li><em>Analysis</em>: Links to visualization and score pages. See <a href="../Scoring/">Scoring</a> for details.</li>
+<li><em>Analysis</em>: Links to visualization and score pages, including links to <a href="../Forecasts/#download-multiple-forecasts">download forecasts</a> and <a href="../Scoring/#downloading-scores">download scores</a>. </li>
 </ul>
 <h2 id="forecast-models">Forecast models<a class="headerlink" href="#forecast-models" title="Permanent link">&para;</a></h2>
 <p>The <strong>Models</strong> section lists the project's forecast models by name, with links to model detail pages (see details below). A <strong>model</strong> captures a team's prediction challenge effort, and includes forecasts for some or all <strong>time zeros</strong> defined for the project. (See <a href="../Concepts/">Concepts</a> for more about time zeros.) If you're a project owner or model owner then a "New" button is shown that takes you to a form for creating a model. Clicking on a model's name takes you to its <a href="../ModelDetailPage/">model detail page</a>.</p>
 <h2 id="units">Units<a class="headerlink" href="#units" title="Permanent link">&para;</a></h2>
 <p>This section lists names of the <strong>units</strong> in the project. (See <a href="../Concepts/">Concepts</a> for more about time zeros.) These were defined by project owner when creating the project. Often units are used to represent locations or regions that targets apply to.</p>
 <h2 id="targets">Targets<a class="headerlink" href="#targets" title="Permanent link">&para;</a></h2>
-<p>This section lists information about project forecast targets, which are a central Zoltar concept. See <a href="../Targets/">Targets</a> for more about them. Like units, these were created by the project owner. Some of these parameters are optional - <a href="xx#summary-of-allowed-optional-and-required-parameters-by-target-type">this table</a> shows which apply based on target type.</p>
-<p>the table includes the following columns:</p>
+<p>This section lists information about project forecast targets, which are a central Zoltar concept. See <a href="../Targets/">Targets</a> for more about them. Like units, these were created by the project owner. Some of these parameters are optional - <a href="../Targets/#summary-of-allowed-optional-and-required-parameters-by-target-type">this table</a> shows which apply based on target type.</p>
+<p>The table includes the following columns:</p>
 <ul>
-<li><em>Name</em>: Self-explanatory.</li>
-<li><em>Description</em>: "".</li>
+<li><em>Target group</em>: This column is either a target's name, or a derived name from a group of related targets (step-ahead ones whose step ahead increment is in the name).</li>
+<li><em># Targets</em>: How many targets are in the group, or <em>1</em> if not a group.</li>
 <li><em>Type</em>: The target's <a href="../Targets/#target-types">type</a>.</li>
 <li><em>Unit</em>: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. (Be aware that it can be confusing having both <strong>unit</strong> objects as above along with a specific target's unit.)</li>
 <li><em>Step Ahead?</em>: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis tools.)</li>
-<li><em>Range</em>: An optional numerical range of acceptable values.</li>
-<li><em>Cats</em>: Optional acceptable categories for binned distributions.</li>
+<li><em>Example Target</em>: A specific target's name if a group, or the one target's name otherwise.</li>
 </ul>
 <h2 id="time-zeros">Time zeros<a class="headerlink" href="#time-zeros" title="Permanent link">&para;</a></h2>
 <p>This section details the project's <code>time zeros</code> . (See <a href="../Concepts/">Concepts</a> for more about time zeros.) It has these columns:</p>

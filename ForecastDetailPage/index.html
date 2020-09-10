@@ -285,8 +285,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#predictions" class="md-nav__link">
-    Predictions
+  <a href="#units-present" class="md-nav__link">
+    Units present
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#targets-present" class="md-nav__link">
+    Targets present
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictions-present" class="md-nav__link">
+    Predictions present
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-form-and-results" class="md-nav__link">
+    Query form and results
   </a>
   
 </li>
@@ -392,8 +413,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Visualization/" title="Visualiations" class="md-nav__link">
-      Visualiations
+    <a href="../Truth/" title="Truth" class="md-nav__link">
+      Truth
     </a>
   </li>
 
@@ -404,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Truth/" title="Truth" class="md-nav__link">
-      Truth
+    <a href="../Jobs/" title="Jobs" class="md-nav__link">
+      Jobs
     </a>
   </li>
 
@@ -647,8 +668,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#predictions" class="md-nav__link">
-    Predictions
+  <a href="#units-present" class="md-nav__link">
+    Units present
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#targets-present" class="md-nav__link">
+    Targets present
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictions-present" class="md-nav__link">
+    Predictions present
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-form-and-results" class="md-nav__link">
+    Query form and results
   </a>
   
 </li>
@@ -671,7 +713,7 @@
                 
                 
                 <h1 id="forecast-detail-page">Forecast detail page<a class="headerlink" href="#forecast-detail-page" title="Permanent link">&para;</a></h1>
-<p>The forecast detail page shows information about a particular forecast, and is divided into two vertical sections with <strong>bold</strong> headings, described next: <strong>Details table</strong> and <strong>Prediction information</strong>. Here's an example forecast detail page: </p>
+<p>The forecast detail page shows information about a particular forecast, and is divided into five vertical sections with <strong>bold</strong> headings, described next: <strong>Details table</strong>, <strong>Units present</strong>, <strong>Targets present</strong>, <strong>Predictions present</strong>, and <strong>Query form and results</strong>. Here's an example forecast detail page: </p>
 <p><img alt="Forecast detail page" src="../img/forecast-detail-page.png" title="Forecast detail page" /></p>
 <h2 id="forecast-details-table">Forecast details table<a class="headerlink" href="#forecast-details-table" title="Permanent link">&para;</a></h2>
 <p>At the top of the page is a table showing information related to the forecast:</p>
@@ -679,11 +721,26 @@
 <li><em>Model</em>: A link to the owning <a href="../ModelDetailPage/">model</a>.</li>
 <li><em>Timezero</em>: The time zero that the forecast applies to. (The data version date, if any, is not shown here.) See <a href="../Concepts/">Concepts</a> for more about time zeros.</li>
 <li><em>Data Source</em>: Text describing where the forecast came from. It can be anything but is typically a data file name, such as a CSV. The source is a link to the forecast's <a href="./">forecast detail page</a>. It says "(No data)" if a forecast has not yet been uploaded for that time zero. </li>
-<li><em>Upload Date</em>: The date and time that the forecast was uploaded to Zoltar.</li>
+<li><em>Upload time</em>: The date and time that the forecast was uploaded to Zoltar.</li>
 <li><em>Notes</em>: Text describing anything slightly different about a given forecast, e.g., a changed set of assumptions or a comment about when the forecast was created. Notes should be brief, typically less than 50 words.</li>
 </ul>
-<h2 id="predictions">Predictions<a class="headerlink" href="#predictions" title="Permanent link">&para;</a></h2>
-<p>The predictions section has a heading like <strong>"Forecast has __ predictions"</strong> (where __ is the actual number of predictions) and a bulleted summary of the counts of the five different prediction types that can be associated with a forecast: <code>bin</code>, <code>named</code>, <code>point</code>, <code>quantile</code>, and <code>sample</code>. The "Download JSON" button downloads a JSON file containing the forecast's predictions. See <a href="../DataModel/">Data Model</a> for more information on how forecast data is modeled.</p>
+<h2 id="units-present">Units present<a class="headerlink" href="#units-present" title="Permanent link">&para;</a></h2>
+<p>This section is the same as on the <a href="../ProjectDetailPage/">project detail page</a>, but lists only those units for which this forecast predicts.</p>
+<h2 id="targets-present">Targets present<a class="headerlink" href="#targets-present" title="Permanent link">&para;</a></h2>
+<p>This section is the same as in <a href="../ProjectDetailPage/">project detail page</a>, but lists only those targets for which this forecast predicts.</p>
+<h2 id="predictions-present">Predictions present<a class="headerlink" href="#predictions-present" title="Permanent link">&para;</a></h2>
+<p>The predictions section has the heading <strong>"Predictions (_)"</strong> (where _ is the actual number of predictions) and a bulleted summary of the counts of the five different prediction types that can be associated with a forecast: <code>bin</code>, <code>named</code>, <code>point</code>, <code>quantile</code>, and <code>sample</code>. See <a href="../DataModel/">Data Model</a> for more information on how forecast data is modeled.</p>
+<h2 id="query-form-and-results">Query form and results<a class="headerlink" href="#query-form-and-results" title="Permanent link">&para;</a></h2>
+<p>At the bottom of the page under <strong>Query Forecast Data</strong> is a simple form that allows searching the forecast's predictions by unit and target. (Those two dropdown menus contain the units and targets that have predictions, but there's no guarantee that every combination has data.) Clicking Search runs the query and shows the results below the form. There is a table for each type of prediction that's present (<code>bin</code>, <code>named</code>, etc.) and each table's columns are customized according to the prediction type (all tables have <strong>Unit</strong> and <strong>Target</strong> columns):</p>
+<ul>
+<li><code>bin</code>: <strong>Prob</strong> and <strong>Cat</strong> columns</li>
+<li><code>named</code>: <strong>Family</strong>, <strong>Param 1</strong>, <strong>Param 2</strong>, and <strong>Param 3</strong> columns</li>
+<li><code>point</code>: a <strong>Value</strong> column</li>
+<li><code>quantile</code>: <strong>Quantile</strong> and <strong>Value</strong> columns</li>
+<li><code>sample</code>: a <strong>Sample</strong> column</li>
+</ul>
+<p>Here's an example (the page has been scrolled down) under <strong>Found predictions</strong>:</p>
+<p><img alt="Forecast detail page with query results" src="../img/forecast-detail-page-query.png" title="Forecast detail page with query results" /></p>
                 
                   
                 

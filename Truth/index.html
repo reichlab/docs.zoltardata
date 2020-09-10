@@ -345,18 +345,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../Visualization/" title="Visualiations" class="md-nav__link">
-      Visualiations
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -421,6 +409,18 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Jobs/" title="Jobs" class="md-nav__link">
+      Jobs
+    </a>
   </li>
 
         
@@ -699,7 +699,7 @@
                 
                 
                 <h1 id="manging-truth-data">Manging truth data<a class="headerlink" href="#manging-truth-data" title="Permanent link">&para;</a></h1>
-<p>Zoltar supports uploading ground truth data for each project that desires automatic scoring. This data is specified as a CSV file as documented in <a href="http://127.0.0.1:8000/FileFormats/#truth-data-format-csv">Truth data format</a>, and each project is responsible for generating the CSV file for their particular set of <a href="../Concepts/">time zeros</a>, <a href="../Concepts/">units</a> and <a href="../Concepts/">targets</a>. You can tell whether truth has been uploaded to a project by looking at the <strong>Truth Data</strong> row in the <a href="http://127.0.0.1:8000/ProjectDetailPage/#project-details-table">Project details table</a> section of the <a href="../ProjectDetailPage/">project detail page</a>. It will either be a link with the truth data file name (which means truth is present) and the number of rows in parentheses, or a "Browse..." button next to a green "Upload" button with the text <em>(No truth data)</em> to its right otherwise. Clicking on the link takes you to the Truth detail page documented in <a href="#view-truth-details">Truth detail page</a> below.</p>
+<p>Zoltar supports uploading ground truth data for each project that desires automatic scoring. This data is specified as a CSV file as documented in <a href="../FileFormats/#truth-data-format-csv">Truth data format</a>, and each project is responsible for generating the CSV file for their particular set of <a href="../Concepts/">time zeros</a>, <a href="../Concepts/">units</a> and <a href="../Concepts/">targets</a>. You can tell whether truth has been uploaded to a project by looking at the <strong>Truth Data</strong> row in the <a href="../ProjectDetailPage/#project-details-table">Project details table</a> section of the <a href="../ProjectDetailPage/">project detail page</a>. It will either be a link with the truth data file name (which means truth is present) and the number of rows in parentheses, or a "Browse..." button next to a green "Upload" button with the text <em>(No truth data)</em> to its right otherwise. Clicking on the link takes you to the Truth detail page documented in <a href="#view-truth-details">Truth detail page</a> below.</p>
 <p>Here's a screen shot showing a project where truth has been uploaded (circled in red):</p>
 <p><img alt="Truth uploaded" src="../img/project-detail-page-truth-uploaded.png" title="Truth uploaded" /></p>
 <p>And here's just the truth row when no data has been uploaded:</p>
@@ -713,15 +713,15 @@
 <p>Follow these steps to upload a truth CSV file:</p>
 <ol>
 <li>Go to the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest.</li>
-<li>Click the "Browse..." button in the <a href="http://127.0.0.1:8000/ProjectDetailPage/#project-details-table">Project details table</a>'s <strong>Truth Data</strong> row.</li>
-<li>In the dialog that appears, select a truth data CSV file in Zoltar's <a href="http://127.0.0.1:8000/FileFormats/#truth-data-format-csv">Truth data format</a>.</li>
+<li>Click the "Browse..." button in the <a href="../ProjectDetailPage/#project-details-table">Project details table</a>'s <strong>Truth Data</strong> row.</li>
+<li>In the dialog that appears, select a truth data CSV file in Zoltar's <a href="../FileFormats/#truth-data-format-csv">Truth data format</a>.</li>
 <li>Click the green upload button.</li>
-<li>If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the truth file <strong> for uploading.", where </strong> is your file's name. See <a href="#check-an-uploads-status">Check an upload's status</a> below for this page's details.</li>
+<li>If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the truth file _ for uploading.", where _ is your file's name. See <a href="#check-an-uploads-status">Check an upload's status</a> below for this page's details.</li>
 <li>Once the upload is successful (you can refresh the upload file job page to check) then you will the file name as a link as described above.</li>
 <li>If there was a problem uploading then you will see the upload's status as <strong>FAILED</strong>. The <strong>Failure</strong> section will provide some information to help debug the problem.</li>
 </ol>
 <h2 id="download-truth">Download truth<a class="headerlink" href="#download-truth" title="Permanent link">&para;</a></h2>
-<p>Here are the steps to download a project's truth data as a CSV file in Zoltar's <a href="http://127.0.0.1:8000/FileFormats/#truth-data-format-csv">Truth data format</a>:</p>
+<p>Here are the steps to download a project's truth data as a CSV file in Zoltar's <a href="../FileFormats/#truth-data-format-csv">Truth data format</a>:</p>
 <ol>
 <li>Go to the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest.</li>
 <li>Click the truth link above go to the <a href="#view-truth-details">Truth detail page</a> page.</li>
@@ -755,7 +755,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Visualization/" title="Visualiations" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Scoring/" title="Scores" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -764,19 +764,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Visualiations
+                Scores
               </span>
             </div>
           </a>
         
         
-          <a href="../Accounts/" title="Accounts" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Jobs/" title="Jobs" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Accounts
+                Jobs
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

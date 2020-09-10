@@ -392,8 +392,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Visualization/" title="Visualiations" class="md-nav__link">
-      Visualiations
+    <a href="../Truth/" title="Truth" class="md-nav__link">
+      Truth
     </a>
   </li>
 
@@ -404,8 +404,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Truth/" title="Truth" class="md-nav__link">
-      Truth
+    <a href="../Jobs/" title="Jobs" class="md-nav__link">
+      Jobs
     </a>
   </li>
 
@@ -682,6 +682,11 @@
 <li><em>Project</em>: A link to the project the model belongs to.</li>
 <li><em>Team name</em>: The name of the team that developed the model. This is not used directly by Zoltar.</li>
 <li><em>Description</em>: Prose provided by model owner. It should include information on reproducing the model's results.</li>
+<li><em>Contributors</em>: List of names as specified by the model owner.</li>
+<li><em>License</em>: License ""</li>
+<li><em>Notes</em>: ""</li>
+<li><em>Citation</em>: ""</li>
+<li><em>Methods</em>: ""</li>
 <li><em>Home</em>: A link to the model home page.</li>
 <li><em>Auxiliary data</em>: An optional link to model-specific data files that were used by the model beyond the project's core data. Not used directly by Zoltar.</li>
 </ul>
@@ -690,9 +695,10 @@
 <ul>
 <li><em>Timezero</em>: The time zero that the forecast applies to. (The data version date, if any, is not shown here.) See <a href="../Concepts/">Concepts</a> for more about time zeros.</li>
 <li><em>Data Source</em>: Text describing where the forecast came from. It can be anything but is typically a data file name, such as a CSV. The source is a link to the forecast's <a href="../ForecastDetailPage/">forecast detail page</a>. It says "(No data)" if a forecast has not yet been uploaded for that time zero. </li>
-<li><em>Upload Date</em>: The date and time that the forecast was uploaded to Zoltar.</li>
-<li><em>Action</em>: A button that is either a green upload icon if there is no data associated with the time zero, or a red delete button otherwise. See <a href="../Forecasts/">Forecasts</a> for instructions on how to upload forecasts, and <a href="../FileFormats/#forecast-data-format-json">File formats</a> for how forecast files are structured in Zoltar.</li>
+<li><em>Upload Time</em>: The date and time that the forecast was uploaded to Zoltar.</li>
+<li><em>Action</em>: A button that is either a green upload icon if there is no data associated with the time zero, or a red delete button otherwise. See <a href="../Forecasts/">Forecasts</a> for instructions on how to upload forecasts, and <a href="../FileFormats/#forecast-data-format-json">File formats</a> for how forecast files are structured in Zoltar. This feature is enabled only for project owners or model owners.</li>
 </ul>
+<p>The <strong>Hide if no data</strong> checkbox, if checked, shows only those Timezeros that have an uploaded forecast. Uncheck it to see all Timezeros (necessary if you want to upload any). </p>
                 
                   
                 

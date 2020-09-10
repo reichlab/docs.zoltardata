@@ -357,8 +357,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#delete-a-forecast" class="md-nav__link">
+    Delete a forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#download-a-single-forecast" class="md-nav__link">
     Download a single forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-multiple-forecasts" class="md-nav__link">
+    Download multiple forecasts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-multiple-forecasts-via-the-web-ui" class="md-nav__link">
+    Download multiple forecasts via the web UI
   </a>
   
 </li>
@@ -392,8 +413,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Visualization/" title="Visualiations" class="md-nav__link">
-      Visualiations
+    <a href="../Truth/" title="Truth" class="md-nav__link">
+      Truth
     </a>
   </li>
 
@@ -404,8 +425,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Truth/" title="Truth" class="md-nav__link">
-      Truth
+    <a href="../Jobs/" title="Jobs" class="md-nav__link">
+      Jobs
     </a>
   </li>
 
@@ -647,8 +668,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#delete-a-forecast" class="md-nav__link">
+    Delete a forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#download-a-single-forecast" class="md-nav__link">
     Download a single forecast
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-multiple-forecasts" class="md-nav__link">
+    Download multiple forecasts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#download-multiple-forecasts-via-the-web-ui" class="md-nav__link">
+    Download multiple forecasts via the web UI
   </a>
   
 </li>
@@ -676,65 +718,61 @@
 <p>Note: Operations on forecasts, like many Zoltar activities, can be done either through the <a href="https://www.zoltardata.com/">zoltardata.com</a> web interface or programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>.</p>
 </blockquote>
 <h2 id="upload-a-forecast">Upload a forecast<a class="headerlink" href="#upload-a-forecast" title="Permanent link">&para;</a></h2>
-<p>Here we show how to upload forecast data into Zoltar. It is important to know that Zoltar <em>enqueues</em> long operations like forecast uploading, which keeps the site responsive but makes uploading a little more complicated. Rather than having the upload feature <em>block</em> until the upload is done, you instead get a quick response in the form of an <em>upload file job</em> detail page that shows the status of your upload. This page is described in <a href="#check-an-uploads-status">Check an upload's status</a> below.</p>
+<p>Here we show how to upload forecast data into Zoltar.</p>
+<blockquote>
+<p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, uploading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
+</blockquote>
 <p>Forecasts are uploaded to a particular model for a particular time zero. To upload one:</p>
 <ol>
 <li>Go to the <a href="../ModelDetailPage/">model detail page</a> of the one you want to upload into.</li>
+<li>Make sure "Hide if no data" is unchecked.</li>
 <li>Find the time zero that the forecast is associated with.</li>
 <li>If the time zero already has a forecast then delete it (see <strong>Delete a forecast</strong> below). You can tell if a time zero has an uploaded forecast in two ways: the text in the "Data Source" column is a link instead of the words "(No data)" and the icon in the "Action" column is a red trash can and not a green upload icon.</li>
 <li>Click the "Browse..." button in the time zero's "Action" column.</li>
 <li>In the dialog that appears, select a Forecast data format JSON file</li>
 <li>Click the green upload button.</li>
-<li>If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the forecast file <strong> for uploading.", where </strong> is your file's name. See <a href="#check-an-uploads-status">Check an upload's status</a> below for this page's details.</li>
-<li>Once the upload is successful (you can refresh the upload file job page to check) then you will see it next to the selected time zero on the <a href="../ModelDetailPage/">model detail page</a>.</li>
+<li>If the file is OK then you will be taken to a <a href="../Jobs/#check-a-jobs-status">job detail page</a> that shows the status of your upload, with the message "Queued the forecast file _ for uploading.", where _ is your file's name.</li>
+<li>Once the upload is successful (you can refresh the job detail page to check) then you will see the newly-uploaded file listed next to the selected time zero on the <a href="../ModelDetailPage/">model detail page</a>.</li>
 <li>If there was a problem uploading then you will see the upload's status as <strong>FAILED</strong>. The <strong>Failure</strong> section will provide some information to help debug the problem.</li>
 </ol>
-<h2 id="download-a-single-forecast">Download a single forecast<a class="headerlink" href="#download-a-single-forecast" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>Note: Downloading multiple forecasts is possible, but only programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>. Learn more on the <a href="../ForecastQueryFormat/">forecast query format</a> page.</p>
-</blockquote>
-<p>To download a particular forecast:</p>
-<ol>
-<li>Go to the <a href="../ModelDetailPage/">model detail page</a> where the forecast resides.</li>
-<li>Click the link in the "Data Source" column to go to the <a href="./">forecast detail page</a>.</li>
-<li>Click the "Download JSON" button and save the file in the JSON format documented at <a href="../FileFormats/#forecast-data-file-format-json">Forecast data format</a> for details.</li>
-</ol>
-<h1 id="delete-a-forecast">Delete a forecast<a class="headerlink" href="#delete-a-forecast" title="Permanent link">&para;</a></h1>
+<h2 id="delete-a-forecast">Delete a forecast<a class="headerlink" href="#delete-a-forecast" title="Permanent link">&para;</a></h2>
 <p>Delete a forecast via these steps:</p>
 <ol>
 <li>Go to the <a href="../ModelDetailPage/">model detail page</a> where the forecast resides.</li>
 <li>Click the red trash can button in the "Action" column.</li>
 <li>Click "Delete" in the confirmation dialog that appears. <strong>Note that this cannot be undone!</strong></li>
 </ol>
-<h1 id="check-an-uploads-status">Check an upload's status<a class="headerlink" href="#check-an-uploads-status" title="Permanent link">&para;</a></h1>
-<p>As described above, uploading a file <em>enqueues</em> the actual uploading of the data for handling by a Zoltar worker process, rather than processing the upload immediately. The job detail page is where you can check the status of an upload, or any other long-running activity. (Note that how long it takes for a file to be processed depends on how busy the site is.) Here's an example upload file job detail page for one whose status is QUEUED:</p>
-<p><img alt="Upload file job detail page" src="../img/upload-file-job-detail-queued.png" title="Upload file job detail page" /></p>
-<p>You can see that it has the following fields:</p>
-<ul>
-<li><em>User</em>: User who uploaded the file.</li>
-<li><em>Status</em>: The upload's status, which is one of the following:<ul>
-<li><strong>PENDING</strong>: The state an upload starts in.</li>
-<li><strong>CLOUD_FILE_UPLOADED</strong>: The uploaded file was successfully saved to temporary cloud storage.</li>
-<li><strong>QUEUED</strong>: The upload file job was successfully enqueued for processing.</li>
-<li><strong>CLOUD_FILE_DOWNLOADED</strong>: The uploaded file was successfully retrieved from temporary cloud storage</li>
-<li><strong>SUCCESS</strong>: The job was successfully completed.</li>
-<li><strong>FAILED</strong>: The job failed.</li>
-</ul>
-</li>
-<li><em>File Name</em>: The uploaded file's name that was given to Zoltar.</li>
-<li><em>Failure</em>: The failure message if status is FAILED, or "None" otherwise. This section will provide some information to help debug the problem.</li>
-<li><em>ΔT</em>: How much time the upload took to process. This is formatted as "<hours>:<minutes>:<seconds>.<microsecond>", For example, "0:00:01.155223" means the job took zero hours, zero minutes, one second, and 155223 microseconds.</li>
-<li><em>Created</em>: Date and time the file was uploaded at.</li>
-<li><em>Updated</em>: The last time the upload's status was changed.</li>
-<li><em>JSON In</em>: The JSON information passed internally to the upload. You can ignore this.</li>
-<li><em>JSON Out</em>: "" returned internally by the upload. ""</li>
-</ul>
-<p>Note that you must refresh this page to get the latest status (it does not update dynamically). </p>
-<p>You can see all of your upload file jobs in the <strong>Upload File Jobs</strong> section on your <a href="../Accounts/">user profile page</a>. </p>
-<p>For reference, here are two other jobs in different states. This one's state is SUCCESS:</p>
-<p><img alt="Upload file job success" src="../img/upload-file-job-detail-success.png" title="Upload file job success" /></p>
-<p>And this one FAILED:</p>
-<p><img alt="Upload file job failed" src="../img/upload-file-job-detail-failed.png" title="Upload file job failed" /></p>
+<h2 id="download-a-single-forecast">Download a single forecast<a class="headerlink" href="#download-a-single-forecast" title="Permanent link">&para;</a></h2>
+<p>To download a particular forecast:</p>
+<ol>
+<li>Go to the <a href="../ModelDetailPage/">model detail page</a> where the forecast resides.</li>
+<li>Click the link in the "Data Source" column to go to the <a href="./">forecast detail page</a>.</li>
+<li>Click the "Download JSON" button and save the file in the JSON format documented at <a href="../FileFormats/#forecast-data-file-format-json">Forecast data format</a> for details.</li>
+</ol>
+<p>(Note that if you are only interested in a particular unit/target combination, you can use the "Query Forecast Data" form on that page - see <a href="../ForecastDetailPage/#query-form-and-results">here</a> for details.)</p>
+<h2 id="download-multiple-forecasts">Download multiple forecasts<a class="headerlink" href="#download-multiple-forecasts" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>Note: Downloading multiple forecasts is currently available only to users with Zoltar accounts.</p>
+<p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, downloading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
+</blockquote>
+<p>Forecasts are downloaded by executing a <a href="../ForecastQueryFormat/">forecast query</a> by either a) <a href="../Api/">Zoltar API</a> using the <a href="../ApiIntro/">Zoltar libraries</a>, or b) via a simple web UI form (shown below). In both cases you need to follow these steps:</p>
+<ol>
+<li>Decide the data of interest (i.e., <code>models</code>, <code>units</code>, <code>targets</code>, <code>timezeros</code>, and prediction <code>types</code>).</li>
+<li>Submit the query to get a Job ID.</li>
+<li>Poll the resulting Job until it succeeds (see <a href="../Jobs/#check-a-jobs-status">Check a job's status</a>).</li>
+<li>Download the job's data (see <a href="../Jobs/#download-a-jobs-data">Download a job's data</a>). The format is described at <a href="../FileFormats/#forecast-data-format-csv">Forecast data format (CSV)</a>.</li>
+</ol>
+<h2 id="download-multiple-forecasts-via-the-web-ui">Download multiple forecasts via the web UI<a class="headerlink" href="#download-multiple-forecasts-via-the-web-ui" title="Permanent link">&para;</a></h2>
+<p>To download forecast data via the web UI:</p>
+<ol>
+<li>Go to the <a href="../ProjectDetailPage/">project detail page</a> whose models contain the forecasts. </li>
+<li>Click the "Download" button to the right of "Forecasts" in the Features section at the page's top.</li>
+<li>On the "Edit Forecast Query" page that shows, enter your query and then click "Submit" (see the screen shot below).</li>
+<li>Poll the resulting Job until it succeeds (see <a href="../Jobs/#check-a-jobs-status">Check a job's status</a>).</li>
+<li>Download the job's data (see <a href="../Jobs/#download-a-jobs-data">Download a job's data</a>).</li>
+</ol>
+<p>Here's an example of the Edit Forecast Query page:</p>
+<p><img alt="Query forecasts page" src="../img/query-forecasts.png" title="Query forecasts page" /></p>
                 
                   
                 

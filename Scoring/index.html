@@ -356,8 +356,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Visualization/" title="Visualiations" class="md-nav__link">
-      Visualiations
+    <a href="../Truth/" title="Truth" class="md-nav__link">
+      Truth
     </a>
   </li>
 
@@ -368,8 +368,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Truth/" title="Truth" class="md-nav__link">
-      Truth
+    <a href="../Jobs/" title="Jobs" class="md-nav__link">
+      Jobs
     </a>
   </li>
 
@@ -631,17 +631,27 @@
 <li><strong>Interval</strong>: This score is a proper score used to assess calibration and sharpness of quantile forecasts. Lower is better. The supported intervals alpha values are: 0.02, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, and 1.0. </li>
 </ul>
 <p>In addition, aggregate score values are calculated (see below).</p>
-<h2 id="viewing-scores">Viewing scores<a class="headerlink" href="#viewing-scores" title="Permanent link">&para;</a></h2>
-<p>Scores are accessed from the <a href="../ProjectDetailPage/">project detail page</a> of the project of interest via the links in the <strong>Analysis</strong> row in the project details table at the top of the page. There are three links:</p>
-<ul>
-<li><em>Visualizations</em>: Takes you to a page that shows a time chart of the project's predictions. See the <a href="../Visualization/">visualization</a> page for details.</li>
-<li><em>Aggregate scores</em>: Goes to the "Mean Absolute Error" page. <a href="https://github.com/reichlab/flusight/wiki/Scoring#1-absolute-error">Absolute error</a> is the absolute value of difference between the eventually observed value and the point prediction. This page is an aggregate of scores that are currently in Zoltar, and only as up-to-date as they are. No scores are shown for a particular unit or target if the errors could not be calculated because not all truth values were available for it. <!-- TODO more detail --></li>
-<li><em>Score data</em>: The linked-to page shows score counts at both the project and model levels. Only those scores that have values are shown.</li>
-</ul>
-<p>Here's an example score page: </p>
-<p><img alt="Scores page" src="../img/scores-page.png" title="Scores page" /></p>
 <h2 id="downloading-scores">Downloading scores<a class="headerlink" href="#downloading-scores" title="Permanent link">&para;</a></h2>
-<p>Currently scores can only be downloaded programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>. Learn more on the <a href="../ScoreQueryFormat/">score query format</a> page.</p>
+<blockquote>
+<p>Note: Downloading scores is currently available only to users with Zoltar accounts.</p>
+<p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, downloading scores is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
+</blockquote>
+<p>Scores are downloaded by executing a <a href="../ScoreQueryFormat/">scores query</a> by either a) <a href="../Api/">Zoltar API</a> using the <a href="../ApiIntro/">Zoltar libraries</a>, or b) via a simple web UI form (shown below). In both cases you need to follow these steps:</p>
+<ol>
+<li>Decide the data of interest (i.e., <code>models</code>, <code>units</code>, <code>targets</code>, <code>timezeros</code>, and <code>scores</code>).</li>
+<li>Submit the query to get a Job ID.</li>
+<li>Poll the resulting Job until it succeeds (see <a href="../Jobs/#check-a-jobs-status">Check a job's status</a>).</li>
+<li>Download the job's data (see <a href="../Jobs/#download-a-jobs-data">Download a job's data</a>). The format is described at <a href="../FileFormats/#score-data-format-csv">Score data format (CSV)</a>.</li>
+</ol>
+<h2 id="download-scores-via-the-web-ui">Download scores via the web UI<a class="headerlink" href="#download-scores-via-the-web-ui" title="Permanent link">&para;</a></h2>
+<p>To download score data via the web UI:</p>
+<ol>
+<li>Go to the <a href="../ProjectDetailPage/">project detail page</a> whose models contain the forecasts. </li>
+<li>Click the "Download" button to the right of "Scores" in the Features section at the page's top.</li>
+<li>On the "Edit Scores Query" page that shows, enter your query and then click "Submit" (see the screen shot below).</li>
+<li>Poll the resulting Job until it succeeds (see <a href="../Jobs/#check-a-jobs-status">Check a job's status</a>).</li>
+<li>Download the job's data (see <a href="../Jobs/#download-a-jobs-data">Download a job's data</a>).</li>
+</ol>
                 
                   
                 
@@ -677,13 +687,13 @@
           </a>
         
         
-          <a href="../Visualization/" title="Visualiations" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Truth/" title="Truth" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Visualiations
+                Truth
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
