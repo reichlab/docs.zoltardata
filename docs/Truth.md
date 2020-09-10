@@ -32,7 +32,7 @@ Follow these steps to upload a truth CSV file:
 1. Click the "Browse..." button in the [Project details table](http://127.0.0.1:8000/ProjectDetailPage/#project-details-table)'s **Truth Data** row.
 1. In the dialog that appears, select a truth data CSV file in Zoltar's [Truth data format](http://127.0.0.1:8000/FileFormats/#truth-data-format-csv).
 1. Click the green upload button.
-1. If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the truth file __ for uploading.", where __ is your file's name. See [Check an upload's status](#check_an_uploads_status) below for this page's details.
+1. If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the truth file __ for uploading.", where __ is your file's name. See [Check an upload's status](#check-an-uploads-status) below for this page's details.
 1. Once the upload is successful (you can refresh the upload file job page to check) then you will the file name as a link as described above.
 1. If there was a problem uploading then you will see the upload's status as **FAILED**. The **Failure** section will provide some information to help debug the problem.
 

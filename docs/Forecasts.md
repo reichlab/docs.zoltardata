@@ -7,7 +7,7 @@ A _forecast_ is a set of predictions for combinations of units and targets. See 
 
 ## Upload a forecast
 
-Here we show how to upload forecast data into Zoltar. It is important to know that Zoltar _enqueues_ long operations like forecast uploading, which keeps the site responsive but makes uploading a little more complicated. Rather than having the upload feature _block_ until the upload is done, you instead get a quick response in the form of an _upload file job_ detail page that shows the status of your upload. This page is described in [Check an upload's status](#check_an_uploads_status) below.
+Here we show how to upload forecast data into Zoltar. It is important to know that Zoltar _enqueues_ long operations like forecast uploading, which keeps the site responsive but makes uploading a little more complicated. Rather than having the upload feature _block_ until the upload is done, you instead get a quick response in the form of an _upload file job_ detail page that shows the status of your upload. This page is described in [Check an upload's status](#check-an-uploads-status) below.
 
 Forecasts are uploaded to a particular model for a particular time zero. To upload one:
 
@@ -17,7 +17,7 @@ Forecasts are uploaded to a particular model for a particular time zero. To uplo
 1. Click the "Browse..." button in the time zero's "Action" column.
 1. In the dialog that appears, select a Forecast data format JSON file
 1. Click the green upload button.
-1. If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the forecast file __ for uploading.", where __ is your file's name. See [Check an upload's status](#check_an_uploads_status) below for this page's details.
+1. If the file is OK then you will be taken to an upload file job detail page that shows the status of your upload, with the message "Queued the forecast file __ for uploading.", where __ is your file's name. See [Check an upload's status](#check-an-uploads-status) below for this page's details.
 1. Once the upload is successful (you can refresh the upload file job page to check) then you will see it next to the selected time zero on the [model detail page](ModelDetailPage.md).
 1. If there was a problem uploading then you will see the upload's status as **FAILED**. The **Failure** section will provide some information to help debug the problem.
 
@@ -45,7 +45,7 @@ Delete a forecast via these steps:
 
 # Check an upload's status
 
-As described above, uploading a file _enqueues_ the actual uploading of the data for handling by a Zoltar worker process, rather than processing the upload immediately. The upload file job detail page is where you can check the status of an upload. (Note that how long it takes for a file to be processed depends on how busy the site is.) Here's an example upload file job detail page for one whose status is QUEUED:
+As described above, uploading a file _enqueues_ the actual uploading of the data for handling by a Zoltar worker process, rather than processing the upload immediately. The job detail page is where you can check the status of an upload, or any other long-running activity. (Note that how long it takes for a file to be processed depends on how busy the site is.) Here's an example upload file job detail page for one whose status is QUEUED:
 
 ![Upload file job detail page](img/upload-file-job-detail-queued.png "Upload file job detail page")
 

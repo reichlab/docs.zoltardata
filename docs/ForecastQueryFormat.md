@@ -8,7 +8,7 @@ In addition to the ability to download individual forecasts via both the [Web UI
 Like [uploading a forecast](Forecasts.md#upload-a-forecast), querying a project's forecasts can be a long operation. For this reason, Zoltar _enqueues_ queries as jobs that are operated on separately from the web process. This means querying follows these steps:
 
 1. Create and submit the [query](#query_format). This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).
-1. Poll the job until its status is **SUCCESS**. (You can use the Web UI to do this as well. See [Check an upload's status](Forecasts.md#check_an_uploads_status) for how.)
+1. Poll the job until its status is **SUCCESS**. (You can use the Web UI to do this as well. See [Check an upload's status](Forecasts.md#check-an-uploads-status) for how.)
 1. Download the data associated with the job.
 
 
