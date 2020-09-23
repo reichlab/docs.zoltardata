@@ -7,5 +7,7 @@ On this page we explain the fundamental ideas behind Zoltar's envisioning of rep
 - _Forecasts_: A forecast consists of a set of predictions of the various types supported by Zoltar. [The data model page](DataModel.md) describes them in detail.
 - _Units_: TBD
 - _Targets_: Targets are the fundamental data structure of a forecast, and as such have a [separate page](Targets.md) documenting them.
-- _Time zeros_: Because the forecasting field does not have standard terminology, we have settled on the following two concepts for this application. Note that some time zeros are tagged as starting a season, specifying the season's name, which helps to segment the time zeros. TBD
+- _Time zeros_: Because the forecasting field does not have standard terminology, we have settled on the following two concepts for this application. Note that some time zeros are tagged as starting a season, specifying the season's name, which helps to segment the time zeros.
+    - Time zero: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time-zero). Every forecast is for a time zero.
+    - Data version date: (Optional) The latest date at which any data source used for the forecasts should be considered. Can be used externally to recreate model results by "rolling back" the core data to a particular state.
 - _Truth_: Zoltar supports uploading ground truth data for each project that desires automatic scoring. Please see [this page](Truth.md) for details.
