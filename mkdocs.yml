@@ -1,4 +1,10 @@
 site_name: Zoltar Documentation
+repo_url: https://zoltardata.com/
+repo_name: Zoltar Main Site
+theme: material
+markdown_extensions:
+  - toc:
+      permalink: true
 
 nav:
   - Home: 'index.md'
@@ -31,9 +37,3 @@ nav:
       - 'zoltr (R)': 'Zoltr.md'
       - 'RESTful API': 'Api.md'
   - Getting Help: 'Help.md'
-
-theme: material
-
-markdown_extensions:
-    - toc:
-          permalink: true
