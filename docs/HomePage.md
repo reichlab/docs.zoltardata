@@ -23,4 +23,4 @@ This page shows all projects in the archive that are visible to you, based on wh
 From here you can:
 
 - Click on a project name to go to its [detail page](ProjectDetailPage.md).
-- Create a project if your are singed in. (Any logged in user can create projects via the "New" drop down button towards the top. Clicking it allows you to create one either by uploading a [project configuration file](FileFormats.md#project-creation-configuration-json) or creating via a form where you can fill in some basic details. See [Creating projects](Projects.md) for details.
+- Create a project if you are signed in. (Any logged in user can create projects via the "New" drop down button towards the top. Clicking it allows you to create one either by uploading a [project configuration file](FileFormats.md#project-creation-configuration-json) or creating via a form where you can fill in some basic details. See [Creating projects](Projects.md) for details.
