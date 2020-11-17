@@ -12,6 +12,8 @@ nav:
       - 'Introduction': 'WebTourIntro.md'
       - 'Zoltar Home page': 'HomePage.md'
       - 'Project detail page': 'ProjectDetailPage.md'
+      - 'Project explorer page': 'ProjectExplorerPage.md'
+      - 'Forecasts summary page': 'ForecastsSummaryPage.md'
       - 'Model detail page': 'ModelDetailPage.md'
       - 'Forecast detail page': 'ForecastDetailPage.md'
   - User Guide:

@@ -18,7 +18,7 @@ To see a list of all of your jobs, go to your [profile page](Accounts.md#view-yo
 When you initiate one of the above activities (either via the Web or the API), Zoltar creates an internal Job to track it and returns that Job's ID so you can check its status and optionally download any corresponding data. The workflow is:
 
 1. Initiate the activity. This returns a job that you can use to a) track the status of the query, and b) optionally download the job's data.
-1. Poll the job until its status is **SUCCESS**. (You can use the Web UI to do this - see [Check a job's status](#check-a-jobs-status) for how.)
+1. Poll the job until its status is **SUCCESS**. (You can use the web UI to do this - see [Check a job's status](#check-a-jobs-status) for how.)
 1. Optionally [download the job's data](#download-a-jobs-data), if applicable. Note that data is available for 24 hours after it's created.
 
 
