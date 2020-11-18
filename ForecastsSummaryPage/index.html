@@ -36,7 +36,7 @@
     
     
       
-        <title>zoltpy (Python) - Zoltar Documentation</title>
+        <title>Forecasts summary page - Zoltar Documentation</title>
       
     
     
@@ -75,6 +75,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#forecasts-summary-page" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -97,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                zoltpy (Python)
+                Forecasts summary page
               
             </span>
           
@@ -206,10 +210,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Web Tour
@@ -273,11 +279,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../ForecastsSummaryPage/" title="Forecasts summary page" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Forecasts summary page
+      </label>
+    
+    <a href="./" title="Forecasts summary page" class="md-nav__link md-nav__link--active">
       Forecasts summary page
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-project" class="md-nav__link">
+    Documentation project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#covidhub-project" class="md-nav__link">
+    Covidhub project
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -542,12 +593,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Programming libraries and API
@@ -575,18 +624,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="zoltpy (Python)" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../Zoltpy/" title="zoltpy (Python)" class="md-nav__link">
       zoltpy (Python)
     </a>
-    
   </li>
 
         
@@ -638,15 +680,56 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#documentation-project" class="md-nav__link">
+    Documentation project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#covidhub-project" class="md-nav__link">
+    Covidhub project
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
               
                 
                 
-                  <h1>zoltpy (Python)</h1>
-                
-                <p>Zoltpy is a Python module that contains functions for working with the Zoltar forecast repository’s API, including projects, models, forecasts, truth, and scores. The source is at <a href="https://github.com/reichlab/zoltpy">github.com/reichlab/zoltpy</a> (it is not yet on PyPI).</p>
+                <h1 id="forecasts-summary-page">Forecasts summary page<a class="headerlink" href="#forecasts-summary-page" title="Permanent link">&para;</a></h1>
+<p>Reached via the <a href="../ProjectDetailPage/">project detail page</a>'s <em>Features</em> section, this page collects a summary of all of a project's forecasts. It contains a heatmap at the top that can be colored in one of three ways (# rows, # units, or # targets), and a table of all forecasts (including all versions) in the project. Follow are examples from two projects. Hovering the mouse over the heatmap shows information for that particular forecast (only the latest versions are shown), and clicking takes you to that forecast.</p>
+<h2 id="documentation-project">Documentation project<a class="headerlink" href="#documentation-project" title="Permanent link">&para;</a></h2>
+<p><img alt="Forecasts summary page docs" src="../img/forecasts-summary-page.png" title="Forecasts summary page docs" /></p>
+<h2 id="covidhub-project">Covidhub project<a class="headerlink" href="#covidhub-project" title="Permanent link">&para;</a></h2>
+<p><img alt="Forecasts summary page covid" src="../img/forecasts-summary-page-covid.png" title="Forecasts summary page covid" /></p>
                 
                   
                 
@@ -667,7 +750,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../ApiIntro/" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ProjectExplorerPage/" title="Project explorer page" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -676,19 +759,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Introduction
+                Project explorer page
               </span>
             </div>
           </a>
         
         
-          <a href="../Zoltr/" title="zoltr (R)" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ModelDetailPage/" title="Model detail page" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                zoltr (R)
+                Model detail page
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

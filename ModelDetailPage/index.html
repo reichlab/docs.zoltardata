@@ -267,6 +267,30 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../ProjectExplorerPage/" title="Project explorer page" class="md-nav__link">
+      Project explorer page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ForecastsSummaryPage/" title="Forecasts summary page" class="md-nav__link">
+      Forecasts summary page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -726,6 +750,8 @@
 <li><em>Timezero</em>: The time zero that the forecast applies to. (The data version date, if any, is not shown here.) See <a href="../Concepts/">Concepts</a> for more about time zeros.</li>
 <li><em>Data Source</em>: Text describing where the forecast came from. It can be anything but is typically a data file name, such as a CSV. The source is a link to the forecast's <a href="../ForecastDetailPage/">forecast detail page</a>. It says "(No data)" if a forecast has not yet been uploaded for that time zero. </li>
 <li><em>Upload Time</em>: The date and time that the forecast was uploaded to Zoltar.</li>
+<li><em>Issue date</em>: The date identifying the forecast's <em>version</em>. If there is more than one version for this forecast's timezero then text like "Version 1 of 2" will show in the Version column. (See <a href="../Concepts/">Concepts</a> for more about versions.)</li>
+<li><em>Version</em>: Text describing the version, such as "Version 1 of 2". It is empty if there's only one forecast version for the timezero.</li>
 <li><em>Action</em>: A button that is either a green upload icon if there is no data associated with the time zero, or a red delete button otherwise. See <a href="../Forecasts/">Forecasts</a> for instructions on how to upload forecasts, and <a href="../FileFormats/#forecast-data-format-json">File formats</a> for how forecast files are structured in Zoltar. This feature is enabled only for project owners or model owners.</li>
 </ul>
 <p>The <strong>Hide if no data</strong> checkbox, if checked, shows only those Timezeros that have an uploaded forecast. Uncheck it to see all Timezeros (necessary if you want to upload any). </p>
@@ -749,7 +775,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../ProjectDetailPage/" title="Project detail page" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ForecastsSummaryPage/" title="Forecasts summary page" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -758,7 +784,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Project detail page
+                Forecasts summary page
               </span>
             </div>
           </a>

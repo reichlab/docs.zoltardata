@@ -267,6 +267,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../ProjectExplorerPage/" title="Project explorer page" class="md-nav__link">
+      Project explorer page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ForecastsSummaryPage/" title="Forecasts summary page" class="md-nav__link">
+      Forecasts summary page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../ModelDetailPage/" title="Model detail page" class="md-nav__link">
       Model detail page
     </a>
@@ -734,12 +758,12 @@
 <p>Like <a href="../Forecasts/#upload-a-forecast">uploading a forecast</a>, querying a project's forecasts can be a long operation. For this reason, Zoltar <em>enqueues</em> queries as jobs that are operated on separately from the web process. This means querying follows these steps:</p>
 <ol>
 <li>Create and submit the <a href="#query_format">query</a>. This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).</li>
-<li>Poll the job until its status is <strong>SUCCESS</strong>. (You can use the Web UI to do this as well. See <a href="../Forecasts/#check-an-uploads-status">Check an upload's status</a> for how.)</li>
+<li>Poll the job until its status is <strong>SUCCESS</strong>. (You can use the web UI to do this as well. See <a href="../Forecasts/#check-an-uploads-status">Check an upload's status</a> for how.)</li>
 <li>Download the data associated with the job.</li>
 </ol>
 <h2 id="query-format">Query format<a class="headerlink" href="#query-format" title="Permanent link">&para;</a></h2>
 <p>Zoltar supports a simple filtering feature that allows users to limit what data is downloaded.</p>
-<p>To filter a project's forecast data, we support the following five types of filters. They are passed behind the scenes to the server as JSON.</p>
+<p>To filter a project's forecast data, we support the following six types of filters. They are passed behind the scenes to the server as JSON.</p>
 <p>Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of models means get data from <em>any</em> of them. The filters are combined by ANDs, meaning only data that matches <em>all</em> filters. (See the below example.) The types of filters are:</p>
 <p>1) Filter by <em>model</em>: Pass zero or more model <strong>abbreviations</strong> in the <code>models</code> field. Example:</p>
 <pre><code class="json">{&quot;models&quot;: [&quot;60-contact&quot;, &quot;CovidIL_100&quot;]}  # gets data only from either of these two models
@@ -759,6 +783,10 @@
 
 <p>5) Filter by forecast <em>type</em>: Pass a list of string types in the <code>types</code> field. Choices are <code>bin</code>, <code>named</code>, <code>point</code>, <code>sample</code>, and <code>quantile</code>. Example:</p>
 <pre><code class="json">{&quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]}  # get only point and quantile data
+</code></pre>
+
+<p>6) Filter by forecast <em>version</em>: Passing a date string in the optional <code>as_of</code> field (in <code>YYYY-MM-DD</code> format) causes the query to return only those forecast versions whose <code>issue_date</code> is &lt;= the <code>as_of</code> date. If no <code>as_of</code> is passed then the query returns the most recent forecasts. (See <a href="../Concepts/">Concepts</a> for more about versions.) Example:</p>
+<pre><code class="json">{&quot;as_of&quot;: &quot;2020-05-14&quot;}  # get forecasts whose issue_date is &lt;= this date
 </code></pre>
 
 <p>The lists in 1 through 5 operate as "OR" on their own but are combined in the final query as "AND"s. Here's an example:</p>
