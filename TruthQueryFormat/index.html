@@ -36,7 +36,7 @@
     
     
       
-        <title>Concepts - Zoltar Documentation</title>
+        <title>Truth Query Format - Zoltar Documentation</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#zoltar-concepts" tabindex="1" class="md-skip">
+      <a href="#querying-a-projects-truth" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Concepts
+                Truth Query Format
               
             </span>
           
@@ -459,20 +459,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="Concepts" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../Concepts/" title="Concepts" class="md-nav__link">
       Concepts
     </a>
-    
   </li>
 
         
@@ -528,11 +519,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../TruthQueryFormat/" title="Truth Query Format" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Truth Query Format
+      </label>
+    
+    <a href="./" title="Truth Query Format" class="md-nav__link md-nav__link--active">
       Truth Query Format
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#query-format" class="md-nav__link">
+    Query format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-format" class="md-nav__link">
+    Data format
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -666,6 +702,29 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#query-format" class="md-nav__link">
+    Query format
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-format" class="md-nav__link">
+    Data format
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -677,21 +736,19 @@
               
                 
                 
-                <h1 id="zoltar-concepts">Zoltar concepts<a class="headerlink" href="#zoltar-concepts" title="Permanent link">&para;</a></h1>
-<p>On this page we explain the fundamental ideas behind Zoltar's envisioning of representing forecasts in a challenge.</p>
-<ul>
-<li><em>Projects</em>: As mentioned in <a href="../Projects/">Manging Projects</a>, <em>projects</em> are the central organizing concept in Zoltar. They define the <em>units</em>, <em>targets</em> and <em>time zeros</em> that forecasts are relative to, and contain the <em>forecast models</em> that teams use to represent a forecasting challenge.</li>
-<li><em>Forecast models</em>: A <em>model</em> is the representation of code that generates forecasts. It has zero or one <em>forecasts</em> associated with the project's <em>time zeros</em>.</li>
-<li><em>Forecasts</em>: A forecast consists of a set of predictions of the various types supported by Zoltar. Forecast <em>versioning</em> is supported via each forecast having an <code>issue_date</code> field, which defaults to when the forecast was uploaded to Zoltar. (Users with advanced permission can change that field.) <a href="../DataModel/">The data model page</a> describes forecasts in detail.</li>
-<li><em>Units</em>: Units represent distinct entities for which predictions are made, for example, if forecasts are made for multiple different locations, the locations are the units.</li>
-<li><em>Targets</em>: Targets are the fundamental data structure of a forecast, and as such have a <a href="../Targets/">separate page</a> documenting them.</li>
-<li><em>Time zeros</em>: Because the forecasting field does not have standard terminology, we have settled on the following two concepts for this application. Note that some time zeros are tagged as starting a season, specifying the season's name, which helps to segment the time zeros.<ul>
-<li>Time zero: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time-zero). Every forecast is for a time zero.</li>
-<li>Data version date: (Optional) The latest date at which any data source used for the forecasts should be considered. Can be used externally to recreate model results by "rolling back" the core data to a particular state.</li>
-</ul>
-</li>
-<li><em>Truth</em>: Zoltar supports uploading ground truth data for each project that desires automatic scoring. Please see <a href="../Truth/">this page</a> for details.</li>
-</ul>
+                <h1 id="querying-a-projects-truth">Querying a project's truth<a class="headerlink" href="#querying-a-projects-truth" title="Permanent link">&para;</a></h1>
+<p>Currently truth can only be downloaded programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>. The workflow is identical to downloading forecasts as described at <a href="../ForecastQueryFormat/">forecast query format</a> page) except for the following. (Note: data limits are the same as querying forecasts.)</p>
+<h2 id="query-format">Query format<a class="headerlink" href="#query-format" title="Permanent link">&para;</a></h2>
+<p>The format is identical to querying forecasts except that only the three fields <code>models</code>, <code>units</code>, <code>targets</code>, and <code>timezeros</code> are allowed, and function the same way.</p>
+<p>Here's a full example:</p>
+<pre><code class="json">{&quot;units&quot;: [&quot;US&quot;],
+ &quot;targets&quot;: [&quot;0 day ahead cum death&quot;, &quot;1 day ahead cum death&quot;],
+ &quot;timezeros&quot;: [&quot;2020-05-14&quot;, &quot;2020-05-09&quot;]
+}
+</code></pre>
+
+<h2 id="data-format">Data format<a class="headerlink" href="#data-format" title="Permanent link">&para;</a></h2>
+<p>The truth is returned in the CSV format documented at <a href="../FileFormats/#truth-data-format-csv">Truth data format (CSV)</a>.</p>
                 
                   
                 
@@ -712,7 +769,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Accounts/" title="Accounts" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ScoreQueryFormat/" title="Score Query Format" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -721,19 +778,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Accounts
+                Score Query Format
               </span>
             </div>
           </a>
         
         
-          <a href="../DataModel/" title="Data model" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Targets/" title="Targets" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Data model
+                Targets
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
