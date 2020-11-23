@@ -47,4 +47,4 @@ Here are the current score abbreviations:
 
 ## Data format
 
-The scores are saved in the CSV format documented at [Score data format (CSV)](FileFormats.md#score-data-format-csv).
+The scores are returned in the CSV format documented at [Score data format (CSV)](FileFormats.md#score-data-format-csv).

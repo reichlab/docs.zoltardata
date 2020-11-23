@@ -76,7 +76,7 @@ Note that not all types of filters are required to be specified. Any missing one
 
 ## Data format
 
-The forecasts are saved in the CSV format documented at [Forecast data format (CSV)](FileFormats.md#forecast-data-format-csv).
+The forecasts are returned in the CSV format documented at [Forecast data format (CSV)](FileFormats.md#forecast-data-format-csv).
 
 
 ## Data limits

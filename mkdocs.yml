@@ -31,6 +31,7 @@ nav:
       - 'File Formats': 'FileFormats.md'
       - 'Forecast Query Format': 'ForecastQueryFormat.md'
       - 'Score Query Format': 'ScoreQueryFormat.md'
+      - 'Truth Query Format': 'TruthQueryFormat.md'
       - 'Targets': 'Targets.md'
       - 'Validation': 'Validation.md'
   - Programming libraries and API:
