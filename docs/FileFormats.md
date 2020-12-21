@@ -4,7 +4,6 @@ Zoltar uses a number of formats for representing truth data, forecast data, conf
 
 - [Project creation configuration (JSON)](#project-creation-configuration-json)
 - [Truth data format (CSV)](#truth-data-format-csv)
-- [Score data format (CSV)](#score-data-format-csv)
 - [Forecast data format (JSON)](#forecast-data-format-json)
 - [Forecast data format (CSV)](#forecast-data-format-csv)
 - [Quantile forecast format (CSV)](#quantile-forecast-format-csv)
@@ -50,30 +49,13 @@ Here are the three list objects' formats:
 
 ## Truth data format (CSV)
 
-Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [zoltar-ground-truth-example.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
+Every project in Zoltar can have ground truth values associated with targets. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [zoltar-ground-truth-example.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
 
 - `timezero`: date the truth applies to, formatted as `yyyy-mm-dd`
 - `unit`: the unit's name
 - `target`: target name
 - `value`: truth value, formatted according to the target's type. date values are formatted `yyyy-mm-dd` and booleans as `true` or `false`
  
-
-## Score data format (CSV)
-
-Zoltar calculates scores for all projects in the archive if they meet the requirements specified in [Scoring](Scoring.md#scoring-requirements). Users can download them as CSV through the web UI. The file has five fixed columns plus one column for each [implemented score](Scoring.md#current-scores). Score names are in the header. Here is an example header and a few rows from the "COVID-19 Forecasts" project, starting with the zoltr query that returned them:
-
-```R
-score_data <- zoltr::do_zoltar_query(zoltar_connection, project_url, FALSE, models = "YYG-ParamSearch",
-                                     units=c("US", "01"), targets = "4 wk ahead cum death",
-                                     timezeros = c("2020-05-11", "2020-05-12"), scores = "abs_error")
-```
-
-    model            timezero    season     unit  target                truth   abs_error
-    YYG-ParamSearch  2020-05-11  2019-2020  US    4 wk ahead cum death  112787  2681.353647
-    YYG-ParamSearch  2020-05-11  2019-2020  1     4 wk ahead cum death  689     69.14696021
-    YYG-ParamSearch  2020-05-12  2019-2020  US    4 wk ahead cum death  118093  4783.580487
-    YYG-ParamSearch  2020-05-12  2019-2020  1     4 wk ahead cum death  773     94.82157045
-    
 
 ## Forecast data format (JSON)
 

@@ -5,9 +5,8 @@ Some Zoltar operations can take longer than a handful of seconds to run. For the
 
 These are the activities that return jobs:
 
-- [Uploading truth](#xx) or [uploading a forecast](#xx) (does not result in data)
-- [Querying forecasts](#xx) or [querying scores](#xx) (results in data)
-- [Deleting a forecast](#xx) (no data)
+- Uploading truth, uploading a forecast (does not result in data)
+- Deleting a forecast (no data)
 
 
 To see a list of all of your jobs, go to your [profile page](Accounts.md#view-your-profile-page) and scroll down to the **Jobs** section.

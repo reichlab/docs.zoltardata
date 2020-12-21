@@ -1,1 +1,1 @@
-Zoltpy is a Python module that contains functions for working with the Zoltar forecast repository’s API, including projects, models, forecasts, truth, and scores. The source is at [github.com/reichlab/zoltpy](https://github.com/reichlab/zoltpy) (it is not yet on PyPI).
+Zoltpy is a Python module that contains functions for working with the Zoltar forecast repository’s API, including projects, models, forecasts, and truth. The source is at [github.com/reichlab/zoltpy](https://github.com/reichlab/zoltpy) (it is not yet on PyPI).

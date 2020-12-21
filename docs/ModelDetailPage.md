@@ -10,7 +10,7 @@ A **model** is the representation of code that generates forecasts. Clicking on 
 At the top of the page is a table showing information related to the model:
 
 - _Name_: The model's name.
-- _Abbreviation_: A short name for the model. It's used as the column name in downloaded scores.
+- _Abbreviation_: A short name for the model. It's the primary way that models are named.
 - _Owner_: The model's owner. The owner is the user that created the model (which is done on the home page), and she can edit or delete the model, and upload or delete its forecasts.
 - _Project_: A link to the project the model belongs to.
 - _Team name_: The name of the team that developed the model. This is not used directly by Zoltar.
