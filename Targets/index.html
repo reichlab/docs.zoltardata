@@ -387,18 +387,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../Scoring/" title="Scores" class="md-nav__link">
-      Scores
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../Truth/" title="Truth" class="md-nav__link">
       Truth
     </a>
@@ -499,18 +487,6 @@
   <li class="md-nav__item">
     <a href="../ForecastQueryFormat/" title="Forecast Query Format" class="md-nav__link">
       Forecast Query Format
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ScoreQueryFormat/" title="Score Query Format" class="md-nav__link">
-      Score Query Format
     </a>
   </li>
 
@@ -631,13 +607,6 @@
         <li class="md-nav__item">
   <a href="#valid-prediction-types-by-target-type" class="md-nav__link">
     Valid prediction types by target type
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#available-scores-by-target-type-and-prediction-element" class="md-nav__link">
-    Available scores by target type and prediction element
   </a>
   
 </li>
@@ -850,13 +819,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#available-scores-by-target-type-and-prediction-element" class="md-nav__link">
-    Available scores by target type and prediction element
-  </a>
-  
-</li>
-      
       
       
       
@@ -1004,7 +966,7 @@
 <p>None.</p>
 <h3 id="parameters-specific-to-date-targets">Parameters  specific to date targets<a class="headerlink" href="#parameters-specific-to-date-targets" title="Permanent link">&para;</a></h3>
 <ul>
-<li><em>unit</em>: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO <code>YYYY-MM-DD</code> date format. This parameter determines the units on which scores are calculated. I.e., for the residual error, the calculation for a forecast where the point prediction is <code>forecasted_date</code> and the unit is "week", the score would be calculated heuristically as <code>week(truth_date) - week(forecasted_date)</code>. Note: to map dates to biweeks, we use the definitions as presented in <a href="https://doi.org/10.1371/journal.pntd.0004761.s001">Reich et al (2017)</a>.</li>
+<li><em>unit</em>: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO <code>YYYY-MM-DD</code> date format. Note: to map dates to biweeks, we use the definitions as presented in <a href="https://doi.org/10.1371/journal.pntd.0004761.s001">Reich et al (2017)</a>.</li>
 <li><em>cats</em>: (Required) a list of dates in <code>YYYY-MM-DD</code> format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  --></li>
 </ul>
 <!-- 
@@ -1082,263 +1044,6 @@ Based off of the unit in the target definition, every date would use a fixed uni
 <p>Legend:
 (1) = valid named distributions are <code>norm</code>, <code>lnorm</code>, <code>gamma</code>, <code>beta</code>
 (2) = valid named distributions are <code>pois</code>, <code>nbinom</code>, <code>nbinom2</code></p>
-<h2 id="available-scores-by-target-type-and-prediction-element">Available scores by target type and prediction element<a class="headerlink" href="#available-scores-by-target-type-and-prediction-element" title="Permanent link">&para;</a></h2>
-<p>(Note that CRPS and brier scores have not yet been implemented.)</p>
-<p><html>
-<table>
-    <thead>
-    <tr>
-        <th></th>
-        <th></th>
-        <th colspan="2"><strong>point scores</strong></th>
-        <th colspan="5"><strong>probabilistic scores</strong></th>
-    </tr>
-    <tr>
-        <th>target</th>
-        <th>elem.</th>
-        <th>error</th>
-        <th>abs</th>
-        <th>log score</th>
-        <th>CRPS</th>
-        <th>Brier</th>
-        <th>PIT</th>
-        <th>int. score</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- continuous -->
-    <tr>
-        <td><em>continuous</em></td>
-        <td>point</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x(a)</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>bin</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>named</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>sample</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x(b)</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>quantile</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-</tr>
-    <!-- discrete -->
-    <tr>
-        <td><em>discrete</em></td>
-        <td>point</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x(a)</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>bin</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>named</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>sample</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x(b)</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>quantile</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-</tr>
-    <!-- nominal -->
-    <tr>
-        <td><em>nominal</em></td>
-        <td>point</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>bin</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>sample</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x(b)</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <!-- binary -->
-    <tr>
-        <td><em>binary</em></td>
-        <td>point</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x(a)</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>bin</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>sample</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x(b)</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <!-- date -->
-    <tr>
-        <td><em>date</em></td>
-        <td>point</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x(a)</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>bin</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>sample</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x(b)</td>
-        <td>x</td>
-        <td>-</td>
-        <td>x</td>
-        <td>-</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td>quantile</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td>x</td>
-</tr>
-    </tbody>
-</table>
-</html></p>
-<ul>
-<li>x(a) = CRPS is equivalent to abs error for point forecasts.</li>
-<li>x(b) = log score is required to be computed by approximation</li>
-<li>PIT = probability integral transform, CRPS = continuous ranked probability score</li>
-</ul>
                 
                   
                 

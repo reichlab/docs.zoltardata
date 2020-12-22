@@ -387,18 +387,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../Scoring/" title="Scores" class="md-nav__link">
-      Scores
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
     <a href="../Truth/" title="Truth" class="md-nav__link">
       Truth
     </a>
@@ -526,13 +514,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#score-data-format-csv" class="md-nav__link">
-    Score data format (CSV)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#forecast-data-format-json" class="md-nav__link">
     Forecast data format (JSON)
   </a>
@@ -572,18 +553,6 @@
   <li class="md-nav__item">
     <a href="../ForecastQueryFormat/" title="Forecast Query Format" class="md-nav__link">
       Forecast Query Format
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../ScoreQueryFormat/" title="Score Query Format" class="md-nav__link">
-      Score Query Format
     </a>
   </li>
 
@@ -748,13 +717,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#score-data-format-csv" class="md-nav__link">
-    Score data format (CSV)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#forecast-data-format-json" class="md-nav__link">
     Forecast data format (JSON)
   </a>
@@ -797,7 +759,6 @@
 <ul>
 <li><a href="#project-creation-configuration-json">Project creation configuration (JSON)</a></li>
 <li><a href="#truth-data-format-csv">Truth data format (CSV)</a></li>
-<li><a href="#score-data-format-csv">Score data format (CSV)</a></li>
 <li><a href="#forecast-data-format-json">Forecast data format (JSON)</a></li>
 <li><a href="#forecast-data-format-csv">Forecast data format (CSV)</a></li>
 <li><a href="#quantile-forecast-format-csv">Quantile forecast format (CSV)</a></li>
@@ -834,26 +795,13 @@
 <li><code>season_name</code>: Applicable when <code>is_season_start</code> is <code>true</code>, names the season, e.g., "2010-2011"</li>
 </ul>
 <h2 id="truth-data-format-csv">Truth data format (CSV)<a class="headerlink" href="#truth-data-format-csv" title="Permanent link">&para;</a></h2>
-<p>Every project in Zoltar can have ground truth values associated with targets. This information is required for Zoltar to do scoring. Users can access them as CSV as described in <a href="../Truth/">Truth</a>. An example truths file is <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv">zoltar-ground-truth-example.csv</a>. The file has four columns: <code>timezero</code>, <code>unit</code>, <code>target</code>, <code>value</code>:</p>
+<p>Every project in Zoltar can have ground truth values associated with targets. Users can access them as CSV as described in <a href="../Truth/">Truth</a>. An example truths file is <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv">zoltar-ground-truth-example.csv</a>. The file has four columns: <code>timezero</code>, <code>unit</code>, <code>target</code>, <code>value</code>:</p>
 <ul>
 <li><code>timezero</code>: date the truth applies to, formatted as <code>yyyy-mm-dd</code></li>
 <li><code>unit</code>: the unit's name</li>
 <li><code>target</code>: target name</li>
 <li><code>value</code>: truth value, formatted according to the target's type. date values are formatted <code>yyyy-mm-dd</code> and booleans as <code>true</code> or <code>false</code></li>
 </ul>
-<h2 id="score-data-format-csv">Score data format (CSV)<a class="headerlink" href="#score-data-format-csv" title="Permanent link">&para;</a></h2>
-<p>Zoltar calculates scores for all projects in the archive if they meet the requirements specified in <a href="../Scoring/#scoring-requirements">Scoring</a>. Users can download them as CSV through the web UI. The file has five fixed columns plus one column for each <a href="../Scoring/#current-scores">implemented score</a>. Score names are in the header. Here is an example header and a few rows from the "COVID-19 Forecasts" project, starting with the zoltr query that returned them:</p>
-<pre><code class="R">score_data &lt;- zoltr::do_zoltar_query(zoltar_connection, project_url, FALSE, models = &quot;YYG-ParamSearch&quot;,
-                                     units=c(&quot;US&quot;, &quot;01&quot;), targets = &quot;4 wk ahead cum death&quot;,
-                                     timezeros = c(&quot;2020-05-11&quot;, &quot;2020-05-12&quot;), scores = &quot;abs_error&quot;)
-</code></pre>
-
-<pre><code>model            timezero    season     unit  target                truth   abs_error
-YYG-ParamSearch  2020-05-11  2019-2020  US    4 wk ahead cum death  112787  2681.353647
-YYG-ParamSearch  2020-05-11  2019-2020  1     4 wk ahead cum death  689     69.14696021
-YYG-ParamSearch  2020-05-12  2019-2020  US    4 wk ahead cum death  118093  4783.580487
-YYG-ParamSearch  2020-05-12  2019-2020  1     4 wk ahead cum death  773     94.82157045
-</code></pre>
 <h2 id="forecast-data-format-json">Forecast data format (JSON)<a class="headerlink" href="#forecast-data-format-json" title="Permanent link">&para;</a></h2>
 <p>For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example. The file contains a top-level with two keys: <code>"meta"</code> and <code>"predictions"</code>. The <code>meta</code> section is unused for uploads, and for downloads contains various information about the forecast in the repository in the <code>"forecast"</code> field) plus lists of the project's <code>"units"</code> and <code>"targets"</code>.</p>
 <p>The <code>"predictions"</code> list contains objects for each prediction, and each object contains the following four keys:</p>
