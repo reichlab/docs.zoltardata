@@ -7,7 +7,7 @@ In addition to the ability to download individual forecasts via both the [web UI
 
 Like [uploading a forecast](Forecasts.md#upload-a-forecast), querying a project's forecasts can be a long operation. For this reason, Zoltar _enqueues_ queries as jobs that are operated on separately from the web process. This means querying follows these steps:
 
-1. Create and submit the [query](#query_format). This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).
+1. Create and submit the [query](#query-format). This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).
 1. Poll the job until its status is **SUCCESS**. (You can use the web UI to do this as well. See [Check an upload's status](Forecasts.md#check-an-uploads-status) for how.)
 1. Download the data associated with the job.
 
@@ -46,7 +46,7 @@ Logically, the filters are treated as a list of "ANDs of ORs": Each of the five 
 {"types": ["point", "quantile"]}  # get only point and quantile data
 ```
 
-6) Filter by forecast *version*: Passing a date string in the optional `as_of` field (in `YYYY-MM-DD` format) causes the query to return only those forecast versions whose `issue_date` is <= the `as_of` date. If no `as_of` is passed then the query returns the most recent forecasts. (See [Concepts](Concepts.md) for more about versions.) Example:
+6) Filter by forecast *version*: Passing a date string in the optional `as_of` field (in `YYYY-MM-DD` format) causes the query to return only those forecast versions whose `issue_date` is <= the `as_of` date. If no `as_of` is passed then the query returns the most recent forecasts. (See [Forecast Versions](ForecastVersions.md) for more about versions.) Example:
 ```json
 {"as_of": "2020-05-14"}  # get forecasts whose issue_date is <= this date
 ```

@@ -59,19 +59,20 @@ Every project in Zoltar can have ground truth values associated with targets. Us
 
 ## Forecast data format (JSON)
 
-For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See [zoltar-predictions-examples.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json) for an example. The file contains a top-level with two keys: `"meta"` and `"predictions"`. The `meta` section is unused for uploads, and for downloads contains various information about the forecast in the repository in the `"forecast"` field) plus lists of the project's `"units"` and `"targets"`.
+For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See [zoltar-predictions-examples.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json) for an example. The file contains a top-level object with two keys: `"meta"` and `"predictions"`. The `meta` section is unused for uploads, and for downloads contains various information about the forecast in the repository in the `"forecast"` field) plus lists of the project's `"units"` and `"targets"`.
 
 The `"predictions"` list contains objects for each prediction, and each object contains the following four keys:
 
 - `"location"`: name of the Location.
 - `"target"`: name of the Target.
 - `"class"`: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : `bin`, `named`, `point`, and `sample`.
-- `"prediction"`: a class-specific dict containing the prediction data itself. The format varies according to class. Here is a summary (see [Data model](DataModel.md) for details and examples):
+- `"prediction"`: a class-specific object containing the prediction data itself. The format varies according to class. Here is a summary (see [Data model](DataModel.md) for details and examples):
 
     - `"bin"`: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
     - `"named"`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
     - `"point`: A numeric point prediction with a single `value` key.
     - `"sample"`: Numeric samples represented as a table with one column that is found in the `sample` key.
+    - `"quantile"`: A quantile distribution with two paired columns: `quantile` and `value`.
 
 
 ## Forecast data format (CSV)

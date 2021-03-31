@@ -1,6 +1,6 @@
 # Manging Projects
 
-_Projects_ are the central organizing concept in Zoltar. They define the _units_, _targets_ and _time zeros_ that forecasts are relative to, and contain the _forecast models_ that teams use to represent a forecasting challenge. Described here are the common operations done with projects. Note that you must have a Zoltar account to create a project, and only project owners can edit or delete projects.
+_Projects_ are the central organizing concept in Zoltar. They define the _units_, _targets_ and _time zeros_ that forecasts are relative to, and contain the _forecast models_ that teams use to represent a forecasting challenge. Described here are the common operations done with projects. Note that you must have a Zoltar account to create a project, and only project owners can edit or delete projects. (Fill out the [Zoltardata.com user request form](https://docs.google.com/forms/d/1C7IEFbBEJ1JibG-svM5XbnnKkgwvH0770LYILDjBxUc/viewform?edit_requested=true) to be added to our beta-tester invitation queue.)
 
 
 ## Create a project

@@ -12,12 +12,12 @@ At the page's top is a black navigation header that's shown on all pages. It con
 
 ## Projects page
 
-A *project* is a collection of *forecast models* and their *forecasts*, and is described in more detail below. The projects page shows basic project information, including name, owner, description, and (in the "Summary" column) information about the number of models and forecasts in the project. Currently the page looks like this:
+A *project* is a collection of *forecast models* and their *forecasts*, and is described in more detail below. The projects page shows basic project information, including name, owner, description, and (in the "Summary" column) information about the number of models, forecasts, and predictions in the project. (See [Data Model](DataModel.md) for more information on terminology like _predictions_.) Currently, the page looks like this:
 
 ![Zoltar Projects page](img/projects-page.png "Zoltar Projects page")
 
 
-This page shows all projects in the archive that are visible to you, based on whether you are logged in and which projects you account has access to. Thus, some may be hidden. Above the list is some information about this (_There are 2 public projects and 0 projects with access limited to collaborators only._)
+This page shows all projects in the archive that are visible to you, based on whether you are logged in and which projects you account has access to. Thus, some may be hidden. Above the list is some information about this (_There are 6 public projects and 1 project with access limited to collaborators only._)
 
 
 From here you can:

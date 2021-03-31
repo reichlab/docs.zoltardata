@@ -29,6 +29,7 @@ nav:
       - 'Data model': 'DataModel.md'
       - 'File Formats': 'FileFormats.md'
       - 'Forecast Query Format': 'ForecastQueryFormat.md'
+      - 'Forecast Versions': 'ForecastVersions.md'
       - 'Truth Query Format': 'TruthQueryFormat.md'
       - 'Targets': 'Targets.md'
       - 'Validation': 'Validation.md'

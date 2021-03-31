@@ -42,7 +42,7 @@ Delete a forecast via these steps:
 To download a particular forecast:
 
 1. Go to the [model detail page](ModelDetailPage.md) where the forecast resides.
-1. Click the link in the "Data Source" column to go to the [forecast detail page](Forecasts.md).
+1. Click the link in the "Data Source" column to go to the [forecast detail page](ForecastDetailPage.md).
 1. Click the "Download JSON" button and save the file in the JSON format documented at [Forecast data format](FileFormats.md#forecast-data-file-format-json) for details.
 
 (Note that if you are only interested in a particular unit/target combination, you can use the "Query Forecast Data" form on that page - see [here](ForecastDetailPage.md#query-form-and-results) for details.)
