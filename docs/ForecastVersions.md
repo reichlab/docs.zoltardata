@@ -7,10 +7,12 @@ Forecasts in Zoltar can be _versioned_. A version is identified by the combinati
 
 Zoltar enforces these rules about forecast versions:
 
-1. An uploaded forecast version cannot imply any retracted prediction elements in existing versions, i.e., you cannot load data that's a subset of previous data.
-2. An uploaded forecast version's `issue_date` cannot be prior to any non-empty versions, i.e., you cannot load data before any non-empty forecasts.
-3. Cannot load empty data.
-4. Cannot load 100% duplicate data.
+1. Cannot load empty data.
+2. Cannot load 100% duplicate data.
+3. New forecast versions cannot imply any retracted prediction elements in existing versions, i.e., you cannot load data that's a subset of the previous forecast's data.
+4. New forecast versions cannot change order dependencies, i.e., you cannot position a new forecast before any existing versions.
+5. Editing a version's issue_date cannot reposition it before any existing forecasts.
+6. Deleted forecasts cannot change order dependencies, i.e., you cannot delete a forecast that has any newer versions.
 
 This means we require forecasts to be uploaded in `issue_date` order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer `issue_date`s before uploading older ones.
 
