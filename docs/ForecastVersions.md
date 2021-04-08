@@ -21,7 +21,7 @@ This means we require forecasts to be uploaded in `issue_date` order. If you nee
 
 Zoltar supports _retracting_ individual prediction elements. A retracted element comes into play when executing a [forecast query](ForecastQueryFormat.md) and passing the `as_of` parameter. If you pass an `as_of` that's earlier than the retracted forecast's `issue_date`, then the previous (non-retracted) value is returned. However, if you pass an `as_of` that's newer than that `issue_date` then **no value** will be returned for that prediction element. 
 
-Retracted predictions are identified in [JSON forecast data format](FileFormats.md#forecast-data-format-json) files by passing `null` for the "prediction" value. 
+Retracted predictions are identified in [JSON forecast data format](FileFormats.md#forecast-data-format-json) files by passing `NULL` for the "prediction" value. 
 
 > Note: Retractions are indicated in quantile CSV files by `NULL` point and quantile values. The libraries take care of converting these into the JSON below. See [Quantile forecast format (CSV)](FileFormats.md#quantile-forecast-format-csv) for quantile retraction format details.
 
