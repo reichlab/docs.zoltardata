@@ -106,3 +106,41 @@ Columns: The Zoltar libraries ignore all but the following, which are allowed to
 - `"value"`: a numeric value representing the value of the quantile function evaluated at the probability specified in quantile
 
 See [quantile-predictions.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/quantile-predictions.csv) for an example.
+
+
+### Retracted predictions
+
+As mentioned in [Retracted predictions](ForecastVersions.md#retracted-predictions), Zoltar supports _retracting_ individual prediction elements (`timezero/unit/target` combinations). These are indicated in quantile CSV files by `NULL` point and quantile values (no quote marks):
+
+- To retract a point prediction, use `NULL` for the point value.
+- To retract a quantile prediction, use `NULL` for all values. All quantiles must be present, and **all** values must be `NULL`. That is, no partial `NULL`s are allowed. The quantiles themselves must still be valid.
+- You can mix retractions and updated/add prediction elements in a single file.
+
+Here's a partial example from [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub):
+```csv
+forecast_date,target,target_end_date,location,type,quantile,value
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,point,NA,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.01,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.025,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.05,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.1,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.15,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.2,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.25,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.3,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.35,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.4,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.45,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.5,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.55,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.6,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.65,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.7,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.75,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.8,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.85,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.9,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.95,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.975,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.99,NULL
+```
