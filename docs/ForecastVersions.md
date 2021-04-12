@@ -7,19 +7,19 @@ Forecasts in Zoltar can be _versioned_. A version is identified by the combinati
 
 Zoltar enforces these rules about forecast versions:
 
-1. Cannot load empty data.
-2. Cannot load 100% duplicate data.
+1. No uploaded forecast can have no rows of data.
+2. No uploaded forecast can load 100% duplicate data of a previous version.
 3. New forecast versions cannot imply any retracted prediction elements in existing versions, i.e., you cannot load data that's a subset of the previous forecast's data.
-4. New forecast versions cannot change order dependencies, i.e., you cannot position a new forecast before any existing versions.
+4. New forecast versions cannot be positioned before any existing versions.
 5. Editing a version's issue_date cannot reposition it before any existing forecasts.
-6. Deleted forecasts cannot change order dependencies, i.e., you cannot delete a forecast that has any newer versions.
+6. Deleted forecasts cannot be positioned before any newer versions.
 
 This means we require forecasts to be uploaded in `issue_date` order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer `issue_date`s before uploading older ones.
 
 
 # Retracted predictions
 
-Zoltar supports _retracting_ individual prediction elements. A retracted element comes into play when executing a [forecast query](ForecastQueryFormat.md) and passing the `as_of` parameter. If you pass an `as_of` that's earlier than the retracted forecast's `issue_date`, then the previous (non-retracted) value is returned. However, if you pass an `as_of` that's newer than that `issue_date` then **no value** will be returned for that prediction element. 
+Zoltar supports _retracting_ individual prediction elements. A retracted element marks a particular combination of unit, target, and prediction type to be ignored when executing a [forecast query](ForecastQueryFormat.md) if the user passes an `as_of` value that's on or later than the retraction `issue_date`. In that case there will be no value returned for the retracted prediction element. However, an `as_of` that's earlier than the a forecast's `issue_date` **will** result in the element's pre-retraction value being returned. Users who want to return the forecast's original data including retractions, should use the API or web UI as documented in [download a single forecast](Forecasts.md#download-a-single-forecast). In this case Zoltar will include retractions as they were uploaded - with `null` "prediction" value in the JSON (see below). 
 
 Retracted predictions are identified in [JSON forecast data format](FileFormats.md#forecast-data-format-json) files by passing `NULL` for the "prediction" value. 
 
@@ -54,4 +54,4 @@ Translating this JSON representation to/from CSV files is handled by the [Zoltar
 
 # Duplicate data
 
-When Zoltar loads a forecast's prediction elements, it skips those that are identical to any in previous versions. This saves on storage space, and is transparent to users.
+When Zoltar loads a forecast's prediction elements, it skips those that are identical to any in previous versions. This saves on storage space, and is transparent to users (downloading forecast data via queries or single forecasts will reassemble the original data).

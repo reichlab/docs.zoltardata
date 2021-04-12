@@ -95,7 +95,7 @@ Because the native Zoltar JSON format can be inconvenient to work with, the [Zol
 
 ## Quantile forecast format (CSV)
 
-Zoltar libraries support importing quantile data (see [Validation.md](Validation.md) for more information) via the COVID-19 CSV format documented at [covid19-forecast-hub](https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model). While this format is not supported by Zoltar itself (i.e., you cannot upload one directly - you must always upload JSON files in the [above format](#project-creation-configuration-json)), the libraries allow you to translate between the two.
+Zoltar libraries support importing quantile data (see [Validation.md](Validation.md) for more information) via the COVID-19 CSV format documented at [covid19-forecast-hub](https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model). While this format is not a native Zoltar data format, the libraries translate between the formats. This allows users to provide CSVs that can be translated into JSON and uploaded into Zoltar.
 
 Columns: The Zoltar libraries ignore all but the following, which are allowed to be in any order:
 
@@ -113,13 +113,13 @@ See [quantile-predictions.csv](https://github.com/reichlab/docs.zoltardata/blob/
 As mentioned in [Retracted predictions](ForecastVersions.md#retracted-predictions), Zoltar supports _retracting_ individual prediction elements (`timezero/unit/target` combinations). These are indicated in quantile CSV files by `NULL` point and quantile values (no quote marks):
 
 - To retract a point prediction, use `NULL` for the point value.
-- To retract a quantile prediction, use `NULL` for all values. All quantiles must be present, and **all** values must be `NULL`. That is, no partial `NULL`s are allowed. The quantiles themselves must still be valid.
+- To retract a quantile prediction, use `NULL` for all values. All quantiles [must still be valid](Validation.md#quantile-prediction-elements), and **all** values must be `NULL`. That is, no partial `NULL`s are allowed. The quantiles themselves must still be valid.
 - You can mix retractions and updated/add prediction elements in a single file.
 
-Here's a partial example from [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub):
+Here's a partial example from [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub) that contains two prediction elements - a non-retracted point and a retracted quantile:
 ```csv
 forecast_date,target,target_end_date,location,type,quantile,value
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,point,NA,NULL
+2020-07-04,1 day ahead inc hosp,2020-07-05,US,point,NA,3020
 2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.01,NULL
 2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.025,NULL
 2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.05,NULL
