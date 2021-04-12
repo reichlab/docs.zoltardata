@@ -23,7 +23,7 @@ Zoltar supports _retracting_ individual prediction elements. A retracted element
 
 Retracted predictions are identified in [JSON forecast data format](FileFormats.md#forecast-data-format-json) files by passing `NULL` for the "prediction" value. 
 
-> Note: Retractions are indicated in quantile CSV files by `NULL` point and quantile values. The libraries take care of converting these into the JSON below. See [Quantile forecast format (CSV)](FileFormats.md#quantile-forecast-format-csv) for quantile retraction format details.
+> Note: Retractions are indicated in quantile CSV files by `NULL` point and quantile values. The libraries take care of converting these into the JSON below. See [Quantile forecast format (CSV)](FileFormats.md#retracted-predictions) for quantile retraction format details.
 
 For example, if we have two versions for a time zero, and the first forecast contains this prediction:
 
