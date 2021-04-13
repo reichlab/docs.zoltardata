@@ -17,7 +17,7 @@ Zoltar enforces these rules about forecast versions:
 This means we require forecasts to be uploaded in `issue_date` order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer `issue_date`s before uploading older ones.
 
 
-# Retracted predictions
+## Retracted predictions
 
 Zoltar supports _retracting_ individual prediction elements. A retracted element marks a particular combination of unit, target, and prediction type to be ignored when executing a [forecast query](ForecastQueryFormat.md) if the user passes an `as_of` value that's on or later than the retraction `issue_date`. In that case there will be no value returned for the retracted prediction element. However, an `as_of` that's earlier than the forecast's `issue_date` **will** result in the element's pre-retraction value being returned. Users who want to return the forecast's original data including retractions, should use the API or web UI as documented in [download a single forecast](Forecasts.md#download-a-single-forecast). In this case Zoltar will include retractions as they were uploaded - with `null` "prediction" value in the JSON (see below). 
 
@@ -52,6 +52,6 @@ Then we could retract that prediction element in the second forecast by passing 
 Translating this JSON representation to/from CSV files is handled by the [Zoltar libraries](ApiIntro.md).
 
 
-# Duplicate data
+## Duplicate data
 
 When Zoltar loads a forecast's prediction elements, it skips those that are identical to any in previous versions. This saves on storage space, and is transparent to users (downloading forecast data via queries or single forecasts will reassemble the original data).

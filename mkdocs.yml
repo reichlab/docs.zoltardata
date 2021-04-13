@@ -39,3 +39,5 @@ nav:
       - 'zoltr (R)': 'Zoltr.md'
       - 'RESTful API': 'Api.md'
   - Getting Help: 'Help.md'
+  - Release Notes:
+    - 'Zoltar 4': 'ReleaseNotes4_0.md'
