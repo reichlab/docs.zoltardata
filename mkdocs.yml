@@ -38,6 +38,6 @@ nav:
       - 'zoltpy (Python)': 'Zoltpy.md'
       - 'zoltr (R)': 'Zoltr.md'
       - 'RESTful API': 'Api.md'
-  - Getting Help: 'Help.md'
-  - Release Notes:
-    - 'Zoltar 4': 'ReleaseNotes4_0.md'
+  - Additional Information:
+    - 'Getting Help': 'Help.md'
+    - 'Zoltar 4 Release Notes': 'ReleaseNotes4_0.md'
