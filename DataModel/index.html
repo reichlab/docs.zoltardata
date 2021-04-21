@@ -488,6 +488,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#point-predictions" class="md-nav__link">
     Point predictions
   </a>
@@ -553,6 +560,18 @@
   <li class="md-nav__item">
     <a href="../ForecastQueryFormat/" title="Forecast Query Format" class="md-nav__link">
       Forecast Query Format
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ForecastVersions/" title="Forecast Versions" class="md-nav__link">
+      Forecast Versions
     </a>
   </li>
 
@@ -675,10 +694,46 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Additional Information
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Additional Information
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../Help/" title="Getting Help" class="md-nav__link">
       Getting Help
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_0/" title="Zoltar 4 Release Notes" class="md-nav__link">
+      Zoltar 4 Release Notes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -701,6 +756,13 @@
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#point-predictions" class="md-nav__link">
@@ -755,7 +817,10 @@
                 
                 
                 <h1 id="zoltar-data-model">Zoltar data model<a class="headerlink" href="#zoltar-data-model" title="Permanent link">&para;</a></h1>
-<p>This page documents how Zoltar represents forecast data, and the various types of predictions that are supported. Each forecast is made for a particular <em>time zero</em> in the project, and contains some number of <em>predictions</em>, one or more for each combination of the project's <em>units</em> and <em>targets</em>. Zoltar supports the following five prediction types, which we've found covers many forecasting applications. All predictions must pass a number of validity checks as documented in <a href="../Validation/">Validation</a>. Each section has an example as represented in Zoltar's <a href="../FileFormats/#forecast-data-file-format-json">JSON format</a> which was taken from the "Docs Example Project" demo project.</p>
+<p>This page documents how Zoltar represents forecast data, and the various types of <em>predictions</em> that are supported. Each forecast is made for a particular <em>time zero</em> in the project, and contains some number of <em>predictions</em>, one or more for each combination of the project's <em>units</em> and <em>targets</em>. Zoltar supports the following five prediction types, which we've found covers many forecasting applications. All predictions must pass a number of validity checks as documented in <a href="../Validation/">Validation</a>. Each section has an example as represented in Zoltar's <a href="../FileFormats/#forecast-data-file-format-json">JSON format</a> which was taken from the "Docs Example Project" demo project.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>(Please refer to the diagram below.) A forecast is made up of metadata (the <em>model</em> that made the forecast, the <em>time zero</em> for the forecast, and the forecast's date of submission) plus the forecast's data as a set of <em>predictions</em>. Each prediction is a collection of one or more <em>prediction elements</em> specific to one target and unit. Each prediction element is of a particular type (point, named, bin, sample, and quantile, as described below).</p>
+<p><img alt="Predictions Diagram" src="../img/predictions-diagram.png" title="Predictions Diagram" /></p>
 <h2 id="point-predictions">Point predictions<a class="headerlink" href="#point-predictions" title="Permanent link">&para;</a></h2>
 <p>Point predictions represent a single value. See <a href="../Validation/#point-prediction-elements">here</a> for details. In this example we see a prediction of <code>2.1</code> for the unit "location1" and target "pct next week". Note that, like all predictions, the data type (in this case the float <code>2.1</code>) must match the target's data type. (In this case it does; "pct next week" is a <em>discrete</em> target.)</p>
 <pre><code>{"unit": "location1",
@@ -764,6 +829,7 @@
   "prediction": {
     "value": 2.1
   }
+}
 </code></pre>
 <h2 id="named-distributions">Named distributions<a class="headerlink" href="#named-distributions" title="Permanent link">&para;</a></h2>
 <p>Named distributions represent distributions like <em>normal</em>, <em>log normal</em>, <em>gamma</em>, etc. See <a href="../Validation/#named-prediction-elements">here</a> for details. Here is an example in which a <em>normal</em> distribution ("norm" is the abbreviation) is specified for unit "location1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: <em>mean</em> ("param1") and <em>sd</em> ("param2"). "param3" is unused and not listed.</p>
@@ -775,6 +841,7 @@
     "param1": 1.1,
     "param2": 2.2
   }
+}
 </code></pre>
 <h2 id="bin-distributions">Bin distributions<a class="headerlink" href="#bin-distributions" title="Permanent link">&para;</a></h2>
 <p>Bin distributions represent binned distribution defined by inclusive lower bounds for each bin. See <a href="../Validation/#bin-prediction-elements">here</a> for details. Example:</p>
@@ -785,7 +852,7 @@
     "cat": [1.1, 2.2, 3.3],
     "prob": [0.3, 0.2, 0.5]
   }
-},
+}
 </code></pre>
 <h2 id="sample-distributions">Sample distributions<a class="headerlink" href="#sample-distributions" title="Permanent link">&para;</a></h2>
 <p>Sample distributions represent samples taken for the unit and target. Here's an example:</p>
@@ -795,9 +862,10 @@
   "prediction": {
     "sample": [2.3, 6.5, 0.0, 10.0234, 0.0001]
   }
+}
 </code></pre>
 <h2 id="quantile-distributions">Quantile distributions<a class="headerlink" href="#quantile-distributions" title="Permanent link">&para;</a></h2>
-<p>Quantile distributions represent ... TBD. For example:</p>
+<p>Quantile distributions represent quantiles of the predictive distribution. For example:</p>
 <pre><code>{"unit": "location2",
   "target": "pct next week",
   "class": "quantile",
@@ -805,7 +873,7 @@
     "quantile": [0.025, 0.25, 0.5, 0.75, 0.975],
     "value": [1.0, 2.2, 2.2, 5.0, 50.0]
   }
-},
+}
 </code></pre>
                 
                   

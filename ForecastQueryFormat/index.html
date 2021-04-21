@@ -556,6 +556,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../ForecastVersions/" title="Forecast Versions" class="md-nav__link">
+      Forecast Versions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../TruthQueryFormat/" title="Truth Query Format" class="md-nav__link">
       Truth Query Format
     </a>
@@ -668,10 +680,46 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Additional Information
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Additional Information
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../Help/" title="Getting Help" class="md-nav__link">
       Getting Help
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_0/" title="Zoltar 4 Release Notes" class="md-nav__link">
+      Zoltar 4 Release Notes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -745,7 +793,7 @@
 <h2 id="querying-workflow">Querying workflow<a class="headerlink" href="#querying-workflow" title="Permanent link">&para;</a></h2>
 <p>Like <a href="../Forecasts/#upload-a-forecast">uploading a forecast</a>, querying a project's forecasts can be a long operation. For this reason, Zoltar <em>enqueues</em> queries as jobs that are operated on separately from the web process. This means querying follows these steps:</p>
 <ol>
-<li>Create and submit the <a href="#query_format">query</a>. This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).</li>
+<li>Create and submit the <a href="#query-format">query</a>. This returns a job that you can use to a) track the status of the query, and b) download the query results (forecast data).</li>
 <li>Poll the job until its status is <strong>SUCCESS</strong>. (You can use the web UI to do this as well. See <a href="../Forecasts/#check-an-uploads-status">Check an upload's status</a> for how.)</li>
 <li>Download the data associated with the job.</li>
 </ol>
@@ -773,7 +821,7 @@
 <pre><code class="json">{&quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]}  # get only point and quantile data
 </code></pre>
 
-<p>6) Filter by forecast <em>version</em>: Passing a date string in the optional <code>as_of</code> field (in <code>YYYY-MM-DD</code> format) causes the query to return only those forecast versions whose <code>issue_date</code> is &lt;= the <code>as_of</code> date. If no <code>as_of</code> is passed then the query returns the most recent forecasts. (See <a href="../Concepts/">Concepts</a> for more about versions.) Example:</p>
+<p>6) Filter by forecast <em>version</em>: Passing a date string in the optional <code>as_of</code> field (in <code>YYYY-MM-DD</code> format) causes the query to return only those forecast versions whose <code>issue_date</code> is &lt;= the <code>as_of</code> date. If no <code>as_of</code> is passed then the query returns the most recent forecasts. (See <a href="../ForecastVersions/">Forecast Versions</a> for more about versions.) Example:</p>
 <pre><code class="json">{&quot;as_of&quot;: &quot;2020-05-14&quot;}  # get forecasts whose issue_date is &lt;= this date
 </code></pre>
 
@@ -834,13 +882,13 @@
           </a>
         
         
-          <a href="../TruthQueryFormat/" title="Truth Query Format" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ForecastVersions/" title="Forecast Versions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Truth Query Format
+                Forecast Versions
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

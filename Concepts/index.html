@@ -506,6 +506,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../ForecastVersions/" title="Forecast Versions" class="md-nav__link">
+      Forecast Versions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../TruthQueryFormat/" title="Truth Query Format" class="md-nav__link">
       Truth Query Format
     </a>
@@ -618,10 +630,46 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Additional Information
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Additional Information
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
   <li class="md-nav__item">
     <a href="../Help/" title="Getting Help" class="md-nav__link">
       Getting Help
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_0/" title="Zoltar 4 Release Notes" class="md-nav__link">
+      Zoltar 4 Release Notes
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -658,12 +706,12 @@
 <ul>
 <li><em>Projects</em>: As mentioned in <a href="../Projects/">Manging Projects</a>, <em>projects</em> are the central organizing concept in Zoltar. They define the <em>units</em>, <em>targets</em> and <em>time zeros</em> that forecasts are relative to, and contain the <em>forecast models</em> that teams use to represent a forecasting challenge.</li>
 <li><em>Forecast models</em>: A <em>model</em> is the representation of code that generates forecasts. It has zero or one <em>forecasts</em> associated with the project's <em>time zeros</em>.</li>
-<li><em>Forecasts</em>: A forecast consists of a set of predictions of the various types supported by Zoltar. Forecast <em>versioning</em> is supported via each forecast having an <code>issue_date</code> field, which defaults to when the forecast was uploaded to Zoltar. (Users with advanced permission can change that field.) <a href="../DataModel/">The data model page</a> describes forecasts in detail.</li>
+<li><em>Forecasts</em>: A forecast consists of a set of predictions of the various types supported by Zoltar. Forecast <em>versioning</em> is supported via each forecast having an <code>issue_date</code> field, which defaults to when the forecast was uploaded to Zoltar. (Users with advanced permission can change that field.) See the <a href="../DataModel/">Data Model</a> and <a href="../ForecastVersions/">Forecast Versions</a> pages for details.</li>
 <li><em>Units</em>: Units represent distinct entities for which predictions are made, for example, if forecasts are made for multiple different locations, the locations are the units.</li>
 <li><em>Targets</em>: Targets are the fundamental data structure of a forecast, and as such have a <a href="../Targets/">separate page</a> documenting them.</li>
 <li><em>Time zeros</em>: Because the forecasting field does not have standard terminology, we have settled on the following two concepts for this application. Note that some time zeros are tagged as starting a season, specifying the season's name, which helps to segment the time zeros.<ul>
-<li>Time zero: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time-zero). Every forecast is for a time zero.</li>
-<li>Data version date: (Optional) The latest date at which any data source used for the forecasts should be considered. Can be used externally to recreate model results by "rolling back" the core data to a particular state.</li>
+<li><strong>Time zero</strong>: The date from which a forecast originates and to which targets are relative (i.e. a "2-week-ahead forecast" is two weeks ahead of the time-zero). Every forecast is for a time zero.</li>
+<li><strong>Data version date</strong>: (Optional) The latest date at which any data source used for the forecasts should be considered. Can be used externally to recreate model results by "rolling back" the core data to a particular state.</li>
 </ul>
 </li>
 <li><em>Truth</em>: Zoltar supports uploading ground truth data for projects. Please see <a href="../Truth/">this page</a> for details.</li>
