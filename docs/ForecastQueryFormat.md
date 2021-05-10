@@ -46,9 +46,9 @@ Logically, the filters are treated as a list of "ANDs of ORs": Each of the five 
 {"types": ["point", "quantile"]}  # get only point and quantile data
 ```
 
-6) Filter by forecast *version*: Passing a date string in the optional `as_of` field (in `YYYY-MM-DD` format) causes the query to return only those forecast versions whose `issue_date` is <= the `as_of` date. If no `as_of` is passed then the query returns the most recent forecasts. (See [Forecast Versions](ForecastVersions.md) for more about versions.) Example:
+6) Filter by forecast *version*: Passing a datetime string in the optional `as_of` field causes the query to return only those forecast versions whose `issued_at` is <= the `as_of` datetime (AKA timestamp). If no `as_of` is passed then the query returns the most recent forecasts. (See [Forecast Versions](ForecastVersions.md) for more about versions.) The `as_of` field format must be a datetime as parsed by the [dateutil python library](https://dateutil.readthedocs.io/en/stable/index.html), which accepts a variety of styles. You can find example [here](https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples). Importantly, the datetime must include timezone information for disambiguation, without which the query will fail. (Note that Zoltar displays all datetimes using the UTC timezone.) Here's an example:
 ```json
-{"as_of": "2020-05-14"}  # get forecasts whose issue_date is <= this date
+{"as_of": "2021-05-10 12:00 UTC "}  # get forecasts whose issued_at is <= this date
 ```
 
 
