@@ -36,7 +36,7 @@
     
     
       
-        <title>RESTful API - Zoltar Documentation</title>
+        <title>Zoltar 4.1 Release Notes - Zoltar Documentation</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#api" tabindex="1" class="md-skip">
+      <a href="#welcome-to-zoltar-41" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                RESTful API
+                Zoltar 4.1 Release Notes
               
             </span>
           
@@ -546,12 +546,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
       Programming libraries and API
@@ -603,20 +601,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="RESTful API" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../Api/" title="RESTful API" class="md-nav__link">
       RESTful API
     </a>
-    
   </li>
 
         
@@ -629,10 +618,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
     
     <label class="md-nav__link" for="nav-6">
       Additional Information
@@ -672,11 +663,56 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../ReleaseNotes4_1/" title="Zoltar 4.1 Release Notes" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Zoltar 4.1 Release Notes
+      </label>
+    
+    <a href="./" title="Zoltar 4.1 Release Notes" class="md-nav__link md-nav__link--active">
       Zoltar 4.1 Release Notes
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forecast-versioning" class="md-nav__link">
+    Forecast versioning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-migration" class="md-nav__link">
+    Data migration
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -702,6 +738,29 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#forecast-versioning" class="md-nav__link">
+    Forecast versioning
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-migration" class="md-nav__link">
+    Data migration
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -713,8 +772,15 @@
               
                 
                 
-                <h1 id="api">API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
-<p>Zoltar's functionality is accessible via the following <a href="https://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a> endpoints. All results are JSON. The API is browsable from the <a href="https://www.zoltardata.com/api/">root URI</a> on the home page (look for <code>API</code> buttons on any page), and is a great starting point for developers. Note that all projects and users are listed on the home page, but private projects, their models, and their forecasts, can only be accessed by authorized accounts.</p>
+                <h1 id="welcome-to-zoltar-41">Welcome to Zoltar 4.1<a class="headerlink" href="#welcome-to-zoltar-41" title="Permanent link">&para;</a></h1>
+<p>Zoltar version 4.1 upgrades Zoltar's forecast versioning to support datetime versions rather than date ones. This allows multiple versions for a particular date, as requested by users. </p>
+<h2 id="forecast-versioning">Forecast versioning<a class="headerlink" href="#forecast-versioning" title="Permanent link">&para;</a></h2>
+<p>Recall that the version of Zoltar prior to this new one added support for storing forecast versions. From the new <a href="../ForecastVersions/">Forecast Versions</a> page:</p>
+<blockquote>
+<p>Forecasts in Zoltar can be <em>versioned</em>. A version is identified by the combination of the forecast's <em>model</em>, <em>time zero</em>, and <em>issued_at</em> fields. Multiple versions for the same model and time zero will have different issued_at values. These can be identified by the gray version numbering shown in the <strong>version</strong> column on the <a href="../ModelDetailPage/">model detail page</a>'s <strong>Forecasts</strong> list (e.g., "1 of 2"), and on the <strong>Issued at</strong> row of the <a href="../ForecastDetailPage/">forecast detail page</a>'s information table at the top (e.g., "(Version 3 of 3)").</p>
+</blockquote>
+<h2 id="data-migration">Data migration<a class="headerlink" href="#data-migration" title="Permanent link">&para;</a></h2>
+<p>This upgrade required migrating existing forecasts' <code>issue_date</code> dates to <code>issued_at</code> timezone-aware datetimes. We arbitrarily chose 12 noon UTC as the time of day.</p>
                 
                   
                 
@@ -735,7 +801,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Zoltr/" title="zoltr (R)" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ReleaseNotes4_0/" title="Zoltar 4 Release Notes" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -744,25 +810,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                zoltr (R)
+                Zoltar 4 Release Notes
               </span>
             </div>
           </a>
         
-        
-          <a href="../Help/" title="Getting Help" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Getting Help
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
         
       </nav>
     </div>

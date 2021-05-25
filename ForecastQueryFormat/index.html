@@ -718,6 +718,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_1/" title="Zoltar 4.1 Release Notes" class="md-nav__link">
+      Zoltar 4.1 Release Notes
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -821,8 +833,8 @@
 <pre><code class="json">{&quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;]}  # get only point and quantile data
 </code></pre>
 
-<p>6) Filter by forecast <em>version</em>: Passing a date string in the optional <code>as_of</code> field (in <code>YYYY-MM-DD</code> format) causes the query to return only those forecast versions whose <code>issue_date</code> is &lt;= the <code>as_of</code> date. If no <code>as_of</code> is passed then the query returns the most recent forecasts. (See <a href="../ForecastVersions/">Forecast Versions</a> for more about versions.) Example:</p>
-<pre><code class="json">{&quot;as_of&quot;: &quot;2020-05-14&quot;}  # get forecasts whose issue_date is &lt;= this date
+<p>6) Filter by forecast <em>version</em>: Passing a datetime string in the optional <code>as_of</code> field causes the query to return only those forecast versions whose <code>issued_at</code> is &lt;= the <code>as_of</code> datetime (AKA timestamp). If no <code>as_of</code> is passed then the query returns the most recent forecasts. (See <a href="../ForecastVersions/">Forecast Versions</a> for more about versions.) The <code>as_of</code> field format must be a datetime as parsed by the <a href="https://dateutil.readthedocs.io/en/stable/index.html">dateutil python library</a>, which accepts a variety of styles. You can find example <a href="https://dateutil.readthedocs.io/en/stable/examples.html#parse-examples">here</a>. Importantly, the datetime must include timezone information for disambiguation, without which the query will fail. (Note that Zoltar displays all datetimes using the UTC timezone.) Here's an example:</p>
+<pre><code class="json">{&quot;as_of&quot;: &quot;2021-05-10 12:00 UTC &quot;}  # get forecasts whose issued_at is &lt;= this date
 </code></pre>
 
 <p>The lists in 1 through 5 operate as "OR" on their own but are combined in the final query as "AND"s. Here's an example:</p>

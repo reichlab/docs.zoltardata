@@ -711,6 +711,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_1/" title="Zoltar 4.1 Release Notes" class="md-nav__link">
+      Zoltar 4.1 Release Notes
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -775,7 +787,7 @@
                 
                 
                 <h1 id="forecast-versions">Forecast versions<a class="headerlink" href="#forecast-versions" title="Permanent link">&para;</a></h1>
-<p>Forecasts in Zoltar can be <em>versioned</em>. A version is identified by the combination of the forecast's <em>model</em>, <em>time zero</em>, and <em>issue date</em>. Multiple versions for the same model and time zero will have different issue dates. These can be identified by the gray version numbering shown in the <strong>version</strong> column on the <a href="../ModelDetailPage/">model detail page</a>'s <strong>Forecasts</strong> list (e.g., "1 of 2"), and on the <strong>Issue date</strong> row of the <a href="../ForecastDetailPage/">forecast detail page</a>'s information table at the top (e.g., "(Version 3 of 3)").</p>
+<p>Forecasts in Zoltar can be <em>versioned</em>. A version is identified by the combination of the forecast's <em>model</em>, <em>time zero</em>, and <em>issued_at</em> fields. Multiple versions for the same model and time zero will have different issued_at values. These can be identified by the gray version numbering shown in the <strong>version</strong> column on the <a href="../ModelDetailPage/">model detail page</a>'s <strong>Forecasts</strong> list (e.g., "1 of 2"), and on the <strong>Issued at</strong> row of the <a href="../ForecastDetailPage/">forecast detail page</a>'s information table at the top (e.g., "(Version 3 of 3)").</p>
 <h2 id="forecast-version-rules">Forecast version rules<a class="headerlink" href="#forecast-version-rules" title="Permanent link">&para;</a></h2>
 <p>Zoltar enforces these rules about forecast versions:</p>
 <ol>
@@ -783,12 +795,12 @@
 <li>No uploaded forecast can load 100% duplicate data of a previous version.</li>
 <li>New forecast versions cannot imply any retracted prediction elements in existing versions, i.e., you cannot load data that's a subset of the previous forecast's data.</li>
 <li>New forecast versions cannot be positioned before any existing versions.</li>
-<li>Editing a version's issue_date cannot reposition it before any existing forecasts.</li>
+<li>Editing a version's issued_at cannot reposition it before any existing forecasts.</li>
 <li>Deleted forecasts cannot be positioned before any newer versions.</li>
 </ol>
-<p>This means we require forecasts to be uploaded in <code>issue_date</code> order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer <code>issue_date</code>s before uploading older ones.</p>
+<p>This means we require forecasts to be uploaded in <code>issued_at</code> order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer <code>issued_at</code> datetimes before uploading older ones.</p>
 <h2 id="retracted-predictions">Retracted predictions<a class="headerlink" href="#retracted-predictions" title="Permanent link">&para;</a></h2>
-<p>Zoltar supports <em>retracting</em> individual prediction elements. A retracted element marks a particular combination of unit, target, and prediction type to be ignored when executing a <a href="../ForecastQueryFormat/">forecast query</a> if the user passes an <code>as_of</code> value that's on or later than the retraction <code>issue_date</code>. In that case there will be no value returned for the retracted prediction element. However, an <code>as_of</code> that's earlier than the forecast's <code>issue_date</code> <strong>will</strong> result in the element's pre-retraction value being returned. Users who want to return the forecast's original data including retractions, should use the API or web UI as documented in <a href="../Forecasts/#download-a-single-forecast">download a single forecast</a>. In this case Zoltar will include retractions as they were uploaded - with <code>null</code> "prediction" value in the JSON (see below). </p>
+<p>Zoltar supports <em>retracting</em> individual prediction elements. A retracted element marks a particular combination of unit, target, and prediction type to be ignored when executing a <a href="../ForecastQueryFormat/">forecast query</a> if the user passes an <code>as_of</code> value that's on or later than the retraction <code>issued_at</code>. In that case there will be no value returned for the retracted prediction element. However, an <code>as_of</code> that's earlier than the forecast's <code>issued_at</code> <strong>will</strong> result in the element's pre-retraction value being returned. Users who want to return the forecast's original data including retractions, should use the API or web UI as documented in <a href="../Forecasts/#download-a-single-forecast">download a single forecast</a>. In this case Zoltar will include retractions as they were uploaded - with <code>null</code> "prediction" value in the JSON (see below). </p>
 <p>Retracted predictions are identified in <a href="../FileFormats/#forecast-data-format-json">JSON forecast data format</a> files by passing <code>NULL</code> for the "prediction" value. </p>
 <blockquote>
 <p>Note: Retractions are indicated in quantile CSV files by <code>NULL</code> point and quantile values. The libraries take care of converting these into the JSON below. See <a href="../FileFormats/#retracted-predictions">Quantile forecast format (CSV)</a> for quantile retraction format details.</p>
