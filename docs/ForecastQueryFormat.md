@@ -1,6 +1,6 @@
 # Querying a project's forecasts
 
-In addition to the ability to download individual forecasts via both the [web UI](Forecasts.md#download-a-single-forecast) and the [Zoltar libraries](ApiIntro.md), Zoltar supports downloading multiple forecasts at once, but currently only through the libraries.
+In addition to the ability to download individual forecasts via both the [web UI](Forecasts.md#download-a-single-forecast) and the [Zoltar libraries](ApiIntro.md), Zoltar supports downloading data from multiple forecasts via a simple query specification. You can download from the web UI as described in [Download forecasts via the web UI](Forecasts.md#download forecasts-via-the-web-ui) or through the API.
 
 
 ## Querying workflow
