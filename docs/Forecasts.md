@@ -62,7 +62,7 @@ Forecasts are downloaded by executing a [forecast query](ForecastQueryFormat.md)
  1. Download the job's data (see [Download a job's data](Jobs.md#download-a-jobs-data)). The format is described at [Forecast data format (CSV)](FileFormats.md#forecast-data-format-csv).
  
  
-## Download multiple forecasts via the web UI
+## Download forecasts via the web UI
  
  To download forecast data via the web UI:
  
