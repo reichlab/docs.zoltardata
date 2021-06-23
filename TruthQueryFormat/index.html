@@ -773,13 +773,14 @@
                 
                 
                 <h1 id="querying-a-projects-truth">Querying a project's truth<a class="headerlink" href="#querying-a-projects-truth" title="Permanent link">&para;</a></h1>
-<p>Currently truth can only be downloaded programmatically using the <a href="../ApiIntro/">Zoltar libraries</a>. The workflow is identical to downloading forecasts as described at <a href="../ForecastQueryFormat/">forecast query format</a> page) except for the following. (Note: data limits are the same as querying forecasts.)</p>
+<p>Truth can be downloaded from the web UI as described in <a href="../Truth/#download-truth">Download truth</a> or through the API. The workflow is identical to downloading forecasts as described at <a href="../ForecastQueryFormat/">forecast query format</a> page) except for the following. (Note: data limits are the same as querying forecasts.)</p>
 <h2 id="query-format">Query format<a class="headerlink" href="#query-format" title="Permanent link">&para;</a></h2>
-<p>The format is identical to querying forecasts except that only the three fields <code>models</code>, <code>units</code>, <code>targets</code>, and <code>timezeros</code> are allowed, and function the same way.</p>
+<p>The format is identical to querying forecasts except that only the four fields <code>units</code>, <code>targets</code>, <code>timezeros</code>, and <code>as_of</code> are allowed, which function identically.</p>
 <p>Here's a full example:</p>
 <pre><code class="json">{&quot;units&quot;: [&quot;US&quot;],
  &quot;targets&quot;: [&quot;0 day ahead cum death&quot;, &quot;1 day ahead cum death&quot;],
- &quot;timezeros&quot;: [&quot;2020-05-14&quot;, &quot;2020-05-09&quot;]
+ &quot;timezeros&quot;: [&quot;2020-05-14&quot;, &quot;2020-05-09&quot;],
+  &quot;as_of&quot;: &quot;2021-05-10 12:00 UTC &quot;
 }
 </code></pre>
 
