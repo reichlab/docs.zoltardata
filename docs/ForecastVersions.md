@@ -14,7 +14,9 @@ Zoltar enforces these rules about forecast versions:
 5. Editing a version's issued_at cannot reposition it before any existing forecasts.
 6. Deleted forecasts cannot be positioned before any newer versions.
 
-This means we require forecasts to be uploaded in `issued_at` order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer `issued_at` datetimes before uploading older ones.
+Notes:
+- Rule 3 applies only to non-oracle forecasts, i.e., truth forecasts are allowed to be partial because we assume truth retractions are not allowed.
+- This means we require forecasts to be uploaded in `issued_at` order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer `issued_at` datetimes before uploading older ones.
 
 
 ## Retracted predictions
