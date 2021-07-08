@@ -810,7 +810,9 @@
 <li>Editing a version's issued_at cannot reposition it before any existing forecasts.</li>
 <li>Deleted forecasts cannot be positioned before any newer versions.</li>
 </ol>
-<p>This means we require forecasts to be uploaded in <code>issued_at</code> order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer <code>issued_at</code> datetimes before uploading older ones.</p>
+<p>Notes:
+- Rule 3 applies only to non-oracle forecasts, i.e., truth forecasts are allowed to be partial because we assume truth retractions are not allowed.
+- This means we require forecasts to be uploaded in <code>issued_at</code> order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer <code>issued_at</code> datetimes before uploading older ones.</p>
 <h2 id="retracted-predictions">Retracted predictions<a class="headerlink" href="#retracted-predictions" title="Permanent link">&para;</a></h2>
 <p>Zoltar supports <em>retracting</em> individual prediction elements. A retracted element marks a particular combination of unit, target, and prediction type to be ignored when executing a <a href="../ForecastQueryFormat/">forecast query</a> if the user passes an <code>as_of</code> value that's on or later than the retraction <code>issued_at</code>. In that case there will be no value returned for the retracted prediction element. However, an <code>as_of</code> that's earlier than the forecast's <code>issued_at</code> <strong>will</strong> result in the element's pre-retraction value being returned. Users who want to return the forecast's original data including retractions, should use the API or web UI as documented in <a href="../Forecasts/#download-a-single-forecast">download a single forecast</a>. In this case Zoltar will include retractions as they were uploaded - with <code>null</code> "prediction" value in the JSON (see below). </p>
 <p>Retracted predictions are identified in <a href="../FileFormats/#forecast-data-format-json">JSON forecast data format</a> files by passing <code>NULL</code> for the "prediction" value. </p>
