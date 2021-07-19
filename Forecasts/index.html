@@ -438,6 +438,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#download-the-zoltar-database-for-local-use-beta" class="md-nav__link">
+    Download the Zoltar database for local use [BETA]
+  </a>
+  
+</li>
+      
       
       
       
@@ -809,6 +816,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#download-the-zoltar-database-for-local-use-beta" class="md-nav__link">
+    Download the Zoltar database for local use [BETA]
+  </a>
+  
+</li>
+      
       
       
       
@@ -888,6 +902,36 @@
 </ol>
 <p>Here's an example of the Edit Forecast Query page:</p>
 <p><img alt="Query forecasts page" src="../img/query-forecasts.png" title="Query forecasts page" /></p>
+<h2 id="download-the-zoltar-database-for-local-use-beta">Download the Zoltar database for local use [BETA]<a class="headerlink" href="#download-the-zoltar-database-for-local-use-beta" title="Permanent link">&para;</a></h2>
+<p>Zoltar along with <a href="../ApiIntro/">Zoltpy</a> supports downloading the Zoltar database itself as an <a href="https://www.sqlite.org/index.html">sqlite3</a> database file for local querying. (We call this a "bulk" download.) This beta feature was developed for programs that need to perform too many forecast queries to go through the server.</p>
+<blockquote>
+<p>Note: This feature is an admin-level one that does not have a convenient web service interface. Please <a href="..#contact">contact us</a> if you'd like to use this feature.</p>
+</blockquote>
+<p>There are three overall steps to use the feature and each step has a corresponding command line program. Following are the details.</p>
+<p>1) [server] Dump/export a selected portion of the Zoltar database to zipped CSV files.</p>
+<p>Run the program <code>utils/bulk_data_dump.py</code> to create a zipped archive of CSV files that can be loaded into an sqlite3 database file (step 2). This program takes three args:</p>
+<ul>
+<li><strong>project_name</strong>: the name of an existing Project to dump data from</li>
+<li><strong>query_file</strong>: a JSON file that specifies the initial filtering to do when dumping the database. This is an object that filters the dump. it is the same as the <code>query</code> arg to <code>query_forecasts_for_project()</code> except that 'types' and 'as_of' are disallowed. i.e., what's allowed is: 'models', 'units', 'targets', and 'timezeros'.</li>
+<li><strong>output_dir</strong>: where to save the zip file that contains the dumped CSV files</li>
+</ul>
+<p>Once you've run this program you can share the outputted zip file with bulk data users, who will run steps 2 and 3 on their local machines.</p>
+<blockquote>
+<p>Note: The dump program limits the number of PredictionElement table rows to <code>MAX_NUM_PRED_ELES</code> (currently two million). You may need to increase this depending on the initial filtering query. </p>
+</blockquote>
+<p>2) [zoltpy] Load those files into a local sqlite3 database file.</p>
+<p>The program <code>cli/bulk_data_load.py</code> loads the CSV files created in step #1 into a new sqlite database file. It takes these args:</p>
+<ul>
+<li><strong>zip_file</strong>: the zip file as created by the dump program</li>
+<li><strong>sqlite_file</strong>: sqlite file to save to. must not exist</li>
+</ul>
+<p>3) [zoltpy] Run forecast queries against that file.</p>
+<p>Finally, you can query the sqlite3 file using the <code>cli/bulk_data_query.py</code> command:</p>
+<ul>
+<li><strong>sqlite_file</strong>: the sqlite database file as created by <code>bulk_data_load_app()</code></li>
+<li><strong>query_file</strong>: a JSON file that contains the query, as documented at <a href="../ForecastQueryFormat/">forecast query format</a></li>
+<li><strong>csv_file</strong>: where to save the CSV file to. NB: OVERWRITTEN if exists. The format is documented at <a href="../FileFormats/#forecast-data-format-csv">Forecast data format (CSV)</a>.</li>
+</ul>
                 
                   
                 
