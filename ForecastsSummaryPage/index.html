@@ -785,7 +785,21 @@
                 
                 
                 <h1 id="forecasts-summary-page">Forecasts summary page<a class="headerlink" href="#forecasts-summary-page" title="Permanent link">&para;</a></h1>
-<p>Reached via the <a href="../ProjectDetailPage/">project detail page</a>'s <em>Features</em> section, this page collects a summary of all of a project's forecasts. It contains a heatmap at the top that can be colored in one of three ways (# predictions, # units, or # targets), and a table of all forecasts (including all versions) in the project. Follow are examples from two projects. Hovering the mouse over the heatmap shows information for that particular forecast (only the latest versions are shown), and clicking takes you to that forecast.</p>
+<p>Reached via the <a href="../ProjectDetailPage/">project detail page</a>'s <em>Features</em> section, this page collects a summary of all of a project's forecasts. It has a heatmap at the top that can be colored in one of three ways (# predictions, # units, or # targets), and a table of all forecasts (including all versions) in the project. Note that the table's contents have the same filtering applied as the heatmap. </p>
+<p>You can filter the display and the results via the form at the top:</p>
+<ul>
+<li><strong>Color by</strong>: A dropdown of three choices, controls which aspect of forecasts is to be shown: <em># predictions</em>, <em># units</em>, or <em># targets</em> (the default). </li>
+<li><strong>Target</strong>: A dropdown of project's target groups, allows filtering by target. The default is no target filtering. </li>
+<li><strong>Dates</strong>: Opens a date range picker to choose the start and end dates of forecast time zeros that should be included in the display. Defaults to the project's 60 most recent time zeros. You will see the default filled in on the form if it was applied.</li>
+<li><strong>Min. # submissions</strong>: An integer that filters based on how many forecasts a model has made. Only models with at least that many forecasts will be shown. The default is to show only those models' forecasts that are at least 5% of the max number of submissions from any model. You will see the default filled in on the form if it was applied.</li>
+</ul>
+<p>There are three buttons in the filter section:</p>
+<ul>
+<li><strong>Submit</strong>: Applies the form's contents and displays the resulting forecasts.</li>
+<li><strong>Show Recent</strong>: Shows the forecasts matching the default filtering above. This is the equivalent of going straight to this page from the <a href="../ProjectDetailPage/">project detail page</a>.</li>
+<li><strong>Show all</strong>: Overrides all filtering to show all of the project's forecasts. Note that this may be slow to load for large projects.</li>
+</ul>
+<p>Following are examples from two projects. Hovering the mouse over the heatmap shows information for that particular forecast (only the latest versions are shown), and clicking takes you to that forecast.</p>
 <h2 id="documentation-project">Documentation project<a class="headerlink" href="#documentation-project" title="Permanent link">&para;</a></h2>
 <p><img alt="Forecasts summary page docs" src="../img/forecasts-summary-page.png" title="Forecasts summary page docs" /></p>
 <h2 id="covidhub-project">Covidhub project<a class="headerlink" href="#covidhub-project" title="Permanent link">&para;</a></h2>
