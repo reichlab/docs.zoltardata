@@ -5,7 +5,7 @@ Zoltar provides some basic features for managing your account, which this page d
 
 ## View your profile page
 
-Account features are accessed via the user drop down menu in the black [navigation header](HomePage.md#navigation header) that's shown at the top of all pages:
+Account features are accessed via the user dropdown menu in the black [navigation header](HomePage.md#navigation header) that's shown at the top of all pages:
 
 ![User dropdown menu](img/user-dropdown-menu.png "User dropdown menu")
 
@@ -21,6 +21,6 @@ From this page you can use the buttons at the top to edit your email address and
 
 Zoltar has a basic "amnesia" feature in case you forget your password. To use it:
 
-1. Click the "Sign in" user drop down menu in the black [navigation header](HomePage.md#navigation header) that's shown at the top of all pages.
+1. Click the "Sign in" user dropdown menu in the black [navigation header](HomePage.md#navigation header) that's shown at the top of all pages.
 1. On the user login page, click the "Lost password?" link.
 1. Follow the instructions that are sent to the email address you registered with Zoltar.

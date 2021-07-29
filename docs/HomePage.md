@@ -5,7 +5,7 @@ The Zoltar home page [zoltardata.com](https://www.zoltardata.com/) is a simple w
 
 ## Navigation header
 
-At the page's top is a black navigation header that's shown on all pages. It contains three icons: Home page (the Zoltar crystal ball in the upper left), and on the right a user drop down menu and a help icon (question mark) on the far right. The drop down menu's appearance depends on whether a user is logged in. If you are not logged in then "Sign in" is shown as in the screen shot. Clicking "Sign in" takes you to a typical login page where you specify your account's user name and password. (To obtain an account, please [contact us](index.md#contact).) If you are logged in then its text is the user name and the menu items are links to the user profile page, and a logout item. Currently, the page looks like this:
+At the page's top is a black navigation header that's shown on all pages. It contains three icons: Home page (the Zoltar crystal ball in the upper left), and on the right a user dropdown menu and a help icon (question mark) on the far right. The dropdown menu's appearance depends on whether a user is logged in. If you are not logged in then "Sign in" is shown as in the screen shot. Clicking "Sign in" takes you to a typical login page where you specify your account's user name and password. (To obtain an account, please [contact us](index.md#contact).) If you are logged in then its text is the user name and the menu items are links to the user profile page, and a logout item. Currently, the page looks like this:
 
 ![Zoltar Home page](img/home-page.png "Zoltar Home page")
 
@@ -23,4 +23,4 @@ This page shows all projects in the archive that are visible to you, based on wh
 From here you can:
 
 - Click on a project name to go to its [detail page](ProjectDetailPage.md).
-- Create a project if you are signed in. (Any logged in user can create projects via the "New" drop down button towards the top. Clicking it allows you to create one either by uploading a [project configuration file](FileFormats.md#project-creation-configuration-json) or creating via a form where you can fill in some basic details. See [Creating projects](Projects.md) for details.
+- Create a project if you are signed in. (Any logged in user can create projects via the "New" dropdown button towards the top. Clicking it allows you to create one either by uploading a [project configuration file](FileFormats.md#project-creation-configuration-json) or creating via a form where you can fill in some basic details. See [Creating projects](Projects.md) for details.
