@@ -97,6 +97,7 @@ Some features (currently only automatic prediction type conversion) require addi
 Zoltar supports converting automatically from some prediction types to desired ones that have not actually been uploaded.
 
 > Note: Conversion is currently limited, with support coming for additional prediction types and target types.
+> Also note that the auto-conversion feature results in slower queries than when it is not requested. 
 
 Auto-conversion is activated via two query parameters:
 
