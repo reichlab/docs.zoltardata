@@ -523,6 +523,26 @@
     Query format
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-options" class="md-nav__link">
+    Query options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-prediction-type-conversion" class="md-nav__link">
+    Automatic prediction type conversion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -779,6 +799,26 @@
     Query format
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#query-options" class="md-nav__link">
+    Query options
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automatic-prediction-type-conversion" class="md-nav__link">
+    Automatic prediction type conversion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -823,7 +863,7 @@
 </ol>
 <h2 id="query-format">Query format<a class="headerlink" href="#query-format" title="Permanent link">&para;</a></h2>
 <p>Zoltar supports a simple filtering feature that allows users to limit what data is downloaded.</p>
-<p>To filter a project's forecast data, we support the following six types of filters. They are passed behind the scenes to the server as JSON.</p>
+<p>To filter a project's forecast data, we support the following six types of filters. They are passed behind the scenes to the server as a JSON object with keys and values.</p>
 <p>Logically, the filters are treated as a list of "ANDs of ORs": Each of the five filter types are lists that are considered individually as ORs. For example, a list of models means get data from <em>any</em> of them. The filters are combined by ANDs, meaning only data that matches <em>all</em> filters. (See the below example.) The types of filters are:</p>
 <p>1) Filter by <em>model</em>: Pass zero or more model <strong>abbreviations</strong> in the <code>models</code> field. Example:</p>
 <pre><code class="json">{&quot;models&quot;: [&quot;60-contact&quot;, &quot;CovidIL_100&quot;]}  # gets data only from either of these two models
@@ -867,6 +907,59 @@
 <li>(the prediction type is either <code>point</code> OR <code>quantile</code>)</li>
 </ul>
 <p>Note that not all types of filters are required to be specified. Any missing ones are treated by default as "all". In the previous example, if we omitted <code>types</code> then we'd get similar data except it would include all prediction types instead of just <code>point</code> or <code>quantile</code> ones.</p>
+<h3 id="query-options">Query options<a class="headerlink" href="#query-options" title="Permanent link">&para;</a></h3>
+<p>Some features (currently only automatic prediction type conversion) require additional information to run. This is specified via the <code>options</code> field, which is an object that acts like a flat dot-namespaced registry ala Firefox's Configuration Editor (its <code>about:config</code> page). Keys are period-delimited strings and values are option-specific values. Here's the above query with some options:</p>
+<pre><code class="json">{&quot;models&quot;: [&quot;60-contact&quot;, &quot;CovidIL_100&quot;],
+ &quot;units&quot;: [&quot;US&quot;],
+ &quot;targets&quot;: [&quot;0 day ahead cum death&quot;, &quot;1 day ahead cum death&quot;],
+ &quot;timezeros&quot;: [&quot;2020-05-14&quot;, &quot;2020-05-09&quot;],
+ &quot;types&quot;: [&quot;point&quot;, &quot;quantile&quot;],
+ &quot;options&quot;: {&quot;convert.bin&quot;: true,
+             &quot;convert.point&quot;: &quot;mean&quot;, 
+             &quot;convert.quantile&quot;: [0.025, 0.25, 0.5, 0.75, 0.975],
+             &quot;convert.sample&quot;: 100}
+}
+</code></pre>
+
+<h3 id="automatic-prediction-type-conversion">Automatic prediction type conversion<a class="headerlink" href="#automatic-prediction-type-conversion" title="Permanent link">&para;</a></h3>
+<p>Zoltar supports converting automatically from some prediction types to desired ones that have not actually been uploaded.</p>
+<blockquote>
+<p>Note: Conversion is currently limited, with support coming for additional prediction types and target types.
+Also note that the auto-conversion feature results in slower queries than when it is not requested. </p>
+</blockquote>
+<p>Auto-conversion is activated via two query parameters:</p>
+<ol>
+<li>Specify the forecast <em>types</em> (#5 above) that you want the program to convert TO (the default, if unspecified is all types).</li>
+<li>Include query <em>options</em> for the conversions you want. Including an option does two things: a) it tells Zoltar that it should convert TO that type (i.e., that conversion is activated), and b) possible details about how to do the conversion.</li>
+</ol>
+<p>Here are all the conversions that we hope to support (TO on the arrow left and FROM on the right):</p>
+<pre><code>`bin`      &lt;- `named`, `sample`  # can convert named or samples to bin. options: none
+`named`    &lt;- n/a                # no conversion to named is possible
+`point`    &lt;- `named`, `sample`  # can convert named or samples to point. options: 'mean' or 'median'
+`quantile` &lt;- `named`, `sample`  # &quot;&quot; samples. options: list of quantiles
+`sample`   &lt;- `named`            # can convert named to samples. options: number of samples
+</code></pre>
+
+<p>Here are the corresponding query options (see the example query above):</p>
+<ul>
+<li><code>convert.bin</code>: a <em>boolean</em> indicating conversion to bin is desired</li>
+<li><code>convert.point</code>: a <em>string</em> indicating conversion to points is desired: either 'mean' or 'median'</li>
+<li><code>convert.quantile</code>: a <em>list</em> indicating conversion to quantiles is desired: a list of unique numbers in [0, 1]</li>
+<li><code>convert.sample</code>: an <em>integer</em> indicating conversion to samples is desired: an int &gt;0</li>
+</ul>
+<p>Converting takes into account each prediction element's target's <a href="../Targets/#target-types">type</a>:</p>
+<ul>
+<li><em>continuous</em>: OK (mean, median)</li>
+<li><em>discrete</em>: OK (mean, median)</li>
+<li><em>nominal</em>: TBD (mode: which value, TRUE or FALSE, is more present in the samples)</li>
+<li><em>binary</em>: TBD (mode: which value, TRUE or FALSE, is more present in the samples</li>
+<li><em>date</em>: TBD (don’t support for now)</li>
+</ul>
+<p>Currently, only these combinations are implemented:</p>
+<ul>
+<li>target types: continuous, discrete</li>
+<li>conversions: <code>point</code> &lt;- <code>sample</code></li>
+</ul>
 <h2 id="data-format">Data format<a class="headerlink" href="#data-format" title="Permanent link">&para;</a></h2>
 <p>The forecasts are returned in the CSV format documented at <a href="../FileFormats/#forecast-data-format-csv">Forecast data format (CSV)</a>.</p>
 <h2 id="data-limits">Data limits<a class="headerlink" href="#data-limits" title="Permanent link">&para;</a></h2>
