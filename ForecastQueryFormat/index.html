@@ -934,7 +934,7 @@ Also note that the auto-conversion feature results in slower queries than when i
 </ol>
 <p>Here are all the conversions that we hope to support (TO on the arrow left and FROM on the right):</p>
 <pre><code>`bin`      &lt;- `named`, `sample`  # can convert named or samples to bin. options: none
-`named`    &lt;- n/a                # no conversion to named is possible
+`named`    &lt;-  n/a               # no conversion to named is possible
 `point`    &lt;- `named`, `sample`  # can convert named or samples to point. options: 'mean' or 'median'
 `quantile` &lt;- `named`, `sample`  # &quot;&quot; samples. options: list of quantiles
 `sample`   &lt;- `named`            # can convert named to samples. options: number of samples
@@ -958,7 +958,8 @@ Also note that the auto-conversion feature results in slower queries than when i
 <p>Currently, only these combinations are implemented:</p>
 <ul>
 <li>target types: continuous, discrete</li>
-<li>conversions: <code>point</code> &lt;- <code>sample</code></li>
+<li>conversions: <code>point</code> &lt;- <code>sample</code> (uses either <a href="https://docs.python.org/3/library/statistics.html#statistics.mean">statistics.mean()</a> or <a href="https://docs.python.org/3/library/statistics.html#statistics.median">statistics.median()</a> depending on the <code>convert.point</code> option)</li>
+<li>conversions: <code>quantile</code> &lt;- <code>sample</code> (uses <a href="https://numpy.org/devdocs/reference/generated/numpy.quantile.html">numpy.quantile()</a>)</li>
 </ul>
 <h2 id="data-format">Data format<a class="headerlink" href="#data-format" title="Permanent link">&para;</a></h2>
 <p>The forecasts are returned in the CSV format documented at <a href="../FileFormats/#forecast-data-format-csv">Forecast data format (CSV)</a>.</p>
