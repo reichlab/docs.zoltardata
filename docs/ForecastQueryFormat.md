@@ -135,8 +135,8 @@ Converting takes into account each prediction element's target's [type](Targets.
 Currently, only these combinations are implemented:
 
 - target types: continuous, discrete
-- conversions: `point` <- `sample`
-- conversions: `quantile` <- `sample`
+- conversions: `point` <- `sample` (uses either [statistics.mean()](https://docs.python.org/3/library/statistics.html#statistics.mean) or [statistics.median()](https://docs.python.org/3/library/statistics.html#statistics.median) depending on the `convert.point` option)
+- conversions: `quantile` <- `sample` (uses [numpy.quantile()](https://numpy.org/devdocs/reference/generated/numpy.quantile.html))
 
 
 ## Data format
