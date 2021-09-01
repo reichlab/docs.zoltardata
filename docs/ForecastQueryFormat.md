@@ -109,7 +109,7 @@ Here are all the conversions that we hope to support (TO on the arrow left and F
 
 ```
 `bin`      <- `named`, `sample`  # can convert named or samples to bin. options: none
-`named`    <- n/a                # no conversion to named is possible
+`named`    <-  n/a               # no conversion to named is possible
 `point`    <- `named`, `sample`  # can convert named or samples to point. options: 'mean' or 'median'
 `quantile` <- `named`, `sample`  # "" samples. options: list of quantiles
 `sample`   <- `named`            # can convert named to samples. options: number of samples
@@ -136,6 +136,7 @@ Currently, only these combinations are implemented:
 
 - target types: continuous, discrete
 - conversions: `point` <- `sample`
+- conversions: `quantile` <- `sample`
 
 
 ## Data format
