@@ -21,9 +21,10 @@ Project configuration files contain eight metadata keys (`"name`, `"is_public"`,
 
 Here are the three list objects' formats:
 
-**"units"**: a list of objects containing only one field:
+**"units"**: a list of objects containing two fields:
 
 - `name`: The name of the unit.
+- `abbreviation`: The unit's abbreviation.
 
 
 **"targets"**: a list of the project's targets. Please see the [Targets.md](Targets.md) file for a detailed description of target parameters and which are required. Here are all possible parameters that can be passed in a project configuration file:
@@ -63,7 +64,7 @@ For prediction input and output we use a JSON file format. This format is strong
 
 The `"predictions"` list contains objects for each prediction, and each object contains the following four keys:
 
-- `"location"`: name of the Location.
+- `"unit"`: name of the Unit.
 - `"target"`: name of the Target.
 - `"class"`: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : `bin`, `named`, `point`, and `sample`.
 - `"prediction"`: a class-specific object containing the prediction data itself. The format varies according to class. Here is a summary (see [Data model](DataModel.md) for details and examples):

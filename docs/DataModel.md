@@ -12,9 +12,9 @@ This page documents how Zoltar represents forecast data, and the various types o
 
 ## Point predictions
 
-Point predictions represent a single value. See [here](Validation.md#point-prediction-elements) for details. In this example we see a prediction of `2.1` for the unit "location1" and target "pct next week". Note that, like all predictions, the data type (in this case the float `2.1`) must match the target's data type. (In this case it does; "pct next week" is a _discrete_ target.)
+Point predictions represent a single value. See [here](Validation.md#point-prediction-elements) for details. In this example we see a prediction of `2.1` for the unit "loc1" and target "pct next week". Note that, like all predictions, the data type (in this case the float `2.1`) must match the target's data type. (In this case it does; "pct next week" is a _discrete_ target.)
 
-    {"unit": "location1",
+    {"unit": "loc1",
       "target": "pct next week",
       "class": "point",
       "prediction": {
@@ -25,9 +25,9 @@ Point predictions represent a single value. See [here](Validation.md#point-predi
 
 ## Named distributions
 
-Named distributions represent distributions like _normal_, _log normal_, _gamma_, etc. See [here](Validation.md#named-prediction-elements) for details. Here is an example in which a _normal_ distribution ("norm" is the abbreviation) is specified for unit "location1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: _mean_ ("param1") and _sd_ ("param2"). "param3" is unused and not listed.
+Named distributions represent distributions like _normal_, _log normal_, _gamma_, etc. See [here](Validation.md#named-prediction-elements) for details. Here is an example in which a _normal_ distribution ("norm" is the abbreviation) is specified for unit "loc1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: _mean_ ("param1") and _sd_ ("param2"). "param3" is unused and not listed.
 
-    {"unit": "location1",
+    {"unit": "loc1",
       "target": "pct next week",
       "class": "named",
       "prediction": {
@@ -42,7 +42,7 @@ Named distributions represent distributions like _normal_, _log normal_, _gamma_
 
 Bin distributions represent binned distribution defined by inclusive lower bounds for each bin. See [here](Validation.md#bin-prediction-elements) for details. Example:
 
-    {"unit": "location2",
+    {"unit": "loc2",
       "target": "pct next week",
       "class": "bin",
       "prediction": {
@@ -56,7 +56,7 @@ Bin distributions represent binned distribution defined by inclusive lower bound
 
 Sample distributions represent samples taken for the unit and target. Here's an example:
 
-    {"unit": "location3",
+    {"unit": "loc3",
       "target": "pct next week",
       "class": "sample",
       "prediction": {
@@ -69,7 +69,7 @@ Sample distributions represent samples taken for the unit and target. Here's an 
 
 Quantile distributions represent quantiles of the predictive distribution. For example:
 
-    {"unit": "location2",
+    {"unit": "loc2",
       "target": "pct next week",
       "class": "quantile",
       "prediction": {

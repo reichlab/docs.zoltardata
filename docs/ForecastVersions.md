@@ -31,7 +31,7 @@ For example, if we have two versions for a time zero, and the first forecast con
 
 ```json
 {
-  "unit": "location1",
+  "unit": "loc1",
   "target": "pct next week",
   "class": "point",
   "prediction": {
@@ -44,7 +44,7 @@ Then we could retract that prediction element in the second forecast by passing 
 
 ```json
 {
-  "unit": "location1",
+  "unit": "loc1",
   "target": "pct next week",
   "class": "point",
   "prediction": null

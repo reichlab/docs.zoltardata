@@ -7,7 +7,7 @@ Forecasts stored in Zoltar are validated upon upload based on the expected struc
 For clarity, we define specific terms that we will use below.
 
  - Forecast: a collection of data specific to a project > model > timezero.
- - Prediction: a group of a prediction elements(s) specific to a location and target.
+ - Prediction: a group of a prediction elements(s) specific to a unit and target.
  - Prediction Element: data that define a unique single prediction, specific to the class of prediction it is.
  - Prediction Class: data structures representing different types of predictions, e.g. "Point" and "Bin" (see [Data Model](DataModel.md) for more detail)
  - Target Type: the classification for a specific forecast target, one of "continuous", "discrete", "nominal", "binary" or "date" (see [Targets](Targets.md) for more info)
@@ -169,9 +169,9 @@ Please see [zoltar-ground-truth-example.csv](https://github.com/reichlab/docs.zo
 
 ### For all ground truth files
 
- - The columns are `timezero`, `location`, `target`, and `value`.
- - For every unique `target`-`location`-`timezero` combination, there should be either one or zero rows of truth data.
- - Every value of `timezero`, `target` and `location` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
+ - The columns are `timezero`, `unit`, `target`, and `value`.
+ - For every unique `target`-`unit`-`timezero` combination, there should be either one or zero rows of truth data.
+ - Every value of `timezero`, `target` and `unit` must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)
  - The `value` of the truth data cannot be `“”`, `“NA”` or `NULL` (case does not matter).
  - The `value` of the truth data should be interpretable as the corresponding `data_type` of the specified target. E.g., for a row corresponding to a `date` target, the entry must contain a valid ISO-formatted date string.
 
@@ -180,10 +180,10 @@ Please see [zoltar-ground-truth-example.csv](https://github.com/reichlab/docs.zo
 The following test can be applied to any target with a `range`. This will always apply to `binary`, `nominal`, and `date` targets, as these targets are required to have sets of valid values specified as part of the target definition. If the `range` parameter is specified for a `continuous` or `discrete` target, then the following test will be applied to that target as well.
 
 For `binary` targets:
- - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be either `true` or `false`.
+ - The entry in the `value` column for a specific `target`-`unit`-`timezero` combination must be either `true` or `false`.
 
 For `discrete` and `continuous` targets (if `range` is specified):
- - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the `range` of valid values for the target. If `cats` is specified but `range` is not, then there is an implicit range for the ground truth value, and that is between min(`cats`) and \infty.
+ - The entry in the `value` column for a specific `target`-`unit`-`timezero` combination must be contained within the `range` of valid values for the target. If `cats` is specified but `range` is not, then there is an implicit range for the ground truth value, and that is between min(`cats`) and \infty.
  
 For `nominal` and `date` target_types:
- - The entry in the `value` column for a specific `target`-`location`-`timezero` combination must be contained within the set of valid `cats` for the target, as defined by the project config file.
+ - The entry in the `value` column for a specific `target`-`unit`-`timezero` combination must be contained within the set of valid `cats` for the target, as defined by the project config file.

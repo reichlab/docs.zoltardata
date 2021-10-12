@@ -57,9 +57,9 @@ Here's an example:
 ![Project changes confirmation](img/confirm-project-changes.png "Project changes confirmation page")
 
 
-The diff function categorizes each change according to the type of change and what item it applies to. For example, the first change under **All changes** in the above screen shot is the editing of the project's "name" field. Another change is the third one in that list, which is the removal of the _unit_ named "location3". Here are all the kinds of change that might be identified:
+The diff function categorizes each change according to the type of change and what item it applies to. For example, the first change under **All changes** in the above screen shot is the editing of the project's "name" field. Another change is the third one in that list, which is the removal of the _unit_ abbreviated "loc3". Here are all the kinds of change that might be identified:
 
-- _OBJ_ADDED_: An item of a particular type will be added to the project. For example, adding a new unit named "location4".
+- _OBJ_ADDED_: An item of a particular type will be added to the project. For example, adding a new unit abbreviated "loc4".
 - _OBJ_REMOVED_: "" will be removed "" from a project. Removing the target "pct next week", say. 
 - _FIELD_EDITED_: An item's field will be set to a new value. For example, setting the "data_version_date" of the project's time zero named "2011-10-09".
 - _FIELD_ADDED_: Set an item's field that was not set before. Adding a "season_name" to the time zero "2011-10-16", say.
