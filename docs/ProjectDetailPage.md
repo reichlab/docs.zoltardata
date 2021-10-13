@@ -33,7 +33,7 @@ The **Models** section lists the project's forecast models by name, with links t
 
 ## Units
 
-This section lists names of the **units** in the project. (See [Concepts](Concepts.md) for more about time zeros.) These were defined by project owner when creating the project. Often units are used to represent locations or regions that targets apply to.
+This section lists information about the **units** in the project: `name` and `abbreviation`. (See [Concepts](Concepts.md) for more about units.) These were defined by project owner when creating the project. Often units are used to represent locations or regions that targets apply to.
 
 
 ## Targets
