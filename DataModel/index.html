@@ -846,8 +846,8 @@
 <p>(Please refer to the diagram below.) A forecast is made up of metadata (the <em>model</em> that made the forecast, the <em>time zero</em> for the forecast, and the forecast's date of submission) plus the forecast's data as a set of <em>predictions</em>. Each prediction is a collection of one or more <em>prediction elements</em> specific to one target and unit. Each prediction element is of a particular type (point, named, bin, sample, and quantile, as described below).</p>
 <p><img alt="Predictions Diagram" src="../img/predictions-diagram.png" title="Predictions Diagram" /></p>
 <h2 id="point-predictions">Point predictions<a class="headerlink" href="#point-predictions" title="Permanent link">&para;</a></h2>
-<p>Point predictions represent a single value. See <a href="../Validation/#point-prediction-elements">here</a> for details. In this example we see a prediction of <code>2.1</code> for the unit "location1" and target "pct next week". Note that, like all predictions, the data type (in this case the float <code>2.1</code>) must match the target's data type. (In this case it does; "pct next week" is a <em>discrete</em> target.)</p>
-<pre><code>{"unit": "location1",
+<p>Point predictions represent a single value. See <a href="../Validation/#point-prediction-elements">here</a> for details. In this example we see a prediction of <code>2.1</code> for the unit "loc1" and target "pct next week". Note that, like all predictions, the data type (in this case the float <code>2.1</code>) must match the target's data type. (In this case it does; "pct next week" is a <em>discrete</em> target.)</p>
+<pre><code>{"unit": "loc1",
   "target": "pct next week",
   "class": "point",
   "prediction": {
@@ -856,8 +856,8 @@
 }
 </code></pre>
 <h2 id="named-distributions">Named distributions<a class="headerlink" href="#named-distributions" title="Permanent link">&para;</a></h2>
-<p>Named distributions represent distributions like <em>normal</em>, <em>log normal</em>, <em>gamma</em>, etc. See <a href="../Validation/#named-prediction-elements">here</a> for details. Here is an example in which a <em>normal</em> distribution ("norm" is the abbreviation) is specified for unit "location1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: <em>mean</em> ("param1") and <em>sd</em> ("param2"). "param3" is unused and not listed.</p>
-<pre><code>{"unit": "location1",
+<p>Named distributions represent distributions like <em>normal</em>, <em>log normal</em>, <em>gamma</em>, etc. See <a href="../Validation/#named-prediction-elements">here</a> for details. Here is an example in which a <em>normal</em> distribution ("norm" is the abbreviation) is specified for unit "loc1" and target "pct next week". Named predictions support up to three parameters (named "param1", "param2", and "param3") depending on the family. Here the normal distribution requires two parameters: <em>mean</em> ("param1") and <em>sd</em> ("param2"). "param3" is unused and not listed.</p>
+<pre><code>{"unit": "loc1",
   "target": "pct next week",
   "class": "named",
   "prediction": {
@@ -869,7 +869,7 @@
 </code></pre>
 <h2 id="bin-distributions">Bin distributions<a class="headerlink" href="#bin-distributions" title="Permanent link">&para;</a></h2>
 <p>Bin distributions represent binned distribution defined by inclusive lower bounds for each bin. See <a href="../Validation/#bin-prediction-elements">here</a> for details. Example:</p>
-<pre><code>{"unit": "location2",
+<pre><code>{"unit": "loc2",
   "target": "pct next week",
   "class": "bin",
   "prediction": {
@@ -880,7 +880,7 @@
 </code></pre>
 <h2 id="sample-distributions">Sample distributions<a class="headerlink" href="#sample-distributions" title="Permanent link">&para;</a></h2>
 <p>Sample distributions represent samples taken for the unit and target. Here's an example:</p>
-<pre><code>{"unit": "location3",
+<pre><code>{"unit": "loc3",
   "target": "pct next week",
   "class": "sample",
   "prediction": {
@@ -890,7 +890,7 @@
 </code></pre>
 <h2 id="quantile-distributions">Quantile distributions<a class="headerlink" href="#quantile-distributions" title="Permanent link">&para;</a></h2>
 <p>Quantile distributions represent quantiles of the predictive distribution. For example:</p>
-<pre><code>{"unit": "location2",
+<pre><code>{"unit": "loc2",
   "target": "pct next week",
   "class": "quantile",
   "prediction": {

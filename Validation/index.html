@@ -1186,7 +1186,7 @@
 <p>For clarity, we define specific terms that we will use below.</p>
 <ul>
 <li>Forecast: a collection of data specific to a project &gt; model &gt; timezero.</li>
-<li>Prediction: a group of a prediction elements(s) specific to a location and target.</li>
+<li>Prediction: a group of a prediction elements(s) specific to a unit and target.</li>
 <li>Prediction Element: data that define a unique single prediction, specific to the class of prediction it is.</li>
 <li>Prediction Class: data structures representing different types of predictions, e.g. "Point" and "Bin" (see <a href="../DataModel/">Data Model</a> for more detail)</li>
 <li>Target Type: the classification for a specific forecast target, one of "continuous", "discrete", "nominal", "binary" or "date" (see <a href="../Targets/">Targets</a> for more info)</li>
@@ -1378,20 +1378,20 @@ Binomial    | 0<=p<=1   |   n>0     |    -
 <p>Please see <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv">zoltar-ground-truth-example.csv</a> for an example of a valid specification of ground-truth values.</p>
 <h3 id="for-all-ground-truth-files">For all ground truth files<a class="headerlink" href="#for-all-ground-truth-files" title="Permanent link">&para;</a></h3>
 <ul>
-<li>The columns are <code>timezero</code>, <code>location</code>, <code>target</code>, and <code>value</code>.</li>
-<li>For every unique <code>target</code>-<code>location</code>-<code>timezero</code> combination, there should be either one or zero rows of truth data.</li>
-<li>Every value of <code>timezero</code>, <code>target</code> and <code>location</code> must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)</li>
+<li>The columns are <code>timezero</code>, <code>unit</code>, <code>target</code>, and <code>value</code>.</li>
+<li>For every unique <code>target</code>-<code>unit</code>-<code>timezero</code> combination, there should be either one or zero rows of truth data.</li>
+<li>Every value of <code>timezero</code>, <code>target</code> and <code>unit</code> must be in the list of valid values defined by the project configuration file. (Note: not every combination needs to exist for the file to be valid.)</li>
 <li>The <code>value</code> of the truth data cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter).</li>
 <li>The <code>value</code> of the truth data should be interpretable as the corresponding <code>data_type</code> of the specified target. E.g., for a row corresponding to a <code>date</code> target, the entry must contain a valid ISO-formatted date string.</li>
 </ul>
 <h3 id="range-check-for-ground-truth-data">Range-check for ground truth data<a class="headerlink" href="#range-check-for-ground-truth-data" title="Permanent link">&para;</a></h3>
 <p>The following test can be applied to any target with a <code>range</code>. This will always apply to <code>binary</code>, <code>nominal</code>, and <code>date</code> targets, as these targets are required to have sets of valid values specified as part of the target definition. If the <code>range</code> parameter is specified for a <code>continuous</code> or <code>discrete</code> target, then the following test will be applied to that target as well.</p>
 <p>For <code>binary</code> targets:
- - The entry in the <code>value</code> column for a specific <code>target</code>-<code>location</code>-<code>timezero</code> combination must be either <code>true</code> or <code>false</code>.</p>
+ - The entry in the <code>value</code> column for a specific <code>target</code>-<code>unit</code>-<code>timezero</code> combination must be either <code>true</code> or <code>false</code>.</p>
 <p>For <code>discrete</code> and <code>continuous</code> targets (if <code>range</code> is specified):
- - The entry in the <code>value</code> column for a specific <code>target</code>-<code>location</code>-<code>timezero</code> combination must be contained within the <code>range</code> of valid values for the target. If <code>cats</code> is specified but <code>range</code> is not, then there is an implicit range for the ground truth value, and that is between min(<code>cats</code>) and \infty.</p>
+ - The entry in the <code>value</code> column for a specific <code>target</code>-<code>unit</code>-<code>timezero</code> combination must be contained within the <code>range</code> of valid values for the target. If <code>cats</code> is specified but <code>range</code> is not, then there is an implicit range for the ground truth value, and that is between min(<code>cats</code>) and \infty.</p>
 <p>For <code>nominal</code> and <code>date</code> target_types:
- - The entry in the <code>value</code> column for a specific <code>target</code>-<code>location</code>-<code>timezero</code> combination must be contained within the set of valid <code>cats</code> for the target, as defined by the project config file.</p>
+ - The entry in the <code>value</code> column for a specific <code>target</code>-<code>unit</code>-<code>timezero</code> combination must be contained within the set of valid <code>cats</code> for the target, as defined by the project config file.</p>
                 
                   
                 

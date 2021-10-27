@@ -869,9 +869,10 @@
 <li><code>visualization_y_label</code>: "" Y axis, can be any text</li>
 </ul>
 <p>Here are the three list objects' formats:</p>
-<p><strong>"units"</strong>: a list of objects containing only one field:</p>
+<p><strong>"units"</strong>: a list of objects containing two fields:</p>
 <ul>
 <li><code>name</code>: The name of the unit.</li>
+<li><code>abbreviation</code>: The unit's abbreviation.</li>
 </ul>
 <p><strong>"targets"</strong>: a list of the project's targets. Please see the <a href="../Targets/">Targets.md</a> file for a detailed description of target parameters and which are required. Here are all possible parameters that can be passed in a project configuration file:</p>
 <ul>
@@ -904,7 +905,7 @@
 <p>For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example. The file contains a top-level object with two keys: <code>"meta"</code> and <code>"predictions"</code>. The <code>meta</code> section is unused for uploads, and for downloads contains various information about the forecast in the repository in the <code>"forecast"</code> field) plus lists of the project's <code>"units"</code> and <code>"targets"</code>.</p>
 <p>The <code>"predictions"</code> list contains objects for each prediction, and each object contains the following four keys:</p>
 <ul>
-<li><code>"location"</code>: name of the Location.</li>
+<li><code>"unit"</code>: name of the Unit.</li>
 <li><code>"target"</code>: name of the Target.</li>
 <li><code>"class"</code>: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : <code>bin</code>, <code>named</code>, <code>point</code>, and <code>sample</code>.</li>
 <li>
