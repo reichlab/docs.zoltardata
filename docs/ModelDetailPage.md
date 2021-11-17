@@ -16,7 +16,7 @@ At the top of the page is a table showing information related to the model:
 - _Team name_: The name of the team that developed the model. This is not used directly by Zoltar.
 - _Description_: Prose provided by model owner. It should include information on reproducing the model's results.
 - _Contributors_: List of names as specified by the model owner.
-- _License_: License ""
+- _License_: License "". This list is based on [this file](https://github.com/reichlab/covid19-forecast-hub/blob/master/code/validation/accepted-licenses.csv).
 - _Notes_: ""
 - _Citation_: ""
 - _Methods_: ""
