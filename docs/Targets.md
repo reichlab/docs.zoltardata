@@ -1,6 +1,6 @@
 # Forecast Targets in Zoltar
 
-Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead values and a prediction of when the time series will reach its maximum in a given period of time. When a project is created, the project owner specifies which targets should be part of any submitted forecast. As we will see below, targets have specific properties, and there are several different types of targets that determine which properties and features pertain to a particular target.
+Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead values and a prediction of when the time series will reach its maximum in a given period of time. When a project is created, the project owner specifies which targets should be part of any submitted forecast. As we will see below, targets have specific properties, and there are several types of targets that determine which properties and features pertain to a particular target.
 
 
 ## Target types
@@ -29,13 +29,13 @@ When created, all targets have a set of parameters that must be defined. Each ty
 
 Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if `is_step_ahead` is `true`, '-' = disallowed, '~' = optional.
 
-target type   | type | name | description | is_step_ahead |  step_ahead_increment | unit | range | cats 
-------------- | ---- | ---- | ----------- | ------------- | ----------------------| ---- | ----- | ---- 
-continuous    |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   
-discrete      |  x   |  x   |     x       |      x        |          (x)          |  x   |   ~   |  ~   
-nominal       |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  x   
-binary        |  x   |  x   |     x       |      x        |          (x)          |  -   |   -   |  -   
-date          |  x   |  x   |     x       |      x        |          (x)          |  x   |   -   |  x   
+target type | type | name | description | outcome_variable | is_step_ahead |  numeric_horizon  |  RDT  | range | cats 
+----------- | ---- | ---- | ----------- | ---------------- | ------------- | ----------------- |  ---- | ----- | ---- 
+continuous  |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   ~   |  ~   
+discrete    |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   ~   |  ~   
+nominal     |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   -   |  x   
+binary      |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   -   |  -   
+date        |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   -   |  x   
 
 ### Required parameters for all targets
 
@@ -43,11 +43,23 @@ date          |  x   |  x   |     x       |      x        |          (x)        
 - *description*: A verbose description of what the target is. (The number of characters is not limited.)
 - *type*: One of the five target types named above, e.g., `continuous`.
 - *is_step_ahead*: `true` if the target is one of a sequence of targets that predict values at different points in the future.
-- *step_ahead_increment*: An integer, indicating the forecast horizon represented by this target. It is required if `is_step_ahead` is `true`. 
+- *numeric_horizon*: An integer indicating the forecast horizon represented by this target. It is required if `is_step_ahead` is `true`. 
+- *reference date type* (RDT): An integer that indicates how this target calculates `reference_date` and `target_end_date` from a timezero. It is required if `is_step_ahead` is `true`. The allowed values are hard-coded (see the [valid reference date types](Targets.md#valid-reference-date-types) table below) and will be used for an upcoming visualization feature (more documentation to come then).
+
+### valid reference date types
+
+Following are the allowed reference date types. `id` is the integer value that's actually stored in the database, `name` is the "official" unique name used by [project configuration files](FileFormats.md#project-creation-configuration-json), and `abbreviation` is used to calculate target group names.
+
+id  | name                            | abbreviation 
+--- | ------------------------------- | ------------ 
+0   | DAY                             | day          
+1   | MMWR_WEEK_LAST_TIMEZERO_MONDAY  | week         
+2   | MMWR_WEEK_LAST_TIMEZERO_TUESDAY | week         
+3   | BIWEEK                          | biweek       
+
 
 ### Parameters specific to continuous targets
 
-- *unit*: (Required) E.g., "percent" or "week".
 - *range*: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is not specified than range is assumed to be (-infty, infty).
 - *cats*: (Optional, but uploaded `Bin` prediction types will be rejected unless these are specified) an ordered set of numeric values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cats` is specified as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty). Additionally, if `range` had been specified as [0, 100] in addition to the above `cats`, then the final bin would be [2.2, 100].
   <!-- NGR: is upper bound always specified as infinity?-->
@@ -56,7 +68,6 @@ If both `range` and `cats` are specified, then min(`cats`) must equal the lower 
 
 ### Parameters  specific to discrete targets
 
-- *unit*: (Required) E.g., "cases".
 - *range*: (Optional, but uploaded `Bin` prediction types will be rejected unless `range` is specified) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not specified than range is assumed to be (-infty, infty).
 - *cats*: (Optional, and can only be specified if `range` is also specified) an ordered set of integer values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if `cats` is specified as [0, 10, 20, 30, 40, 50] and `range` is specified as [0, 100] then the implied set of valid categories would be [0,10), [10, 20), [20, 30), [30, 40), [40, 50) and [50, 100].
 
@@ -72,7 +83,6 @@ None.
 
 ### Parameters  specific to date targets
 
-- *unit*: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO `YYYY-MM-DD` date format. Note: to map dates to biweeks, we use the definitions as presented in [Reich et al (2017)](https://doi.org/10.1371/journal.pntd.0004761.s001).
 - *cats*: (Required) a list of dates in `YYYY-MM-DD` format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  -->
 
 <!-- 
@@ -82,8 +92,6 @@ Date targets are represented by the `dates` data type in the database. On the on
 All input data into date targets must be unambiguously readable in "YYYY-MM-DD" or "YYYYMMDD" format. 
 
 Every date target must have a set of dates (also in YYYYMMDD format) that are valid. For example, a "peak week" target might designate only a set of Sundays as valid dates. This would in essence force the dates/values to be a set of pre-specified dates. In the target description the project owner could specify that, external to Zoltar, the given set of dates would be translated into and represented as, say, MMWR weeks using the `MMWRweek` R package, or week-in-year as in `format(date, "%W")` (i.e., using strptime formatting rules).
-
-Based off of the unit in the target definition, every date would use a fixed unit conversion for point forecast scoring. For example, if `unit=="week"` then point forecast scores would be represented by "week" units. So, the truth for a given timezero-datetarget might be truth="2019-12-15" and a point forecast might be pred="2020-01-05" (both values chosen deliberately to be Sundays). Then we could operate on these numbers as "weeks" and determine the best, standardized way to produce that the difference = truth - pred = 3. 
  -->
 
 

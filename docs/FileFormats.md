@@ -32,9 +32,10 @@ Here are the three list objects' formats:
 - `name`: string
 - `description`: string
 - `type`: string - must be one of the following: `continuous`, `discrete`, `nominal`, `binary`, or `date`
+- `outcome_variable`: string
 - `is_step_ahead`: boolean
-- `step_ahead_increment`: integer - negative, zero, or positive
-- `unit`: string
+- `numeric_horizon`: integer - negative, zero, or positive
+- `reference_date_type`: one of the names listed in [valid reference date types](Targets.md#valid-reference-date-types)
 - `range`: an array (list) of two numbers
 - `cats`: an array (list) of one or more numbers or strings (which depends on the target's type's data type)
 - `dates`: an array (list) of one or more strings in the `YYYY-MM-DD` format
