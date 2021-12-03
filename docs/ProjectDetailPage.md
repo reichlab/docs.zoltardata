@@ -45,7 +45,7 @@ The table includes the following columns:
 - _Target group_: This column is either a target's name, or a derived name from a group of related targets (step-ahead ones whose step ahead increment is in the name).
 - _# Targets_: How many targets are in the group, or _1_ if not a group.
 - _Type_: The target's [type](Targets.md#target-types).
-- _Unit_: E.g., "percent" or "week". Unit is used when previewing data, and when downloading it. (Be aware that it can be confusing having both **unit** objects as above along with a specific target's unit.)
+- _Outcome Variable_: Human-readable string naming the target variable, e.g., "Incident cases".
 - _Step Ahead?_: Shows two pieces of information: 1) Whether the target is a "step ahead" one, and (if so) 2) what the "step ahead increment" is. (Step ahead targets are used to predict values in the future, and are used by some analysis tools.)
 - _Example Target_: A specific target's name if a group, or the one target's name otherwise.
 

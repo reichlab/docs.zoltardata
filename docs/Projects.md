@@ -63,7 +63,7 @@ The diff function categorizes each change according to the type of change and wh
 - _OBJ_REMOVED_: "" will be removed "" from a project. Removing the target "pct next week", say. 
 - _FIELD_EDITED_: An item's field will be set to a new value. For example, setting the "data_version_date" of the project's time zero named "2011-10-09".
 - _FIELD_ADDED_: Set an item's field that was not set before. Adding a "season_name" to the time zero "2011-10-16", say.
-- _FIELD_REMOVED_: Remove an item's field, such as the "step_ahead_increment" of the target "cases next week"." 
+- _FIELD_REMOVED_: Remove an item's field, such as the "numeric_horizon" of the target "cases next week"." 
 
 As implied above, there are four types of item that can be changed: The _project_ itself or one of its _units_, _targets_, or _time zeros_.
 
