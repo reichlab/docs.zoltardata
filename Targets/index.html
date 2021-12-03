@@ -577,6 +577,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#valid-reference-date-types" class="md-nav__link">
+    valid reference date types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parameters-specific-to-continuous-targets" class="md-nav__link">
     Parameters specific to continuous targets
   </a>
@@ -845,6 +852,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#valid-reference-date-types" class="md-nav__link">
+    valid reference date types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#parameters-specific-to-continuous-targets" class="md-nav__link">
     Parameters specific to continuous targets
   </a>
@@ -909,7 +923,7 @@
                 
                 
                 <h1 id="forecast-targets-in-zoltar">Forecast Targets in Zoltar<a class="headerlink" href="#forecast-targets-in-zoltar" title="Permanent link">&para;</a></h1>
-<p>Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead values and a prediction of when the time series will reach its maximum in a given period of time. When a project is created, the project owner specifies which targets should be part of any submitted forecast. As we will see below, targets have specific properties, and there are several different types of targets that determine which properties and features pertain to a particular target.</p>
+<p>Targets are the fundamental data structure of a forecast. In Zoltar, a single forecast made by a model may give predictions for multiple targets. For example, a single forecast might include a forecast of 1- and 2-week-ahead values and a prediction of when the time series will reach its maximum in a given period of time. When a project is created, the project owner specifies which targets should be part of any submitted forecast. As we will see below, targets have specific properties, and there are several types of targets that determine which properties and features pertain to a particular target.</p>
 <h2 id="target-types">Target types<a class="headerlink" href="#target-types" title="Permanent link">&para;</a></h2>
 <p><em>continuous</em>: A quantitative target whose range encapsulates a section of the real number line. </p>
 <blockquote>
@@ -942,9 +956,10 @@
 <th>type</th>
 <th>name</th>
 <th>description</th>
+<th>outcome_variable</th>
 <th>is_step_ahead</th>
-<th>step_ahead_increment</th>
-<th>unit</th>
+<th>numeric_horizon</th>
+<th>RDT</th>
 <th>range</th>
 <th>cats</th>
 </tr>
@@ -956,8 +971,9 @@
 <td>x</td>
 <td>x</td>
 <td>x</td>
-<td>(x)</td>
 <td>x</td>
+<td>(x)</td>
+<td>(x)</td>
 <td>~</td>
 <td>~</td>
 </tr>
@@ -967,8 +983,9 @@
 <td>x</td>
 <td>x</td>
 <td>x</td>
-<td>(x)</td>
 <td>x</td>
+<td>(x)</td>
+<td>(x)</td>
 <td>~</td>
 <td>~</td>
 </tr>
@@ -978,8 +995,9 @@
 <td>x</td>
 <td>x</td>
 <td>x</td>
+<td>x</td>
 <td>(x)</td>
-<td>-</td>
+<td>(x)</td>
 <td>-</td>
 <td>x</td>
 </tr>
@@ -989,8 +1007,9 @@
 <td>x</td>
 <td>x</td>
 <td>x</td>
+<td>x</td>
 <td>(x)</td>
-<td>-</td>
+<td>(x)</td>
 <td>-</td>
 <td>-</td>
 </tr>
@@ -1000,8 +1019,9 @@
 <td>x</td>
 <td>x</td>
 <td>x</td>
-<td>(x)</td>
 <td>x</td>
+<td>(x)</td>
+<td>(x)</td>
 <td>-</td>
 <td>x</td>
 </tr>
@@ -1013,11 +1033,44 @@
 <li><em>description</em>: A verbose description of what the target is. (The number of characters is not limited.)</li>
 <li><em>type</em>: One of the five target types named above, e.g., <code>continuous</code>.</li>
 <li><em>is_step_ahead</em>: <code>true</code> if the target is one of a sequence of targets that predict values at different points in the future.</li>
-<li><em>step_ahead_increment</em>: An integer, indicating the forecast horizon represented by this target. It is required if <code>is_step_ahead</code> is <code>true</code>. </li>
+<li><em>numeric_horizon</em>: An integer indicating the forecast horizon represented by this target. It is required if <code>is_step_ahead</code> is <code>true</code>. </li>
+<li><em>reference date type</em> (RDT): An integer that indicates how this target calculates <code>reference_date</code> and <code>target_end_date</code> from a timezero. It is required if <code>is_step_ahead</code> is <code>true</code>. The allowed values are hard-coded (see the <a href="./#valid-reference-date-types">valid reference date types</a> table below) and will be used for an upcoming visualization feature (more documentation to come then).</li>
 </ul>
+<h3 id="valid-reference-date-types">valid reference date types<a class="headerlink" href="#valid-reference-date-types" title="Permanent link">&para;</a></h3>
+<p>Following are the allowed reference date types. <code>id</code> is the integer value that's actually stored in the database, <code>name</code> is the "official" unique name used by <a href="../FileFormats/#project-creation-configuration-json">project configuration files</a>, and <code>abbreviation</code> is used to calculate target group names.</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+<th>abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>DAY</td>
+<td>day</td>
+</tr>
+<tr>
+<td>1</td>
+<td>MMWR_WEEK_LAST_TIMEZERO_MONDAY</td>
+<td>week</td>
+</tr>
+<tr>
+<td>2</td>
+<td>MMWR_WEEK_LAST_TIMEZERO_TUESDAY</td>
+<td>week</td>
+</tr>
+<tr>
+<td>3</td>
+<td>BIWEEK</td>
+<td>biweek</td>
+</tr>
+</tbody>
+</table>
 <h3 id="parameters-specific-to-continuous-targets">Parameters specific to continuous targets<a class="headerlink" href="#parameters-specific-to-continuous-targets" title="Permanent link">&para;</a></h3>
 <ul>
-<li><em>unit</em>: (Required) E.g., "percent" or "week".</li>
 <li><em>range</em>: (Optional) a numeric vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on the lower bound and open on the upper bound, e.g. [a, b). If range is not specified than range is assumed to be (-infty, infty).</li>
 <li><em>cats</em>: (Optional, but uploaded <code>Bin</code> prediction types will be rejected unless these are specified) an ordered set of numeric values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if <code>cats</code> is specified as [0, 1.1, 2.2] then the implied set of valid intervals would be [0,1.1), [1.1,2.2) and [2.2, \infty). Additionally, if <code>range</code> had been specified as [0, 100] in addition to the above <code>cats</code>, then the final bin would be [2.2, 100].
   <!-- NGR: is upper bound always specified as infinity?--></li>
@@ -1025,7 +1078,6 @@
 <p>If both <code>range</code> and <code>cats</code> are specified, then min(<code>cats</code>) must equal the lower bound and max(<code>cats</code>) must be less than the upper bound of <code>range</code>.</p>
 <h3 id="parameters-specific-to-discrete-targets">Parameters  specific to discrete targets<a class="headerlink" href="#parameters-specific-to-discrete-targets" title="Permanent link">&para;</a></h3>
 <ul>
-<li><em>unit</em>: (Required) E.g., "cases".</li>
 <li><em>range</em>: (Optional, but uploaded <code>Bin</code> prediction types will be rejected unless <code>range</code> is specified) an integer vector of length 2 specifying a lower and upper bound of a range for the continuous target. The range is assumed to be inclusive on both the lower and upper bounds, e.g. [a, b]. If range is not specified than range is assumed to be (-infty, infty).</li>
 <li><em>cats</em>: (Optional, and can only be specified if <code>range</code> is also specified) an ordered set of integer values indicating the inclusive lower-bounds for the bins of binned distributions. E.g. if <code>cats</code> is specified as [0, 10, 20, 30, 40, 50] and <code>range</code> is specified as [0, 100] then the implied set of valid categories would be [0,10), [10, 20), [20, 30), [30, 40), [40, 50) and [50, 100].</li>
 </ul>
@@ -1038,7 +1090,6 @@
 <p>None.</p>
 <h3 id="parameters-specific-to-date-targets">Parameters  specific to date targets<a class="headerlink" href="#parameters-specific-to-date-targets" title="Permanent link">&para;</a></h3>
 <ul>
-<li><em>unit</em>: (Required) The unit parameter from the set of parameters required for all targets has a special meaning and use for date targets. It is required to be one of "month", "week", "biweek", or "day". This parameter specifies the units of the date target and how certain calculations are performed for dates. All inputs for date targets are required to be in the standard ISO <code>YYYY-MM-DD</code> date format. Note: to map dates to biweeks, we use the definitions as presented in <a href="https://doi.org/10.1371/journal.pntd.0004761.s001">Reich et al (2017)</a>.</li>
 <li><em>cats</em>: (Required) a list of dates in <code>YYYY-MM-DD</code> format. These are the only dates that will be considered as valid input for the target. <!-- NGR: do we want to consider encoding the info about which dates are valid for particular ranges of timezeroes? I.e. embed the idea of "seasons" here? I say no, for starters?  --></li>
 </ul>
 <!-- 
@@ -1048,8 +1099,6 @@ Date targets are represented by the `dates` data type in the database. On the on
 All input data into date targets must be unambiguously readable in "YYYY-MM-DD" or "YYYYMMDD" format. 
 
 Every date target must have a set of dates (also in YYYYMMDD format) that are valid. For example, a "peak week" target might designate only a set of Sundays as valid dates. This would in essence force the dates/values to be a set of pre-specified dates. In the target description the project owner could specify that, external to Zoltar, the given set of dates would be translated into and represented as, say, MMWR weeks using the `MMWRweek` R package, or week-in-year as in `format(date, "%W")` (i.e., using strptime formatting rules).
-
-Based off of the unit in the target definition, every date would use a fixed unit conversion for point forecast scoring. For example, if `unit=="week"` then point forecast scores would be represented by "week" units. So, the truth for a given timezero-datetarget might be truth="2019-12-15" and a point forecast might be pred="2020-01-05" (both values chosen deliberately to be Sundays). Then we could operate on these numbers as "weeks" and determine the best, standardized way to produce that the difference = truth - pred = 3. 
  -->
 
 <h2 id="valid-prediction-types-by-target-type">Valid prediction types by target type<a class="headerlink" href="#valid-prediction-types-by-target-type" title="Permanent link">&para;</a></h2>

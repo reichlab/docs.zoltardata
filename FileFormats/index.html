@@ -879,9 +879,10 @@
 <li><code>name</code>: string</li>
 <li><code>description</code>: string</li>
 <li><code>type</code>: string - must be one of the following: <code>continuous</code>, <code>discrete</code>, <code>nominal</code>, <code>binary</code>, or <code>date</code></li>
+<li><code>outcome_variable</code>: string</li>
 <li><code>is_step_ahead</code>: boolean</li>
-<li><code>step_ahead_increment</code>: integer - negative, zero, or positive</li>
-<li><code>unit</code>: string</li>
+<li><code>numeric_horizon</code>: integer - negative, zero, or positive</li>
+<li><code>reference_date_type</code>: one of the names listed in <a href="../Targets/#valid-reference-date-types">valid reference date types</a></li>
 <li><code>range</code>: an array (list) of two numbers</li>
 <li><code>cats</code>: an array (list) of one or more numbers or strings (which depends on the target's type's data type)</li>
 <li><code>dates</code>: an array (list) of one or more strings in the <code>YYYY-MM-DD</code> format</li>
