@@ -54,7 +54,7 @@ Here are the three list objects' formats:
 Every project in Zoltar can have ground truth values associated with targets. Users can access them as CSV as described in [Truth](Truth.md). An example truths file is [zoltar-ground-truth-example.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv). The file has four columns: `timezero`, `unit`, `target`, `value`:
 
 - `timezero`: date the truth applies to, formatted as `yyyy-mm-dd`
-- `unit`: the unit's name
+- `unit`: the unit's abbreviation
 - `target`: target name
 - `value`: truth value, formatted according to the target's type. date values are formatted `yyyy-mm-dd` and booleans as `true` or `false`
  
@@ -65,7 +65,7 @@ For prediction input and output we use a JSON file format. This format is strong
 
 The `"predictions"` list contains objects for each prediction, and each object contains the following four keys:
 
-- `"unit"`: name of the Unit.
+- `"unit"`: abbreviation of the Unit.
 - `"target"`: name of the Target.
 - `"class"`: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : `bin`, `named`, `point`, and `sample`.
 - `"prediction"`: a class-specific object containing the prediction data itself. The format varies according to class. Here is a summary (see [Data model](DataModel.md) for details and examples):
