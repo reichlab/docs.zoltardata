@@ -910,7 +910,7 @@
 <p>Every project in Zoltar can have ground truth values associated with targets. Users can access them as CSV as described in <a href="../Truth/">Truth</a>. An example truths file is <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-ground-truth-example.csv">zoltar-ground-truth-example.csv</a>. The file has four columns: <code>timezero</code>, <code>unit</code>, <code>target</code>, <code>value</code>:</p>
 <ul>
 <li><code>timezero</code>: date the truth applies to, formatted as <code>yyyy-mm-dd</code></li>
-<li><code>unit</code>: the unit's name</li>
+<li><code>unit</code>: the unit's abbreviation</li>
 <li><code>target</code>: target name</li>
 <li><code>value</code>: truth value, formatted according to the target's type. date values are formatted <code>yyyy-mm-dd</code> and booleans as <code>true</code> or <code>false</code></li>
 </ul>
@@ -918,7 +918,7 @@
 <p>For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example. The file contains a top-level object with two keys: <code>"meta"</code> and <code>"predictions"</code>. The <code>meta</code> section is unused for uploads, and for downloads contains various information about the forecast in the repository in the <code>"forecast"</code> field) plus lists of the project's <code>"units"</code> and <code>"targets"</code>.</p>
 <p>The <code>"predictions"</code> list contains objects for each prediction, and each object contains the following four keys:</p>
 <ul>
-<li><code>"unit"</code>: name of the Unit.</li>
+<li><code>"unit"</code>: abbreviation of the Unit.</li>
 <li><code>"target"</code>: name of the Target.</li>
 <li><code>"class"</code>: the type of prediction this is. It is an abbreviation of the corresponding Prediction subclass - the names are : <code>bin</code>, <code>named</code>, <code>point</code>, and <code>sample</code>.</li>
 <li>
