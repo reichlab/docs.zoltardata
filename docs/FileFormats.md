@@ -13,10 +13,7 @@ Zoltar uses a number of formats for representing truth data, forecast data, conf
 
 As documented in [Projects](Projects.md#to-create-a-project-via-a-configuration-file), as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: [zoltar-project-config.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-project-config.json).
 
-Project configuration files contain eight metadata keys (`"name`, `"is_public"`, `"description"`, `"home_url"`, `"logo_url"`, `"core_data"`, `"time_interval_type"`, `"visualization_y_label"`), plus three keys that are lists of objects (`"units"`, `"targets"`, and `"timezeros"`). The metadata values' meanings are self-evident except for these two:
-
-- `time_interval_type`: Used by the D3 component to label the X axis, is either `Week`, `Biweek`, or `Month`
-- `visualization_y_label`: "" Y axis, can be any text
+Project configuration files contain six metadata keys (`"name`, `"is_public"`, `"description"`, `"home_url"`, `"logo_url"`, `"core_data"`), plus three keys that are lists of objects (`"units"`, `"targets"`, and `"timezeros"`).
 
 
 Here are the three list objects' formats:
