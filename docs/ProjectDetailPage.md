@@ -14,7 +14,6 @@ At the top of the page is a table showing this information related to the projec
 - _Summary_: The same summary as on the home page: The number of models and forecasts in the project. Note that this may be an estimate.
 - _Owner_: The user that has full control of the project, and includes authorization to view, edit, and delete anything (models, forecasts, etc.) The owner is the user that created the project (which is done on the home page).
 - _Model owners_: A list of users who can view the project (applicable only if the project is private), and who can create and delete models, and upload and delete forecasts. The project owner specifies model owners when she creates or edits the project.
-- _Time Interval Type_: Tells the [D3 Foresight](https://github.com/reichlab/d3-foresight) component what its x-axis label should be. Choices: Week, Biweek, or Month.
 - _Visibility_: A project can be either _public_ or _private_, which controls project visibility, including accessing data. Project owners set this when they create the project. Visibility applies to list and detail pages, along with API endpoints. Public projects are viewable by anyone, users and anonymous visitors included. Private projects can only be viewed by project owners and model owners. This means that in order to grant a user access to a private account, the project owner must add her to the project's model owners list, even if that user will not be managing any models.
 - _Description_: Prose provided by project owner. It should cover these topics:
     - Information about the "real-time-ness" of data, i.e., revised/unrevised.
@@ -23,7 +22,10 @@ At the top of the page is a table showing this information related to the projec
 - _Home_: A link to the project's home page, which might include details about any competitions, source code, team members, included models, etc.
 - _Core data_: A link to a page that contains data (e.g., CSV files) used to train models. For model competitions, it should include all data sets made available to everyone in the challenge, including supplemental data like Google queries or weather data. Ideally Zoltar users interested in re-running a project's models have all they need in the home and core data directories. However, they are not used directly by Zoltar.
 - _Truth data_: A data file containing target ground truth that the project owner uploads. This data contains observed target values for time zeros and units in the project, and is a project-agnostic way to capture actual values that models predicted for. It is used to extract the 'actual' data used in the D3 component's TimeChart. See [Truth](Truth.md) for details.
-- _Features_: Links to various pages, including [project explorer](ProjectExplorerPage.md), [forecasts summary](ForecastsSummaryPage.md) and [download forecasts](Forecasts.md#download-multiple-forecasts).
+- _Visualization_: Takes you to the [Forecasts visualization](ForecastsVisualizationPage.md) page.
+- _Summary_: "" [forecasts summary](ForecastsSummaryPage.md).
+- _Explorer_: "" [project explorer](ProjectExplorerPage.md).
+- _Download_: "" [download forecasts](Forecasts.md#download-multiple-forecasts).
 
 
 ## Forecast models

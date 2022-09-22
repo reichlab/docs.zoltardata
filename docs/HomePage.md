@@ -5,7 +5,7 @@ The Zoltar home page [zoltardata.com](https://www.zoltardata.com/) is a simple w
 
 ## Navigation header
 
-At the page's top is a black navigation header that's shown on all pages. It contains three icons: Home page (the Zoltar crystal ball in the upper left), and on the right a user dropdown menu and a help icon (question mark) on the far right. The dropdown menu's appearance depends on whether a user is logged in. If you are not logged in then "Sign in" is shown as in the screen shot. Clicking "Sign in" takes you to a typical login page where you specify your account's user name and password. (To obtain an account, please [contact us](index.md#contact).) If you are logged in then its text is the user name and the menu items are links to the user profile page, and a logout item. Currently, the page looks like this:
+At the page's top is a black navigation header that's shown on all pages. It contains three icons: Home page (the Zoltar crystal ball in the upper left), and on the right a user dropdown menu and a help icon (question mark) on the far right. The dropdown menu's appearance depends on whether a user is logged in. If you are not logged in then "Sign in" is shown as in the screenshot. Clicking "Sign in" takes you to a typical login page where you specify your account's user name and password. (To obtain an account, please [contact us](index.md#contact).) If you are logged in then its text is the user name and the menu items are links to the user profile page, and a logout item. Currently, the page looks like this:
 
 ![Zoltar Home page](img/home-page.png "Zoltar Home page")
 

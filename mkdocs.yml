@@ -14,6 +14,8 @@ nav:
       - 'Project detail page': 'ProjectDetailPage.md'
       - 'Project explorer page': 'ProjectExplorerPage.md'
       - 'Forecasts summary page': 'ForecastsSummaryPage.md'
+      - 'Forecasts visualization page': 'ForecastsVisualizationPage.md'
+      - 'Visualization options page': 'VisualizationOptionsPage.md'
       - 'Model detail page': 'ModelDetailPage.md'
       - 'Forecast detail page': 'ForecastDetailPage.md'
   - User Guide:

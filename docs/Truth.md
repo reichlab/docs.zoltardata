@@ -14,7 +14,7 @@ Because truth is stored as Zoltar forecasts, truth versioning is supported: each
 
 Truth data is specified as a CSV file as documented in [Truth data format](FileFormats.md#truth-data-format-csv), and each project is responsible for generating the CSV file for their particular set of [time zeros](Concepts.md), [units](Concepts.md) and [targets](Concepts.md). You can tell whether truth has been uploaded to a project by looking at the **Truth Data** row in the [Project details table](ProjectDetailPage.md#project-details-table) section of the [project detail page](ProjectDetailPage.md). It will either be a link with the truth data file name (which means truth is present) and information about the latest version uploaded (AKA a "batch" described above) in parentheses, or a _(No truth data)_ link if not truth has been loaded. Clicking on the link takes you to the Truth detail page documented in [Truth detail page](#view-truth-details) below where you can browse, upload, and download truth, depending on your permissions.
 
-Here's a screen shot showing a project where truth has been uploaded (circled in red). You can see that two truth file versions have been loaded, resulting in two batches of oracle forecasts. The issue date of the latest batch is shown:
+Here's a screenshot showing a project where truth has been uploaded (circled in red). You can see that two truth file versions have been loaded, resulting in two batches of oracle forecasts. The issue date of the latest batch is shown:
 
 ![Truth uploaded](img/project-detail-page-truth-uploaded.png "Truth uploaded")
 

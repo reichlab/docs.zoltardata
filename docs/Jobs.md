@@ -58,6 +58,6 @@ Here is a job whose status is FAILED, with a failure message:
 
 Each job's detail page has a "Download CSV" button at the bottom. The button is enabled if the job has corresponding data, and disabled otherwise with the message _(No job data)_ next to the button.
 
-The first screen shot above shows a job that has data that can be downloaded. Here's a job with no data available:
+The first screenshot above shows a job that has data that can be downloaded. Here's a job with no data available:
 
 ![Job detail page - no data](img/job-success-no-data.png "Job detail page - no data")

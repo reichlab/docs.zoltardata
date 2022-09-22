@@ -68,7 +68,7 @@ To download forecast data via the web UI:
  
  1. Go to the [project detail page](ProjectDetailPage.md) whose models contain the forecasts. 
  1. Click the "Download" button to the right of "Forecasts" in the Features section at the page's top.
- 1. On the "Edit Forecast Query" page that shows, enter your query and then click "Submit" (see the screen shot below).
+ 1. On the "Edit Forecast Query" page that shows, enter your query and then click "Submit" (see the screenshot below).
  1. Poll the resulting Job until it succeeds (see [Check a job's status](Jobs.md#check-a-jobs-status)).
  1. Download the job's data (see [Download a job's data](Jobs.md#download-a-jobs-data)).
 

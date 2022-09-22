@@ -5,7 +5,7 @@ _Projects_ are the central organizing concept in Zoltar. They define the _units_
 
 ## Create a project
 
-There are two ways to create a project: by editing a form or by uploading a JSON project configuration file. Using a form is a quick way to make a project to get a team started, but is very limited in what can be specified, mainly the information in the **Details table** as described in the link above (name, visibility, time interval type, description, home URL, core data, logo url, and model owners). The second method - using a configuration file - is preferred as it allows specifying all aspects of a project. Both methods are accessed via the green "New" dropdown button at the top of the [Projects page](HomePage.md#projects-page).
+There are two ways to create a project: by editing a form or by uploading a JSON project configuration file. Using a form is a quick way to make a project to get a team started, but is very limited in what can be specified, mainly the information in the **Details table** as described in the link above (name, visibility, description, home URL, core data, logo url, and model owners). The second method - using a configuration file - is preferred as it allows specifying all aspects of a project. Both methods are accessed via the green "New" dropdown button at the top of the [Projects page](HomePage.md#projects-page).
 
 ### To create a project via a form:
 
@@ -57,7 +57,7 @@ Here's an example:
 ![Project changes confirmation](img/confirm-project-changes.png "Project changes confirmation page")
 
 
-The diff function categorizes each change according to the type of change and what item it applies to. For example, the first change under **All changes** in the above screen shot is the editing of the project's "name" field. Another change is the third one in that list, which is the removal of the _unit_ abbreviated "loc3". Here are all the kinds of change that might be identified:
+The diff function categorizes each change according to the type of change and what item it applies to. For example, the first change under **All changes** in the above screenshot is the editing of the project's "name" field. Another change is the third one in that list, which is the removal of the _unit_ abbreviated "loc3". Here are all the kinds of change that might be identified:
 
 - _OBJ_ADDED_: An item of a particular type will be added to the project. For example, adding a new unit abbreviated "loc4".
 - _OBJ_REMOVED_: "" will be removed "" from a project. Removing the target "pct next week", say. 
