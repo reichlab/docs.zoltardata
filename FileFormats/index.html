@@ -291,6 +291,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../ForecastsVisualizationPage/" title="Forecasts visualization page" class="md-nav__link">
+      Forecasts visualization page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../VisualizationOptionsPage/" title="Visualization options page" class="md-nav__link">
+      Visualization options page
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../ModelDetailPage/" title="Model detail page" class="md-nav__link">
       Model detail page
     </a>
@@ -774,6 +798,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_4/" title="Zoltar 4.4 Release Notes" class="md-nav__link">
+      Zoltar 4.4 Release Notes
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -875,11 +911,7 @@
 </ul>
 <h2 id="project-creation-configuration-json">Project creation configuration (JSON)<a class="headerlink" href="#project-creation-configuration-json" title="Permanent link">&para;</a></h2>
 <p>As documented in <a href="../Projects/#to-create-a-project-via-a-configuration-file">Projects</a>, as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-project-config.json">zoltar-project-config.json</a>.</p>
-<p>Project configuration files contain eight metadata keys (<code>"name</code>, <code>"is_public"</code>, <code>"description"</code>, <code>"home_url"</code>, <code>"logo_url"</code>, <code>"core_data"</code>, <code>"time_interval_type"</code>, <code>"visualization_y_label"</code>), plus three keys that are lists of objects (<code>"units"</code>, <code>"targets"</code>, and <code>"timezeros"</code>). The metadata values' meanings are self-evident except for these two:</p>
-<ul>
-<li><code>time_interval_type</code>: Used by the D3 component to label the X axis, is either <code>Week</code>, <code>Biweek</code>, or <code>Month</code></li>
-<li><code>visualization_y_label</code>: "" Y axis, can be any text</li>
-</ul>
+<p>Project configuration files contain six metadata keys (<code>"name</code>, <code>"is_public"</code>, <code>"description"</code>, <code>"home_url"</code>, <code>"logo_url"</code>, <code>"core_data"</code>), plus three keys that are lists of objects (<code>"units"</code>, <code>"targets"</code>, and <code>"timezeros"</code>).</p>
 <p>Here are the three list objects' formats:</p>
 <p><strong>"units"</strong>: a list of objects containing two fields:</p>
 <ul>

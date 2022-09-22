@@ -36,7 +36,7 @@
     
     
       
-        <title>Zoltar 4.3 Release Notes - Zoltar Documentation</title>
+        <title>Visualization options page - Zoltar Documentation</title>
       
     
     
@@ -75,7 +75,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#welcome-to-zoltar-43" tabindex="1" class="md-skip">
+      <a href="#visualization-options-page" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -101,7 +101,7 @@
             </span>
             <span class="md-header-nav__topic">
               
-                Zoltar 4.3 Release Notes
+                Visualization options page
               
             </span>
           
@@ -210,10 +210,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
     
     <label class="md-nav__link" for="nav-2">
       Web Tour
@@ -301,11 +303,49 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../VisualizationOptionsPage/" title="Visualization options page" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Visualization options page
+      </label>
+    
+    <a href="./" title="Visualization options page" class="md-nav__link md-nav__link--active">
       Visualization options page
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-page" class="md-nav__link">
+    Example page
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -642,12 +682,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
     
     <label class="md-nav__link" for="nav-6">
       Additional Information
@@ -711,20 +749,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-    <a href="./" title="Zoltar 4.3 Release Notes" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_3/" title="Zoltar 4.3 Release Notes" class="md-nav__link">
       Zoltar 4.3 Release Notes
     </a>
-    
   </li>
 
         
@@ -762,6 +791,22 @@
     
   
   
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example-page" class="md-nav__link">
+    Example page
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -773,8 +818,19 @@
               
                 
                 
-                <h1 id="welcome-to-zoltar-43">Welcome to Zoltar 4.3<a class="headerlink" href="#welcome-to-zoltar-43" title="Permanent link">&para;</a></h1>
-<p>Zoltar version 4.3 adjusts Zoltar's <a href="../Targets/">Target</a> data model to add <code>outcome_variable</code> to all targets, and to add <code>numeric_horizon</code> and <code>reference_date_type</code> fields to <code>is_step_ahead</code> ones. These changes support upcoming visualization features.</p>
+                <h1 id="visualization-options-page">Visualization options page<a class="headerlink" href="#visualization-options-page" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>Note: Currently the visualization feature is only available to logged in users. Please see the <a href="..#contact">contact section</a> on the index page for account requests.</p>
+</blockquote>
+<p>Reached via the <a href="../ProjectDetailPage/">project detail page</a>'s <em>Features</em> section, this page lets you edit project-specific options that the visualization feature requires. These options must be set for the visualization to work properly. They are expressed as a <a href="https://www.json.org/json-en.html">JSON object</a>. The page has these sections (refer to the screenshot below):</p>
+<ul>
+<li><strong>Validity</strong>: Located in the upper left, this shows the validity of the submitted JSON. Green text indicates valid JSON, and red indicates invalid JSON, along with bullet(s) for each error. You'll need to correct the JSON and re-submit it before it can be saved. </li>
+<li><strong>Editor</strong>: Located in the middle left, this is a plain HTML text area where you can edit the JSON. Once you're done, click the "Submit" button to either validate the JSON (check the "Validate Only" box) without saving, or save the JSON (uncheck the box). You'll see the message "Project viz options saved." if the save was successful.</li>
+<li><strong>Documentation summary</strong>: Located in the upper right, this text summarizes each JSON field's purpose.</li>
+<li><strong>Choices</strong>: Located in the lower right, this is a set of controls you can use to browse all the Targets, Units, and Models in the project. Selecting an item places its text in the gray text area at the bottom right. You can select the text and then use the brower's copy and paste feature to paste it into the JSON on the left.</li>
+</ul>
+<h2 id="example-page">Example page<a class="headerlink" href="#example-page" title="Permanent link">&para;</a></h2>
+<p><img alt="Visualization options page" src="../img/visualization-options-page.png" title="Visualization options page" /></p>
                 
                   
                 
@@ -795,7 +851,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../ReleaseNotes4_2/" title="Zoltar 4.2 Release Notes" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../ForecastsVisualizationPage/" title="Forecasts visualization page" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -804,19 +860,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Zoltar 4.2 Release Notes
+                Forecasts visualization page
               </span>
             </div>
           </a>
         
         
-          <a href="../ReleaseNotes4_4/" title="Zoltar 4.4 Release Notes" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../ModelDetailPage/" title="Model detail page" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Zoltar 4.4 Release Notes
+                Model detail page
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
