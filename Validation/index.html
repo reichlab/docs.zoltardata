@@ -1255,7 +1255,6 @@
 <li><code>cat</code> (i, f, t, d, b): Entries in the database rows in the <code>cat</code> column cannot be <code>“”</code>, <code>“NA”</code> or <code>NULL</code> (case does not matter). Entries in <code>cat</code> must be a subset of <code>Target.cats</code> from the target definition.</li>
 <li><code>prob</code> (f): [0, 1]. Entries in the database rows in the <code>prob</code> column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable).</li>
 <li>The data format of <code>cat</code> should correspond or be translatable to the <code>type</code> as in the target definition.</li>
-<li>NB: Rows for Bin predictions where <code>prob</code> == 0 are not stored in the database.</li>
 </ul>
 <h3 id="named-prediction-elements"><code>Named</code> Prediction Elements<a class="headerlink" href="#named-prediction-elements" title="Permanent link">&para;</a></h3>
 <p>We note that <code>Named</code> predictions currently only support fairly simple distributions. We currently support distributions with up to three parameters. Future versions of Zoltar could support distributions with larger numbers of parameters.</p>
