@@ -34,7 +34,6 @@ These tests are performed when a forecast is created or updated.
 - `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `cat` must be a subset of `Target.cats` from the target definition.
 - `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable).
 - The data format of `cat` should correspond or be translatable to the `type` as in the target definition.
-- NB: Rows for Bin predictions where `prob` == 0 are not stored in the database.
 
 ### `Named` Prediction Elements
 
