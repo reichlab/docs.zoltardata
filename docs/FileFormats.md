@@ -40,7 +40,7 @@ Here are the three list objects' formats:
 
 **"timezeros"**: a list of the projects time zeros. Each has these fields:
 
-- `timezero_date`: The timezero's date in `yyyymmdd` format
+- `timezero_date`: The timezero's date in `YYYY-MM-DD` format
 - `data_version_date` : Optional data version date in the same format. Pass `null` if the timezero does not have one
 - `is_season_start`: `true` if this starts a season, and `false` otherwise
 - `season_name`: Applicable when `is_season_start` is `true`, names the season, e.g., "2010-2011"
