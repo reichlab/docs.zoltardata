@@ -6,7 +6,6 @@ Zoltar uses a number of formats for representing truth data, forecast data, conf
 - [Truth data format (CSV)](#truth-data-format-csv)
 - [Forecast data format (JSON)](#forecast-data-format-json)
 - [Forecast data format (CSV)](#forecast-data-format-csv)
-- [Quantile forecast format (CSV)](#quantile-forecast-format-csv)
 
 
 ## Project creation configuration (JSON)
@@ -58,7 +57,7 @@ Every project in Zoltar can have ground truth values associated with targets. Us
 
 ## Forecast data format (JSON)
 
-For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See [zoltar-predictions-examples.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json) for an example. The file contains a top-level object with two keys: `"meta"` and `"predictions"`. The `meta` section is unused for uploads, and for downloads contains various information about the forecast in the repository in the `"forecast"` field) plus lists of the project's `"units"` and `"targets"`.
+For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See [zoltar-predictions-examples.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json) for an example. The file contains a top-level object with two keys: `"meta"` and `"predictions"`. The `meta` section is unused for uploads, and for downloads contains various information about the forecast in the repository in the `"forecast"` field, plus lists of the project's `"units"` and `"targets"`.
 
 The `"predictions"` list contains objects for each prediction, and each object contains the following four keys:
 
@@ -73,10 +72,25 @@ The `"predictions"` list contains objects for each prediction, and each object c
     - `"sample"`: Numeric samples represented as a table with one column that is found in the `sample` key.
     - `"quantile"`: A quantile distribution with two paired columns: `quantile` and `value`.
 
+To indicate a [Retracted prediction](ForecastVersions.md#retracted-predictions) in JSON files, by use `null` for the "prediction" value. For example:
+
+```json
+{
+  "unit": "loc1",
+  "target": "pct next week",
+  "class": "point",
+  "prediction": null
+}
+```
+
 
 ## Forecast data format (CSV)
 
-Because the native Zoltar JSON format can be inconvenient to work with, the [Zoltar libraries](ApiIntro.md) provide functions to convert from JSON to a Zoltar-specific CSV format with the following columns. Each row represents a prediction of a particular type as described on [the data model page](DataModel.md). Note that because different prediction types have different contents, the frame is 'sparse': not every row uses all columns, and unused ones are empty (`""`). However, the first three columns (`unit`, `target`, and `class`) are always non-empty.
+Zoltar supports uploading and downloading forecast data in a CSV format with the following columns. It helps to think of this format as an "exploded" version of the prediction elements in the JSON format, where each element expands into one or more rows. `named` and `point` types expand into single rows, and `bin`, `sample`, and `quantile` types expand into one or more rows depending on the particular data. You can read more about prediction types on tje [data model page](DataModel.md).
+
+Note that because different prediction types have different contents, the CSV rows are "sparse" in that not every row uses all columns (the unused ones are empty, i.e., `""`). However, the `unit`, `target`, and `class` columns are always non-empty. For example, a `point` row only uses the `value` column whereas a `quantile` row uses only the `value` and `quantile` columns. To learn more you can examine the example file [zoltar-predictions-examples.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.csv), which contains the same data as [zoltar-predictions-examples.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json), but in CSV format.
+
+Here are the columns used in the format, in order. Note that there are three additional columns present when downloading forecast data: `model`, `timezero`, and `season`. They are positioned before the `unit` column. These three columns are not present when uploading forecast data.
 
 - `unit`: the prediction's unit
 - `target`: "" target
@@ -91,55 +105,11 @@ Because the native Zoltar JSON format can be inconvenient to work with, the [Zol
 - `param2`: parameter ""
 - `param3`: parameter ""
 
+To indicate a [Retracted prediction](ForecastVersions.md#retracted-predictions) in CSV files, put `NULL` (no quote marks) in the non-sparce cells. Taking the above example, a retracted `point` row would have `NULL` for its `value`, and a retracted `quantile` row would have `NULL` for both `value` and `quantile`. Note that only one `NULL` row of multi-row prediction types (`bin`, `sample`, and `quantile`) needs to be present to retract a prediction element. For example, here are three retracted rows:
 
-## Quantile forecast format (CSV)
-
-Zoltar libraries support importing quantile data (see [Validation.md](Validation.md) for more information) via the COVID-19 CSV format documented at [covid19-forecast-hub](https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model). While this format is not a native Zoltar data format, the libraries translate between the formats. This allows users to provide CSVs that can be translated into JSON and uploaded into Zoltar.
-
-Columns: The Zoltar libraries ignore all but the following, which are allowed to be in any order:
-
-- `"target"`: a unique id for the target
-- `"location"`: a unique id for the location (we have standardized to [FIPS codes](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code)). It is translated to Zoltar's "unit" concept.
-- `"type"`: one of either `"point"` or `"quantile"`
-- `"quantile"`: a value between 0 and 1 (inclusive), stating which quantile is displayed in this row. if type=="point" then NA.
-- `"value"`: a numeric value representing the value of the quantile function evaluated at the probability specified in quantile
-
-See [quantile-predictions.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/quantile-predictions.csv) for an example.
-
-
-### Retracted predictions
-
-As mentioned in [Retracted predictions](ForecastVersions.md#retracted-predictions), Zoltar supports _retracting_ individual prediction elements (`timezero/unit/target` combinations). These are indicated in quantile CSV files by `NULL` point and quantile values (no quote marks):
-
-- To retract a point prediction, use `NULL` for the point value.
-- To retract a quantile prediction, use `NULL` for all values. All quantiles [must still be valid](Validation.md#quantile-prediction-elements), and **all** values must be `NULL`. That is, no partial `NULL`s are allowed. The quantiles themselves must still be valid.
-- You can mix retractions and updated/add prediction elements in a single file.
-
-Here's a partial example from [COVID-19 Forecast Hub](https://github.com/reichlab/covid19-forecast-hub) that contains two prediction elements - a non-retracted point and a retracted quantile:
 ```csv
-forecast_date,target,target_end_date,location,type,quantile,value
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,point,NA,3020
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.01,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.025,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.05,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.1,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.15,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.2,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.25,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.3,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.35,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.4,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.45,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.5,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.55,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.6,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.65,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.7,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.75,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.8,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.85,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.9,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.95,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.975,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.99,NULL
+unit,target,class,value,cat,prob,sample,quantile,family,param1,param2,param3
+loc2,pct next week,point,"NULL",,,,,,,,
+loc2,pct next week,bin,,"NULL","NULL",,,,,,
+loc2,pct next week,quantile,"NULL",,,,"NULL",,,,
 ```

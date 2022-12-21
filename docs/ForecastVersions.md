@@ -23,35 +23,7 @@ Notes:
 
 Zoltar supports _retracting_ individual prediction elements. A retracted element marks a particular combination of unit, target, and prediction type to be ignored when executing a [forecast query](ForecastQueryFormat.md) if the user passes an `as_of` value that's on or later than the retraction `issued_at`. In that case there will be no value returned for the retracted prediction element. However, an `as_of` that's earlier than the forecast's `issued_at` **will** result in the element's pre-retraction value being returned. Users who want to return the forecast's original data including retractions, should use the API or web UI as documented in [download a single forecast](Forecasts.md#download-a-single-forecast). In this case Zoltar will include retractions as they were uploaded - with `null` "prediction" value in the JSON (see below). 
 
-Retracted predictions are identified in [JSON forecast data format](FileFormats.md#forecast-data-format-json) files by passing `NULL` for the "prediction" value. 
-
-> Note: Retractions are indicated in quantile CSV files by `NULL` point and quantile values. The libraries take care of converting these into the JSON below. See [Quantile forecast format (CSV)](FileFormats.md#retracted-predictions) for quantile retraction format details.
-
-For example, if we have two versions for a time zero, and the first forecast contains this prediction:
-
-```json
-{
-  "unit": "loc1",
-  "target": "pct next week",
-  "class": "point",
-  "prediction": {
-    "value": 2.1
-  }
-}
-```
-
-Then we could retract that prediction element in the second forecast by passing this replacement:
-
-```json
-{
-  "unit": "loc1",
-  "target": "pct next week",
-  "class": "point",
-  "prediction": null
-}
-```
-
-Translating this JSON representation to/from CSV files is handled by the [Zoltar libraries](ApiIntro.md).
+Retracted predictions are identified in [JSON forecast data format](FileFormats.md#forecast-data-format-json) files by passing `null` for the "prediction" value, and by passing `NULL` in [CSV forecast data format](#forecast-data-format-csv).
 
 
 ## Duplicate data

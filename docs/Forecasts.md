@@ -11,7 +11,7 @@ A _forecast_ is a set of predictions for combinations of units and targets. See 
 
 Here we show how to upload forecast data into Zoltar.
 
-> Note: As mentioned at [Jobs](Jobs.md), uploading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see [Job workflow](Jobs.md#workflow) for details).
+> Note: As mentioned at [Jobs](Jobs.md), uploading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus, the workflow is based on that (see [Job workflow](Jobs.md#workflow) for details).
 
 
 Forecasts are uploaded to a particular model for a particular time zero. To upload one:
@@ -21,7 +21,7 @@ Forecasts are uploaded to a particular model for a particular time zero. To uplo
 1. Find the time zero that the forecast is associated with.
 1. If the time zero already has a forecast then delete it (see **Delete a forecast** below). You can tell if a time zero has an uploaded forecast in two ways: the text in the "Data Source" column is a link instead of the words "(No data)" and the icon in the "Action" column is a red trash can and not a green upload icon.
 1. Click the "Browse..." button in the time zero's "Action" column.
-1. In the dialog that appears, select a Forecast data format JSON file
+1. In the dialog that appears, select a Zoltar Forecast data file. The format can be either [JSON](FileFormats.md#forecast-data-format-json) or [CSV](FileFormats.md#forecast-data-format-csv).
 1. Click the green upload button.
 1. If the file is OK then you will be taken to a [job detail page](Jobs.md#check-a-jobs-status) that shows the status of your upload, with the message "Queued the forecast file _ for uploading.", where _ is your file's name.
 1. Once the upload is successful (you can refresh the job detail page to check) then you will see the newly-uploaded file listed next to the selected time zero on the [model detail page](ModelDetailPage.md).
@@ -52,7 +52,7 @@ To download a particular forecast:
 
 > Note: Downloading multiple forecasts is currently available only to users with Zoltar accounts.
 >
-> Note: As mentioned at [Jobs](Jobs.md), downloading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see [Job workflow](Jobs.md#workflow) for details).
+> Note: As mentioned at [Jobs](Jobs.md), downloading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus, the workflow is based on that (see [Job workflow](Jobs.md#workflow) for details).
 
 Forecasts are downloaded by executing a [forecast query](ForecastQueryFormat.md) by either a) [Zoltar API](Api.md) using the [Zoltar libraries](ApiIntro.md), or b) via a simple web UI form (shown below). In both cases you need to follow these steps:
  
