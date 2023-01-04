@@ -783,6 +783,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_5/" title="Zoltar 4.5 Release Notes" class="md-nav__link">
+      Zoltar 4.5 Release Notes
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -863,31 +875,7 @@
 - This means we require forecasts to be uploaded in <code>issued_at</code> order. If you need to "backfill" older versions, you'll first have to delete forecasts with newer <code>issued_at</code> datetimes before uploading older ones.</p>
 <h2 id="retracted-predictions">Retracted predictions<a class="headerlink" href="#retracted-predictions" title="Permanent link">&para;</a></h2>
 <p>Zoltar supports <em>retracting</em> individual prediction elements. A retracted element marks a particular combination of unit, target, and prediction type to be ignored when executing a <a href="../ForecastQueryFormat/">forecast query</a> if the user passes an <code>as_of</code> value that's on or later than the retraction <code>issued_at</code>. In that case there will be no value returned for the retracted prediction element. However, an <code>as_of</code> that's earlier than the forecast's <code>issued_at</code> <strong>will</strong> result in the element's pre-retraction value being returned. Users who want to return the forecast's original data including retractions, should use the API or web UI as documented in <a href="../Forecasts/#download-a-single-forecast">download a single forecast</a>. In this case Zoltar will include retractions as they were uploaded - with <code>null</code> "prediction" value in the JSON (see below). </p>
-<p>Retracted predictions are identified in <a href="../FileFormats/#forecast-data-format-json">JSON forecast data format</a> files by passing <code>NULL</code> for the "prediction" value. </p>
-<blockquote>
-<p>Note: Retractions are indicated in quantile CSV files by <code>NULL</code> point and quantile values. The libraries take care of converting these into the JSON below. See <a href="../FileFormats/#retracted-predictions">Quantile forecast format (CSV)</a> for quantile retraction format details.</p>
-</blockquote>
-<p>For example, if we have two versions for a time zero, and the first forecast contains this prediction:</p>
-<pre><code class="json">{
-  &quot;unit&quot;: &quot;loc1&quot;,
-  &quot;target&quot;: &quot;pct next week&quot;,
-  &quot;class&quot;: &quot;point&quot;,
-  &quot;prediction&quot;: {
-    &quot;value&quot;: 2.1
-  }
-}
-</code></pre>
-
-<p>Then we could retract that prediction element in the second forecast by passing this replacement:</p>
-<pre><code class="json">{
-  &quot;unit&quot;: &quot;loc1&quot;,
-  &quot;target&quot;: &quot;pct next week&quot;,
-  &quot;class&quot;: &quot;point&quot;,
-  &quot;prediction&quot;: null
-}
-</code></pre>
-
-<p>Translating this JSON representation to/from CSV files is handled by the <a href="../ApiIntro/">Zoltar libraries</a>.</p>
+<p>Retracted predictions are identified in <a href="../FileFormats/#forecast-data-format-json">JSON forecast data format</a> files by passing <code>null</code> for the "prediction" value, and by passing <code>NULL</code> in <a href="#forecast-data-format-csv">CSV forecast data format</a>.</p>
 <h2 id="duplicate-data">Duplicate data<a class="headerlink" href="#duplicate-data" title="Permanent link">&para;</a></h2>
 <p>When Zoltar loads a forecast's prediction elements, it skips those that are identical to any in previous versions. This saves on storage space, and is transparent to users (downloading forecast data via queries or single forecasts will reassemble the original data).</p>
                 

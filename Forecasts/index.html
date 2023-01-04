@@ -804,6 +804,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_5/" title="Zoltar 4.5 Release Notes" class="md-nav__link">
+      Zoltar 4.5 Release Notes
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -897,7 +909,7 @@
 <h2 id="upload-a-forecast">Upload a forecast<a class="headerlink" href="#upload-a-forecast" title="Permanent link">&para;</a></h2>
 <p>Here we show how to upload forecast data into Zoltar.</p>
 <blockquote>
-<p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, uploading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
+<p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, uploading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus, the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
 </blockquote>
 <p>Forecasts are uploaded to a particular model for a particular time zero. To upload one:</p>
 <ol>
@@ -906,7 +918,7 @@
 <li>Find the time zero that the forecast is associated with.</li>
 <li>If the time zero already has a forecast then delete it (see <strong>Delete a forecast</strong> below). You can tell if a time zero has an uploaded forecast in two ways: the text in the "Data Source" column is a link instead of the words "(No data)" and the icon in the "Action" column is a red trash can and not a green upload icon.</li>
 <li>Click the "Browse..." button in the time zero's "Action" column.</li>
-<li>In the dialog that appears, select a Forecast data format JSON file</li>
+<li>In the dialog that appears, select a Zoltar Forecast data file. The format can be either <a href="../FileFormats/#forecast-data-format-json">JSON</a> or <a href="../FileFormats/#forecast-data-format-csv">CSV</a>.</li>
 <li>Click the green upload button.</li>
 <li>If the file is OK then you will be taken to a <a href="../Jobs/#check-a-jobs-status">job detail page</a> that shows the status of your upload, with the message "Queued the forecast file _ for uploading.", where _ is your file's name.</li>
 <li>Once the upload is successful (you can refresh the job detail page to check) then you will see the newly-uploaded file listed next to the selected time zero on the <a href="../ModelDetailPage/">model detail page</a>.</li>
@@ -930,7 +942,7 @@
 <h2 id="download-multiple-forecasts">Download multiple forecasts<a class="headerlink" href="#download-multiple-forecasts" title="Permanent link">&para;</a></h2>
 <blockquote>
 <p>Note: Downloading multiple forecasts is currently available only to users with Zoltar accounts.</p>
-<p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, downloading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
+<p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, downloading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus, the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
 </blockquote>
 <p>Forecasts are downloaded by executing a <a href="../ForecastQueryFormat/">forecast query</a> by either a) <a href="../Api/">Zoltar API</a> using the <a href="../ApiIntro/">Zoltar libraries</a>, or b) via a simple web UI form (shown below). In both cases you need to follow these steps:</p>
 <ol>

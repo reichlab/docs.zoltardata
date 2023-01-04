@@ -551,26 +551,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#quantile-forecast-format-csv" class="md-nav__link">
-    Quantile forecast format (CSV)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#retracted-predictions" class="md-nav__link">
-    Retracted predictions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
       
       
       
@@ -810,6 +790,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ReleaseNotes4_5/" title="Zoltar 4.5 Release Notes" class="md-nav__link">
+      Zoltar 4.5 Release Notes
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -863,26 +855,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#quantile-forecast-format-csv" class="md-nav__link">
-    Quantile forecast format (CSV)
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#retracted-predictions" class="md-nav__link">
-    Retracted predictions
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
       
       
       
@@ -907,7 +879,6 @@
 <li><a href="#truth-data-format-csv">Truth data format (CSV)</a></li>
 <li><a href="#forecast-data-format-json">Forecast data format (JSON)</a></li>
 <li><a href="#forecast-data-format-csv">Forecast data format (CSV)</a></li>
-<li><a href="#quantile-forecast-format-csv">Quantile forecast format (CSV)</a></li>
 </ul>
 <h2 id="project-creation-configuration-json">Project creation configuration (JSON)<a class="headerlink" href="#project-creation-configuration-json" title="Permanent link">&para;</a></h2>
 <p>As documented in <a href="../Projects/#to-create-a-project-via-a-configuration-file">Projects</a>, as an alternative to manually creating a project via the web interface, projects can be created from a JSON configuration file. Here's the configuration file from the "Docs Example Project" demo project: <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-project-config.json">zoltar-project-config.json</a>.</p>
@@ -947,7 +918,7 @@
 <li><code>value</code>: truth value, formatted according to the target's type. date values are formatted <code>yyyy-mm-dd</code> and booleans as <code>true</code> or <code>false</code></li>
 </ul>
 <h2 id="forecast-data-format-json">Forecast data format (JSON)<a class="headerlink" href="#forecast-data-format-json" title="Permanent link">&para;</a></h2>
-<p>For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example. The file contains a top-level object with two keys: <code>"meta"</code> and <code>"predictions"</code>. The <code>meta</code> section is unused for uploads, and for downloads contains various information about the forecast in the repository in the <code>"forecast"</code> field) plus lists of the project's <code>"units"</code> and <code>"targets"</code>.</p>
+<p>For prediction input and output we use a JSON file format. This format is strongly inspired by https://github.com/cdcepi/predx/blob/master/predx_classes.md . See <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json">zoltar-predictions-examples.json</a> for an example. The file contains a top-level object with two keys: <code>"meta"</code> and <code>"predictions"</code>. The <code>meta</code> section is unused for uploads, and for downloads contains various information about the forecast in the repository in the <code>"forecast"</code> field, plus lists of the project's <code>"units"</code> and <code>"targets"</code>.</p>
 <p>The <code>"predictions"</code> list contains objects for each prediction, and each object contains the following four keys:</p>
 <ul>
 <li><code>"unit"</code>: abbreviation of the Unit.</li>
@@ -964,8 +935,19 @@
 </ul>
 </li>
 </ul>
+<p>To indicate a <a href="../ForecastVersions/#retracted-predictions">Retracted prediction</a> in JSON files, by use <code>null</code> for the "prediction" value. For example:</p>
+<pre><code class="json">{
+  &quot;unit&quot;: &quot;loc1&quot;,
+  &quot;target&quot;: &quot;pct next week&quot;,
+  &quot;class&quot;: &quot;point&quot;,
+  &quot;prediction&quot;: null
+}
+</code></pre>
+
 <h2 id="forecast-data-format-csv">Forecast data format (CSV)<a class="headerlink" href="#forecast-data-format-csv" title="Permanent link">&para;</a></h2>
-<p>Because the native Zoltar JSON format can be inconvenient to work with, the <a href="../ApiIntro/">Zoltar libraries</a> provide functions to convert from JSON to a Zoltar-specific CSV format with the following columns. Each row represents a prediction of a particular type as described on <a href="../DataModel/">the data model page</a>. Note that because different prediction types have different contents, the frame is 'sparse': not every row uses all columns, and unused ones are empty (<code>""</code>). However, the first three columns (<code>unit</code>, <code>target</code>, and <code>class</code>) are always non-empty.</p>
+<p>Zoltar supports uploading and downloading forecast data in a CSV format with the following columns. It helps to think of this format as an "exploded" version of the prediction elements in the JSON format, where each element expands into one or more rows. <code>named</code> and <code>point</code> types expand into single rows, and <code>bin</code>, <code>sample</code>, and <code>quantile</code> types expand into one or more rows depending on the particular data. You can read more about prediction types on tje <a href="../DataModel/">data model page</a>.</p>
+<p>Note that because different prediction types have different contents, the CSV rows are "sparse" in that not every row uses all columns (the unused ones are empty, i.e., <code>""</code>). However, the <code>unit</code>, <code>target</code>, and <code>class</code> columns are always non-empty. For example, a <code>point</code> row only uses the <code>value</code> column whereas a <code>quantile</code> row uses only the <code>value</code> and <code>quantile</code> columns. To learn more you can examine the example file <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.csv">zoltar-predictions-examples.csv</a>, which contains the same data as <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json">zoltar-predictions-examples.json</a>, but in CSV format.</p>
+<p>Here are the columns used in the format, in order. Note that there are three additional columns present when downloading forecast data: <code>model</code>, <code>timezero</code>, and <code>season</code>. They are positioned before the <code>unit</code> column. These three columns are not present when uploading forecast data.</p>
 <ul>
 <li><code>unit</code>: the prediction's unit</li>
 <li><code>target</code>: "" target</li>
@@ -980,50 +962,11 @@
 <li><code>param2</code>: parameter ""</li>
 <li><code>param3</code>: parameter ""</li>
 </ul>
-<h2 id="quantile-forecast-format-csv">Quantile forecast format (CSV)<a class="headerlink" href="#quantile-forecast-format-csv" title="Permanent link">&para;</a></h2>
-<p>Zoltar libraries support importing quantile data (see <a href="../Validation/">Validation.md</a> for more information) via the COVID-19 CSV format documented at <a href="https://github.com/reichlab/covid19-forecast-hub/blob/master/README.md#data-model">covid19-forecast-hub</a>. While this format is not a native Zoltar data format, the libraries translate between the formats. This allows users to provide CSVs that can be translated into JSON and uploaded into Zoltar.</p>
-<p>Columns: The Zoltar libraries ignore all but the following, which are allowed to be in any order:</p>
-<ul>
-<li><code>"target"</code>: a unique id for the target</li>
-<li><code>"location"</code>: a unique id for the location (we have standardized to <a href="https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code">FIPS codes</a>). It is translated to Zoltar's "unit" concept.</li>
-<li><code>"type"</code>: one of either <code>"point"</code> or <code>"quantile"</code></li>
-<li><code>"quantile"</code>: a value between 0 and 1 (inclusive), stating which quantile is displayed in this row. if type=="point" then NA.</li>
-<li><code>"value"</code>: a numeric value representing the value of the quantile function evaluated at the probability specified in quantile</li>
-</ul>
-<p>See <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/quantile-predictions.csv">quantile-predictions.csv</a> for an example.</p>
-<h3 id="retracted-predictions">Retracted predictions<a class="headerlink" href="#retracted-predictions" title="Permanent link">&para;</a></h3>
-<p>As mentioned in <a href="../ForecastVersions/#retracted-predictions">Retracted predictions</a>, Zoltar supports <em>retracting</em> individual prediction elements (<code>timezero/unit/target</code> combinations). These are indicated in quantile CSV files by <code>NULL</code> point and quantile values (no quote marks):</p>
-<ul>
-<li>To retract a point prediction, use <code>NULL</code> for the point value.</li>
-<li>To retract a quantile prediction, use <code>NULL</code> for all values. All quantiles <a href="../Validation/#quantile-prediction-elements">must still be valid</a>, and <strong>all</strong> values must be <code>NULL</code>. That is, no partial <code>NULL</code>s are allowed. The quantiles themselves must still be valid.</li>
-<li>You can mix retractions and updated/add prediction elements in a single file.</li>
-</ul>
-<p>Here's a partial example from <a href="https://github.com/reichlab/covid19-forecast-hub">COVID-19 Forecast Hub</a> that contains two prediction elements - a non-retracted point and a retracted quantile:</p>
-<pre><code class="csv">forecast_date,target,target_end_date,location,type,quantile,value
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,point,NA,3020
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.01,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.025,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.05,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.1,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.15,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.2,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.25,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.3,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.35,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.4,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.45,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.5,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.55,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.6,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.65,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.7,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.75,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.8,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.85,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.9,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.95,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.975,NULL
-2020-07-04,1 day ahead inc hosp,2020-07-05,US,quantile,0.99,NULL
+<p>To indicate a <a href="../ForecastVersions/#retracted-predictions">Retracted prediction</a> in CSV files, put <code>NULL</code> (no quote marks) in the non-sparce cells. Taking the above example, a retracted <code>point</code> row would have <code>NULL</code> for its <code>value</code>, and a retracted <code>quantile</code> row would have <code>NULL</code> for both <code>value</code> and <code>quantile</code>. Note that only one <code>NULL</code> row of multi-row prediction types (<code>bin</code>, <code>sample</code>, and <code>quantile</code>) needs to be present to retract a prediction element. For example, here are three retracted rows:</p>
+<pre><code class="csv">unit,target,class,value,cat,prob,sample,quantile,family,param1,param2,param3
+loc2,pct next week,point,&quot;NULL&quot;,,,,,,,,
+loc2,pct next week,bin,,&quot;NULL&quot;,&quot;NULL&quot;,,,,,,
+loc2,pct next week,quantile,&quot;NULL&quot;,,,,&quot;NULL&quot;,,,,
 </code></pre>
                 
                   
