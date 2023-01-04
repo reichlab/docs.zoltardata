@@ -6,4 +6,4 @@ Zoltar version 4.5 adds support for uploading forecast data in CSV format via bo
 
 - [Forecast data format (CSV)](FileFormats.md#forecast-data-format-csv): Describes the CSV file format for forecast data.
 - [Upload a forecast](Forecasts.md#upload-a-forecast): Explains how to upload a forecast in either JSON or CSV format using the web UI.
-- [Download forecasts via the web UI](Forecasts.md#download-forecasts-via-the-web-ui): xx
+- [Download forecasts via the web UI](Forecasts.md#download-forecasts-via-the-web-ui): Shows how to download forecast data in [Forecast data format (CSV)](#forecast-data-format-csv) using the web UI.

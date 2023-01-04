@@ -54,7 +54,7 @@ To download a particular forecast:
 >
 > Note: As mentioned at [Jobs](Jobs.md), downloading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus, the workflow is based on that (see [Job workflow](Jobs.md#workflow) for details).
 
-Forecasts are downloaded by executing a [forecast query](ForecastQueryFormat.md) by either a) [Zoltar API](Api.md) using the [Zoltar libraries](ApiIntro.md), or b) via a simple web UI form (shown below). In both cases you need to follow these steps:
+Forecasts are downloaded by executing a [forecast query](ForecastQueryFormat.md) by either a) [Zoltar API](Api.md) using the [Zoltar libraries](ApiIntro.md), or b) via a simple web UI form (described next). In both cases you need to follow these steps:
  
  1. Decide the data of interest (i.e., `models`, `units`, `targets`, `timezeros`, and prediction `types`).
  1. Submit the query to get a Job ID.
@@ -70,7 +70,7 @@ To download forecast data via the web UI:
  1. Click the "Download" button to the right of "Forecasts" in the Features section at the page's top.
  1. On the "Edit Forecast Query" page that shows, enter your query and then click "Submit" (see the screenshot below).
  1. Poll the resulting Job until it succeeds (see [Check a job's status](Jobs.md#check-a-jobs-status)).
- 1. Download the job's data (see [Download a job's data](Jobs.md#download-a-jobs-data)).
+ 1. Download the job's data (see [Download a job's data](Jobs.md#download-a-jobs-data)). It is in [Forecast data format (CSV)](#forecast-data-format-csv).
 
 
 Here's an example of the Edit Forecast Query page:
