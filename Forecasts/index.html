@@ -944,7 +944,7 @@
 <p>Note: Downloading multiple forecasts is currently available only to users with Zoltar accounts.</p>
 <p>Note: As mentioned at <a href="../Jobs/">Jobs</a>, downloading a forecast is done in a separate worker process because it may take more than a handful of seconds to run. Thus, the workflow is based on that (see <a href="../Jobs/#workflow">Job workflow</a> for details).</p>
 </blockquote>
-<p>Forecasts are downloaded by executing a <a href="../ForecastQueryFormat/">forecast query</a> by either a) <a href="../Api/">Zoltar API</a> using the <a href="../ApiIntro/">Zoltar libraries</a>, or b) via a simple web UI form (shown below). In both cases you need to follow these steps:</p>
+<p>Forecasts are downloaded by executing a <a href="../ForecastQueryFormat/">forecast query</a> by either a) <a href="../Api/">Zoltar API</a> using the <a href="../ApiIntro/">Zoltar libraries</a>, or b) via a simple web UI form (described next). In both cases you need to follow these steps:</p>
 <ol>
 <li>Decide the data of interest (i.e., <code>models</code>, <code>units</code>, <code>targets</code>, <code>timezeros</code>, and prediction <code>types</code>).</li>
 <li>Submit the query to get a Job ID.</li>
@@ -958,7 +958,7 @@
 <li>Click the "Download" button to the right of "Forecasts" in the Features section at the page's top.</li>
 <li>On the "Edit Forecast Query" page that shows, enter your query and then click "Submit" (see the screenshot below).</li>
 <li>Poll the resulting Job until it succeeds (see <a href="../Jobs/#check-a-jobs-status">Check a job's status</a>).</li>
-<li>Download the job's data (see <a href="../Jobs/#download-a-jobs-data">Download a job's data</a>).</li>
+<li>Download the job's data (see <a href="../Jobs/#download-a-jobs-data">Download a job's data</a>). It is in <a href="#forecast-data-format-csv">Forecast data format (CSV)</a>.</li>
 </ol>
 <p>Here's an example of the Edit Forecast Query page:</p>
 <p><img alt="Query forecasts page" src="../img/query-forecasts.png" title="Query forecasts page" /></p>
