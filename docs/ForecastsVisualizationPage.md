@@ -1,7 +1,5 @@
 # Forecasts visualization page
-
-> Note: Currently the visualization feature is only available to logged in users. Please see the [contact section](index.md#contact) on the index page for account requests.
-
+``
 Reached via the [project detail page](ProjectDetailPage.md)'s _Features_ section, this page lets you explore forecast data in line chart form. The page has these sections (refer to the screenshot below):
 
 - **Forecast selection**: Located on the left side, this section controls which data is shown.
