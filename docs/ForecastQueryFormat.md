@@ -41,7 +41,7 @@ Logically, the filters are treated as a list of "ANDs of ORs": Each of the five 
 {"timezeros": ["2020-05-14", "2020-05-09"]}  # get data only for either of these two time zeros
 ```
 
-5) Filter by forecast *type*: Pass a list of string types in the `types` field. Choices are `bin`, `named`, `point`, `sample`, and `quantile`. Example:
+5) Filter by forecast *type*: Pass a list of string types in the `types` field. Choices are `bin`, `named`, `point`, `sample`, `quantile`, `mean`, `median`, and `mode`. Example:
 ```json
 {"types": ["point", "quantile"]}  # get only point and quantile data
 ```
@@ -76,7 +76,7 @@ Note that not all types of filters are required to be specified. Any missing one
 
 ### Query options
 
-Some features (currently only automatic prediction type conversion) require additional information to run. This is specified via the `options` field, which is an object that acts like a flat dot-namespaced registry ala Firefox's Configuration Editor (its `about:config` page). Keys are period-delimited strings and values are option-specific values. Here's the above query with some options:
+Some features (currently only prediction type conversion) require additional information to run. This is specified via the `options` field, which is an object that acts like a flat dot-namespaced registry ala Firefox's Configuration Editor (its `about:config` page). Keys are period-delimited strings and values are option-specific values. Here's the above query with some options:
 
 ```json
 {"models": ["60-contact", "CovidIL_100"],
@@ -92,35 +92,31 @@ Some features (currently only automatic prediction type conversion) require addi
 ```
 
 
-### Automatic prediction type conversion
+### Prediction type conversion
 
-Zoltar supports converting automatically from some prediction types to desired ones that have not actually been uploaded.
+Zoltar supports converting from some prediction types to desired ones that have not actually been uploaded.
 
 > Note: Conversion is currently limited, with support coming for additional prediction types and target types.
-> Also note that the auto-conversion feature results in slower queries than when it is not requested. 
+> Also note that the conversion feature results in slower queries than when it is not requested. 
 
-Auto-conversion is activated via two query parameters:
+Conversion is activated via two query parameters:
 
-1. Specify the forecast *types* (#5 above) that you want the program to convert TO (the default, if unspecified is all types).
+1. Specify the forecast *types* (#5 above) that you want the program to convert TO (or leave it unspecified, which will cause the program to include all types).
 2. Include query *options* for the conversions you want. Including an option does two things: a) it tells Zoltar that it should convert TO that type (i.e., that conversion is activated), and b) possible details about how to do the conversion.
 
 
-Here are all the conversions that we hope to support (TO on the arrow left and FROM on the right):
+Here are all the conversions that we hope to support:
 
-```
-`bin`      <- `named`, `sample`  # can convert named or samples to bin. options: none
-`named`    <-  n/a               # no conversion to named is possible
-`point`    <- `named`, `sample`  # can convert named or samples to point. options: 'mean' or 'median'
-`quantile` <- `named`, `sample`  # "" samples. options: list of quantiles
-`sample`   <- `named`            # can convert named to samples. options: number of samples
-```
-
-Here are the corresponding query options (see the example query above):
-
-- `convert.bin`: a *boolean* indicating conversion to bin is desired
-- `convert.point`: a *string* indicating conversion to points is desired: either 'mean' or 'median'
-- `convert.quantile`: a *list* indicating conversion to quantiles is desired: a list of unique numbers in [0, 1]
-- `convert.sample`: an *integer* indicating conversion to samples is desired: an int >0
+| TO type  | FROM type(s)) | query option                                       |
+|----------|---------------|----------------------------------------------------|
+| bin      | named, sample | `convert.bin`: boolean                             |
+| named    | n/a           | n/a                                                |
+| point    | named, sample | `convert.point`: string: "mean" or "median"        |
+| quantile | named, sample | `convert.quantile`: list: unique numbers in [0, 1] |
+| sample   | named         | `convert.sample`: integer: # samples desired (>0)  |
+| mean     | named, sample | `convert.mean`:boolean                             |
+| median   | named, sample | `convert.median`:boolean                           |
+| mode     | named         | `convert.mode`:boolean                             |
 
 
 Converting takes into account each prediction element's target's [type](Targets.md#target-types):
@@ -134,9 +130,20 @@ Converting takes into account each prediction element's target's [type](Targets.
 
 Currently, only these combinations are implemented:
 
-- target types: continuous, discrete
-- conversions: `point` <- `sample` (uses either [statistics.mean()](https://docs.python.org/3/library/statistics.html#statistics.mean) or [statistics.median()](https://docs.python.org/3/library/statistics.html#statistics.median) depending on the `convert.point` option)
-- conversions: `quantile` <- `sample` (uses [numpy.quantile()](https://numpy.org/devdocs/reference/generated/numpy.quantile.html))
+- Target types: *continuous* or *discrete*
+- Conversions:
+
+| TO type  | FROM type(s)) | notes |
+|----------|---------------|-------|
+| point    | sample        | [1]   |
+| quantile | sample        | [2]   |
+| mean     | sample        | [3]   |
+| median   | sample        | [4]   |
+
+- [1] uses either [statistics.mean()](https://docs.python.org/3/library/statistics.html#statistics.mean) or [statistics.median()](https://docs.python.org/3/library/statistics.html#statistics.median) depending on the `convert.point` option
+- [2] uses [numpy.quantile()](https://numpy.org/devdocs/reference/generated/numpy.quantile.html)
+- [3] uses [statistics.mean()](https://docs.python.org/3/library/statistics.html#statistics.mean)
+- [4] uses [statistics.median()](https://docs.python.org/3/library/statistics.html#statistics.median)
 
 
 ## Data format

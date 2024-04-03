@@ -71,6 +71,7 @@ The `"predictions"` list contains objects for each prediction, and each object c
     - `"point`: A numeric point prediction with a single `value` key.
     - `"sample"`: Numeric samples represented as a table with one column that is found in the `sample` key.
     - `"quantile"`: A quantile distribution with two paired columns: `quantile` and `value`.
+    - `"mean"`, `"median"`, and `"mode"`: Similar to `"point"` but with clear semantics.
 
 To indicate a [Retracted prediction](ForecastVersions.md#retracted-predictions) in JSON files, by use `null` for the "prediction" value. For example:
 
@@ -86,7 +87,7 @@ To indicate a [Retracted prediction](ForecastVersions.md#retracted-predictions) 
 
 ## Forecast data format (CSV)
 
-Zoltar supports uploading and downloading forecast data in a CSV format with the following columns. It helps to think of this format as an "exploded" version of the prediction elements in the JSON format, where each element expands into one or more rows. `named` and `point` types expand into single rows, and `bin`, `sample`, and `quantile` types expand into one or more rows depending on the particular data. You can read more about prediction types on tje [data model page](DataModel.md).
+Zoltar supports uploading and downloading forecast data in a CSV format with the following columns. It helps to think of this format as an "exploded" version of the prediction elements in the JSON format, where each element expands into one or more rows. `named`, `point`, `mean`, `median`, and `mode` types expand into single rows, and `bin`, `sample`, and `quantile` types expand into one or more rows depending on the particular data. You can read more about prediction types on tje [data model page](DataModel.md).
 
 Note that because different prediction types have different contents, the CSV rows are "sparse" in that not every row uses all columns (the unused ones are empty, i.e., `""`). However, the `unit`, `target`, and `class` columns are always non-empty. For example, a `point` row only uses the `value` column whereas a `quantile` row uses only the `value` and `quantile` columns. To learn more you can examine the example file [zoltar-predictions-examples.csv](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.csv), which contains the same data as [zoltar-predictions-examples.json](https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json), but in CSV format.
 
@@ -94,8 +95,8 @@ Here are the columns used in the format, in order. Note that there are three add
 
 - `unit`: the prediction's unit
 - `target`: "" target
-- `class`: "" prediction type. one of `bin`, `named`, `point`, `sample`, and `quantile`
-- `value`: used for `point` and `quantile` prediction types. empty otherwise
+- `class`: "" prediction type. one of `bin`, `named`, `point`, `sample`, `quantile`, `mean`, `median`, and `mode`
+- `value`: used for `point`, `quantile`, `mean`, `median`, and `mode` prediction types. empty otherwise
 - `cat`: used for `bin` prediction types. empty otherwise
 - `prob`: ""
 - `sample`: used for `sample` prediction types. empty otherwise

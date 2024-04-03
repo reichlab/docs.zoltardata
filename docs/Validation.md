@@ -61,7 +61,7 @@ Bernoulli   | 0<=p<=1   |    -      |    -
 Binomial    | 0<=p<=1   |   n>0     |    - 
 -->
 
-### `Point` Prediction Elements
+### `Point` Prediction Elements (also applies to `mean`, `median`, and `mode`)
 
  - If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets.
  - `value` (i, f, t, d, b): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
@@ -99,7 +99,7 @@ These tests are performed when a forecast is created or updated.
 
 ## Tests for Prediction Elements by Target Type
 
-These tests are performed when a forecast is created or updated. For all target types, only [valid Prediction Types](Targets.md#valid-prediction-types-by-target) are accepted.
+These tests are performed when a forecast is created or updated. For all target types, only [valid Prediction Types](Targets.md#valid-prediction-types-by-target) are accepted. Note: `point` also applies to `mean`, `median`, and `mode`.
 
 ### "continuous"
 

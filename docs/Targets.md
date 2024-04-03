@@ -29,13 +29,13 @@ When created, all targets have a set of parameters that must be defined. Each ty
 
 Here is a table that summarizes which are allowed, optional, and required, by type. legend: 'x' = required, '(x)' = required if `is_step_ahead` is `true`, '-' = disallowed, '~' = optional.
 
-target type | type | name | description | outcome_variable | is_step_ahead |  numeric_horizon  |  RDT  | range | cats 
------------ | ---- | ---- | ----------- | ---------------- | ------------- | ----------------- |  ---- | ----- | ---- 
-continuous  |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   ~   |  ~   
-discrete    |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   ~   |  ~   
-nominal     |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   -   |  x   
-binary      |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   -   |  -   
-date        |  x   |  x   |     x       |        x         |      x        |         (x)       |  (x)  |   -   |  x   
+| target type | type | name | description | outcome_variable | is_step_ahead | numeric_horizon | RDT | range | cats |
+|-------------|------|------|-------------|------------------|---------------|-----------------|-----|-------|------|
+| continuous  | x    | x    | x           | x                | x             | (x)             | (x) | ~     | ~    |
+| discrete    | x    | x    | x           | x                | x             | (x)             | (x) | ~     | ~    |
+| nominal     | x    | x    | x           | x                | x             | (x)             | (x) | -     | x    |
+| binary      | x    | x    | x           | x                | x             | (x)             | (x) | -     | -    |
+| date        | x    | x    | x           | x                | x             | (x)             | (x) | -     | x    |
 
 ### Required parameters for all targets
 
@@ -50,13 +50,13 @@ date        |  x   |  x   |     x       |        x         |      x        |    
 
 Following are the allowed reference date types. `id` is the integer value that's actually stored in the database, `name` is the "official" unique name used by [project configuration files](FileFormats.md#project-creation-configuration-json), and `abbreviation` is used to calculate target group names.
 
-id  | name                            | abbreviation 
---- | ------------------------------- | ------------ 
-0   | DAY                             | day          
-1   | MMWR_WEEK_LAST_TIMEZERO_MONDAY  | week         
-2   | MMWR_WEEK_LAST_TIMEZERO_TUESDAY | week         
-3   | BIWEEK                          | biweek       
-
+| id | name                              | abbreviation |
+|----|-----------------------------------|--------------|
+| 0  | DAY                               | day          |
+| 1  | MMWR_WEEK_LAST_TIMEZERO_MONDAY    | week         |
+| 2  | MMWR_WEEK_LAST_TIMEZERO_TUESDAY   | week         |
+| 3  | BIWEEK                            | biweek       |
+| 4  | MMWR_WEEK_LAST_TIMEZERO_SATURDAY  | biweek       |
 
 ### Parameters specific to continuous targets
 
@@ -97,13 +97,13 @@ Every date target must have a set of dates (also in YYYYMMDD format) that are va
 
 ## Valid prediction types by target type
 
-| target type | data_type | point | bin | sample | named | quantile |
-|-------------|-----------|-------|-----|--------|-------|----------|
-| continuous  |   float   |   x   |  x  |   x    |  (1)  |    x     |
-| discrete    |   int     |   x   |  x  |   x    |  (2)  |    x     |
-| nominal     |   text    |   x   |  x  |   x    |   -   |    -     |
-| binary      |  boolean  |   x   |  x  |   x    |   -   |    -     |
-| date        |   date    |   x   |  x  |   x    |   -   |    x     |
+| target type | data_type | point | bin | sample | named | quantile | mean | median | mode |
+|-------------|-----------|-------|-----|--------|-------|----------|------|--------|------|
+| continuous  | float     | x     | x   | x      | (1)   | x        | x    | x      | x    |
+| discrete    | int       | x     | x   | x      | (2)   | x        | x    | x      | x    |
+| nominal     | text      | x     | x   | x      | -     | -        |      |        | x    |
+| binary      | boolean   | x     | x   | x      | -     | -        |      | x      | x    |
+| date        | date      | x     | x   | x      | -     | x        | x    | x      | x    |
 
 Legend:
 (1) = valid named distributions are `norm`, `lnorm`, `gamma`, `beta`
