@@ -68,10 +68,10 @@ The `"predictions"` list contains objects for each prediction, and each object c
 
     - `"bin"`: Binned distribution with a category for each bin. It is a two-column table represented by two keys, one per column: `cat` and `prob`. They are paired, i.e., have the same number of rows.
     - `"named"`: A named distribution with four fields: `family` and `param1` through `param3`. `family` names must be one of : `norm`, `lnorm`, `gamma`, `beta`, `bern`, `binom`, `pois`, `nbinom`, and `nbinom2`.
-    - `"point`: A numeric point prediction with a single `value` key.
+    - `"point"`: A numeric point prediction with a single `value` key.
     - `"sample"`: Numeric samples represented as a table with one column that is found in the `sample` key.
     - `"quantile"`: A quantile distribution with two paired columns: `quantile` and `value`.
-    - `"mean"`, `"median"`, and `"mode"`: Similar to `"point"` but with clear semantics.
+    - `"mean"`, `"median"`, and `"mode"`: A numeric prediction with a single value key, indicating the summary statistic indicated by the name, e.g. the mean.
 
 To indicate a [Retracted prediction](ForecastVersions.md#retracted-predictions) in JSON files, by use `null` for the "prediction" value. For example:
 

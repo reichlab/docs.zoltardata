@@ -94,18 +94,16 @@ Some features (currently only prediction type conversion) require additional inf
 
 ### Prediction type conversion
 
-Zoltar supports converting from some prediction types to desired ones that have not actually been uploaded.
+Zoltar supports converting from some prediction types to desired ones that have not actually been uploaded. Conversion is activated by running a forecast query with these two parameters set:
 
-> Note: Conversion is currently limited, with support coming for additional prediction types and target types.
-> Also note that the conversion feature results in slower queries than when it is not requested. 
-
-Conversion is activated via two query parameters:
-
-1. Specify the forecast *types* (#5 above) that you want the program to convert TO (or leave it unspecified, which will cause the program to include all types).
-2. Include query *options* for the conversions you want. Including an option does two things: a) it tells Zoltar that it should convert TO that type (i.e., that conversion is activated), and b) possible details about how to do the conversion.
+1. Include query *options* for the conversions you want. Including a conversion option does two things: a) it tells Zoltar that it should convert to that type (i.e., it enables that conversion), and b) possible details about how to do the conversion, depending on the types involved. (Some conversions require additional information on how to perform the conversion.)
+2. Specify the forecast *types* (#5 above) that you want the program to convert TO (or leave it unspecified, which will cause the program to include all types).
 
 
 Here are all the conversions that we hope to support:
+
+> Note: Conversion is currently limited, with support coming for additional prediction types and target types.
+> Also note that the conversion feature results in slower queries than when it is not requested.
 
 | TO type  | FROM type(s)) | query option                                       |
 |----------|---------------|----------------------------------------------------|

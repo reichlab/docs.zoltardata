@@ -9,37 +9,37 @@ For clarity, we define specific terms that we will use below.
  - Forecast: a collection of data specific to a project > model > timezero.
  - Prediction: a group of a prediction elements(s) specific to a unit and target.
  - Prediction Element: data that define a unique single prediction, specific to the class of prediction it is.
- - Prediction Class: data structures representing different types of predictions, e.g. "Point" and "Bin" (see [Data Model](DataModel.md) for more detail)
+ - Prediction Class: data structures representing different types of predictions, e.g. "point" and "bin" (see [Data Model](DataModel.md) for more detail)
  - Target Type: the classification for a specific forecast target, one of "continuous", "discrete", "nominal", "binary" or "date" (see [Targets](Targets.md) for more info)
  - Database Row(s): the entry(ies)/row(s) in the database that comprise a prediction element.
 
 
-## Tests for all Prediction Elements
+## Tests for all prediction elements
 
 These tests are performed when a forecast is created or updated.
 
-- The Prediction's class must be valid for its target's type (see [Valid prediction types by target type](Targets.md#Valid prediction types by target type).
-- Within a Prediction, there cannot be more than 1 Prediction Element of the same class.
+- The prediction's class must be valid for its target's type (see [Valid prediction types by target type](Targets.md#Valid prediction types by target type).
+- Within a prediction, there cannot be more than 1 prediction element of the same class.
 
 
-## Tests for Prediction Elements by Prediction Class
+## Tests for prediction elements by Prediction Class
 
 These tests are performed when a forecast is created or updated.
 
 
-### `Bin` Prediction Elements
+### `bin` prediction elements
 
-- If a Bin Prediction Element exists, it should have >=1 Database Rows.
+- If a bin prediction element exists, it should have >=1 database rows.
 - `|cat| = |prob|`. The number of elements in the `cat` and `prob` vectors should be identical.
 - `cat` (i, f, t, d, b): Entries in the database rows in the `cat` column cannot be `“”`, `“NA”` or `NULL` (case does not matter). Entries in `cat` must be a subset of `Target.cats` from the target definition.
 - `prob` (f): [0, 1]. Entries in the database rows in the `prob` column must be numbers in [0, 1]. For one prediction element, the values within prob must sum to 1.0 (values within +/- 0.001 of 1 are acceptable).
 - The data format of `cat` should correspond or be translatable to the `type` as in the target definition.
 
-### `Named` Prediction Elements
+### `named` prediction elements
 
-We note that `Named` predictions currently only support fairly simple distributions. We currently support distributions with up to three parameters. Future versions of Zoltar could support distributions with larger numbers of parameters.
+We note that `named` predictions currently only support fairly simple distributions. We currently support distributions with up to three parameters. Future versions of Zoltar could support distributions with larger numbers of parameters.
 
- - If a Named Prediction Element exists, it should have exactly 1 Database Row.
+ - If a named prediction element exists, it should have exactly 1 Database Row.
  - `family`: must be one of the abbreviations shown in the table below.
  - `param1`, `param2`, `param3` (f): The number of param columns with non-NULL entries count must match family definition (see note below).
  - Parameters for each distribution must be within valid ranges, which, if constraints exist, are specified in the table below.
@@ -61,79 +61,79 @@ Bernoulli   | 0<=p<=1   |    -      |    -
 Binomial    | 0<=p<=1   |   n>0     |    - 
 -->
 
-### `Point` Prediction Elements (also applies to `mean`, `median`, and `mode`)
+### `point`, `mean`, `median`, and `mode` prediction elements
 
- - If a Point Prediction Element exists, it should have exactly 1 Database Row for all targets.
+ - If a `point`, `mean`, `median`, or `mode` prediction element exists, it should have exactly 1 Database Row for all targets.
  - `value` (i, f, t, d, b): Entries in the database rows in the `value` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
  - The data format of `value` should correspond or be translatable to the `type` as in the target definition.
 
-### `Sample` Prediction Elements
+### `sample` prediction elements
 
- - If a Sample Prediction Element exists, it should have >=1 Database Rows.
+ - If a sample prediction element exists, it should have >=1 database rows.
  - `sample` (i, f, t, d, b): Entries in the database rows in the `sample` column cannot be `“”`, `“NA”` or `NULL` (case does not matter).
  - The data format of `sample` should correspond or be translatable to the `type` as in the target definition.
 
 
-### `Quantile` Prediction Elements
+### `quantile` prediction elements
 
-- If a Quantile Prediction Element exists, it should have >=1 Database Rows.
+- If a quantile prediction element exists, it should have >=1 database rows.
 - `|quantile| = |value|`. The number of elements in the `quantile` and `value` vectors should be identical.
 - `quantile` (f): [0, 1]. Entries in the database rows in the `quantile` column must be numbers in [0, 1]. `quantile`s must be unique.
 - `value` (i, f, d): Entries in `value` must be non-decreasing as quantiles increase. Entries in `value` must obey existing ranges for targets.
 - The data format of `value` should correspond or be translatable to the `type` as in the target definition.
 
 
-## Tests for Predictions by Target Type
+## Tests for predictions by target type
 
 These tests are performed when a forecast is created or updated.
 
 
 ### "continuous"
 
- - Within one prediction, there can be at most one of the following prediction elements, but not both: {`Named`, `Bin`}.
+ - Within one prediction, there can be at most one of the following prediction elements, but not both: {`named`, `bin`}.
 
 ### "discrete"
 
- - Within one prediction, there can be at most one of the following prediction elements, but not both: {`Named`, `Bin`}.
+ - Within one prediction, there can be at most one of the following prediction elements, but not both: {`named`, `bin`}.
 
 
-## Tests for Prediction Elements by Target Type
+## Tests for prediction elements by target type
 
-These tests are performed when a forecast is created or updated. For all target types, only [valid Prediction Types](Targets.md#valid-prediction-types-by-target) are accepted. Note: `point` also applies to `mean`, `median`, and `mode`.
+These tests are performed when a forecast is created or updated. For all target types, only [valid Prediction Types](Targets.md#valid-prediction-types-by-target) are accepted.
 
 ### "continuous"
 
- - any values in `Point` or `Sample` Prediction Elements should be numeric
- - if `range` is specified, any values in `Point` or `Sample` Prediction Elements should be contained within `range`
- - if `range` is specified, any `Named` Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range.
- - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
- - for `Named` Prediction Elements, the distribution must be one of `norm`, `lnorm`, `gamma`, `beta`
+ - any values in `point`, `mean`, `median`, `mode`, or `sample` prediction elements should be numeric
+ - if `range` is specified, any values in `point` or `sample` prediction elements should be contained within `range`
+ - if `range` is specified, any `named` Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range.
+ - for `bin` prediction elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
+ - for `named` prediction elements, the distribution must be one of `norm`, `lnorm`, `gamma`, `beta`
 
 ### "discrete"
 
- - any values in `Point` or `Sample` Prediction Elements should be integers
- - if `range` is specified, any values in `Point` or `Sample` Prediction Elements should be contained within `range`
- - if `range` is specified, any `Named` Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range
- - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
- - for `Named` Prediction Elements, the distribution must be one of `pois`, `nbinom`, `nbinom2`.
+ - any values in `point`, `mean`, `median`, `mode`, or `sample` prediction elements should be integers
+ - if `range` is specified, any values in `point` or `sample` prediction elements should be contained within `range`
+ - if `range` is specified, any `named` Prediction Element should have negligible probability density (no more than 0.001 density) outside of the range
+ - for `bin` prediction elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
+ - for `named` prediction elements, the distribution must be one of `pois`, `nbinom`, `nbinom2`.
 
 ### "nominal"
 
- - any values in `Point` or `Sample` Prediction Elements should be contained within the valid set of `cats` defined by the target
- - for `Bin` Prediction Elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
+ - any values in `point`, `mean`, `median`, `mode`, or `sample` prediction elements should be contained within the valid set of `cats` defined by the target
+ - for `bin` prediction elements, the submitted set of `cat` values must be a subset of the `cats` defined by the target
 
 ### "binary"
 
- - any values in `Point` or `Sample` Prediction Elements should be either `true` or `false`.
- - for `Bin` Prediction Elements, there must be exactly two `cat` values labeled `true` and `false`. These are the two `cats` that are implied (but not allowed to be specified) by binary target types.
+ - any values in `point`, `mean`, `median`, `mode`, or `sample` prediction elements should be either `true` or `false`.
+ - for `bin` prediction elements, there must be exactly two `cat` values labeled `true` and `false`. These are the two `cats` that are implied (but not allowed to be specified) by binary target types.
 
 ### "date"
 
- - any values in `Point` or `Sample` Prediction Elements should be string that can be interpreted as a date in `YYYY-MM-DD` format, and these values should be contained within the set of valid responses defined by `cats` defined by the target.
- - for `Bin` Prediction Elements, the submitted set of `cats` must be a subset of the valid outcomes defined by the target range.
+ - any values in `point`, `mean`, `median`, `mode`, or `sample` prediction elements should be string that can be interpreted as a date in `YYYY-MM-DD` format, and these values should be contained within the set of valid responses defined by `cats` defined by the target.
+ - for `bin` prediction elements, the submitted set of `cats` must be a subset of the valid outcomes defined by the target range.
 
 
-## Tests for target definitions by Target Type
+## Tests for target definitions by target type
 
 These tests are performed when a target is created or updated.
 
