@@ -29,18 +29,18 @@ This section is the same as in [project detail page](ProjectDetailPage.md), but 
 
 ## Predictions present
 
-The predictions section has the heading **"Predictions (_)"** (where _ is the actual number of predictions) and a bulleted summary of the counts of the five different prediction types that can be associated with a forecast: `bin`, `named`, `point`, `quantile`, and `sample`. See [Data Model](DataModel.md) for more information on how forecast data is modeled.
+The predictions section has the heading **"Predictions (_)"** (where _ is the actual number of predictions) and a bulleted summary of the counts of the five different prediction types that can be associated with a forecast: `bin`, `mean`, `median`, `mode`, `named`, `point`, `quantile`, and `sample`. See [Data Model](DataModel.md) for more information on how forecast data is modeled.
 
 
 ## Query form and results
 
-At the bottom of the page under **Query Forecast Data** is a simple form that allows searching the forecast's predictions by unit and target. (Those two dropdown menus contain the units and targets that have predictions, but there's no guarantee that every combination has data.) Clicking Search runs the query and shows the results below the form. There is a table for each type of prediction that's present (`bin`, `named`, etc.) and each table's columns are customized according to the prediction type (all tables have **Unit** and **Target** columns):
+At the bottom of the page under **Query Forecast Data** is a simple form that allows searching the forecast's predictions by unit and target. (Those two dropdown menus contain the units and targets that have predictions, but there's no guarantee that every combination has data.) Clicking Search runs the query and shows the results below the form. There is a table for each type of prediction that's present (`bin`, `named`, etc.) and each table's columns are customized according to the prediction type (all tables have **unit** and **target** columns):
 
-- `bin`: **Prob** and **Cat** columns
-- `named`: **Family**, **Param 1**, **Param 2**, and **Param 3** columns
-- `point`: a **Value** column
-- `quantile`: **Quantile** and **Value** columns
-- `sample`: a **Sample** column
+- `bin`: **prob** and **cat** columns
+- `named`: **family**, **param 1**, **param 2**, and **param 3** columns
+- `point`, `mean`, `median`, and `mode`: a **value** column
+- `quantile`: **quantile** and **value** columns
+- `sample`: a **sample** column
 
 
 Here's an example (the page has been scrolled down) under **Found predictions**:

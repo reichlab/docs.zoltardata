@@ -1,11 +1,11 @@
 # Zoltar data model
 
-This page documents how Zoltar represents forecast data, and the various types of _predictions_ that are supported. Each forecast is made for a particular _time zero_ in the project, and contains some number of _predictions_, one or more for each combination of the project's _units_ and _targets_. Zoltar supports the following five prediction types, which we've found covers many forecasting applications. All predictions must pass a number of validity checks as documented in [Validation](Validation.md). Each section has an example as represented in Zoltar's [JSON format](FileFormats.md#forecast-data-file-format-json) which was taken from the "Docs Example Project" demo project.
+This page documents how Zoltar represents forecast data, and the various types of _predictions_ that are supported. Each forecast is made for a particular _time zero_ in the project, and contains some number of _predictions_, one or more for each combination of the project's _units_ and _targets_. Zoltar supports the following eight prediction types, which we've found covers many forecasting applications. All predictions must pass a number of validity checks as documented in [Validation](Validation.md). Each section has an example as represented in Zoltar's [JSON format](FileFormats.md#forecast-data-file-format-json) which was taken from the "Docs Example Project" demo project.
 
 
 ## Overview
 
-(Please refer to the diagram below.) A forecast is made up of metadata (the _model_ that made the forecast, the _time zero_ for the forecast, and the forecast's date of submission) plus the forecast's data as a set of _predictions_. Each prediction is a collection of one or more _prediction elements_ specific to one target and unit. Each prediction element is of a particular type (point, named, bin, sample, and quantile, as described below).
+(Please refer to the diagram below. Note that it does not contain the `quantile`, `mean`, `median`, and `mode` prediction types.) A forecast is made up of metadata (the _model_ that made the forecast, the _time zero_ for the forecast, and the forecast's date of submission) plus the forecast's data as a set of _predictions_. Each prediction is a collection of one or more _prediction elements_ specific to one target and unit. Each prediction element is of a particular type (or "class") (`point`, `named`, `bin`, `sample`, `quantile`, `mean`, `median`, and `mode` as described below).
 
 ![Predictions Diagram](img/predictions-diagram.png "Predictions Diagram")
 
@@ -75,5 +75,18 @@ Quantile distributions represent quantiles of the predictive distribution. For e
       "prediction": {
         "quantile": [0.025, 0.25, 0.5, 0.75, 0.975],
         "value": [1.0, 2.2, 2.2, 5.0, 50.0]
+      }
+    }
+
+
+## Mean, median, and mode predictions
+
+These three types are expressed similar to point predictions above, except the class name varies. All validations and constraints that apply to point also apply to these three. Here's the point example from above, but with the `mean` class:
+
+    {"unit": "loc1",
+      "target": "pct next week",
+      "class": "mean",
+      "prediction": {
+        "value": 2.1
       }
     }
