@@ -1413,6 +1413,9 @@
 </ul>
 </li>
 </ul>
+<blockquote>
+<p>Note: Regarding using the <code>point</code> prediction type vs. <code>mean</code>, <code>median</code>, and <code>mode</code>, we strongly recommend adopting one of the latter types if possible. Doing so could help avoid future data analysis inconsistencies. For example, soliciting a specific type of point prediction can ensure that any scoring rule used to evaluate predictions is well-matched to that prediction type.</p>
+</blockquote>
 <p>To indicate a <a href="../ForecastVersions/#retracted-predictions">Retracted prediction</a> in JSON files, by use <code>null</code> for the "prediction" value. For example:</p>
 <pre><code class="language-json">{
   &quot;unit&quot;: &quot;loc1&quot;,
@@ -1422,7 +1425,7 @@
 }
 </code></pre>
 <h2 id="forecast-data-format-csv">Forecast data format (CSV)<a class="headerlink" href="#forecast-data-format-csv" title="Permanent link">&para;</a></h2>
-<p>Zoltar supports uploading and downloading forecast data in a CSV format with the following columns. It helps to think of this format as an "exploded" version of the prediction elements in the JSON format, where each element expands into one or more rows. <code>named</code>, <code>point</code>, <code>mean</code>, <code>median</code>, and <code>mode</code> types expand into single rows, and <code>bin</code>, <code>sample</code>, and <code>quantile</code> types expand into one or more rows depending on the particular data. You can read more about prediction types on tje <a href="../DataModel/">data model page</a>.</p>
+<p>Zoltar supports uploading and downloading forecast data in a CSV format with the following columns. It helps to think of this format as an "exploded" version of the prediction elements in the JSON format, where each element expands into one or more rows. <code>named</code>, <code>point</code>, <code>mean</code>, <code>median</code>, and <code>mode</code> types expand into single rows, and <code>bin</code>, <code>sample</code>, and <code>quantile</code> types expand into one or more rows depending on the particular data. You can read more about prediction types on the <a href="../DataModel/">data model page</a>.</p>
 <p>Note that because different prediction types have different contents, the CSV rows are "sparse" in that not every row uses all columns (the unused ones are empty, i.e., <code>""</code>). However, the <code>unit</code>, <code>target</code>, and <code>class</code> columns are always non-empty. For example, a <code>point</code> row only uses the <code>value</code> column whereas a <code>quantile</code> row uses only the <code>value</code> and <code>quantile</code> columns. To learn more you can examine the example file <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.csv">zoltar-predictions-examples.csv</a>, which contains the same data as <a href="https://github.com/reichlab/docs.zoltardata/blob/master/docs/zoltar-predictions-examples.json">zoltar-predictions-examples.json</a>, but in CSV format.</p>
 <p>Here are the columns used in the format, in order. Note that there are three additional columns present when downloading forecast data: <code>model</code>, <code>timezero</code>, and <code>season</code>. They are positioned before the <code>unit</code> column. These three columns are not present when uploading forecast data.</p>
 <ul>
