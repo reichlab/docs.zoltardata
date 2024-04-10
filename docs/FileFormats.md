@@ -73,7 +73,7 @@ The `"predictions"` list contains objects for each prediction, and each object c
     - `"quantile"`: A quantile distribution with two paired columns: `quantile` and `value`.
     - `"mean"`, `"median"`, and `"mode"`: A numeric prediction with a single value key, indicating the summary statistic indicated by the name, e.g. the mean.
 
-> Note: Regarding using the `point` prediction type vs. `mean`, `median`, and `mode`, we strongly recommend adopting one of the latter types if possible. Doing so could help avoid future data analysis inconsistencies.
+> Note: Regarding using the `point` prediction type vs. `mean`, `median`, and `mode`, we strongly recommend adopting one of the latter types if possible. Doing so could help avoid future data analysis inconsistencies. For example, soliciting a specific type of point prediction can ensure that any scoring rule used to evaluate predictions is well-matched to that prediction type.
 
 To indicate a [Retracted prediction](ForecastVersions.md#retracted-predictions) in JSON files, by use `null` for the "prediction" value. For example:
 
