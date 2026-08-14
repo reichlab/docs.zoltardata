@@ -1,7 +1,9 @@
 site_name: Zoltar Documentation
 repo_url: https://zoltardata.com/
 repo_name: Zoltar Main Site
-theme: material
+theme:
+  name: material
+  custom_dir: overrides
 markdown_extensions:
   - toc:
       permalink: true
